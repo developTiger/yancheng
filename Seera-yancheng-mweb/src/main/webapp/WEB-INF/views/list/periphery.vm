@@ -1,0 +1,97 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">淹城春秋乐园-周边商品</h1>
+            <a class=" icon icon-left pull-left back" style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        #parse("/layout/siteNav.vm")
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="page-index index-page">
+                <div class="classify-header card-name card-title"><span><img src="/images/icon.gif"
+                                                                             style="height: 0.7rem"><i
+                        class="title-fonts">周边酒店</i></span></div>
+                <div class="row  " style="margin:0 0.3rem">
+                    #foreach($item in $hotels)
+                        <a class="card external" href="/ticket/${item.id}.html" style="margin:  0.3rem 0  !important;">
+                            <div class="card-content">
+                                <img src="$imghost/$item.mainPicturePath"
+                                     onerror="javascript:this.src='/images/default.png'">
+                                    <span class="card-popup-rmb row"
+                                          style="line-height: 1.5rem;width: 100%;border-radius:0;  bottom: 0.3rem;">
+                                       <div class="card-name col-75  zh-name">
+                                           $item.name
+                                       </div>
+                                    <span class="ui-rmb-discount col-25 zh-name">¥$item.discountPrice</span>
+                                </span>
+
+                            </div>
+                        </a>
+
+                    #end
+                </div>
+
+                <div class="classify-header card-name card-title"><span><img src="/images/icon.gif"
+                                                                             style="height: 0.7rem"><i
+                        class="title-fonts">淹城美食</i></span></div>
+                <div class="row  " style="margin:0 0.3rem">
+                    #foreach($item in $caterings)
+                        <a class="card external" href="/ticket/${item.id}.html" style="margin:  0.3rem 0  !important;">
+                            <div class="card-content">
+                                <img src="$imghost/$item.mainPicturePath"
+                                     onerror="javascript:this.src='/images/default.png'">
+                                    <span class="card-popup-rmb row"
+                                          style="line-height: 1.5rem;width: 100%;border-radius:0;  bottom: 0.3rem;">
+                                       <div class="card-name col-75  zh-name">
+                                           $item.name
+                                       </div>
+                                    <span class="ui-rmb-discount col-25 zh-name">¥$item.discountPrice</span>
+                                </span>
+
+                            </div>
+                        </a>
+
+                    #end
+                </div>
+                <div class="classify-header card-name card-title"><span><img src="/images/icon.gif"
+                                                                             style="height: 0.7rem"><i
+                        class="title-fonts">旅游纪念品</i></span></div>
+                <div class="row  " style="margin:0 0.3rem">
+                    #foreach($item in $souvenirs)
+                        <a class="card external" href="/ticket/${item.id}.html" style="margin:  0.3rem 0  !important;">
+                            <div class="card-content">
+                                <img src="$imghost/$item.mainPicturePath"
+                                     onerror="javascript:this.src='/images/default.png'">
+                                    <span class="card-popup-rmb row"
+                                          style="line-height: 1.5rem;width: 100%;border-radius:0;  bottom: 0.3rem;">
+                                       <div class="card-name col-75  zh-name">
+                                           $item.name
+                                       </div>
+                                    <span class="ui-rmb-discount col-25 zh-name">¥$item.discountPrice</span>
+                                </span>
+
+                            </div>
+                        </a>
+
+                    #end
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  关于我们 -->
+#parse("about.vm")
+</div>
+
+#set($block_script='
+
+')

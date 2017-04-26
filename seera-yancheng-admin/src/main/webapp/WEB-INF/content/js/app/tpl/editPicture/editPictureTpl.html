@@ -1,0 +1,51 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th style="width: 50px">
+            <input type="checkbox" id="check-all"  class="checkAll ">        </th>
+        <th class="column-title">序号</th>
+        <th class="column-title">使用页面</th>
+        <th class="column-title">图片名</th>
+        <th class="column-title">图片链接</th>
+        <th class="column-title">图片类型</th>
+        <th class="column-title">状态</th>
+        <th class="column-title no-link last">
+            <span class="nobr">操作</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if( items.length > 0){%>
+        <%for(var i = 0 ; i < items.length; i++) {%>
+        <tr>
+            <td class="firstTd"> <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+
+            <td class="num"><%=num+i+1%></td>
+            <td><%=items[i].location%></td>
+            <td><%=items[i].name%></td>
+            <td class=" "><%=items[i].path%></td>
+            <td class=" "><%=items[i].type%> </td>
+            <td class=" ">
+
+              <% if(items[i].pictureStatus || items[i].pictureStatus==null){%>
+               <a class="enableStatus" data-title="false" data-id="<%=items[i].id%>">
+                   <i class="fa green fa-play"></i>可用 </a>
+               <%}else{%>
+               <a class="disabledStatus" data-title="true" data-id="<%=items[i].id%>">
+                   <i class="fa red fa-pause"></i>不可用 </a>
+               <%}%>
+
+             </td>
+            <td class=" last">
+                <a class="label label-info" href="sra_t_editPictureInfo?id=<%=items[i].id%>">编辑</a>
+            </td>
+        </tr>
+        <%}%>
+    <%}else{%>
+        <tr>
+            <td colspan="8" align="center">暂无数据</td>
+        </tr>
+    <%}%>
+    </tbody>
+</table>

@@ -1,0 +1,52 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">取票人</h1>
+            <a class=" icon icon-left pull-left back"  style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        <div class="bar bar-tab">
+            <div><a href="/uc/receiver.html" class="button button-big button-fill button-danger">新增取票人</a></div>
+        </div>
+        <div class="content">
+            #foreach($item in $fetcherDtoList)
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <div>
+                            <span>取票人:$item.realName</span>
+                            <span>手机号:$item.mobilePhone</span>
+                        </div>
+                        <div>
+                            <span>身份证:$item.idCardNo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span>
+                        <input type="radio" name="detcher" class="Js_orderCheckFetcher" data-value="$item.id"
+                            #if($item.id==$fetcherId)
+                                checked
+                            #end>
+                        默认取票人</span>
+                    <span>
+                       <a href="/uc/receiver.html?id=$item.id">编辑</a>
+                       <a class="Js_receiver_del" data-id="$item.id">删除</a>
+                    </span>
+                </div>
+            </div>
+            #end
+        </div>
+        <div class="bar bar-tab">
+            <div>
+                <input type="hidden" name="couponId" id="couponId" value="$!couponId">
+                <input type="hidden" name="fetcherId" id="fetcherId" value="$!fetcherId">
+                <input type="button" class="button button-big button-fill button-danger Js_confirmOrder back" data-url="/order/confirm" value="确认订单">
+            </div>
+        </div>
+    </div>
+</div>

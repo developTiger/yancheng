@@ -1,0 +1,105 @@
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Form Design <small>different form elements</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <br>
+        <form id="addUserForm" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="login-name">用户名 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="login-name" required="required"  #if($sysUser)value="$sysUser.loginName"#end name="loginName"  class="form-control col-md-7 col-xs-12" data-parsley-id="0355">
+                    <ul class="parsley-errors-list" id="parsley-id-0355"></ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="real-name">姓名 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="real-name" required="required"  #if($sysUser)value="$sysUser.name"#end name="realName"  class="form-control col-md-7 col-xs-12" data-parsley-id="9815">
+                    <ul class="parsley-errors-list" id="parsley-id-9815"></ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">电话号码</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text"  #if($sysUser)value="$sysUser.mobile"#end  name="phone" data-parsley-id="8864"><ul class="parsley-errors-list" id="parsley-id-8864"></ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">性别</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div id="gender" class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <input type="radio" name="gender" value="male" data-parsley-multiple="gender" data-parsley-id="6073"> &nbsp; 男 &nbsp;
+                        </label><ul class="parsley-errors-list" id="parsley-id-multiple-gender"></ul>
+                        <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <input type="radio" name="gender" value="female" checked="" data-parsley-multiple="gender" data-parsley-id="6073"> 女
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate" id="birthday" name="birthday" style="float: left;width: 150px" placeholder="起始时间" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">邮箱 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="email" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text"  #if($sysUser)value="$sysUser.email"#end name="email" data-parsley-id="2996"><ul class="parsley-errors-list" id="parsley-id-2997"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-xs-3">角色 <span class="required">*</span>
+                </label>
+                <div class="col-xs-6">
+                    #if($beansRole)
+                    <select id="roleName"  required="required" name="roleName" class="form-control col-xs-7" data-parsley-id="0004">
+                        #foreach($bean in $beansRole)
+                        <option value="$bean.id" #if($bean.name == $sysUser.roleName )selected="selected"#end >$bean.name</option>
+                        #end
+                    </select>
+                    #else
+                    <dd>暂无数据</dd>
+                    #end
+                </div>
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Cancel</button>
+                    <button type="submit" id="addOrUpdateUser" data-url="ajax_add_update_user" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    require(["app/user/user"]);
+</script>

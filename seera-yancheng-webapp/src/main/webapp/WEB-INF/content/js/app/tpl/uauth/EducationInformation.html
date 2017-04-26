@@ -1,0 +1,119 @@
+<div class="">
+
+    <div class="">
+        <form id="BasicInfoForm"  class="form-horizontal fa-align-left">
+            <input type="hidden" id="empId" name="empId"  >
+            <input type="hidden" name="id" value="<%=id%>">
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="school">是否是当前学历 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="radio" name="isCurrent" value="1" <%if(isCurrent){%> checked="checked"<%}%> >是
+                    <input type="radio" name="isCurrent" value="0" <%if(!isCurrent){%> checked="checked"<%}%> > 否
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="school">毕业学校 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="school" name="school" required="required" value="<%=school%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="1279">
+                    <ul class="parsley-errors-list" id="parsley-id-1279"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="last-name">学习形式 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="last-name" name="studyForm"  value="<%=studyForm%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="9513">
+                    <ul class="parsley-errors-list" id="parsley-id-9513"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">毕业时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate" value="<%=strGraduation%>"
+                           name="strGraduation"  placeholder="毕业时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-2891"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">学习专业 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12"
+                           value="<%=major%>" name="major" type="text" data-parsley-id="3559">
+                    <ul class="parsley-errors-list" id="parsley-id-35590"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">文化程度 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="level" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                           value="<%=level%>" name="level" type="text" data-parsley-id="3559">
+                    <ul class="parsley-errors-list" id="parsley-id-35595"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">学位 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="degree" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                           value="<%=degree%>" name="degree"  type="text" data-parsley-id="3559">
+                    <ul class="parsley-errors-list" id="parsley-id-5591"></ul>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">取得时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate"  value="<%=strObtain%>"
+                           name="strObtain" placeholder="取得时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-3991"></ul>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">获得途径 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="birthday111" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                           value="<%=way%>" name="way" type="text" data-parsley-id="3559">
+                    <ul class="parsley-errors-list" id="parsley-id-35501"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">简介 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="brief" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                           value="<%=brief%>" name="brief" type="text" data-parsley-id="3559">
+                    <ul class="parsley-errors-list" id="parsley-id-35591"></ul>
+                </div>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button type="submit"  class="btn btn-success">取消</button>
+                    <button type="submit" id="submitUserInfo" data-title="WorkExInformation" data-url="EducationInformation" class="btn btn-success">提交</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

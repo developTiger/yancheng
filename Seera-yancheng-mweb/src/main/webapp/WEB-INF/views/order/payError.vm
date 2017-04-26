@@ -1,0 +1,21 @@
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title">订单支付失败</h1>
+
+        #if($userInfo)
+            <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+        #else
+            <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+        #end
+    </header>
+    <div class="content" style="text-align: center">
+        <div>
+            <div>
+                <div><i class="iconfont iconfont-error" ></i>
+                    支付失败</div>
+                <div class="pay-msg">请重新支付您的订单</div>
+            </div>
+        </div>
+        <div>订单编号:$orderNum <a class="external" href="/order/payInfo?sn=$orderNum"> 去支付</a></div>
+    </div>
+</div>

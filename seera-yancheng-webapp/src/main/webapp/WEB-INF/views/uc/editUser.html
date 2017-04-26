@@ -1,0 +1,23 @@
+
+<!--<link href="css/personalcenter/personalcenter.css" type="text/css" rel="stylesheet" />-->
+$ui.loadCss("personalCenter/personalCenter.css")
+$ui.loadCss("personalCenter/alert.css")
+
+<div class="main personal-main">
+    <div class="h20"></div>
+    #parse("uc/common/left_common.html")
+    <div class="right">
+        #if($edit_select)
+            #parse("uc/child/essentialInfo_edit_right.html")
+        #else
+            #parse("uc/child/essentialInfo_right.html")
+        #end
+        #parse("uc/common/User_Edit_Alert.html")
+
+    </div>
+</div>
+
+<script>
+    require(["app/personalCenter/personalCenter"]);
+</script>
+

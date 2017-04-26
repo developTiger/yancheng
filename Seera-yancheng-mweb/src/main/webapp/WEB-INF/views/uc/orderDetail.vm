@@ -1,0 +1,88 @@
+<div class="page-group">
+    <div class="page page-orderdetail" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">订单详情</h1>
+            <a class=" icon icon-left pull-left back"  style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+
+            <div class="ui-display-flex">
+                <span>订单信息</span>
+                <a>
+                    待评价
+                </a>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span>订单编号:xxxxx</span>
+                    <span>
+                       2022:22:22 10:22:22
+                    </span>
+                </div>
+                <div class="card-content">
+                    <div class="list-block media-list">
+                        <div class="list-block media-list ">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-media">
+                                        <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg"
+                                             width="100">
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div>常州淹城门票</div>
+                                        </div>
+                                        <div class="dateline">
+                                            截止日期:2012-20-20
+                                        </div>
+                                        <div>
+                                            数量:1
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="order-extrainfo">
+                        <span>共1件商品</span>
+                        <span>已优惠¥50</span>
+                        <span>
+                            总价<span class="ui-rmb-discount">¥170</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div> </div>
+                    <div class="button-box">
+                        <a href="#" class="button button-danger">去评价</a>
+                        <a href="#" class="button button-do">去评价</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="order-detail-receiver">
+                取票人:xxx
+            </div>
+            <div style="text-align: center;">
+                <div>取票密码:xxxx</div>
+                <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg"
+                     width="100">
+            </div>
+        </div>
+
+        <div class="bar bar-tab">
+            <div><a href="/uc/order/evaluate.html" class="button button-big button-fill button-danger">立即评价</a></div>
+        </div>
+    </div>
+</div>

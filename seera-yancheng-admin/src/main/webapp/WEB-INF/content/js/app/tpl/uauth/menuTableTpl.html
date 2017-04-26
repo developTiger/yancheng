@@ -1,0 +1,89 @@
+<table id="treetable" class="treetable table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th class="column-title">菜单名称</th>
+        <th class="column-title">菜单Url</th>
+        <th class="column-title">链接方式</th>
+        <th class="column-title">排序</th>
+        <th class="column-title">菜单类型</th>
+        <th class="column-title">icon图标</th>
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i
+                    class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num =1%>
+    <%if(isSuccess){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+
+    <tr data-tt-id="<%=items[i].id%>" data-tt-parent-id="<%=items[i].parentId%>">
+
+        <td>
+            <input type="checkbox" class="Js_relCheck checkBtn" value="<%=items[i].id%>">
+            <span class="folder ui-draggable"><%=items[i].name%></span>
+
+            <%if(!items[i].parentId){%>
+            <a class="i_modal" data-title="新增子菜单" data-url="_addMenuForm?parentId=<%=items[i].id%>">
+                <i class="fa fa-plus green"></i>
+            </a>
+            <%}%>
+
+        </td>
+        <td><%=items[i].url%></td>
+        <td>
+            <%if(items[i].target =='_self'){%>
+            当前窗口
+            <%}else if(items[i].target=='_blank'){%>
+            新窗口
+            <%}%>
+        </td>
+        <td class=" "><%=items[i].sort%></td>
+        <td>
+            <%if(!items[i].resType){%>
+            菜单
+            <%}else if(items[i].resType=='1'){%>
+            菜单
+            <%}else if(items[i].resType=='2'){%>
+            流程
+            <%}else if(items[i].resType=='3'){%>
+            文件
+            <%}%>
+
+        </td>
+        <td class=" "><i class="fa <%=items[i].iconName%>"></i></td>
+        <td class=" last"><a class="i_modal " data-title="修改菜单"
+                             data-url="_addMenuForm?id=<%=items[i].id%>"> <i class="green fa fa-edit"></i>修改 </a>
+        </td>
+    </tr>
+
+    <!--<%if(items[i].child){%>-->
+    <!--<tbody>-->
+    <!--<%for(var n = 0 ; n < items[i].child.length; n++) {%>-->
+    <!--<tr data-tt-id="<%=items[i].child[n].id%>" data-tt-parent-id="<%=items[i].id%>">-->
+    <!--<td><input type="checkbox" class="Js_relCheck checkBtn" value="<%=items[i].child[n].id%>"><span-->
+    <!--class="folder ui-draggable"><%=items[i].child[n].name%></span></td>-->
+    <!--<td><%=items[i].child[n].url%></td>-->
+    <!--<td class=" "><%=items[i].child[n].sort%></td>-->
+    <!--<td class=" "></td>-->
+    <!--<td class=" ">Paid</td>-->
+    <!--<td class="a-right a-right ">$7.45</td>-->
+    <!--<td class=" last"><a class="i_modal label label-success" data-title="修改用户"-->
+    <!--data-url="_addMenuForm?id=<%=items[i].child[n].id%>"> <i class="withe fa fa-edit"></i>修改-->
+    <!--</a>-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<%}%>-->
+    <!--</tbody>-->
+    <!--<%}%>-->
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

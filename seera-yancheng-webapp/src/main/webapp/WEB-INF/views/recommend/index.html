@@ -1,0 +1,271 @@
+$ui.loadCss("recommend.css")
+<div class="banner">
+    <ul>
+        #if($p_2)
+        #foreach($webList in $p_2)
+        <li >
+            <a href="/"><img src="$imghost/$webList.path" height="480px"></a>
+        </li>
+        #end
+        #else
+        <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+        <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+        <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+        #end
+    </ul>
+</div>
+<div class="main">
+    <div>
+        <p class="recommend-title">推荐门票</p>
+        <div>
+            #if($recommedTicket)
+            #foreach($t in $recommedTicket)
+            <div class="recommend4four">
+                <p class="alert">热销<i></i></p>
+                <a href="item/$!t.id"><p><img style="width: 275px;height: 166px; border:0;" src="$imghost/$!t.mainPicturePath" /></p></a>
+                <div class="js_show_all_info">
+                    <p class="p1">
+                       #if($!t.name.length() >= 20)
+                            #set($str= $!t.name.substring(0,18))
+                            $str...
+                        #else
+                            $!t.name
+                        #end
+                     </p>
+                    <p class="js_show_or_hidden dis-none hidden-orderName"> $!t.name</p>
+
+                </div>
+                <p class="p2"><span>￥$t.discountPrice</span>元 <a href="item/$!t.id">立即抢购</a></p>
+
+            </div>
+            #end
+            #end
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+   <div>
+        <p class="recommend-title">特价门票</p>
+        <div>
+            #if($specialTicket.size()>0)
+                #foreach($s in $specialTicket)
+                     #if($velocityCount==1)
+                            <div class="recommend4three">
+                                <div class="ldiv">
+                                    <a href="item/$!s.id"><p><img src="$imghost/$!s.mainPicturePath" style="width:360px;height:216px;border: none;"/></p></a>
+                                    <p class="p1">$!s.name</p>
+                                    <p class="p2"><span>￥$!s.discountPrice</span>元 <a href="item/$!s.id">立即抢购</a></p>
+                                </div>
+                            </div>
+                      #end
+                #end
+
+                <div class="recommend4three">
+                    #foreach($s in $specialTicket)
+                    #if($velocityCount==2)
+                        <div class="top">
+                            <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                                <div>
+                                    <p class="p3"><a href="#">$!s.name</a></p>
+                                    <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                                    <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                                </div>
+                        </div>
+                    #end
+
+                    #if($velocityCount==3)
+                        <div class="bottom">
+                            <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                                <div>
+                                    <p class="p3"><a href="#">$!s.name</a></p>
+                                    <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                                    <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                                </div>
+                        </div>
+                    #end
+                    #end
+                </div>
+
+                <div class="recommend4three">
+                #foreach($s in $specialTicket)
+                #if($velocityCount==4)
+                <div class="top">
+                    <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                    <div>
+                        <p class="p3"><a href="#">$!s.name</a></p>
+                        <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                        <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                    </div>
+                </div>
+                #end
+                #if($velocityCount==5)
+                <div class="bottom">
+                    <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                    <div>
+                        <p class="p3"><a href="#">$!s.name</a></p>
+                        <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                        <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                    </div>
+                </div>
+                #end
+                #end
+            </div>
+            #end
+
+            <div class="clear"></div>
+        </div>
+   </div>
+
+
+    <div>
+        <p class="recommend-title">热销门票</p>
+
+        <div>
+            #if($hotSellTicket.size()>0)
+            #foreach($s in $hotSellTicket)
+            #if($velocityCount==1)
+            <div class="recommend4three">
+                <div class="ldiv">
+                    <a href="item/$!s.id"><p><img src="$imghost/$!s.mainPicturePath" style="width:360px;height:216px;border: none;"/></p></a>
+                    <p class="p1">$!s.name</p>
+                    <p class="p2"><span>￥$!s.discountPrice</span>元 <a href="item/$!s.id">立即抢购</a></p>
+                </div>
+            </div>
+            #end
+            #end
+
+            <div class="recommend4three">
+                #foreach($s in $hotSellTicket)
+                #if($velocityCount==2)
+                <div class="top">
+                    <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                    <div>
+                        <p class="p3"><a href="#">$!s.name</a></p>
+                        <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                        <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                    </div>
+                </div>
+                #end
+
+                #if($velocityCount==3)
+                <div class="bottom">
+                    <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                    <div>
+                        <p class="p3"><a href="#">$!s.name</a></p>
+                        <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                        <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                    </div>
+                </div>
+                #end
+                #end
+            </div>
+
+            <div class="recommend4three">
+                #foreach($s in $hotSellTicket)
+                #if($velocityCount==4)
+                <div class="top">
+                    <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                    <div>
+                        <p class="p3"><a href="#">$!s.name</a></p>
+                        <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                        <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                    </div>
+                </div>
+                #end
+                #if($velocityCount==5)
+                <div class="bottom">
+                    <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:200px;height:120px;border: none;"/></a>
+                    <div>
+                        <p class="p3"><a href="#">$!s.name</a></p>
+                        <!--<p class="pm"><em>有效期</em><span>2016/09-2016/10</span></p>-->
+                        <p class="p4"><span>￥$!s.discountPrice</span>元</p>
+                    </div>
+                </div>
+                #end
+                #end
+            </div>
+            #end
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div>
+        <p class="recommend-title">标准门票</p>
+        <div>
+            #if($OnSaleTicket)
+            #foreach($b in $OnSaleTicket)
+            <div class="recommend4four">
+                <a href="item/$b.id"><p><img style="width: 275px;height: 166px;border: none;" src="$imghost/$!b.mainPicturePath" /></p></a>
+               <!-- <p class="p1">$!b.name</p>-->
+                <div class="js_show_all_info">
+                    <p class="p1">
+                        #if($!b.name.length()>=20)
+                        #set($str= $!b.name.substring(0,18))
+                        $str...
+                        #else
+                        $!b.name
+                        #end
+                    </p>
+                    <p class="js_show_or_hidden dis-none hidden-orderName"> $!b.name</p>
+                </div>
+
+                <p class="p2"><span>￥$!b.discountPrice</span>元 <a href="item/$!hotSellTicket.get($obj).id">立即抢购</a></p>
+            </div>
+            #end
+            #end
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="h60"></div>
+
+</div>
+</div>
+
+<script>
+    $(function(){
+        $(".js_show_all_info").mouseover(function(){
+            $(this).find(".js_show_or_hidden").removeClass("dis-none");
+            $(this).find(".p1").addClass("dis-none");
+
+//            $(".js_show_all_info").addClass("dis-none")
+        }).mouseout(function(){
+            $(this).find(".js_show_or_hidden").addClass("dis-none");
+            $(this).find(".p1").removeClass("dis-none");
+//            $(".js_show_all_info").removeClass("dis-none")
+        });
+
+      /*  function getXY(eve) {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+            return {x : scrollLeft + eve.clientX,y : scrollTop + eve.clientY };
+        }
+        $(".js_show_all_info").mousemove(function (ev) {
+
+            var oEvent = ev || event;
+            var pos = getXY(oEvent);
+
+            $(this).find(".js_show_or_hidden").removeClass("dis-none");
+
+            $(this).find(".js_show_or_hidden").attr("left",pos.x+"px");
+            $(this).find(".js_show_or_hidden").attr("top",pos.y+"px");
+
+        }).mouseout(function(){
+            $(this).find(".js_show_or_hidden").addClass("dis-none");
+        });*/
+
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+

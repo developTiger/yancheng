@@ -1,0 +1,112 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>网站背景图片管理/图片管理
+
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <form id="picEdicForm">
+    <div class="content" style="padding-left: 420px;padding-top: 40px;">
+
+        <div class="row hidden" style="margin: 20px;">
+            <label class="control-label  col-xs-2" for="location">图片坐标<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <input type="text" id="position" required="required" #if($picture.position) value="$picture.position" #end name="position" class="form-control col-md-7 col-xs-12">
+                <ul class="parsley-errors-list"></ul>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 20px;">
+            <label class="control-label  col-xs-2" for="location">图片名字<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <input type="text" id="name" required="required" #if($picture.name) value="$picture.name" #end name="name" class="form-control col-md-7 col-xs-12">
+                <ul class="parsley-errors-list"></ul>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 20px;">
+            <label class="control-label  col-xs-2" for="location">图片链接<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <input type="text" id="link" required="required" #if($picture.link) value="$picture.link" #end name="link" class="form-control col-md-7 col-xs-12">
+                <ul class="parsley-errors-list"></ul>
+            </div>
+        </div>
+
+        <div class="row" style="margin: 20px;">
+            <label class="control-label  col-xs-2" for="location">图片描述<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <input type="text" id="description" required="required" #if($picture.description) value="$picture.description" #end name="description" class="form-control col-md-7 col-xs-12">
+                <ul class="parsley-errors-list"></ul>
+            </div>
+        </div>
+
+        <div class="row hidden" style="margin: 20px;">
+            <label class="control-label  col-xs-2" for="location">图片使用页面<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <input type="text" id="location" required="required" #if($picture.location) value="$picture.location" #end name="location" class="form-control col-md-7 col-xs-12">
+                <ul class="parsley-errors-list"></ul>
+            </div>
+        </div>
+
+        <div class="row hidden" style="margin: 20px;">
+            <label class="control-label  col-xs-2" for="type">图片使用类型<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <select id="type" required="required" name="pictureType" class="form-control col-md-7 col-xs-12">
+                    <option value="">全部状态</option>
+                    <option value="Logo" #if($picture.type=="Logo") selected #end >商标</option>
+                    <option value="banner" #if($picture.type=="banner") selected #end>标题图</option>
+                    <option value="SideImage" #if($picture.type=="SideImage") selected #end>边框图</option>
+                    <option value="HeadImage" #if($picture.type=="HeadImage") selected #end>头像</option>
+                    <option value="Pannel" #if($picture.type=="Pannel") selected #end>版面图</option>
+                    <option value="BackGround" #if($picture.type=="BackGround") selected #end>背景图</option>
+                    <option value="Orther" #if($picture.type=="Orther") selected #end>其他</option>
+                </select>
+            </div>
+        </div>
+
+        <input type="hidden" #if($picture.id) value="$picture.id" #end name="id" id="id">
+        <div class="row " style="margin: 20px;">
+            <label class="control-label  col-xs-2" for="location">当前图片<span class="required">*</span>
+            </label>
+
+            <div class="image view view-first">
+                <img style="width: 100%; display: block;" src="#if($picture.path) $imghost/$picture.path #else $imghost/$picture.path #end" alt="image"/>
+            </div>
+        </div>
+        <div class="row " style="margin: 20px;">
+
+            <label class="control-label  col-xs-2" for="location">上传图片<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <input type="file" class="btn btn-default " name="image" id="mainFile" style="width: 260px;">
+            </div>
+
+        </div>
+
+        <div class="row"  style="margin: 40px;"  >
+            <input type="button" class="Js_uploadFile btn btn-default col-lg-offset-2"  data-type="mainFile" value="确认">
+        </div>
+        <hr/>
+
+    </div>
+    </form>
+</div>
+
+<script>
+    require(["app/editPicture/editPicture"]);
+</script>
+

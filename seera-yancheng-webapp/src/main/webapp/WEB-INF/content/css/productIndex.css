@@ -1,0 +1,28 @@
+/*搜索*/
+
+body{margin:0px;padding:0px;font-size:12px;}
+a{color:#000;text-decoration: none;}
+p{padding:0px;margin:0px}
+input{outline:0px;}
+ul{list-style-type: none;padding:0px;margin:0px}
+@font-face {font-family: 'iconfont';
+    src: url('iconfont/iconfont.eot'); /* IE9*/
+    src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{font-family:"iconfont";
+    font-size:12px;font-style:normal;}
+.main{width:1349px;margin:0 auto;}
+.top-nav,.top-nav .top-right{height:50px;line-height:50px;background-color:#0099FF}
+.top-right-img{float: left;padding-top: 10px;}
+.top-right-name{margin-right: 100px;float: left;padding-left: 10px;}
+.top-nav .top-right{float:right;}
+.inline-block{display: inline-block}
+.left { width:245px;height: 800px; background-color: #F8F8F8;position:relative;float: left; border-right:ridge  #ECECEC 1px; }
+.right{ width:1080px;height: 800px; background-color:#ffffff; margin: 0 280px; }
+.left ul li{width: 245px;height: 40px; line-height: 40px ;border:ridge  #ECECEC 1px; margin: 0px;text-align: center;}
+.right-top-log{margin: 20px 0px 0px 0px;}
+.right-top-btn1{background-color: rgba(141, 88, 255,0.09);height: 80px;width: 1067px;}
+.right-top-btn2{background-color:rgba(141, 88, 255,0.19);height: 50px;line-height: 50px; width: 1038px;margin-left: 14px;margin-top: 15px;display: inline-block}

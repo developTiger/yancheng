@@ -1,0 +1,249 @@
+#set($layout="layout/activityLayout.vm")
+<style>
+    .content{background-size: 100%;background-image: url('/images/lottery/bg1.png');background-repeat: no-repeat;}
+    .content1{height: 100%;width: 100%;position: absolute;top: 0;}
+    .content2{background-image: url('/images/lottery/mengkongzi.png');height: 29.66666666%;background-size: 100%;background-repeat: no-repeat;}
+    .content3{width: 60%;height:89%;text-align: center;float: left;}
+    .content4{padding: 0.58rem;border-radius: .86rem;background: #ffffff;margin-top: -0.366666rem;}
+    .content5{padding: .86rem;border-radius: .86rem;border: 2px dashed red;height: 100%;}
+    .content6{text-align: center;padding-top:.85rem;}
+    .content7{display: inline-block;border-radius: 110px;width: 364px;height: 123px;border: 8px solid white;}
+    .hidden{display: none;}
+    .page-group.page-current, .page.page-current {
+        overflow: auto;
+    }
+</style>
+
+    #set($i0=0)
+    #set($i1=1)
+    #set($i2=2)
+    #set($i3=3)
+##    #set($i4=4)
+    <input type="hidden" name="Id0" value="$subject0.id">
+    <input type="hidden" name="num" value="$num">
+    <div class="page-group">
+        <div class="page page-current" id="light1">
+            <img src="/images/lottery/bg1.png"style="width: 100%;">
+                <div class="content1">
+                    <div style="width: 90%;margin: 0 auto;height: 100%;">
+                        <input type="hidden" name="count" value="0">
+                        <div style="height: 10.88888888%;"></div>
+##                        <div class="content2">
+##
+##                            <div style="width: 34%;height: 100%;float: left;"></div>
+##                            <div class="content3">
+##                                <div style="height: 12%"></div>
+##                                (第<span style="color: red;">1</span>/5题)<br/>
+##                                $subject0.content  <br/>
+##                                ($subject0.identity) <br/>
+##                            </div>
+##                        </div>
+
+                        <img src="/images/lottery/mengkongzi.png" style=" width: 100%;">
+                        <div style="position: absolute;top: 0;height: 40%;width: 90%;">
+                            <div style="height: 30%;"></div>
+                            <div style="width: 100%;height: 70%;">
+                                <div style="width: 34%;height: 100%;float: left;"></div>
+                                <div class="content3">
+                                    <div style="height: 8%"></div>
+                                    (第<span style="color: red;">1</span>/5题)<br/>
+                                    $subject0.content  <br/>
+                                    ($subject0.identity) <br/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content4">
+                            <div class="content5">
+                                <label class="pull-left"  style="margin-top: -1px;">答案:</label>
+                                <input type="hidden" name="answer1" class="js_answer" value="$subject0.answer">
+                                <textarea name="answering1" class="js_answering" style="border: none;text-transform: none;resize: none;padding: 0;width: 80%;height: 80%;"></textarea>
+                            </div>
+                        </div>
+                        <div class="content6">
+                            <a id="btn1"><img src="/images/lottery/next.png" style="width: 65%;"></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="page" id="light2">
+            <img src="/images/lottery/bg1.png"style="width: 100%;">
+            <div class=" hidden js_hidden2">
+                <div class='content' style='background: #000000;height: 100%;z-index: 1000;opacity: 0.733333333333;'>
+                </div>
+                <img src="/images/lottery/1.png" style="width: 50%;position: absolute;left: 27%;z-index: 1020;top: 20%;">
+                <a id="reward" class="reward" style="position: absolute;left: 33%;z-index: 1020;top: 57%;">
+                    <img src='/images/lottery/receivedSub.png' style='width: 60%;'>
+                </a>
+            </div>
+            <div class="content1">
+                <div style="width: 90%;margin: 0 auto;height: 100%;">
+
+                    <div style="height: 10.88888888%;"></div>
+                    <img src="/images/lottery/mengkongzi.png" style=" width: 100%;">
+                    <div style="position: absolute;top: 0;height: 40%;width: 90%;">
+                        <div style="height: 30%;"></div>
+                        <div style="width: 100%;height: 70%;">
+                            <div style="width: 34%;height: 100%;float: left;"></div>
+                            <div class="content3">
+                                <div style="height: 8%;"></div>
+                                (第<span style="color: red;">2</span>/5题)<br/>
+                                 $subject.get($i0).content  <br/>
+                                 ($subject.get($i0).identity) <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content4">
+                        <div class="content5">
+                            <label class="pull-left" style="margin-top: -1px;">答案:</label>
+                            <input type="hidden" name="answer2" value="$subject.get($i0).answer">
+                            <textarea name="answering2" style="border: none;text-transform: none;resize: none;padding: 0;width: 80%;height: 80%;"></textarea>
+                        </div>
+                    </div>
+                    <div class="content6">
+                        <a id="btn2"><img src="/images/lottery/next.png" style="width: 65%;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="light3">
+            <img src="/images/lottery/bg1.png"style="width: 100%;">
+            <div class="content1">
+                <div style="width: 90%;margin: 0 auto;height: 100%;">
+                    <div class=" hidden js_hidden3">
+
+                        <div class='content' style='background: #000000;height: 100%;z-index: 1000;opacity: 0.733333333333;'>
+                        </div>
+                        <img src="/images/lottery/1.png" style="width: 50%;position: absolute;left: 27%;z-index: 1020;top: 20%;">
+                        <a id="reward" class="reward" style="position: absolute;left: 33%;z-index: 1020;top: 57%;">
+                            <img src='/images/lottery/receivedSub.png' style='width: 60%;'></a>
+                    </div>
+                    <div style="height: 10.88888888%;"></div>
+                    <img src="/images/lottery/mengkongzi.png" style=" width: 100%;">
+                    <div style="position: absolute;top: 0;height: 40%;width: 90%;">
+                        <div style="height: 30%;"></div>
+                        <div style="width: 100%;height: 70%;">
+                            <div style="width: 34%;height: 100%;float: left;"></div>
+                            <div class="content3">
+                                <div style="height: 8%;"></div>
+                                (第<span style="color: red;">3</span>/5题)<br/>
+                                $subject.get($i1).content<br/>
+                                ($subject.get($i1).identity)<br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content4">
+                        <div class="content5">
+                            <label class="pull-left"  style="margin-top: -1px;">答案:</label>
+                            <input type="hidden" name="answer3" value="$subject.get($i1).answer">
+                            <textarea name="answering3" style="border: none;text-transform: none;resize: none;padding: 0;width: 80%;height: 80%;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="content6">
+                        <a id="btn3"><img src="/images/lottery/next.png" style="width: 65%;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="light4">
+            <img src="/images/lottery/bg1.png"style="width: 100%;">
+            <div class="content1">
+                <div style="width: 90%;margin: 0 auto;height: 100%;">
+                    <div class=" hidden js_hidden4">
+                        <div class='content' style='background: #000000;height: 100%;z-index: 1000;opacity: 0.733333333333;'>
+                        </div>
+                        <img src="/images/lottery/1.png" style="width: 50%;position: absolute;left: 27%;z-index: 1020;top: 20%;">
+                        <a id="reward" class="reward" style="position: absolute;left: 33%;z-index: 1020;top: 57%;"><img src='/images/lottery/receivedSub.png' style='width: 60%;'></a>
+                    </div>
+                    <div style="height: 10.88888888%;"></div>
+                    <img src="/images/lottery/mengkongzi.png" style=" width: 100%;">
+                    <div style="position: absolute;top: 0;height: 40%;width: 90%;">
+                        <div style="height: 30%;"></div>
+                        <div style="width: 100%;height: 70%;">
+                            <div style="width: 34%;height: 100%;float: left;"></div>
+                            <div class="content3">
+                                <div style="height: 8%;"></div>
+                                (第<span style="color: red;">4</span>/5题)<br/>
+                                $subject.get($i2).content<br/>
+                                ($subject.get($i2).identity)<br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content4">
+                        <div class="content5">
+                            <label class="pull-left"  style="margin-top: -1px;">答案:</label>
+                            <input type="hidden" name="answer4" value="$subject.get($i2).answer">
+                            <textarea name="answering4" style="border: none;text-transform: none;resize: none;padding: 0;width: 80%;height: 80%;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="content6">
+                        <a id="btn4"><img src="/images/lottery/next.png" style="width: 65%;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="light5">
+            <img src="/images/lottery/bg1.png"style="width: 100%;">
+                <div class="content1">
+                    <div style="width: 90%;margin: 0 auto;height: 100%;">
+                        <div class=" hidden js_hidden5">
+
+                            <div class='content' style='background: #000000;height: 100%;z-index: 1000;opacity: 0.733333333333;'>
+
+                            </div>
+                            <img src="/images/lottery/1.png" style="width: 50%;position: absolute;left: 27%;z-index: 1020;top: 20%;">
+                            <a id="reward" class="reward" style="position: absolute;left: 33%;z-index: 1020;top: 57%;"><img src='/images/lottery/receivedSub.png' style='width: 60%;'></a>
+                        </div>
+                        <div style="height: 10.88888888%;"></div>
+                        <img src="/images/lottery/mengkongzi.png" style=" width: 100%;">
+                        <div style="position: absolute;top: 0;height: 40%;width: 90%;">
+                            <div style="height: 30%;"></div>
+                            <div style="width: 100%;height: 70%;">
+                                <div style="width: 34%;height: 100%;float: left;"></div>
+                                <div class="content3">
+                                    <div style="height: 8%;"></div>
+                                    (第<span style="color: red;">5</span>/5题)<br/>
+                                    $subject.get($i3).content<br/>
+                                    ($subject.get($i3).identity)<br/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content4">
+                            <div class="content5">
+                                <label class="pull-left"  style="margin-top: -1px;">答案:</label>
+                                <input type="hidden" name="answer5" value="$subject.get($i3).answer">
+                                <textarea name="answering5" style="border: none;text-transform: none;resize: none;padding: 0;width: 80%;height: 80%;"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="content6">
+                            <a class="reward btn5"><img src="/images/lottery/submit.png" style="width: 65%;"></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+<form class="hidden" id="resultForm" action="/coupon?lnum=$num" method="post">
+
+    <input type="hidden" id="lcount" name="lcount">
+    <input type="hidden" id="lcouponId" name="lcouponId">
+
+</form>
+
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/spinner.js?t=3"></script>
+
+<script src="/js/ddd.js"></script>
+</body>
+</html>

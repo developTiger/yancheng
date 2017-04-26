@@ -1,0 +1,109 @@
+<div class="page-group">
+    <div class="page page-shoppingCart" id="page-shoppingCart" style="  background: #efeff4 !important;">
+        <header class="bar bar-nav">
+            <h1 class="title">购物车</h1>
+            <a class=" icon icon-left pull-left back" style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        <div class="bar bar-tab index-classify">
+            <span>
+                <label><input type="checkbox" class="ui-checkbox Js_shopping_cart_all">
+                    <span class="checkbox">全选</span></label>
+            </span>
+            <span>
+                (共<em id="Js_shoppingcart_count">0</em>件)合计¥<em id="Js_shoppingcart_total_price">0</em>
+                <a class="button button-do Js_go_confirm" style="    height: 1.5rem;    border-radius: .1rem;">去结算</a>
+            </span>
+        </div>
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            #if($shoppingItems.size()>0)
+
+                #foreach($item in $shoppingItems)
+
+                    <div class="card zz-card">
+                        <div class="card-header">
+                            <label> <span>
+                        <input type="checkbox" class="ui-checkbox Js_shopping_cart_item" data-count="$item.count"
+                               data-name="idWithCounts[$item.id]" data-id="$item.id" data-price="$item.price">
+                    </span>
+                                <span>$helper.productTypeShow($item.type)</span></label>
+
+                            <a href="#" data-id="$item.id" class="Js_deleteItem"> 删除</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="list-block media-list">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-media">
+                                            <img src="$imghost/s/$item.mainPicturePath"
+                                                 width="120">
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">$item.productName</div>
+                                            </div>
+
+                                            产品数量:
+                                            <div class="spinner">
+                                                <button class="decrease"  disabled="disabled">-</button>
+                                                <a class="Js_spinner" data-id="$item.id"
+                                               data-price="$item.price"/>$item.count</a>
+                                                <button   class="increase"  >+</button>
+                                            </div>
+                                            <div class="">
+                                                #if($item.hotelScheduleDate)
+
+                                                    <div>
+                                                        入住日期:
+                                                        <input type="text"
+                                                               style="width: 6rem;height: 1.5rem"
+                                                               value="$helper.formatDateToString($item.hotelScheduleDate,
+                                                                   'yyyy-MM-dd')" class="Js_hotelScheduleDate js_scCartDate">
+                                                    </div>
+                                                #end
+                                                #if($item.tourScheduleDate)
+
+                                                    <div>
+                                                        游玩日期:
+                                                        <input type="text" data-toggle='date'
+                                                               style="width: 6rem;height: 1.5rem"
+                                                               value="$helper.formatDateToString($item.tourScheduleDate,
+                                                                   'yyyy-MM-dd')" class="Js_tourScheduleDate js_scCartDate">
+                                                    </div>
+                                                #end
+
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span> </span>
+                            #set($itemTotalPrice=$item.price*$item.count)
+                            <span class="ui-rmb-discount">总价： ¥$itemTotalPrice</span>
+                        </div>
+                    </div>
+                #end
+            #else
+                <div class="card" style="height: 50%">
+                    <div class="card-content" style="padding-top: 8rem; text-align: center">
+                        购物车为空！<a class="external" href="/">立刻去购物</a>
+                    </div>
+                </div>
+
+            #end
+        </div>
+    </div>
+</div>
+
+

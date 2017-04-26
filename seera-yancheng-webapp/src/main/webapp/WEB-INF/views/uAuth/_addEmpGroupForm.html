@@ -1,0 +1,31 @@
+
+    <form id="addDeptForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+        <input type="hidden" name="id" #if($bean)value="$bean.id"#end>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">员工组名 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="role-name" required="required" #if($bean)value="$bean.name"#end name="name"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">简介 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="" required="required" #if($bean)value="$bean.brief"#end name="brief"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4640"></ul>
+            </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class=" col-xs-6 col-xs-offset-3">
+                <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+                <button type="submit" id="addOrUpdateDept" data-url="ajax_add_update_empGroup"
+                        class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>

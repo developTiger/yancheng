@@ -1,0 +1,153 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/优惠券管理
+            <small>- 优惠券管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 优惠券管理.
+        </div>
+        <div class="row">
+            <!--<div class=" btn-group  col-xs-2">-->
+                <!--<a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="优惠券的添加"-->
+                   <!--data-url="_addOrUpCoupon"><span><i class="green fa fa-plus"></i>新增</span></a>-->
+            <!--</div>-->
+            <span class="col-xs-8"  style="display: flex;">
+            <input     id="upFile"  type="file" class="btn btn-default "  name="myfiles" value="考核结果">
+            <input type="button" class="btn btn-default" style="" id="upload" value="员工优惠券上传">
+            <a href="/templete/youhuiq.xls" style="    line-height: 2.8;">下载模板</a>
+            </span>
+        </div>
+
+        <div class="row" style="margin-left: 1px;margin-top: 15px;margin-bottom: 15px;">
+
+            <div class="form-inline ">
+
+                <form id="searchForm" data-url="ajax_coupon_query_list">
+                    <div class="form-group">
+                        <label class="form-group">名称描述:
+                        </label>
+
+                        <div class="form-group ">
+
+
+                            <select id="roleName" required="required" name="couponTypeId" class="form-control col-xs-7"
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                #if($couponTypes)
+                                #foreach($bean in $couponTypes)
+                                #if($bean.couponTypeName)
+                                <option value="$bean.id">$!bean.couponTypeName</option>
+                                #end
+                                #end
+                                #end
+                            </select>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-group">用户名:
+                        </label>
+                        <div class="form-group ">
+                            <input type="text" class="form-control"
+                                   name="touristName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-group">使用条件:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control" placeholder="满100元"
+                                   name="startUseCondition" size="5">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">至
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control" placeholder="满300元"
+                                   name="endUseCondition" size="5">
+
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group">
+                        <label class="form-group">截止日期:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate" placeholder="开始时间"
+                                   name="StartExpireDate" size="5">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">至
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate" placeholder="结束时间"
+                                   name="endExpireDate" size="5">
+
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group">
+                        <label class="form-group">状态:
+                        </label>
+
+                        <div class="form-group ">
+                            <select id="type" required="required" name="couponStatus"
+                                    class="form-control col-xs-6" data-parsley-id="0004">
+                                <option value="">全部状态</option>
+                                <option value="bind">未使用</option>
+                                <option value="Used">已使用</option>
+                                <option value="Expired">已过期</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    &nbsp;
+                    <div class="form-group">
+                        <label class="form-group">优惠券号:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control" placeholder="NO.123456"
+                                   name="num" size="15">
+
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group" style="position: relative;top: 0.2em">
+
+                        <div class="control-label">
+                            <input type="button" class="btn btn-default" id="searchCoupon" value="搜索">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/coupon/coupon"]);
+</script>

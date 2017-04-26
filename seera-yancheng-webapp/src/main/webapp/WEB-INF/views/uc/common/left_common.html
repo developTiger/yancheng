@@ -1,0 +1,35 @@
+<div class="left-common">
+    <div class="head-top">
+        <img src="/images/user.png">
+    </div>
+
+    <div class="name-and-card">
+        #if($user)
+        <p class="left-name">$!user.userName</p>
+        #else
+        <p class="left-name">$!user.realName</p>
+        #end
+     <!--   <img src="/images/personalCenter/Card.png">-->
+        <div>$!user.yearCardInfo</div>
+    </div>
+    <div class="left_top_underline"></div>
+
+    <ul class="items-order">
+        <li class="items-order-center"><span>订单中心</span></li>
+        <a id="orderlist" href="/orderlist/all"><li class="show-items-order" #if($orderListFlag) style="background-color: #1771B6;color: #ffffff;" #else #end ><span>订单列表</span></li></a>
+    </ul>
+
+    <ul class="items-account-info">
+        <li class="account-info-first"><span>账户信息</span></li>
+        <a href="/edit_user"><li class="show-essential-info" #if($edit_userFlag) style="background-color: #1771B6;color: #ffffff;" #else #end ><span>基本信息</span></li></a>
+        <a href="/updatePassword"><li class="show-update-password"><span>修改密码</span></li></a>
+        <a href="/ticketHolderInfo"><li class="show-shopping-address"><span>取票人信息</span></li></a>
+
+    </ul>
+    <div class="left_top_underline"></div>
+
+    <ul class="items-coupon">
+        <li class="items-coupon-show"><span>优惠券</span></li>
+        <a href="/CouponList"><li class="show-coupon-list"><span>优惠券列表</span></li></a>
+    </ul>
+</div>

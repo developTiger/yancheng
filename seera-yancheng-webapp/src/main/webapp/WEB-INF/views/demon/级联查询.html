@@ -1,0 +1,37 @@
+	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script>
+    var arr=new Array();
+    arr["辽宁"]=['大连','沈阳'];
+    arr["山东"]=['济南','青岛'];
+ 
+    function f_load()
+    {
+        for(var i in arr)
+        {
+            document.my.sl1.options.add(new Option(i,i));
+        }
+        f_change()
+    }
+    function f_change()
+    {
+        var va=document.my.sl1.value;
+        document.my.sl2.options.length=0;
+        for(var i in arr[va])
+        {
+              document.my.sl2.options.add(new Option(arr[va][i],arr[va][i]));
+        }
+    }
+</script>
+</head>
+ 
+<body onload="f_load()">
+    <form name="my">
+        <select name="sl1" onchange="f_change()"></select>
+        <select name="sl2"></select>
+    </form>
+</body>
+</html>

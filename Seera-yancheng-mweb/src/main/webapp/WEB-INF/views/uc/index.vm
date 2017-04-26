@@ -1,0 +1,145 @@
+<div class="page-group">
+    <div class="page page-ucindex" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">个人中心</h1>
+            <a class=" icon icon-left pull-left back" style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        #set($title="淹城旅游-个人中心")
+        #parse("/layout/siteNav.vm")
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div style="position: relative">
+                <img src="/images/usercenter.png" style="width: 100%">
+
+
+                <img src="$userInfo.headimgurl"
+                     style="position: absolute;top: 2.5rem;left: 1rem;border-radius: 10rem;width:3.5rem;border: 2px solid #e7e7e7">
+
+                <div style="position: absolute;top:2rem;left: 5rem;color:#fff;">
+                    <p style="margin: 0.5rem 0  ;font-size:1.2rem;;color:#fff;">$userInfo.name
+                        #if($userInfo.yearCardInfo)
+                            <img src="/images/yearvip.png" style="width: 1rem;margin-left: 0.5rem">
+                        #end
+                    </p>
+                    #if($userInfo.loginName=="")
+                        <a href="/uc/userInfo" class="button "
+                           style="height: 1.2rem; margin-top: 0px ;color:#fff;border: none">请完善注册信息</a>
+                    #else
+                        <span style="font-size: 0.5rem;color:#e26902">
+                        #if($userInfo.yearCardInfo)
+
+
+                                <a href="javascript:void(0)" class="button"
+                                                                            style="border-radius: 10rem;height: 1.2rem ;margin-top: 0px ;color:#e26902;border: 2px solid #e26902;    width: 5rem;">$userInfo.yearCardInfo
+
+                            </a>有效期$helper.formatDateToString($userInfo.yearCardExpireDate,"yyyy-MM-dd")
+
+                        #else
+                            <a href="javascript:void(0)" class="button"
+                               style="border-radius: 10rem;height: 1.2rem ;margin-top: 0px ;color:#e26902;border: 2px solid #e26902">普通会员</a>
+                        #end
+                    </span>
+                    #end
+
+                </div>
+            </div>
+            <div class="list-block">
+                <ul>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <a class="item-inner external" href="/uc/order/list/all.html">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-order"></i>
+                                我的订单
+                            </div>
+                            <div class="item-after">查看全部订单</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="ui-display-flex order-tabs">
+                    <a class="tab-item external" href="/uc/order/list/waitPay.html">
+                        <span class="iconfont iconfont-order-pay"></span>
+                        <span class="tab-label">待付款</span>
+                    </a>
+                    <a class="tab-item external" href="/uc/order/list/payed.html">
+                        <span class="iconfont iconfont-order-comment"></span>
+                        <span class="tab-label">待评价</span>
+                    </a>
+                    <a class="tab-item external" href="/uc/order/list/end.html">
+                        <span class="iconfont iconfont-order-finish"></span>
+                        <span class="tab-label">已完成</span>
+                    </a>
+                    <a class="tab-item external" href="/uc/order/list/canceled.html">
+                        <span class="iconfont iconfont-order-cancel"></span>
+                        <span class="tab-label">已取消</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="list-block">
+                <ul>
+                    <li class="item-content item-link">
+                        <div class="item-media">
+
+                        </div>
+                        <a class="item-inner external" href="/uc/userInfo">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-baseinfo"></i>
+                                基本信息
+                            </div>
+                            <div class="item-after"></div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media">
+
+                        </div>
+                        <a class="item-inner external" href="/order/shoppingCart.html">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-shoppingcart"></i>
+                                我的购物车
+                            </div>
+                            <div class="item-after"></div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media">
+
+                        </div>
+                        <a class="item-inner external" href="/uc/receiverlist.html">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-receiver"></i>
+                                取票人
+                            </div>
+                            <div class="item-after"></div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media">
+
+                        </div>
+                        <a class="item-inner external" href="/uc/myCoupon?couponStatus=bind">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-coupon"></i>
+                                我的优惠券
+                            </div>
+                            <div class="item-after"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<form id="addTouristInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">用户名:<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="userName" required="required"
+                   name="userName" #if($beans.userName)value="$beans.userName" #end readonly
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">手机号:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="mobilePhone" name="mobilePhone"
+                   #if($beans.mobilePhone)value="$beans.mobilePhone" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">注册邮箱:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="email" name="email" #if($beans.email)value="$beans.email" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">真实姓名:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="realName" name="realName" #if($beans.realName)value="$beans.realName" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2039"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">身份证:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="idCardNo" name="idCardNo" #if($beans.idCardNo)value="$beans.idCardNo"
+                   #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-208"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">微信昵称:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="wxName"
+                   name="wxName" #if($beans.wxName)value="$beans.wxName" #end readonly
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2032"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">所在城市:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="province-ity"
+                   name="province-ity" #if($beans.city)value="$beans.province -$beans.city" #end readonly
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-1032"></ul>
+        </div>
+    </div>
+
+    #if($beans.yearCardExpireDate)
+    <div class="form-group">
+        <label class="control-label  col-xs-3">年卡过期时间:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="yearCardExpireDate" name="yearCardExpireDateStr"
+                   #if($beans.yearCardExpireDate)value='$helper.formatDateToString($beans.yearCardExpireDate,"yyyy-MM-dd")'
+                   #end
+                   class="form-control Wdate col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-210"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">年卡备注:
+        </label>
+
+        <div class="col-xs-6">
+            <textarea id="yearCardInfo" name="yearCardInfo"
+                      class="form-control  col-md-7 col-xs-12" data-parsley-id="4639">#if($beans.yearCardInfo)$beans.yearCardInfo #end
+                </textarea>
+            <ul class="parsley-errors-list" id="parsley-id-209"></ul>
+        </div>
+    </div>
+    #end
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateTourist" data-url="ajax_add_update_tourist" class="btn btn-success">
+                保存
+            </button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>
+

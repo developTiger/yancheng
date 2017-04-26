@@ -1,0 +1,47 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>活动管理/活动页面管理
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+
+        <ul class="nav nav-tabs">
+            <li><a href="sra_t_AddOrUpActicity?id=$!beans.id">基本信息</a></li>
+            <li><a href="sra_t_editPage?id=$!beans.id">PC端活动页</a></li>
+            <li class="active"><a href="sra_t_MobilePage?id=$!beans.id">移动端活动页</a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="baseInfo">
+                </br>
+                </br>
+                <form id="editForm" data-url="ajax_activity_Mobile_Page">
+                    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3" style="text-align: right">移动端活动页内容:
+                        </label>
+                        <div class="col-xs-7">
+                        <textarea type="text" id="profile" required="required" name="pageProfileMobile"
+                              class="form-control hidden col-md-7 col-xs-12"
+                              data-parsley-id="4639">$!beans.pageProfileMobile</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <div class=" col-xs-7 col-xs-offset-3" style="margin-top: 20px;">
+                            <input type="submit" class="btn btn-success" value="保存">
+                           <!-- <a class="btn btn-info" href="http://store.cn-yc.com.cn/active/ActivityDetails/<%=items[i].id%>">查看</a>-->
+                            <a class="btn btn-info" href="http://store.cn-yc.com.cn/active/ActivityDetails/$beans.id" target="_blank">查看</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/activity/activityMobilePage"]);
+</script>
+

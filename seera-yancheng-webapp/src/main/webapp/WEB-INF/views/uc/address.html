@@ -1,0 +1,17 @@
+
+<!--<link href="css/personalcenter/personalcenter.css" type="text/css" rel="stylesheet" />-->
+$ui.loadCss("personalcenter/personalCenter.css")
+$ui.loadCss("personalcenter/alert.css")
+<div class="main personal-main">
+    <div class="h20"></div>
+    #parse("uc/common/left_common.html")
+    <div class="right">
+         #parse("uc/child/receipt-address-right.html")
+    </div>
+</div>
+
+<script>
+    require(["app/personalCenter/personalCenter"]);
+</script>
+
+#parse("/publicparts/promise.html")

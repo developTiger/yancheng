@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="max-age:5000">
+    <title>  #if($title)
+    $title
+        #else
+            淹城旅游-春秋乐园
+    #end
+    </title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="/css/index.css?t=1">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+
+    $!block_style
+</head>
+<body>
+
+    $screen_content
+
+
+    #if($userInfo)
+    <!-- popup, panel 等放在这里 -->
+    <div class="panel-overlay"></div>
+    <!-- Left Panel with Reveal effect -->
+    <div class="panel panel-left panel-reveal" style="background:#ECEAEA">
+
+        <div class="content-block" style="padding: 0;margin: 0">
+            <p>快捷菜单</p>
+
+            <div class="list-block">
+                <ul>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <a class="item-inner external" href="/">
+                            <div class="item-title">
+                                <i class="icon icon-home"></i>
+                                网站首页
+                            </div>
+
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <a class="item-inner external" href="/uc/order/list/all.html">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-order"></i>
+                                我的订单
+                            </div>
+
+                        </a>
+                    </li>
+
+
+                    <li class="item-content item-link">
+                        <div class="item-media">
+
+                        </div>
+                        <a class="item-inner external" href="/order/shoppingCart.html">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-shoppingcart"></i>
+                                我的购物车
+                            </div>
+                            <div class="item-after"></div>
+                        </a>
+                    </li>
+
+                    <li class="item-content item-link">
+                        <div class="item-media">
+
+                        </div>
+                        <a class="item-inner external" href="/uc/coupon.html">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-coupon"></i>
+                                我的优惠券
+                            </div>
+                            <div class="item-after"></div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media">
+
+                        </div>
+                        <a class="item-inner external" href="/about.html">
+                            <div class="item-title">
+                                <i class="iconfont iconfont-coupon"></i>
+                                联系我们
+                            </div>
+                            <div class="item-after"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div style=" padding: 1rem 0.5rem 0 0.5rem">
+
+                <a href="/logout"  style="height: 1.5rem;line-height: 1.5rem;margin: auto; border-radius: 0;"
+                   class="button button-big button-fill button-danger external">退出登录</a>
+            </div>
+
+
+            <p style="margin-top: 3rem ;margin-left: 0.5rem"><a href="#" class="close-panel bottom">返回</a></p>
+        </div>
+    </div>
+    #end
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/index.js?t=444"></script>
+<script src="/js/spinner.js?t=3"></script>
+##百度统计
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?753e01e69ba24f9700741aef36deb70a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    $!block_script
+</body>
+</html>

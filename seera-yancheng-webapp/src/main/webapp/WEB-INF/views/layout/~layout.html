@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="max-age:5000">
+    <meta name="description" content="常州市春秋乐园旅游发展有限公司是以淹城遗址为核心，中国传统文化为特色，城市娱乐休闲为基础的国家高等级旅游景区，2010年8月被评为国家AAAA级旅游景区，2011年年接待游客268万人次。景区规划总面积7.6平方公里，累计投入约30亿元，包括遗址保护区、春秋乐园区、野生动物区、旅游购物区、文化居住区、休闲度假区、商业游憩区和佛教文化区八大重点区域，是集旅游、观光、科普、休闲、购物、餐饮于一体的综合性文化旅游目的地。随着知名度的不断提升和景区服务配套的不断完善，常州春秋淹城旅游区已逐步成为长三角地区一颗璀璨耀眼的旅游新星。">
+    <meta name="淹城,春秋乐园,春秋淹城,常州乐园,春秋,春秋旅游官方网,淹城官网,常州旅游,常州5A,景区">
+    <title>淹城春秋乐园欢迎您</title>
+    <link rel="icon" href="../images/favicon.png" type="image/x-icon" />
+    <script data-main="js/rjs-config.js" src="js/require.js"></script>
+    <script  src="js/jslib/jquery.min.js"></script>
+    $ui.loadCss("bootstrap.min.css")
+    $ui.loadCss("fonts/css/font-awesome.min.css")
+    $ui.loadCss("animate.min.css")
+    $ui.loadCss("custom.css")
+    $ui.loadCss("icheck/skins/minimal/minimal.css")
+    $ui.loadCss("style.css")
+
+    <script>
+        require(['app/init']);
+    </script>
+</head>
+
+<body class="nav-md">
+
+<div class="container body">
+
+
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            #parse("/common/menu.html")
+        </div>
+        <div class="top_nav">
+            #parse("/common/header.html")
+        </div>
+
+        <div class="right_col" role="main">
+            #parse($view)
+            <!-- footer content -->
+            <footer>
+                <div class="copyright-info">
+                    <p class="pull-right">全兴互动科技 <a href="#"></a>
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

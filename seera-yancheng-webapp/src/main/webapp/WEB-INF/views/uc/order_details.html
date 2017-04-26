@@ -1,0 +1,172 @@
+$ui.loadCss("personalcenter/order_details.css")
+<div class="h20"></div>
+<div class="main">
+    <div class="order-details-show-evaluations">
+
+        <div class="order-details-show-child">
+            <div class="order-details-show-child-left">
+                <p>订单编号：$!order.num</p>
+                s
+                <span>当前订单状态:&nbsp;</span>
+                #if($order.status=="waitPay")
+                <span>待付款</span>
+                #end
+                #if($order.status=="payCheck")
+                <span>付款待确认</span>
+                #end
+                #if($order.status=="payed")
+                <span>已付款</span>
+                #end
+                #if($order.status=="expired")
+                <span>已超时</span>
+                #end
+                #if($order.status=="waitComment")
+                <span>待评价</span>
+                #end
+                #if($order.status=="canceled")
+                <span>已取消</span>
+                #end
+                #if($order.status=="end")
+                <span>已完成已评价</span>
+                #end
+                <div class="h10"></div>
+                <a>评价</a>
+            </div>
+            <div class="order-details-show-child-right">
+                <div class="">
+                    <em class="icon-order-details">&#xe621;-------<i style="font-size: 10px">▶▶</i>-------</em>
+                    <em class="icon-order-details">&#xe622;-------<i style="font-size: 10px">▶▶</i>-------</em>
+                    <em class="icon-order-details">&#xe61f;-------<i style="font-size: 10px">▶▶</i>-------</em>
+                    <em class="icon-order-details">&#xe61d;-------<i style="font-size: 10px">▶▶</i>-------</em>
+                    <em class="icon-order-details">&#xe61e;</em>
+                </div>
+
+                <div style="width: 158px;">
+                    <span>下单时间:&nbsp;</span>
+                    <span>$!order.orderTime</span>
+                </div>
+                <div style="width: 153px;">
+                    <p>出票$!order.status</p>
+
+                </div>
+                <div>
+                    <p>游玩消费 $!order.orderPrice &nbsp;元</p>
+
+                </div>
+                <div style="width: 148px;">
+                    #if($order.status=="waitPay") <p>未付款</p> #end
+                    #if($order.status=="payed"||$order.status=="payCheck") <p>完成付款</p> #end
+                    #if($order.status=="expired") <p>付款超时</p> #end
+                    #if($order.status=="waitComment") <p>未评价</p> #end
+                    #if($order.status=="canceled") <p>已取消</p> #end
+                    #if($order.status=="end") <p>完成评价</p> #end
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="h20"></div>
+    <!--------------------------------------->
+    <div class="order-details-shows">
+        <p class="order-details-shows-title">取票人详情</p>
+
+        <div class="underline"></div>
+        <div class="order-details-shows-content">
+            <p>取票人</p>
+
+            <div class="show-ticket-holder">
+                <p>真实名称：<span>$!order.fetcherDto.realName</span></p>
+
+                <p>联系方式：<span>$!order.fetcherDto.mobilePhone</span></p>
+
+                <p>身份证号：<span>$!order.fetcherDto.idCardNo</span></p>
+
+
+                <!--<p>预约时间：<span>$!order.productDtos.tourScheduleDate</span></p>-->
+            </div>
+            <p>订单商品信息:</p>
+
+            <div class="show-seller-info">
+                <!--<p>订单编号：<span>$!order.num</span></p>-->
+
+                <div class="h20"></div>
+                <table class="show-table-order-info">
+                    <thead>
+                    <tr align="center" style="background-color: #a1d29b">
+                        <td>商品图片</td>
+                        <td>商品名称</td>
+                        <td>类型</td>
+                        <td>状态</td>
+                        <td>预约入院时间(门票)</td>
+                        <td>预改签入院时间(门票)</td>
+                        <td>预约入住时间（酒店）</td>
+                        <td>预改签入住时间（酒店）</td>
+                        <td>单价</td>
+                        <td>数量</td>
+                        <td>优惠</td>
+                        <td>总价</td>
+                    </tr>
+                    </thead>
+                    <tbody align="center" style="background-color: #dddae7">
+                    #foreach($p in $productDtos)
+                    <tr>
+                        <td>$!p.productDto.mainPicturePath</td>
+                        <td>$!p.productDto.name</td>
+                        #if($!p.productDto.type=="Ticket")
+                        <td>门票</td>
+                        #end
+                        #if($!p.productDto.type=="Catering")
+                        <td>餐饮</td>
+                        #end
+                        #if($!p.productDto.type=="Souvenirs")
+                        <td>纪念品</td>
+                        #end
+                        #if($!p.productDto.type=="Hotel")
+                        <td>酒店</td>
+                        #end
+                        #if($!p.productDto.type=="GroupProduct")
+                        <td>组合商品</td>
+                        #end
+                        #if($!p.productDto.type=="Other")
+                        <td>其他</td>
+                        #end
+
+                        #if($!p.status=="normal")
+                        <td>正常</td>
+                        #end
+                        #if($!p.status=="mealCheck")
+                        <td>改签审核</td>
+                        #end
+                        #if($!p.status=="mealReject")
+                        <td>拒绝改签</td>
+                        #end
+                        #if($!p.status=="mealed")
+                        <td>已改签审核通过</td>
+                        #end
+                        #if($!p.status=="returned")
+                        <td>已退单</td>
+                        #end
+                        #if($!p.status=="expire")
+                        <td>过期未消费</td>
+                        #end
+                        #if($!p.status=="end")
+                        <td>已完成</td>
+                        #end
+                        <td>$!p.tourScheduleDate</td>
+                        <td>$!p.tourScheduleMealDate</td>
+                        <td>$!p.hotelScheduleDate</td>
+                        <td>$!p.hotelScheduleMealDate</td>
+                        <td>￥$!p.productDto.price</td>
+                        <td>$!p.count</td>
+                        #set($youhui=($p.productDto.price)-($p.productDto.discountPrice))
+                        <td>￥$!youhui</td>
+                        #set($total=$p.productDto.discountPrice*$!p.count)
+                        <td>￥$!total</td>
+                    </tr>
+                    #end
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

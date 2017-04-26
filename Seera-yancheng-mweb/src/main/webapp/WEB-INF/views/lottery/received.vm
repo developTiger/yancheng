@@ -1,0 +1,50 @@
+#set($layout="layout/activityLayout.vm")
+<style>
+    .content{background-size: 100%;background-image: url('images/lottery/bg2.png');background-repeat: no-repeat;}
+    .content1{height: 7%;}
+    .content2{background-image: url('images/lottery/nightPark.png');background-repeat: no-repeat;height: 50%;background-size: 100%;background-position: center;}
+    .content2-text{text-align: center;font-size: 28px;color: #803C03;height: 115px;}
+    .content2-bg{background-image: url('images/lottery/quan.png');background-repeat: no-repeat;height: 159px;padding: 10px 20px;}
+    .content4{text-align: center;}
+    .page-group.page-current, .page.page-current {
+        overflow: auto;
+    }
+</style>
+
+<div class="page page-current">
+    <div class="content native-scroll">
+        <img src="/images/lottery/bg2.png" style="width: 100%;">
+        <div style="position: absolute;height: 100%;width: 100%;top: 0;">
+            <div style="width: 90%;margin: 0 auto;height: 100%;">
+                <div class="content1"></div>
+                <img src="/images/lottery/nightPark.png" style="width: 100%;">
+                <div class="content4">
+                    <img src="images/lottery/received.png" style="width: 55%;">
+                    <div>
+                        <div style="height: .15rem;"></div>
+                        <a class="js_uc" style="border-bottom: 1px solid #803C03;color: #803C03;">查看订单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/index.js?t=444"></script>
+<script src="/js/spinner.js?t=3"></script>
+
+<script>
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+    $(".js_uc").click(function(){
+        window.location.href="/uc/order/list/payed.html";
+    });
+</script>
+
+</body>
+</html>

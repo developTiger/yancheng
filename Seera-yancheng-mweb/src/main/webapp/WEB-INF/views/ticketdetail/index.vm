@@ -1,0 +1,376 @@
+<div class="page-group">
+    <div class="page page-ticketdetail" id="ticketDetail">
+        #set($title="淹城旅游-乐园门票")
+        <header class="bar bar-nav">
+            <h1 class="title">商品详情</h1>
+            <a class=" icon icon-left pull-left back" style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        <nav class="bar bar-tab">
+
+            #if($productDto.status=="OnSale")
+                #if($productDto.stock>0)
+                    #if($productDto.productCt=="TimeSpan" &&  $helper.compareDateToCurrent($productDto.ctEndDate) )
+                        <div class="row " style="height: 2.8rem;padding-top: 2px;">
+                            <div class="col-50">
+                                <a class="button button-big button-fill button-danger"
+                                   style=" background-color: #C1BBBB; top: 0rem;">商品已过期</a>
+                            </div>
+                            <div class="col-50">
+                                <a href="/about.html" class="button button-big button-danger external"
+                                   style="  top: 0rem;">联系我们</a>
+                            </div>
+                        </div>
+                    #else
+                        <div class="row " style="height: 2.8rem;padding-top: 2px;">
+                            <div class="col-50">
+                                <a href="#" class="button button-big button-danger Js_addCart"
+                                   style="  top: 0rem;">加入购物车</a>
+                            </div>
+                            <div class="col-50">
+                                <a href="#" class="button button-big button-fill button-danger Js_buy"
+                                   style="  top: 0rem;">立即购买</a>
+                            </div>
+
+                        </div>
+                    #end
+                #else
+                    <div class="row " style="height: 2.8rem;padding-top: 2px;">
+                        <div class="col-50">
+                            <a class="button button-big button-fill button-danger"
+                               style="     background-color: #C1BBBB; top: 0rem;">商品无货</a>
+                        </div>
+                        <div class="col-50">
+                            <a href="/about.html" class="button button-big button-danger external" style="  top: 0rem;">联系我们</a>
+                        </div>
+                    </div>
+                #end
+
+            #else
+                <div class="row " style="height: 2.8rem;padding-top: 2px;">
+                    <div class="col-50">
+                        <a class="button button-big button-fill button-danger"
+                           style=" background-color: #C1BBBB; top: 0rem;">商品已下架</a>
+                    </div>
+                    <div class="col-50">
+                        <a href="/about.html" class="button button-big button-danger external"
+                           style="  top: 0rem;">联系我们</a>
+                    </div>
+                </div>
+            #end
+
+        </nav>
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="swiper-container" data-space-between='10'>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="$imghost/m/$productDto.mainPicturePath" style="width: 100%">
+                    </div>
+                    #if( $productDto.detailPicturesPaths)
+                        #foreach($path in $productDto.detailPicturesPaths)
+                            <div class="swiper-slide"><img
+                                    src="$imghost/m/$path"
+                                    alt=""></div>
+                        #end
+                    #end
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+            <div class="ticket-detail-main">
+                <div>
+
+                    <div class="ui-display-flex">
+                    ##                        <span>
+                    ##                                <span>
+                    ##                                    <i class="iconfont iconfont-index-yx">
+                    ##
+                    ##                                    </i>
+                    ##                                    月销售量176
+                    ##                                </span>
+                    ##                                <span>
+                    ##                                    <i class="iconfont iconfont-index-hp">
+                    ##
+                    ##                                    </i>
+                    ##                                    100%好评
+                    ##                                </span>
+                    ##                        </span>
+                        <span>
+                            <span class="ui-rmb-discount">¥$productDto.discountPrice</span>
+                            <span class="ui-rmb-original ml1">¥$productDto.price</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    $productDto.name
+                ##                    #foreach($item in $productDto.productItemDtoList)
+                ##                        <div>
+                ##                            $item.name
+                ##                        $productDto.idAndCount.get($item.id)
+                ##                        </div>
+                ##                    #end
+                    #if($productDto.specDescription)
+                        <div class="card-footer card-footer-noline card-footer-ticket single-line " style="color: #EA832C;    padding-left: 0.4rem;
+">
+
+                                    <span class="cart-footer-yx">
+                                        <i class="icon icon-star" style="">
+                                        </i>
+                                        $productDto.specDescription
+
+                                    </span>
+
+                        </div>
+                    #end
+                    <div>
+
+                        <input type="hidden" id="productCt" value="$productDto.productCt">
+                        #if($productDto.productCt=="TimeSpan")
+                            <input type="hidden" id="productCtDate"
+                                   data-sdt="$helper.formatDateToString($productDto.ctBeginDate,"yyyy-MM-dd")"
+                                   data-edt=" $helper.formatDateToString($productDto.ctEndDate,"yyyy-MM-dd")">
+                            有效期:
+                            #if($productDto.ctBeginDate==$productDto.ctEndDate)
+                                $helper.formatDateToString($productDto.ctBeginDate,"yyyy-MM-dd") 当天可用
+                            #else
+                                $helper.formatDateToString($productDto.ctBeginDate,"yyyy-MM-dd")
+                                至 $helper.formatDateToString($productDto.ctEndDate,"yyyy-MM-dd")
+                            #end
+                        #end
+                        #if($productDto.productCt=="Today")
+                            有效期:仅限当天使用
+                        #end
+
+                    ##                        $helper.formatDateToString($productDto.createDateTime,"yyyy年MM月dd日")
+                    </div>
+                    <div>
+                        购买数量：
+                        <div class="spinner">
+                            <button class="decrease" disabled="disabled">-</button>
+                            <a class="Js_spinner" id="Js_ticket_num"/>1</a>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+
+                    #if($productDto.status=="OnSale")
+                        <div>
+                            库存量：<span>$productDto.stock</span>
+                        </div>
+                        #if($productDto.type!="Hotel")
+
+                            <div>
+                                游玩日期：
+                                <input type="text" class="js_scDate" id="Js_tourScheduleDate">
+                            </div>
+                        #end
+                        #if($productDto.hasHotel)
+                            <div>
+                                入住日期：
+                                <input type="text" class="js_scDate" id="Js_hotelScheduleDate">
+                            </div>
+                        #end
+
+                    #else
+                        <div style="color: red">商品已下架</div>
+                    #end
+                    #if($productDto.rejectAreas)
+                        <div>
+                            限购区域：
+                            <span>$!productDto.rejectAreasNames</span>
+                        </div>
+                    #end
+
+                </div>
+                <input type="hidden" id="Js_ticket_id" value="$productDto.id">
+            </div>
+
+            <div class="list-block">
+                <ul>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <a class="item-inner" href="#profile">
+                            <div class="item-title">
+                                商品详情
+                            </div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <a class="item-inner" href="#traffic">
+                            <div class="item-title">
+                                交通指南
+                            </div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <a class="item-inner" href="#notice">
+                            <div class="item-title">
+                                预定须知
+                            </div>
+                        </a>
+                    </li>
+                    <li class="item-content item-link">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <a class="item-inner" href="#comment">
+                            <div class="item-title">
+                                用户点评
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="page" id="profile">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title">商品详情</h1>
+        </header>
+        <div class="content detailContent">
+            $!productDto.profile
+
+        </div>
+    </div>
+    <div class="page" id="traffic">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title">交通指南</h1>
+        </header>
+
+        <div class="content detailContent">
+            <div style="width: 100%">
+                $!productDto.trafficGuide
+            </div>
+        </div>
+    </div>
+    <div class="page" id="notice">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title">预定须知</h1>
+        </header>
+
+        <div class="content detailContent">
+            <div style="width: 100%">
+                $!productDto.notice
+            </div>
+        ##            <p>
+        ##            <ul>
+        ##                <li>
+        ##                    1、预订时，请务必如实填写姓名、手机号、身份证号；入园时凭本人身份证或彩信二维码入园，游玩时请务必携带好预留的身份证，否则将无法入园。
+        ##                </li>
+        ##                <li>
+        ##                    2、如遇雨天淹城室外项目将会停运，出行请留意天气情况。
+        ##                </li>
+        ##                <li>
+        ##                    3、该联票限两天内使用完毕，赠送的动物园门票为日间场次，出园无效。
+        ##                </li>
+        ##            </ul>
+        ##            </p>
+        </div>
+    </div>
+    <div class="page" id="comment" style="background: #eee">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title">用户评价</h1>
+        </header>
+
+        <div class="content detailContent" style="padding:0">
+            <div style="width: 100%">
+
+                #foreach($item in $feedBack)
+                    <div class="card">
+                        <div class="card-header"
+                             style="height: 1.5rem;    font-size: .6rem;color: #EA832C;padding: 0 0.3rem;min-height: 1.5rem">
+                            #set($str=$item.touristRealName.substring(0,1))
+                            <span>  <i class="icon icon-me"></i>$str ****</span>
+
+                            <p>$helper.formatDateToString($item.createDateTime,
+                                "yyyy-MM-dd hh:mm:ss")</p>
+                        </div>
+
+                        <div class="card-content">
+                            <div class="list-block media-list" style="background-color:rgba(66, 66, 66, 0.02)">
+                                <div class="list-block media-list ">
+                                    <ul>
+                                        <li class="item-content bottomline">
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <span class="star-div">
+
+                                                        <a href="javascript:;"  #if($item.score>=1)
+                                                           class="on" #end>1</a>
+                                                        <a href="javascript:;" #if($item.score>=2) class="on" #end>2</a>
+                                                        <a href="javascript:;" #if($item.score>=3) class="on" #end>3</a>
+                                                        <a href="javascript:;" #if($item.score>=4) class="on" #end>4</a>
+                                                        <a href="javascript:;" #if($item.score>=5) class="on" #end>5</a>
+                                                    </span>
+                                                </div>
+                                                <div class="item-title-row">
+
+
+                                                    <div style="    padding: 0 0.3rem;    font-size: 0.6rem;">
+                                                        <span>$!item.content</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                #end
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--  关于我们 -->
+#parse("about.vm")
+</div>
+
+#set($block_script='
+
+')
+
+
+#foreach($item in $feedBack)
+
+#end
+</div>

@@ -1,0 +1,57 @@
+<div>
+    商品管理>商品项列表
+</div>
+<div class="row">
+    <div class=" btn-group  col-xs-3">
+        <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加商品项信息"
+           data-url="_addGoodsItemForm"><span><i class="green fa fa-plus"></i>新增</span></a>
+
+        <a class="btn btn-default buttons-copy buttons-html5 btn-sm " id="Js_deleteGoodItems" tabindex="0"
+           aria-controls="datatable-buttons"><span><i
+                class="red fa fa-remove"></i>删除</span></a>
+
+        <div class="col-xs-6 form-group" style="font-size: medium;vertical-align: middle">
+            已选中<a class="dynamicChoose red"></a>条
+        </div>
+
+    </div>
+
+    <div class="form-inline col-xs-9">
+
+        <form id="searchForm" data-url="ajax_goodsItem_query">
+
+            <label class="form-group">商品项名称:</label>
+            <input type="text" class="form-control " name="goodsItemName" size="8">
+
+            <div class="form-group">
+                <label class="form-group">商品项类目:
+                </label>
+
+                <div class="form-group ">
+
+                    <select id="typeList" required="required" name="typeList"
+                            class="form-control col-xs-7" data-parsley-id="0004">
+                        <option value="">全部类目</option>
+                        <option value="3">门票</option>
+                        <option value="4">纪念品</option>
+                        <option value="5">酒店</option>
+                        <option value="6">其他</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="form-group">
+                </label>
+
+                <div class="form-group">
+                    <input type="button" class="btn btn-default" id="goodsListQueryBtn"  value="搜索">
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

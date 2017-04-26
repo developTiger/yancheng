@@ -1,0 +1,95 @@
+<form id="mealInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" id="id" #if($bean)value="$bean.id" #end>
+
+    <input type="hidden" id="orderNum"  value="$!orderNum" >
+   <!-- <div class="form-group">
+        <label class="control-label  col-xs-3" for="carType">用户名 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="carType" required="required"
+                   name="carType" #if($beans)value="$beans.carType" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >手机号<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            &lt;!&ndash;<input type="text" id="controlName" required="required" name="controlName" #if($beans)value="$beans.controlName" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">&ndash;&gt;
+            <input type="text" id="carNo" required="required" name="carNo" #if($beans)value="$beans.carNo" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>-->
+
+    #if($bean.tourScheduleMealDate)
+    <div class="form-group">
+        <label class="control-label  col-xs-3">原定游园日期<span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="tourScheduleDate" class="form-control col-md-7 col-xs-12 mini-width Wdate" placeholder="原定日期"
+                   name="tourScheduleDate" value="$bean.tourScheduleDate">
+            <ul class="parsley-errors-list" id="parsley-id-9139"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">改签日期 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="tourScheduleMealDate" class="form-control col-md-7 col-xs-12 mini-width Wdate" placeholder="改签日期"
+                   name="tourScheduleMealDate" value="$bean.tourScheduleMealDate"  >
+            <ul class="parsley-errors-list" id="parsley-id-2139"></ul>
+        </div>
+    </div>
+    #end
+
+    #if($bean.hotelScheduleMealDate)
+    <div class="form-group">
+        <label class="control-label  col-xs-3">原定入住日期<span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="hotelScheduleDate" class="form-control col-md-7 col-xs-12 mini-width Wdate" placeholder="原定日期"
+                   name="hotelScheduleDate" value="$bean.hotelScheduleDate" >
+            <ul class="parsley-errors-list" id="parsley-id-8139"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">改签日期 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="hotelScheduleMealDate" class="form-control col-md-7 col-xs-12 mini-width Wdate" placeholder="改签日期"
+                   name="hotelScheduleMealDate" value="$bean.hotelScheduleMealDate"  >
+            <ul class="parsley-errors-list" id="parsley-id-3139"></ul>
+        </div>
+    </div>
+    #end
+  <!--  <div class="form-group">
+        <label class="control-label  col-xs-3" >改签理由<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            &lt;!&ndash;<input type="text" id="controlName" required="required" name="controlName" #if($beans)value="$beans.controlName" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">&ndash;&gt;
+            <input type="text" id="carNo" required="required" name="carNo" #if($beans)value="$beans.carNo" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>-->
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="button" data-url="ajax_submit_meal" class="btn btn-success js_mealCheck">同意</button>
+            <button type="button" data-url="ajax_rejects_meal" class="btn btn-success js_mealCheck">拒绝</button>
+            <!--<button type="button" id="cancelModal" class="btn btn-primary">取消</button>-->
+        </div>
+    </div>
+</form>
+<script>
+    require(["app/orderManager/orderMeal"]);
+</script>

@@ -1,0 +1,70 @@
+
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/商品管理
+            <small>- 商品项管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 商品项信息管理.
+        </div>
+        <div class="row">
+            <div class=" btn-group left" style="padding-left: 10px">
+                <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加商品项信息"
+                   data-url="_addGoodsItemForm"><span><i class="green fa fa-plus"></i>新增</span></a>
+
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm " id="deleteProductItemList" tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="red fa fa-remove"></i>删除</span></a>
+            </div>
+
+            <div  class=" col-xs-1">
+                <label >已选中<span class="dynamicChoose"></span>条</label>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-left: 1px;margin-bottom: 15px;margin-top: 15px;">
+
+            <div class="form-inline ">
+                <form id="searchForm" data-url="ajax_goodsItem_query">
+
+                    <label class="form-group">商品项名称:</label>
+                    <input type="text" class="form-control " name="goodsItemName" size="8">
+
+                    <div class="form-group">
+                        <label class="form-group">商品项类目:
+                        </label>
+
+                        <div class="form-group ">
+                            <select id="typeList" required="required" name="typeList"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value="">全部类目</option>
+                                <option value="3">门票</option>
+                                <option value="4">纪念品</option>
+                                <option value="5">酒店</option>
+                                <option value="6">其他</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group" style="position: relative;top: 0.2em">
+                        <input type="button control" class="btn btn-default" id="btnProductItemSearch" value="搜索">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="table">
+
+        </div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/product/productItem"]);
+</script>

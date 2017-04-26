@@ -1,0 +1,122 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_1469521216_2842093.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1469521216_2842093.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_1469521216_2842093.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/font_1469521216_2842093.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1469521216_2842093.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+/**
+ *
+ *购物车css
+ */
+.shopCart{border: solid #f2f2f2 2px; width: 1188px; margin-top: 50px;display: inline-block}
+.shopCart tr{border-bottom: solid #f2f2f2 2px;height: 60px;line-height: 60px; }
+.cart-Check{width: 100px; text-align: center;}
+.cart-Product{width:300px;}
+.cart-Format{width: 190px;}
+.cart-Price{width: 160px; }
+.cart-Number{width: 190px;}
+.cart-Money{width: 160px; }
+.cart-Operate{width: 130px;}
+/*.select_Sum{border: solid #ccc 1px;height: 25px;width: 90px;}*/
+.cart-Number .Product_Minus{width:23px; height:25px;border:1px solid #ccc;background:#F4F4F4;}
+.cart-Number .Product_Sum{text-align:center;height:23px;width:50px;padding-left: 0px; border:1px solid #ccc;}
+.cart-Number .Product_Add{width:23px; height:25px;border:1px solid #ccc;background:#F4F4F4;}
+.Product_Minus:hover{border:solid red 1px;color:red; cursor: pointer;}
+.Product_Add:hover{border:solid red 1px;color:red; cursor: pointer;}
+
+.shopping-order{border: solid #f2f2f2 2px; width: 1188px; height: 72px;line-height: 72px; display: inline-block}
+.shopping-order-table{height:72px;line-height: 60px;background-color: #F2F2F2}
+.balance-all{width:100px;text-align: center}
+.balance-delete{width: 80px;}
+.balance-back{width: 850px;}
+.balance-sum{width:170px;}
+.balance-money{width:184px;}
+.balance-money a{ height:39px;width:124px; background-color: #CD3333;display: inline-block;text-align: center;line-height: 39px;}
+.orderShow{font-size: 18px;color: #ffffff;font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 宋体}
+/**
+ *
+ *订单确认css
+ */
+.order-confirm{height: 240px;border: solid #f2f2f2 2px; width: 1188px;  margin-top: 50px;display: inline-block}
+.order-confirm-traveler{height:240px;margin-left: 20px;width: 1148px;}
+.order-confirm p{height: 40px;line-height: 40px;font-size: 16px;font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 宋体}
+.traveler-point{background-color: #FCE7E7;height: 26px;line-height: 26px; padding-left: 20px;}
+.traveler-information{margin-left: 68px;height: 150px;}
+.traveler-name{height: 50px;}
+.traveler-name a{width: 50px;height: 20px;background-color: #3399FF;margin-left: 5px;display: inline-block;}
+.traveler-name a span{line-height: 20px;color: #ffffff;text-align: center;display: list-item;}
+.traveler-id{height: 50px;}
+.traveler-iphone{height: 50px;}
+
+.order--confirm-submit {border: solid #f2f2f2 2px; width: 1188px; display: inline-block}
+.order-confirm-information{margin-left: 20px;width: 1148px;}
+.order-confirm-information p{height: 40px;line-height: 40px;font-size: 16px;font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 宋体}
+.order-confirm-productList{margin-left: 71px; width: 1016px;}
+.order-confirm-productList tr:first-child{height: 20px;line-height: 20px; border-bottom: solid #E1E1E1 1px;}
+.order-confirm-productList tr:not(first-child){height: 50px;line-height: 50px; border-bottom: dashed #E1E1E1 1px;}
+
+.order-confirm-couponShow{background-color:#F2F2F2;}
+.order-confirm-coupon{margin-left: 20px;width: 1148px; }
+
+.order-confirm-couponUse{margin-top: 20px;display: inline-table}
+.order-confirm-couponUse input{border: solid #DBDBDB 1px;}
+.order-confirm-couponUse > input:not(:first-child){width: 50px;height: 21px;}
+.order-confirm-couponUse input:last-child{margin-left: 8px;background-color:#F3F3F4;height: 25px;}
+
+.order-confirm-selectCoupon{margin-top: 16px;margin-left: 21px;}
+.order-confirm-select{margin-left: 83px;width: 300px;}
+.order-confirm-select label{width:600px;height: 50px;line-height: 40px;}
+
+.underline{border-bottom: dashed #E1E1E1 1px;margin-top: 5px;}
+
+.order-confirm-order{height: 75px;line-height: 75px;margin-left: 560px;}
+.order-confirm-order a{height:39px;width:124px; background-color: #CD3333;display: inline-block;text-align: center;line-height: 39px;}
+/**
+ *
+ * 结算 css
+ *
+ */
+.orderShopCat{background-color: #FFF8E1;display: inline-block;width:1192px;}
+.orderShopCat-content{margin-left: 50px;margin-top: 20px;}
+.order-total{margin-left: 1000px;}
+.order-table-info{width:1105px;border-collapse: collapse;}
+.order-table-info tr{height: 30px;line-height: 30px;}
+.order-table-info tr:first-child{border-bottom: solid #E1E1E1 1px;}
+.order-table-info td:nth-child(2){width:148px;}
+.order-table-info td:last-child{width:630px;}
+.order-table-info td:first-child{margin-left: 36px;display: table}
+.order-pay{margin-top: 30px;margin-left:50px; }
+
+.order-pay-select {margin-left:28px; width: 1105px;display: inline-block;margin-top: 20px;}
+.order-pay-select{width:1105px;}
+.order-pay-select div{position: relative}
+/*.order-pay-select label{height: 39px;cursor: pointer;border: solid #E1E1E1 1px;display: inline-block;margin-left: 20px;width: 163px;}*/
+.order-pay-select label{height: 39px;cursor: pointer;border: solid #CD3333 1px;display: inline-block;margin-left: 20px;width: 163px;}
+
+.icon{font-family: "iconfont"!important;font-size: 16px;font-style: normal;color: white;}
+.order-pay-select .iconDG{position: absolute;left: 168px;top: 4px;z-index: 1;}
+
+.iconSanJiao{font-family: "iconfont"!important;font-size: 32px;font-style: normal;color:#CD3333;}
+.order-pay-select .iconSJ{margin-left: 132px;margin-top: -1px;display: inline-block;z-index: 0;}
+
+.order-pay-select a{margin-left: 21px;margin-top: 20px; width: 91px;height: 30px;line-height: 30px;background-color: #CD3333;color:#ffffff; text-align: center;display: block}
+.hidden{
+    display: none;
+}
+/*
+ *
+ *结算成功 css
+ *
+ */
+.orderSuccess-content{margin-left: 386px;display: inline-flex}
+.content{display: inline-block}
+.content-left{width:42px;}
+.content-right{width:650px;}
+.content-right p{display: inline-block}
+.lookDetails{color: #0080CC;width: 88px;display: inline-block;text-decoration: underline;}
+.orderSuccess-jump{margin-left: 426px;margin-top: 20px;}
+.orderSuccess-jump-btn{height: 36px;width: 124px;background-color: #CD3333;display: inline-block;text-align: center;line-height: 36px;}
+.iconf{font-family: "iconfont"!important;font-size: 29px;font-style: normal;color: #00C000;}

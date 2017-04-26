@@ -1,0 +1,121 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/订单信息管理</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 订单信息管理.
+        </div>
+
+
+        <div class="row" style="margin-left: 1px;margin-bottom: 10px;margin-top: 10px;">
+
+            <div class="form-inline">
+
+                <form id="searchForm" data-url="ajax_orderManager_query_list">
+
+                    <label class="form-group">商品名称:</label>
+                    <input type="text" class="form-control" name="productName" size="18">
+
+
+                    <label class="form-group">订单编号:</label>
+                    <input type="text" class="form-control" name="num" size="4">
+
+                    <label class="form-group">用户名:</label>
+                    <input type="text" class="form-control " name="touristUserName" size="8">
+
+                    <div class="form-group">
+                        <label class="form-group">定单状态:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <select id="status" required="required" name="status"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value="">全部状态</option>
+                                <option value="waitPay">待付款</option>
+                                <option value="payCheck">付款待确认</option>
+                                <option value="payed">已付款</option>
+                                <option value="expired">已超时</option>
+                                <option value="canceled">已取消</option>
+                                <option value="waitComment">等待完成待评价</option>
+                                <option value="end">已完成已评价</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-group">限定区域：</label>
+
+                        <div class="form-group">
+
+                            <select  id="limitArea" class="form-control" name="limitAreas" >
+                                <option value="">请选择</option>
+                                <!--<option value="-1" >不限定</option>-->
+                                <!--<option value="0" >限定</option>-->
+                                #foreach($m in $map.keySet())
+                                <option value="$m">$map.get($m)</option>
+                                #end
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">下单时间:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate" id="begin_Date" placeholder="开始时间"
+                                   name="begin_Date" size="7">
+
+                        </div>
+                    </div>
+                    <label>-</label>
+                    <div class="form-group">
+                        <label class="form-group">
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate" id="end_Date" placeholder="结束时间"
+                                   name="end_Date" size="7">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">
+                        </label>
+
+                        <div class="control-label" style="position: relative;top: -0.6em">
+                            <input type="button" class="btn btn-default" id="orderQuery" value="搜索">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="form-group">
+                        </label>
+
+                        <div class="control-label" style="position: relative;top: -0.6em">
+                            <input type="button" class="btn btn-default" id="downLoad" value="下载">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/orderManager/orderManager"]);
+</script>

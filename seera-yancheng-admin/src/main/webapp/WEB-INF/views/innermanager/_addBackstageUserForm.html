@@ -1,0 +1,74 @@
+<form id="addBackstageUserForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="userName">用户名： <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="userName" required="required"
+                   name="userName" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="userName">密码： <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="password" id="password" required="required"
+                   name="password" class="form-control col-md-7 col-xs-12" data-parsley-id="4239">
+            <ul class="parsley-errors-list" id="parsley-id-2032"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="realName">真实姓名： <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="realName" required="required"
+                   name="realName" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2131"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="phone">手机号: <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="phone" required="required" name="phone"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-3" >用户类型: <span class="required">*</span>-->
+        <!--</label>-->
+
+        <!--<div class="col-xs-6">-->
+            <!--<select id="managerType" required="required" name="managerType" class="form-control col-xs-7"-->
+                    <!--data-parsley-id="0004">-->
+                <!--#if($roles)-->
+                <!--#foreach($bean in $roles)-->
+                <!--<option value="$bean.id">$!bean.name</option>-->
+                <!--#end-->
+                <!--#end-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateBackstageUser" data-url="ajax_add_update_backstageUser" class="btn btn-success">确定新增</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>
+

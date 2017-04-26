@@ -1,0 +1,66 @@
+<form id="addBackstageUserForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+<input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="userName">用户名： <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="userName" required="required"
+                   name="userName" #if($beans)value="$!beans.userName" #end readonly
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="realName">管理员名称： <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="realName" required="required" #if($beans)value="$!beans.realName" #end
+                   name="realName" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2131"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="phone">手机号: <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="phone" required="required" name="phone" #if($beans)value="$!beans.phone" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-238"></ul>
+        </div>
+    </div>
+
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-3" >用户类型: <span class="required">*</span>-->
+        <!--</label>-->
+
+        <!--<div class="col-xs-6">-->
+            <!--<select id="managerType" required="required" name="managerType" class="form-control col-xs-7"-->
+                    <!--data-parsley-id="0004">-->
+                <!--<option value="SysAdmin" #if($type =="SysAdmin") selected #end>系统管理员</option>-->
+                <!--<option value="ProductEditor" #if($type =="ProductEditor") selected #end>商品编辑</option>-->
+                <!--<option value="Seller" #if($type =="Seller") selected #end>商家扫描核销员</option>-->
+                <!--<option value="DataChecker" #if($type =="DataChecker") selected #end>财务员</option>-->
+                <!--<option value="Leader" #if($type =="Leader") selected #end>领导</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateBackstageUser" data-url="ajax_add_update_backstageUser" class="btn btn-success">保存</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,40 @@
+#set($layout="layout/activityLayout.vm")
+<style>
+    .content{background-size: 100%;background-image: url('/images/lottery/lotteryindex.png');background-repeat: no-repeat;    text-align: center;}
+    .content1{height:59%;}
+    .page-group.page-current, .page.page-current {
+        overflow: auto;
+    }
+</style>
+
+<div class="page page-current" style="background-color: #ec403c;">
+    <input type="hidden" name="number" value="$number">
+
+    <div style="position: relative">
+        <img src="/images/lottery/lotteryindex.png" style="width: 100%;">
+        <div style="position: absolute;top:60%;text-align: center;width: 100%;">
+                <a class="js_href">
+                    <img src="/images/lottery/begin.png" style="width: 50%;">
+                </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/spinner.js?t=3"></script>
+
+<script>
+    $(function(){
+        $(".js_href").click(function(){
+            window.location.href="/lottery/"+$("input[name=number]").val();
+        });
+    });
+
+</script>
+</body>
+</html>

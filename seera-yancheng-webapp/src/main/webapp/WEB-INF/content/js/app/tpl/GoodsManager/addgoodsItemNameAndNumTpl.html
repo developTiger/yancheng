@@ -1,0 +1,27 @@
+<div class="form-group">
+    <div class="col-xs-3 col-xs-offset-3">
+        <select id="typeList" required="required" name="typeList" class="form-control col-md-7 col-xs-12 chooseGoodsItem"
+                data-parsley-id="0004">
+            <option value="">请选择</option>
+            <%for(var i = 0 ; i < items.length; i++) {%>
+            <option value="<%=items[i].id%>" data-value="<%=items[i].productItemType%>"><%=items[i].name%></option>
+            <%}%>
+        </select>
+    </div>
+
+    <label class="control-label  col-xs-1" >数量<span class="required">*</span>
+    </label>
+
+    <div class="col-xs-4" >
+        <div class="col-xs-3">
+            <input type="text" id="goodsItemNum" required="required"
+                   name="goodsItemNum" class="form-control goodsItemNums" >
+        </div>
+
+        <div class="col-xs-1">
+            <input type="button"   value="删除"
+                   name="addGoodsItem" class="btn btn-default deleteGoodsItem" data-parsley-id="4639">
+        </div>
+    </div>
+
+</div>

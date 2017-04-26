@@ -1,0 +1,23 @@
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title">订单支付成功</h1>
+
+
+    </header>
+    <div class="content" style="text-align: center">
+        <i class="iconfont iconfont-success"></i>
+        <div>
+            <div>
+                <div>支付成功</div>
+                <div class="pay-msg">您已成功支付$amount 元</div>
+            </div>
+        </div>
+        #if($canShow)
+            <div>订单编号:$orderNum <a href=" /uc/order/list/payed.html" class="external"> 查看订单详情</a></div>
+
+            <div > <a href="/" class="external">返回首页</a></div>
+        #end
+##        <div>订单编号:$orderNum <a href="/order/orderDetail?order_no=$orderNum" class="external"> 查看订单详情</a></div>
+
+    </div>
+</div>

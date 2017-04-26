@@ -1,0 +1,55 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/订单商品领取
+            <small>- 订单商品领取</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <!--<div class="alert alert-info alert-dismissible fade in" role="alert">-->
+        <!--<strong>描述!</strong>-->
+        <!--</div>-->
+        <div class="row" style="margin-left: 1px;margin-bottom: 10px;margin-top: 10px;">
+            <div class="col-xs-12 form-inline">
+                <div class="input-group col-xs-12">
+                    <input type="text" name="takeNum" id="takeNum" class="form-control" placeholder="取货码">
+                    <span class="input-group-btn">
+                    <button type="button" id="readItemBtn" data-url="ajax_orderItem_query" class="btn btn-primary">Go
+                    </button>
+                    </span>
+                </div>
+
+            </div>
+            <div><span id="msg" style="font-size: 18px;font-weight: 600;color: red;margin-left: 10px"></span></div>
+        </div>
+        <div class="row" style="margin-left: 1px;margin-bottom: 10px;margin-top: 10px;">
+            <table class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                <tr class="headings">
+                    <th class="column-title">商品项名称</th>
+                    <th class="column-title">商品项编码</th>
+                    <th class="column-title">消费编码</th>
+                    <th class="column-title">商品项数量</th>
+                    <th class="column-title no-link last">领取信息</th>
+                </tr>
+                </thead>
+                <tbody id="orderItemsPlaceHolder">
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="row" style="margin-left: 1px;margin-bottom: 10px;margin-top: 10px;">
+            <div class="col-xs-12 form-inline text-center">
+                <div class="control-label" style="position: relative;top: -0.6em">
+                    <input type="button" class="btn btn-info btn-lg col-xs-4" id="orderProductQueryBtn"
+                           data-url="ajax_itemTake" value="消单">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/orderManager/orderItemTake"]);
+</script>

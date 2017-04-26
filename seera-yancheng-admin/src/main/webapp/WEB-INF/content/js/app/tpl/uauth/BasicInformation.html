@@ -1,0 +1,320 @@
+<div class="">
+    <div class="">
+        <form id="BasicInfoForm" class="form-horizontal fa-align-left">
+           <input type="hidden" id="empId" name="empId"  >
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="loginName">登录名 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="loginName" name="loginName" required="required"  value="<%=emp.loginName%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="1279"><ul class="parsley-errors-list" id="parsley-id-1279"></ul>
+                </div>
+            </div>
+
+             <div class="form-group">
+                      <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">姓名 <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" name="name" required="required"   value="<%=emp.name%>"
+                                 class="form-control col-md-7 col-xs-12" data-parsley-id="1279"><ul class="parsley-errors-list" id="parsley-id-1879"></ul>
+                      </div>
+             </div>
+
+             <div class="form-group">
+                  <label class="  control-label col-md-2 col-sm-3 col-xs-12  ">出生日期 <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" class="form-control mini-width Wdate"
+                            name="strBirthday" value="<%=emp.strBirthday%>" placeholder="出生日期" >
+                      <ul class="parsley-errors-list" id="parsley-id-9513"></ul>
+                     <!-- <input type="text" id="last-name" name="birthday" required="required" value="<%=birthday%>"
+                             class="form-control col-md-7 col-xs-12" data-parsley-id="9513">-->
+                  </div>
+              </div>
+
+               <div class="form-group">
+                   <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">手机号码 <span class="required">*</span>
+                   </label>
+                   <div class="col-md-6 col-sm-6 col-xs-12">
+                       <input type="text" id="mobile" name="mobile" required="required"  value="<%=emp.mobile%>"
+                              class="form-control col-md-7 col-xs-12" data-parsley-id="1279"><ul class="parsley-errors-list" id="parsley-id-6279"></ul>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">座机 <span class="required">*</span>
+                   </label>
+                   <div class="col-md-6 col-sm-6 col-xs-12">
+                       <input type="text" id="phone" name="phone" required="required"  value="<%=emp.phone%>"
+                              class="form-control col-md-7 col-xs-12" data-parsley-id="1279"><ul class="parsley-errors-list" id="parsley-id-6979"></ul>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">邮箱 <span class="required">*</span>
+                   </label>
+                   <div class="col-md-6 col-sm-6 col-xs-12">
+                       <input type="text" id="email" name="email" required="required"  value="<%=emp.email%>"
+                              class="form-control col-md-7 col-xs-12" data-parsley-id="1279"><ul class="parsley-errors-list" id="parsley-id-9279"></ul>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <label for="IdCard" class="control-label col-md-2 col-sm-3 col-xs-12">身份证号码</label>
+                   <div class="col-md-6 col-sm-6 col-xs-12">
+                       <input id="IdCard" class="form-control col-md-7 col-xs-12" type="text" name="IdCard"
+                             value="<%=emp.IdCard%>" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-1103"></ul>
+                   </div>
+               </div>
+
+               <div class="form-group">
+
+                   <label class="control-label col-md-2 col-sm-3 col-xs-12">性别</label>
+                   <div class="col-md-2 col-sm-6 col-xs-12">
+                       <div id="sex" class="btn-group" data-toggle="buttons">
+                         <!--  <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                               <input type="radio" name="sex" checked="checked" value="male" data-parsley-multiple="gender" data-parsley-id="4045"> &nbsp; 男 &nbsp;
+                           </label>
+                           <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                               <input type="radio" name="sex" value="female" checked="" data-parsley-multiple="gender" data-parsley-id="4045"> 女
+                           </label>-->
+
+                           <input type="radio" name="sex" value="1" <%if(emp.sex==1){%> checked="checked"<%}%> > 男
+                           <input type="radio" name="sex" value="0" <%if(emp.sex==0){%> checked="checked"<%}%> > 女
+
+                       </div>
+                   </div>
+
+                   <label class="control-label col-md-2 col-sm-3 col-xs-12">族别</label>
+                   <div class="col-md-2 col-sm-6 col-xs-12">
+                       <input id="nation" class="form-control col-md-7 col-xs-12" type="text"
+                              name="nation" value="<%=emp.nation%>" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-1113"></ul>
+                   </div>
+               </div>
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">上级 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select id="parentEmp" name="parentEmp" class="form-control col-xs-7">
+
+                        <option value="">请选择</option>
+                    </select>
+                    <input type="hidden" id="parentEmpId" value="<%=emp.leaderId%>">
+                </div>
+            </div>
+               <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-3 col-xs-12">入院时间 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control mini-width Wdate"
+                               name="strEnteryDate" value="<%=emp.strEnteryDate%>" placeholder="入院时间" >
+                        <ul class="parsley-errors-list" id="parsley-id-35591"></ul>
+                    </div>
+                </div>
+
+              <div class="panel">
+                <h4 class="panel-title " style="color: #FFF;">
+                    <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1"
+                       href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
+                        <label class="label-warning">显示更多信息</label>
+                    </a>
+                </h4>
+                <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">政治面貌<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="politicalFace" name="politicalFace" value="<%=emp.politicalFace%>" class="date-picker form-control col-md-7 col-xs-12"
+                                   required="required" type="text" data-parsley-id="3559">
+                            <ul class="parsley-errors-list" id="parsley-id-3550"></ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">部门 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="deptId" name="deptId" class="form-control col-xs-7">
+                                <%if(deptmentDto.length > 0){%>
+                                <%for(var i = 0 ; i < deptmentDto.length; i++) {%>
+                                <option value="<%=deptmentDto[i].id%>" <%if(emp.dept.id > 0){ if(deptmentDto[i].id==emp.dept.id){%> selected="selected"<% } } %> ><%=deptmentDto[i].deptName%></option>
+                                <%}%>
+                            </select>
+                            <%}else{%>
+                            <dd>暂无数据</dd>
+                            <%}%>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">员工组 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                            <select id="empGroup" name="groupId" class="form-control col-xs-7">
+                                <%if(empGroupDto.length> 0){%>
+                                <%for(var i = 0 ; i < empGroupDto.length; i++) {%>
+                                <!-- <option value="$bean.id" #if($bean.name == $sysUser.roleName )selected="selected"#end >$bean.name</option>-->
+                                <option value="<%=empGroupDto[i].id%>" <%if(emp.dept.id > 0){ if(deptmentDto[i].id==emp.dept.id){%> selected="selected"<% } } %> ><%=empGroupDto[i].name%></option>
+
+                                <%}%>
+                            </select>
+                            <%}else{%>
+                            <dd>暂无数据</dd>
+                            <%}%>
+
+                        </div>
+                    </div>
+
+
+
+                    <!--
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">上级领导 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <input type="text" id="position" name="position" value="<%=emp.position%>"
+                                       class="form-control col-md-7 col-xs-12" data-parsley-id="9513">
+                                <ul class="parsley-errors-list" id="parsley-id-9623"></ul>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="position">职位 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="positddion" name="position" required="required" value="<%=emp.position%>"
+                                       class="form-control col-md-7 col-xs-12" data-parsley-id="9513"><ul class="parsley-errors-list" id="parsley-id-9523"></ul>
+                            </div>
+                        </div>-->
+
+                    <div class="panel-body">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">工种<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="workKind" name="workKind" value="<%=emp.workKind%>" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                                   type="text" data-parsley-id="3559"><ul class="parsley-errors-list" id="parsley-id-3540"></ul>
+                        </div>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="col-xs-3">
+                            <ul class="nav nav-tabs tabs-left">
+                                <li class="" style="margin-top: 10px;">
+                                    <a href="#messages" data-toggle="tab" aria-expanded="false">计算机成绩</a>
+                                </li>
+                                <li class="">
+                                    <a href="#settings" data-toggle="tab" aria-expanded="false">外汉语级别</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-xs-9">
+
+                            <div class="tab-content">
+                                <div class="tab-pane" id="messages">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">等级 <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="computeLevel" name="computeLevel" class="date-picker form-control col-md-7 col-xs-12" value="<%=emp.computeLevel%>"
+                                                   type="text" data-parsley-id="3559"><ul class="parsley-errors-list" id="parsley-id-3660"></ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">成绩 <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="grade" class="date-picker form-control col-md-7 col-xs-12"  type="text" data-parsley-id="3559">
+                                            <ul class="parsley-errors-list" id="parsley-id-3669"></ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane" id="settings">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">等级 <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="foreignLanguageLevel" name="foreignLanguageLevel" class="date-picker form-control col-md-7 col-xs-12"
+                                                   value="<%=emp.foreignLanguageLevel%>" type="text" data-parsley-id="3559">
+                                            <ul class="parsley-errors-list" id="parsley-id-1234"></ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">语种 <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="speak" class="date-picker form-control col-md-7 col-xs-12" type="text" data-parsley-id="3559">
+                                            <ul class="parsley-errors-list" id="parsley-id-4567"></ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">成绩 <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="gradeW" class=" date-picker form-control col-md-7 col-xs-12" type="text" data-parsley-id="3559">
+                                            <ul class="parsley-errors-list" id="parsley-id-4568"></ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">技能等级<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="techLevel" name="techLevel" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                                   value="<%=emp.techLevel%>" type="text" data-parsley-id="3559"><ul class="parsley-errors-list" id="parsley-id-443d0"></ul>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">行政级别<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="executiveLevel" name="executiveLevel" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                                   value="<%=emp.executiveLevel%>"   type="text" data-parsley-id="3559"><ul class="parsley-errors-list" id="parsley-id-4439"></ul>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">文化程度<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="educationInfo" name="educationInfo" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                                   value="<%=emp.educationInfo%>" type="text" data-parsley-id="3559"><ul class="parsley-errors-list" id="parsley-id-4430"></ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="ln_solid"></div>
+
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Cancel</button>
+                    <button type="submit" id="submitUserInfo" data-title="EducationInformation" data-url="BasicInformation" class="btn btn-success">提交</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

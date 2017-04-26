@@ -1,0 +1,26 @@
+#set($layout="layout/activityLayout.vm")
+<style>
+    .content{background-size: 100%;background-image: url('/images/lottery/showed.png');background-repeat: no-repeat;}
+    .content1{height: 4rem;}
+    .page-group.page-current, .page.page-current {
+        overflow: auto;
+    }
+</style>
+
+<div class="page page-current">
+    <img src="/images/lottery/showed.png" style="width: 100%;">
+</div>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/spinner.js?t=3"></script>
+
+<script>
+    $(function(){
+
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+$ui.loadCss("personalCenter/personalCenter.css")
+$ui.loadCss("personalCenter/alert.css")
+$ui.loadCss("order/order.css")
+<div class="main personal-main">
+    <div class="h20"></div>
+    #parse("uc/common/left_common.html")
+    <div class="right">
+
+        <div class="right-choice-main">
+            <p class="right-top-show-detail border-bottom">订单详情</p>
+            <div class="h20"></div>
+            <p class="topic">订单编号：$order.num</p>
+            <div class="h20"></div>
+            <table class="order-detail-table" cellspacing="0">
+                <tr>
+                    <td>商品名称</td>
+                    <td>商品类型</td>
+                    <td>单价</td>
+                    <td>数量</td>
+                    <td>游园日期</td>
+                    <td>入住日期</td>
+                    <td>状态</td>
+                    <td>消费码</td>
+                    <td>状态</td>
+                </tr>
+                #foreach($product in $order.productDtos)
+                    <tr class="Js_showItems" id="Js_showItems" style="cursor: pointer;">
+                        <td>
+                            <a>$product.productDto.name</a>
+                        </td>
+                        <td>$helper.productStatus($product.status)</td>
+                        <td>$order.orderPrice</td>
+                        <td>$product.count</td>
+                        <td>#if($product.tourScheduleDate) $helper.formatDateToString($product.tourScheduleDate,"yyyy-MM-dd") #end</td>
+                        <td>#if($product.hotelScheduleDate) $helper.formatDateToString($product.hotelScheduleDate,"yyyy-MM-dd") #end</td>
+                        <td>$helper.paySelect($!order.status)</td>
+                        <td>消费码</td>
+                        <td>$helper.operateShow($!order.status)
+                            <i class="iconfont">&#xe600;</i><i class="iconfont hidden">&#xe601;</i>
+                        </td>
+                    </tr>
+
+                    <tr class="hidden">
+                        #if($product.productItemDtos.size()>0)
+                            <td colspan="9" class="items">
+                                #foreach($item in $product.productItemDtos)
+                                <ul style="height: 80px;line-height: 80px;text-align: center;margin: 8px 0px;">
+                                    <li style="margin: 18px 0px;">$item.name</li>
+                                    <li style="margin: 18px 0px;">$helper.productTypeShow($item.type)</li>
+                                    <li style="margin: 18px 0px;">￥$item.price</li>
+                                    <li style="margin: 18px 0px;">×$item.count</li>
+                                    <li>
+                                        <!--微信扫码付款二维码 需动态生成-->
+                                        <div id="wxPayQrCode" class="wxPayQrCode" style="position: relative;width: 165px;height: 50px;border: 1px solid #E1E1E1;">
+                                            <img title="扫码付款" class="js_show_big_photo img-style"
+                                                 src="$!item.qrCode"/>
+                                            <div class="icon-magnifier">&#xe63c;</div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="js_show_big_pic" style="height: 150px;width: 500px;position: fixed;left: 40%;top: 20%;z-index: 1000;display: block;padding: 30px 0px;background: white;display: none;">
+                                    <img  title="扫码付款"  style="height: 150px;width: 500px;"
+                                          src="$!item.qrCode"/>
+                                </div>
+
+                                #end
+                            </td>
+                        #end
+                    </tr>
+
+                #end
+            </table>
+
+
+
+
+
+
+
+            <div class="total-count">
+                <p><span>商品总额：</span>￥$order.orderPrice</p>
+                <p><span>优&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;惠：</span>#if($order.couponDto.quota)$order.couponDto.quota #else 无 #end</p>
+                <p><span>应付总额：</span><em>#if($order.couponDto.quota)￥$helper.fourArithmetic($order.orderPrice,$order.couponDto.quota,'-') #else ￥$order.orderPrice #end</em></p>
+            </div>
+
+            <div class="clear"></div>
+
+            <p class="topic">取票人信息</p>
+
+            <div class="order-detail-receiver">
+                <p>真实姓名：$order.fetcherDto.realName</p>
+                <p>联系方式：$order.fetcherDto.mobilePhone</p>
+                <p>身份证号：$order.fetcherDto.idCardNo</p>
+            </div>
+         </div>
+    </div>
+</div>
+
+<script>
+    /*$(function(){
+
+        var js_showItemss=document.getElementById("Js_showItems");
+
+        var btn = document.getElementById("wxPayQrCode");
+
+        *//* js_showItemss.addEventListener("click", function(e){
+         $(this).siblings("i").toggleClass("hidden");
+         $(this).closest("tr").next("tr").toggleClass("hidden");
+         e.stopPropagation();
+         });*//*
+
+        $(".Js_showItems").click(function(e){
+            $(this).siblings("i").toggleClass("hidden");
+            $(this).closest("tr").next("tr").toggleClass("hidden");
+        });
+
+        window.addEventListener("click", function(e){
+            if(e.button==2 || e.button==0){
+                $(".js_show_big_pic").css({"display":"none"});
+                $(".box-shadow").css({"display":"none"});
+            }
+        }, false);
+
+        btn.addEventListener("click", function(e){
+            $(".js_show_big_pic").css({"display":"block"});
+            $(".box-shadow").css({"display":"block"});
+            e.stopPropagation();
+        }, false);
+    })*/
+    $(".Js_showItems").bind("click",function(e){
+        $(this).siblings("i").toggleClass("hidden");
+        $(this).closest("tr").next("tr").toggleClass("hidden");
+        e.stopPropagation();
+        return false;
+    });
+    $(".box-shadow").bind("click",function(e){
+        if(e.button==2 || e.button==0){
+            $(".js_show_big_pic").css({"display":"none"});
+            $(".box-shadow").css({"display":"none"});
+        }
+        return false;
+    });
+    $(".wxPayQrCode").bind("click",function(e){
+        $(".js_show_big_pic").css({"display":"block"});
+        $(".box-shadow").css({"display":"block"});
+        e.stopPropagation();
+        return false;
+    });
+</script>

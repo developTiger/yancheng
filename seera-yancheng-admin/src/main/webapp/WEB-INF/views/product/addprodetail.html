@@ -1,0 +1,71 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>商品管理/图片管理
+
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <ul class="nav nav-tabs">
+            <li><a href="sra_p_add_or_update_product?id=$!id">基本信息</a></li>
+
+            <li><a href="sra_p_add_or_update_ProPicture?id=$!id">商品图片</a></li>
+
+            <li class="active"><a href="sra_add_or_update_ProDetail?id=$!id">商品详情</a></li>
+        </ul>
+
+
+        <div id="myTabContent" class="tab-content">
+            </br>
+            </br>
+            <div  id="detail">
+                <form id="editForm" data-parsley-validate="" data-url="ajax_add_productDetail"
+                      class="form-horizontal form-label-left " novalidate="">
+
+                    <input type="hidden" name="beanId" value="$!id"  >
+
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">商品介绍<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <textarea type="text" id="profile" required="required" name="profile"
+                              class="form-control hidden col-md-7 col-xs-12"
+                              data-parsley-id="4639">$!profile</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">购买须知<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+            <textarea id="notice" required="required" name="notice" class="form-control hidden col-md-7 col-xs-12"
+                      data-parsley-id="4639">$!notice</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">交通指南<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+            <textarea id="trafficGuide" required="required" name="trafficGuide"  class="form-control hidden col-md-7 col-xs-12"
+                      data-parsley-id="4639">$!trafficGuide</textarea>
+                        </div>
+                    </div>
+                    <div class="col-xs-offset-2" style="padding-left: 10px">
+                        <input type="submit" class="btn btn-default" value="提交">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/product/addProductDetail"]);
+</script>
+

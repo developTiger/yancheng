@@ -1,0 +1,229 @@
+
+#set($layout="layout/default.vm")
+<style>
+    .bar-nav~.content{background-color:#e64b4b}
+    .list-block .item-inner:after{background-color:#e64b4b;}
+    .list-block ul:before{    content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: auto;
+        right: auto;
+        height: 1px;
+        width: 100%;
+        display: block;
+        z-index: 15;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;background-color:#e64b4b !important;}
+    .list-block li{
+        background-color: #e64b4b;}
+    .list-block ul:after{background-color: #e64b4b;}
+    .list-block .item-title.label{    width: 20%;text-align: right;padding-right:2%;font-size:1.2rem;}
+    
+    .list-block form{background-color:#e64b4b;}
+    .list-block form .label{color:#f9f7c3}
+	.modal{width:30rem;font-size:1.2rem;line-height: 1.5;    margin-left: -15rem;}
+	.modal-inner{font-size:1.2rem;line-height:1.5rem}
+	.modal-buttons{
+	font-size:1.2rem;line-height: 1.5;height:3.2rem !important;
+	}
+	.modal-button{
+	
+	font-size:1.2rem;line-height: 3.2;height:3.2rem;
+	} 
+</style>
+<div class="page-group ">
+    <div class="page page-current" id="dd">
+ 
+    
+
+        <div class="content" >
+
+            <!--
+            shared分享背景
+            like点赞背景
+            liked已点背景
+            -->
+			#if($userInfo.openId==$openId)
+             <img src="/images/activity/share.png" style="width: 100%;">
+			 #else
+				#if($isLiked)
+					<img src="/images/activity/liked.png" style="width: 100%;">
+				#else
+					<img src="/images/activity/liked2.png" style="width: 100%;">
+				#end
+            <!--<img src="/images/activity/like.png" style="width: 100%;">-->
+             
+			#end
+            <!--<img class='card-cover' src="$imghost/$shareActivityDto.filePath">-->
+                <img src="$imghost/wx/$shareActivityDto.filePath" style="width: 29.7rem;height: 22.5rem;position: absolute;top: 21.6rem;left: 4.4rem;">
+
+            <div style="width: 25rem;height:10rem;left: 50%;margin-left: -12.5rem;position: absolute;top: 45rem;">
+                <!--#if($shareActivityDto)-->
+                <!--<div class="card demo-card-header-pic" style="margin: 0!important;">-->
+
+                    <!--<div class="card-content">-->
+                        <!--<div class="card-content-inner">-->
+                            <!--<p class="color-grey" style="color:#000;font-weight: 600">$shareActivityDto.title</p>-->
+                            <!--<p>$shareActivityDto.content</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--#end-->
+                <!--<div>-->
+                    <!--<a href="#" id="like" class="button button-fill button-warning">点赞</a>-->
+                <!--</div>-->
+
+
+                <div class="list-block">
+                    <form class="form" method="post" enctype="multipart/form-data" action="/upload">
+                        <ul>
+                            <li >
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">标题</div>
+                                        <div class="item-input">
+                                            <input type="text" style="font-size:1.2rem"  name="title" value="$shareActivityDto.title" required readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li >
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">内容</div>
+                                        <div class="item-input">
+                                            <textarea name="content" style="font-size:1.2rem" required readonly >$shareActivityDto.content</textarea>
+                                        </div>
+										
+                                    </div>
+									
+                                </div>
+                            </li>
+                        </ul>
+						<div class="pull-right" style="font-size:1.2rem;color:#f9f7c3">已获$!shareActivityDto.followCount 个赞</div>
+                    </form>
+                </div>
+            </div>
+   #if($userInfo.openId!=$openId)
+            <!-- 点赞按钮 -->
+            <div style="width:150px;height:150px;position: absolute;left:50%;top: 56rem;margin-left:-75px;" id="like"></div>
+            <!-- 分享按钮 -->
+            <!--<div style="width: 29.7rem;height: 5rem;position: absolute;top: 57rem;left: 4.4rem;"  id="like">-->
+            <!--</div>-->
+			#end
+        </div>
+    </div>
+	 <div class="page" id="scan">
+        
+ 
+                    <img src = "/images/wxscan.png" style ="width:100%;" > 
+         
+    </div>
+</div>
+
+
+<script type="text/template" id="likeTpl">
+     <p style = "text-align: center" > 请先关注，再点赞！</p >
+        <img src = "/images/yanchengWXCard.png"  style="width:25rem;"> 
+</script>
+#set($block_script="
+<script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
+<script src='/js/lib/upload.js'></script>
+
+<script>
+
+    var url = '$url';
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '$appId', // 必填，公众号的唯一标识
+        timestamp:$timestamp, // 必填，生成签名的时间戳
+        nonceStr: '$noncestr', // 必填，生成签名的随机串
+        signature: '$signature',// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+
+    $(function () {
+        $(document).on('click', '#like', function () {
+            #if($subscribe=='1')
+                $.post('/dd/share/$openId', function (data) {
+                    if(data.isSuccess){
+                    $.alert('点赞成功',function(){
+					window.location.reload();
+					});
+					        
+							}
+                    else
+                        $.alert(data.msg)
+
+                })
+            #else
+                $.router.load('#scan', true);
+            #end
+        });
+    })
+
+    wx.ready(function () {
+        //alert(1);
+        wx.checkJsApi({
+            jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function (res) {
+                //alert(JSON.stringify(res))
+            },
+            fail: function (res) {
+                //alert(JSON.stringify(res));
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '春秋淹城点灯赢大奖', // 分享标题
+            desc: '春秋淹城点灯赢大奖', // 分享描述
+            link: 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+            'appid=wx43ac85dc751408e1&' +
+            'redirect_uri=http%3a%2f%2fm.cn-yc.com.cn%2fwx_login%3freturnUrl%3D' + encodeURIComponent(url) +
+            '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect', // 分享链接
+            imgUrl: 'http://storeimg.cn-yc.com.cn/wx/$shareActivityDto.filePath', // 分享图标
+
+            success: function () {
+
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareTimeline({
+            title: '春秋淹城点灯赢大奖', // 分享标题
+            link: 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+            'appid=wx43ac85dc751408e1&' +
+            'redirect_uri=http%3a%2f%2fm.cn-yc.com.cn%2fwx_login%3freturnUrl%3D' + encodeURIComponent(url) +
+            '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect',
+            imgUrl: 'http://storeimg.cn-yc.com.cn/wx/$shareActivityDto.filePath', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+
+            error: function () {
+
+            },
+            fail: function (res) {
+                alert('取消分享');
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.showMenuItems({
+            menuList: ['menuItem:share:timeline']
+        })
+    })
+
+    wx.error(function (res) {
+        // alert('configerror' + JSON.stringify(res));
+    })
+</script>
+
+")

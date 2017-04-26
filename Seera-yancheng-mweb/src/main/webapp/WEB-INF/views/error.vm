@@ -1,0 +1,23 @@
+<div class="page" style="background-color: #fff">
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back">
+            <span class="icon icon-left"></span>
+            返回
+        </a>
+
+        <h1 class="title">系统错误信息</h1>
+
+    </header>
+    <div class="content">
+        <div class="card" style="height: 90%">
+
+            <div class="card-content" style="margin-top: 4rem; text-align: center">
+                <img src="/images/b.png" style="width: 4rem;height: 4rem;">
+            </div>
+            <div style="width:100% ;text-align: center;margin-top: 1rem;color: red">
+                Sorry!!出错了~~~
+            </div>
+        </div>
+
+    </div>
+</div>

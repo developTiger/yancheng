@@ -1,0 +1,68 @@
+<div class="right-essentialInfo-main">
+    <p>取票人</p>
+    <div class="right-receipt-address-content">
+
+       <form class="js_submit_form" data-url="ajax_ticket_holderInfo"  method="post">
+            <div class="right-receipt-address-fill-in">
+                <div class="consignee-name">
+                    <label for="consignee-name"><span>*</span> 取票人姓名：  </label>
+                    <input id="consignee-name" type="text" name="realName" required data-msg-required="不能为空">
+                    <input type="hidden" id="consignee-id"  name="id">
+                </div>
+
+                <div class="consignee-mobile">
+                    <label for="consignee-mobile"><span>*</span> 手机号码：  </label>
+                    <input id="consignee-mobile" type="text" #if($updateFetcher)value="$updateFetcher.mobilePhone" #else value="" #end name="mobilePhone" name="mobilePhone" placeholder="手机号"
+                           required data-rule-mobile="true" data-msg-required="请输入手机号" data-msg-mobile="请输入正确格式">
+                </div>
+
+                <div class="id-card-no">
+                    <label for="id-card-no"><span>*</span> 身份证号码：  </label>
+                    <input id="id-card-no" type="text"  #if($updateFetcher)value="$updateFetcher.idCardNo" #else value="" #end name="idCardNo"
+                            required data-rule-idCard="true" data-msg-required="请输入身份证号码" data-msg-idCard="请输入正确格式">
+                </div>
+                <div style="padding-left: 122px;">
+                    <label for="set_default_address" class="set-default-address">
+                        <input id="set_default_address" name="isDefault" type="checkbox">设置为默认取票人
+                    </label>
+                </div>
+
+                <input type="submit" class="save-address js_save_update_info"  value="保存信息">
+            </div>
+        </form>
+
+        <div class="h50"></div>
+        <div class="right-receipt-address-show">
+            #set($d=20-$count)
+            <p>已保存了<span>$!count</span>条地址，还能保存<span>$d</span>条</p>
+            <div class="h10"></div>
+            <table class="address-management">
+                <thead>
+                <tr>
+                    <td>取票人</td>
+                    <td>身份证号</td>
+                    <td>电话/手机</td>
+                    <td>操作</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+
+                #foreach($f in $fetchers)
+                <tr>
+                    <td>$!f.realName</td>
+                    <td>$!f.idCardNo</td>
+
+                    <td>$!f.mobilePhone</td>
+                    <td><a class="js_update_ticket" data-url="ajax_getUpdateHolderInfo" data-title="$!f.id">修改</a>丨<a data-url="ajax_delete_ticket_holder" class="js_delete_ticket" data-title="$!f.id">删除</a></td>
+                    <td><a data-url="setDefautFetcher" data-title="$!f.id" class="checking-address-management #if($!f.isDefault) checked-address-management #else #end js_setDefault"> #if($!f.isDefault) 默认取票人 #else 设为默认 #end</a></td>
+
+                </tr>
+                #end
+                </tbody>
+            </table>
+
+        </div>
+        <div class="h30"></div>
+    </div>
+</div>

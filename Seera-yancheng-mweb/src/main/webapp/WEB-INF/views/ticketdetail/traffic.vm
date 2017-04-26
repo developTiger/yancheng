@@ -1,0 +1,16 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" >
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class="title">交通指南</h1>
+        </header>
+
+       <div class="content">
+           <p>1、乘坐68路(火车站公交中心站-雪堰公交站)在和平路文化路(文化宫)上车，经过10站，在淹城下车，步行至终点</p>
+           <p>2、乘坐14路(永宁路公交枢纽-淹城公交枢纽)在武进医院北上车，经过23站，在淹城公交枢纽下车，步行至终点</p>
+       </div>
+    </div>
+</div>

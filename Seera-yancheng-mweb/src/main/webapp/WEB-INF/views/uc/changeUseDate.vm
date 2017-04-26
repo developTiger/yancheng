@@ -1,0 +1,65 @@
+<div class="page-group">
+    <div class="page page-current" id="changeDate">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title">商品改签</h1>
+
+        </header>
+        <div class="bar bar-tab" style="    height: 2.8rem;">
+            <div>
+
+                <input type="button" id="changeBtn" class="button button-big button-fill button-danger "
+                       style="padding-top: 0px"
+                       value="确认改签">
+            </div>
+        </div>
+        <div class="content">
+            <div class="card" style="height: 90%">
+                <form id="changeDateForm">
+                    <input type="hidden" value="$bean.id" name="orderProductId">
+
+                    <input type="hidden" value="$orderNum" name="orderNum">
+                    <div style="width:100% ;text-align: center;margin-top: 2rem;color: #EA832C;font-weight: 600">
+
+                        <span style="font-size: 1rem;color: #269672">改签/ </span>$bean.productDto.name
+                    </div>
+                    #if($bean.tourScheduleDate)
+
+                        <div class="card-content" style="margin-top: 4rem; text-align: center">
+                            <div class="item-inner  ">
+                                游玩日期：<input type="text" value=" $helper.formatDateToString($bean.tourScheduleDate,"yyyy-MM-dd")" disabled>
+                            </div>
+                            <div class="  " style="margin-top: 1rem">
+                                改签日期：<input type="text" name="tourDate" class="Js_changeDate">
+                            </div>
+                        </div>
+                    #end
+                    #if($bean.hotelScheduleDate)
+
+                        <div class="card-content" style="margin-top: 4rem; text-align: center">
+                            <div class="item-inner  ">
+                                入住日期：<input type="text" value="$helper.formatDateToString($bean.hotelScheduleDate,"yyyy-MM-dd") " disabled>
+                            </div>
+                            <div class="  " style="margin-top: 1rem">
+                                改签日期 ：<input type="text" name="hotelDate" class="Js_changeDate">
+                            </div>
+                        </div>
+                    #end
+                    　
+                    <div class="card-content" style="margin-top: 4rem; text-align: center">
+                        <div class="item-inner  " style="color: #aa0000">　
+                            提示：商品一旦售出，仅提供一次改签机会，请认真核实后确定！
+                        </div>
+                        　
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<form id="addGoodsItemForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+    <input type="hidden" name="hidType" value="$beans.productItemType">
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >商品项类目 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <select id="typeListItem" required="required" name="itemType" class="form-control col-xs-7" disabled
+                    data-parsley-id="0204">
+                <option value="Ticket" #if($beans.productItemType =="Ticket") selected #end>门票</option>
+                <option value="Souvenirs"  #if($beans.productItemType =="Souvenirs") selected #end>纪念品</option>
+                <option value="Hotel"  #if($beans.productItemType =="Hotel") selected #end>酒店</option>
+                <option value="Catering"  #if($beans.productItemType =="Catering") selected #end>餐饮</option>
+                <option value="Other"  #if($beans.productItemType=="Other") selected #end>其他</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="name">商品名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="name" required="required"
+                   name="name" #if($beans)value="$beans.name" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-12031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="name">商品项编码 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="num" required="required"
+                   name="num" #if($beans)value="$beans.num" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4640">
+            <ul class="parsley-errors-list" id="parsley-id-12032"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="prices">价格<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="prices" required="required" name="prices" #if($beans)value="$beans.price" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-238"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="name">商家名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="seller" required="required"
+                   name="seller" #if($beans)value="$beans.seller" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-1031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="name">商家用户 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6 ">
+            <select id="innerManageId" name="innerManageId" required="required" class="form-control col-md-6 col-xs-12"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                #if($manager)
+                #foreach($bean in $manager)
+                    <option value="$bean.id" #if($beans.innerManageId == $bean.id) selected #end>$bean.realName</option>
+                #end
+                #else
+                <d>暂无商家数据</d>
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateGoodsItem" data-url="ajax_add_update_goodsItem" class="btn btn-success">确定</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>
+

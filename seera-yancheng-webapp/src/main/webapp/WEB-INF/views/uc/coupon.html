@@ -1,0 +1,12 @@
+$ui.loadCss("personalCenter/personalCenter.css")
+<div class="main personal-main">
+    <div class="h20"></div>
+    #parse("uc/common/left_common.html")
+    <div class="right">
+        #parse("uc/child/coupon_right.html")
+    </div>
+</div>
+<script>
+    require(["app/ucCoupon/ucCoupon"]);
+</script>
+

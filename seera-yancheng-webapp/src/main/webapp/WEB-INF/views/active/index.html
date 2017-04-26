@@ -1,0 +1,133 @@
+<link type="text/css" rel="stylesheet" href="/css/paging.css"/>
+<div class="tab-nav">
+    <div class="in-main">
+        <ul>
+            <li><a href="/active/welcome">活动首页</a></li>
+            <li><a href="/active/activing" #if($!type=="activing") class="active" #end>正在进行</a></li>
+            <li><a href="/active/passed" #if($!type=="passed") class="active" #end>往期回顾</a></li>
+        </ul>
+    </div>
+</div>
+<div class="in-main">
+    <div class="sort">
+        <div class="fl-left">
+            <a href="/active/activing" #if($!type=="activing") class="bold-black" #else class="gray" #end>正在进行</a>
+            |
+            <a href="/active/passed" #if($!type=="passed") class="bold-black" #else class="gray" #end>往期回顾</a>
+        </div>
+        <!--<div class="fl-right">-->
+        <!--<a href="#" class="active">综合</a>|-->
+        <!--<a href="#">价格 <i class="iconfont">&#xe60e;</i></a>|-->
+        <!--<a href="#">上架时间 <i class="iconfont">&#xe60f;</i></a>-->
+        <!--<div class="search">-->
+        <!--<input type="text" />-->
+        <!--<input type="button" class="iconfont" value="&#xe611;">-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    #if($!type=="activing")
+
+    #foreach($a in $pagedResult.items)
+    <div class="list activing">
+        <div class="left">
+            #if($a.hasPageProfile)
+            <a href="/active/ActivityDetails/$!a.id"><img src="$imghost/$!a.pticturePath"
+                                                                     style="width:480px;height:290px;"/></a>
+            #else
+            <a href="/item/$!a.ProductDto.id"><img src="$imghost/$!a.pticturePath"
+                                                   style="width:480px;height:290px;"/></a>
+            #end
+        </div>
+        <div class="middle">
+            <div class="middle-top">
+                <a href="/item/$!a.ProductDto.id"><p class="title">$!a.name</p></a>
+
+                <div class="des">
+                    <p>有效期：$helper.formatDateToString($!a.endTime,"yyyy-MM-dd")</p>
+
+                    <p>开放时间段：$helper.formatDateToString($!a.startTime,"yyyy-MM-dd") -
+                        $helper.formatDateToString($!a.endTime,"yyyy-MM-dd")</p>
+
+                    <p>$!a.notice</p>
+                </div>
+
+            </div>
+            <div class="middle-bootom">
+                <p class="des">特色：$!a.content</p>
+
+                <p class="warning"><em class="iconfont">&#xe614;</em><span>正在进行，抓紧时间抢购哦！</span></p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-content">
+                <div class="money">
+                    <div class="now">￥<p>$!a.productDto.discountPrice<span>限时优惠<i></i></span></p>元</div>
+                    <div class="before">原价：￥$!a.productDto.price</div>
+                </div>
+                <a href="/item/$!a.ProductDto.id">立即抢购</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    #end
+
+    #else
+    #foreach($a in $pagedResult.items)
+    <div class="list">
+        <div class="left">
+            #if($a.hasPageProfile)
+            <a href="/active/ActivityDetails/$!a.id"><img src="$imghost/$!a.pticturePath"
+                                                                     style="width:480px;height:290px;"/></a>
+            #else
+            <a href="/item/$!a.ProductDto.id"><img src="$imghost/$!a.pticturePath"
+                                                   style="width:480px;height:290px;"/></a>
+            #end
+        </div>
+        <div class="middle">
+            <div class="middle-top">
+                <a href="/item/$!a.ProductDto.id"><p class="title">$!a.name</p></a>
+
+                <div class="des">
+                    <p>有效期:$helper.formatDateToString($!a.endTime,"yyyy-MM-dd")</p>
+
+                    <p>开放时间段：$helper.formatDateToString($!a.startTime,"yyyy-MM-dd") -
+                        $helper.formatDateToString($!a.endTime,"yyyy-MM-dd")</p>
+
+                    <p>$!a.notice</p>
+                </div>
+
+            </div>
+            <div class="middle-bootom">
+                <p class="des">特色：$!a.content</p>
+
+                <p class="warning"><em class="iconfont">&#xe614;</em><span>已经结束，期待下次吧！</span></p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-content">
+                <div class="money">
+                    <div class="now">￥<p>$!a.productDto.discountPrice<span>已结束<i></i></span></p>元</div>
+                    <div class="before">原价：￥$!a.productDto.price元</div>
+                </div>
+                <input type="button" value="已售罄" style="background-color: #E1E1E1">
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    #end
+    #end
+
+    <div id="paging" class="page"></div>
+    <script>
+        require(['common/page'], function (page) {
+            var paging = new page({
+                trigger: "#paging", param: {
+                    items: '$!pagedResult.totalItemsCount'
+                }
+            })
+        })
+    </script>
+
+</div>

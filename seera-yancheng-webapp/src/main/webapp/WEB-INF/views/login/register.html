@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>用户注册</title>
+    <link href="css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="css/index.css" type="text/css" rel="stylesheet"/>
+    <link href="css/logon/logon.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/common/jquery.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/common/unslider.min.js"></script>
+    <script data-main="js/rjs-config.js" src="js/require.js"></script>
+    <script src="js/jslib/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="main logon-top">
+            <div class="top-nav">
+
+                <a href="/">您好，欢迎来到淹城春秋乐园官网</a>
+                <a href="/"><p>淹城网站首页</p></a>
+                <span class="Js_right_div1" style="cursor: pointer">微信关注
+                    <p class="dis-none" style="position: absolute;top: 14px;left: 668px;z-index: 1;">
+                        <img src="/images/test/ewm.png" style="height: 100px;"/>
+                    </p>
+                </span>
+
+                <div class="top-right">
+
+                    <p><a href="login">[登录]</a></p>
+
+                    <p><a href="reg">[注册]</a></p>
+
+                    <div class="inline-block top-select">
+                        <a href="/edit_user">个人中心</a>
+                    </div>
+
+                    <p><a href="/helpCenter/JDRC114F">帮助</a></p>
+
+                </div>
+            </div>
+
+
+            <div class="index-search">
+                <div class="logo">
+                    <a href="/"><img src="images/common/logo.png" style="border:none;"/></a>
+                </div>
+                <div class="top-title">
+                    <div class="left-line"></div>
+                    <div class="title">
+                        <span style="font-size: 20px;">注册</span>
+                    </div>
+
+                </div>
+                <div class="contact">
+                    <div class="info">
+                        <em class="iconfont"></em>
+                        <p class="des">24H服务热线：</p>
+                        <p class="tel">400-188-0005</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="h20"></div>
+        <div class="regMain">
+
+            <div class="reg selectZHANGHAO">
+                <p class="reg-title">立即注册</p>
+                <div class="reg-content">
+                    <form id="regForm" action="/reg" method="post">
+                        <label><span>用户名：</span><input name="username" type="text" value="" placeholder="用户名/手机号/邮箱号"></label><span class="icon-passWord-error js_name_ok hidden">&#xe62a;</span><span class="icon-loginName-error js_login_error hidden">&#xe629;用户已被注册</span>
+                        <label><span>设置密码：</span><input name="password" id="js_check_pwd_strong" class="js_check_pwd_strong js_check_passWord" type="password" value=""></label>
+                        <span class="icon-passWord-error js_success hidden">&#xe62a;</span><span class="icon-loginName-error js_password_error hidden">&#xe629;<span class="js_showError"></span></span>
+                        <p class="passwordSecurity" style="display: none">
+                            安全程度：<a class="pwd-low">弱</a>
+                                      <a class="pwd-centre">中</a>
+                                      <a class="pwd-high">强</a>
+                        </p>
+                        <label><span>确认密码：</span><input name="surepassword" class="js_commit_password" type="password" value=""></label>
+
+                        <label class="reg-verification"><span>验证码：</span>
+                            <input type="text" class="checkedCode"  value="" placeholder="验证码">
+                            <span id="checkCode" class="reg-verification-show checkCode">HV8S</span>
+                            <a class="change-one">换一张</a>
+                        </label>
+                        #if ($error)
+                           <div style="color: red; padding-top: 10px;" class='show-code-result'>$error</div>
+                        #else
+                           <div style="color: red; padding-top: 10px;" class="show-code-result"></div>
+                        #end
+                        <div class="reg-submit-sure">
+                            <label><input type="checkbox" class="js_agree_item"><span>我已阅读并接受</span></label><a>《淹城春秋乐园条款》</a>
+                        </div>
+                        <div class="reg-submit">
+                            <input type="submit" id="regBtn" value="同意服务条款并注册">
+                        </div>
+                    </form>
+                </div>
+
+                <!--<div class="reg-qr-code-select">-->
+                    <!--<div class="reg-tooltips">-->
+                        <!--<span>微信扫码注册点这里</span>-->
+                        <!--<div class="arrow arrow-border"></div>-->
+                        <!--<div class="arrow arrow-bg"></div>-->
+                    <!--</div>-->
+                    <!--<div class="reg-qr-code-background">-->
+                        <!--<label for="reg-QR-code" class="reg-QR-code-label">-->
+                            <!--<div id="reg-QR-code" class="reg-QR-code"></div>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+
+            <!--<div class="reg selectQR" style="display: none">-->
+                <!--<p class="reg-title">微信扫描二维码快速注册</p>-->
+
+                <!--<div class="reg-scanner-qr-code">-->
+                    <!--<div class="reg-qr-background">-->
+                        <!--<img src="../images/img.jpg"></a>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="reg-qr-code-information">-->
+                    <!--<p>扫码>关注>确认>安全注册成功</p>-->
+                    <!--<p>用微信扫上方二维码安全注册淹城账号：</p>-->
+                    <!--<p>1、防止木马窃取密码</p>-->
+                    <!--<p>2、防止键盘录制类盗号</p>-->
+                    <!--<p>3、绑定微信提高安全级别</p>-->
+                <!--</div>-->
+
+                <!--<div class="reg-logon-zhijie">-->
+                    <!--<label for="direct">已有账号，直接<a id="direct" href="/login">登录</a></label>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+
+
+        <div class="main site-bottom">
+            CopyRight 2010-2016 常州淹城旅行社有限公司版权所有 苏ICP备0123456789号<br/>
+            地址：江苏省常州市武进区武宜南路588号 客服电话：400-188-0005
+        </div>
+        <div class=" bottom-sprite">
+            <p class="d-icon0"></p>
+            <p class="d-icon1"></p>
+            <p class="d-icon2"></p>
+            <p class="d-icon3"></p>
+            <p class="d-icon4"></p>
+        </div>
+
+<script>
+    require(["app/register/register"]);
+</script>
+<script>
+    require(["common/common"]);
+</script>
+
+</body>
+</html>
+
+

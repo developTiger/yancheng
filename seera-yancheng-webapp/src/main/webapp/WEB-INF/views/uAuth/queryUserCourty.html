@@ -1,0 +1,88 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/院级管理
+            <small>- 院级管理</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+      <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 员工管理.
+        </div>
+        <div class="row">
+            <div class=" btn-group  col-xs-4">
+               <!-- <a id="toAddUser" class=" i_modal btn btn-default buttons-copy buttons-html5 btn-sm"
+                   data-url="_addUserForm" ><span><i class="green fa fa-plus"></i>新增</span></a>-->
+
+                <a id="toAddUser" class=" btn btn-default buttons-copy buttons-html5 btn-sm"
+                   href="sra_u_userInfo" ><span><i class="green fa fa-plus"></i>新增</span></a>
+
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="disableUser"  tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="red fa fa-remove"></i>禁用</span></a>
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="enableUser"  tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="green fa fa-check"></i>启用</span></a>
+            </div>
+            <div class="form-inline col-xs-8">
+                <form  id="searchForm"  class="pull-right" data-url="ajax_userQuery_list">
+                    <!--<input type="hidden" name="p" value="1">-->
+                    <!--<input type="hidden" name="ps" value="10">-->
+
+                    <div class="form-group">
+                        <label class="control-label">部门</label>
+
+                            <select class="form-control" name="deptId">
+                                <option value="0">请选择</option>
+                                #if($permGroup)
+                                  #foreach($beanPG in $permGroup)
+                                <!--#if($bean.deptName == $beanPG.deptName )selected="selected"#end-->
+                                    <option value="$beanPG.id" >$beanPG.deptName</option>
+                                  #end
+                                #end
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">学历</label>
+                        <select class="form-control"  name="highestEdu">
+                            <option value="">请选择</option>
+                            <option value="大专">大专</option>
+                            <option value="本科">本科</option>
+                            <option value="研究生">研究生</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">职称</label>
+                        <input type="text" class="form-control mini-width "
+                               name="teachPositionName" >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">资质</label>
+                        <input type="text" class="form-control mini-width "
+                               name="qualificationName" >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label" >用户名
+                        </label>
+                        <input type="text" id="loginName" class="form-control " style="margin-bottom: 5px" name="loginName">
+                        <input type="button" class="btn btn-default" id="empQueryBtn" value="查询">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/user/user"]);
+</script>

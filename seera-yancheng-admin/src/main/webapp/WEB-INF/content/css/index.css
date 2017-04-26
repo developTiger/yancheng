@@ -1,0 +1,21 @@
+
+
+/*门票*/
+.index-title{font-size:24px;color:#666}
+.index-img-main{padding:20px 30px;width:810px;border-top:2px solid #b9bab0}
+.index-img-main .index-img-div{float:left;position:relative;margin:0 20px 20px 0;}
+.index-img-main .index-img-div .discount{font-size:16px;font-weight:bold;width:62px;height:28px;background-color:#cf0003;position: absolute;left:0px;top:0px;line-height: 28px;color:#fff;text-align: center }
+.index-img-main .index-img-div .index-img-title,.comb-ticket-main .index-img-title{line-height:32px;font-size:13px;}
+.index-img-main .index-img-div .index-img-title span,.comb-ticket-main .index-img-title span{float:right;height:32px;}
+.index-img-main .index-img-div .index-img-title em,.comb-ticket-main .index-img-title em{font-size:16px;color:#cc3333;font-weight:bold;}
+
+.comb-ticket-div{float:left;margin:0 10px;}
+.comb-ticket-main{border-top:2px solid #b9bab0;padding-top:20px;margin-top:20px}
+
+
+.index-support-div{width:25%;box-sizing: border-box;float:left;position:relative;padding-left:110px;border-right:1px solid #b9bab0}
+.index-support-div em{font-size:45px;color:#d02423;position:absolute;left:50px}
+.index-support-div .p-title{font-size:16px;font-weight:bold;color:#333333;line-height: 25px;}
+.index-support-div .p-content{font-size:13px;color:#999999;line-height: 25px;}
+.index-support-main{padding-bottom:60px;width: 1200px;margin: 0 auto;} /*我的新增 width:1200px;*/
+

@@ -1,0 +1,77 @@
+</br>
+<div class=" x_panel  " xmlns="http://www.w3.org/1999/html">
+
+    <div class="content">
+
+        <div>
+            <h3><strong>信息管理</strong></h3>
+        </div>
+
+        <div>
+            信息类管理>帮助中心
+        </div>
+
+        <div class="row">
+            <div class=" btn-group  col-xs-5" >
+                <!--<a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加后台用户信息"
+                   data-url="_addBackstageUserForm"><span><i class="green fa fa-plus"></i>新增</span></a>
+-->
+                <!--<a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteWordEdit" tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="red fa fa-remove"></i>删除</span></a>-->
+                <!--<label class="col-xs-2" style="position: relative;padding-top: 5px;padding-left: 8px;">已选中<div class="dynamicChoose"></div>条</label>-->
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-left: 1px;margin-top: 15px;margin-bottom: 15px;">
+
+            <div class="form-inline ">
+
+                <form id="searchForm" data-url="ajax_wordEdit_query_list">
+
+
+                    <div class="form-group">
+                        <label class="form-group">文章类别:
+                        </label>
+                        <div class="form-group ">
+                            <select id="articleType" required="required" name="articleType"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value=""  >请选择</option>
+                                <option value="1">帮助中心</option>
+                                <option value="2">服务承诺</option>
+                                <option value="3">网络条款</option>
+                                <option value="4">友情链接</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <label class="form-group">发布人:</label>
+                    <input type="text" class="form-control " name="person" size="8">
+
+
+                    <div class="form-group">
+                        <label class="form-group">
+                        </label>
+
+                        <div class="form-group" style="position: relative;top: 0.2em;">
+                            <input type="button" class="btn btn-default" id="backstageUserQueryBtn" value="搜索">
+                           <!-- <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加后台用户信息"
+                               href="addArticleForm">新增文章</a>-->
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/wordEdit/wordEdit"]);
+</script>

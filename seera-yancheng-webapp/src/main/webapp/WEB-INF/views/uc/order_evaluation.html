@@ -1,0 +1,144 @@
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+$ui.loadCss("personalCenter/order_details_evaluation.css")
+$ui.loadCss("starrating/star-rating.css")
+<!--<link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet" />-->
+<div class="h20"></div>
+<div class="main order-evluation-content">
+    <p>其他买家需要你的建议哦！</p>
+
+    <style>
+        #star-five {
+            margin: 50px 0;
+            position: relative;
+            display: block;
+            color: red;
+            width: 0px;
+            height: 0px;
+            border-right:  100px solid transparent;
+            border-bottom: 70px  solid red;
+            border-left:   100px solid transparent;
+            -moz-transform:    rotate(35deg);
+            -webkit-transform: rotate(35deg);
+            -ms-transform:     rotate(35deg);
+            -o-transform:      rotate(35deg);
+        }
+        #star-five:before {
+            border-bottom: 80px solid red;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -45px;
+            left: -65px;
+            display: block;
+            content: '';
+            -webkit-transform: rotate(-35deg);
+            -moz-transform:    rotate(-35deg);
+            -ms-transform:     rotate(-35deg);
+            -o-transform:      rotate(-35deg);
+
+        }
+        #star-five:after {
+            position: absolute;
+            display: block;
+            color: red;
+            top: 3px;
+            left: -105px;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid red;
+            border-left: 100px solid transparent;
+            -webkit-transform: rotate(-70deg);
+            -moz-transform:    rotate(-70deg);
+            -ms-transform:     rotate(-70deg);
+            -o-transform:      rotate(-70deg);
+            content: '';
+        }
+    </style>
+
+    <form class="js_form_comment">
+
+        <input type="hidden" value="$!orderNum" name="orderNum">
+        #foreach($productSimpleDto in $productDtos)
+            #set($obj=($velocityCount - 1))
+            <div class="do-order-evaluation">
+            <div class="show-order-evaluation-content">
+               <a href="/item/$!productSimpleDto.id" style="color: #000000;">
+                   <img src=$imghost/s/$!productSimpleDto.productDto.mainPicturePath width="150px;">
+                   <p>$!productSimpleDto.productDto.name</p>
+               </a>
+                <input type="hidden" value="$!productSimpleDto.productDto.num" name="feedBackDtos[$obj].num">
+            </div>
+            <div class="do-order-evaluation-evaluate">
+                <table class="evaluation-of-goods">
+                    <tr>
+                        <td>
+                            <label>评价商品</label>
+                        </td>
+                        <td>
+                        <textarea name="feedBackDtos[$obj].commentProduct"></textarea>
+                        </td>
+                    </tr>
+                   <!-- <tr>
+                        <td>
+                            <label>商品服务</label>
+                        </td>
+                        <td>
+                            <textarea name="feedBackDtos[$obj].serviceProduct"></textarea>
+                        </td>
+                    </tr>-->
+                    <!--<tr>
+                        <td>
+                            <label>晒图片</label>
+                        </td>
+                        <td>
+                            <div class="btn-show-image ">&lt;!&ndash;<img src="/images/test/shiziBg.png">
+                                <input type="file"  name="image" id="mainFile" style="width: 260px;">&ndash;&gt;
+                                <a class="a-upload-file js_a_upload_file">
+                                    <input class="input-upload-file" type="file" value="浏览" />
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>-->
+                </table>
+            </div>
+            <div class="do-order-evaluation-service">
+                <p><span>*</span> 商品星级评价
+                    <!--<em class="icon-five-star">&#xe61a;</em>-->
+                    <!--
+                    <em class="icon-five-star">&#xe61a;</em>
+                    <em class="icon-five-star">&#xe61a;</em>
+                    <em class="icon-five-star">&#xe61a;</em>
+                    <em class="icon-five-star">&#xe61a;</em>
+                    -->
+                    <input id="" value="0" name="feedBackDtos[$obj].score" type="number" class="rating" min=0 max=5 step=1 data-size="xs" >
+                </p>
+                   <!-- <p><span>*</span> 评价服务
+                        &lt;!&ndash;<em class="icon-five-star">&#xe61a;</em>&ndash;&gt;
+                        &lt;!&ndash;
+                        <em class="icon-five-star">&#xe61a;</em>
+                        <em class="icon-five-star">&#xe61a;</em>
+                        <em class="icon-five-star">&#xe61a;</em>
+                        <em class="icon-five-star">&#xe61a;</em>
+                        &ndash;&gt;
+                        <input id="1e" value="0" name="serviceProductStar" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                    </p>-->
+            </div>
+        </div>
+        #end
+
+        <div class="do-sure-evaluation">
+            <input type="button" class="js_comment" value="评价">
+        </div>
+    </form>
+
+    <div class="h20"></div>
+
+</div>
+
+<script>
+    require(["app/orderEvaluation/orderEvaluation"]);
+</script>

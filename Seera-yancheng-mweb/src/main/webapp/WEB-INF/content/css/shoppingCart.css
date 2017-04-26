@@ -1,0 +1,19 @@
+.page, .page-group {
+    background: #efeff4 !important;
+}
+.card .card-footer:before{
+    background: #e1e1e1!important;
+}
+
+
+.card{
+    margin: 0.5rem 0 !important;
+}
+
+.card .row{
+    margin-left: 0.3rem;
+}
+.list-block .row{
+    margin-left: 0.3rem;
+}
+.content . zz-card{margin:.5rem 0;box-shadow:0 .05rem .1rem rgba(0,0,0,.3)}

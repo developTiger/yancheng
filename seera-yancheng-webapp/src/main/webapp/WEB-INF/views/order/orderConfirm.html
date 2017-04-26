@@ -1,0 +1,154 @@
+<link href="css/order/order.css" type="text/css" rel="stylesheet"/>
+
+<div class="h20">
+</div>
+<div class="main">
+    <div class="stepInfo">
+        <ul>
+            <li></li>
+            <li style="background-color: #CD3333;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background-color: #CD3333;"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="stepIco stepIco1 ddd" id="create">1
+            <div class="stepText" id="createText">购物车</div>
+        </div>
+        <div class="stepIco stepIco2" id="check" style="background-color: #CD3333;">2
+            <div class="stepText" id="checkText">订单确认</div>
+        </div>
+        <div class="stepIco stepIco3" id="produce">3
+            <div class="stepText" id="produceText">结算</div>
+        </div>
+        <div class="stepIco stepIco4" id="delivery">4
+            <div class="stepText" id="deliveryText">支付成功</div>
+        </div>
+    </div>
+
+    <!--隐藏的取值-->
+    <div id="area">
+        #foreach($rejectAreas in $rejectAreasProducts)
+        <span style="display: none;"  class="area" >$rejectAreas.rejectAreas</span>
+        #end
+    </div>
+
+    <div class="order-confirm">
+        <div class="order-confirm-traveler">
+            <p>旅客信息</p>
+
+            <div class="traveler-point">温馨提示：您预订的产品景点需要姓名或证件，请务必正确填写。</div>
+            <p>取票人 <span class="addBtn">新增</span></p>
+            <table class="order-confirm-user-table" cellpadding="5px" id="addressseeTable">
+                <tr>
+                    <th>选择</th>
+                    <th>取票人</th>
+                    <th>身份证</th>
+                    <th>手机号</th>
+                    <th>操作</th>
+                </tr>
+                #foreach($item in $fetcherDtoList)
+                <tr style="line-height: 30px">
+                    <td style="display: none"><input type="text" style="display: none" name="id" value="$!item.id"
+                                                     disabled/></td>
+                    <td><input type="radio" #if($!item.isDefault=="true") checked #end name="selectedReceiver"></td>
+                    <td><input type="text" value="$!item.realName" disabled name="realName"/></td>
+                    <td><input type="text" value="$!item.idCardNo" disabled name="idCardNo"/></td>
+                    <td><input type="text" value="$!item.mobilePhone" disabled name="mobilePhone"/></td>
+                    <td><input type="button" class="Js_modify" value="修改"/><input type="button"
+                                                                                  class="Js_confirm hidden" value="确认"/><input
+                            type="button" class="Js_delete" value="删除"/></td>
+                </tr>
+                #end
+
+            </table>
+
+        </div>
+    </div>
+    <div class="h20"></div>
+    <div class="order--confirm-submit">
+        <div class="order-confirm-information">
+            <p>商品信息</p>
+            <table class="order-confirm-productList" style="border-collapse:collapse;">
+                <tr>
+                    <td style="width: 300px;">商品</td>
+                    <td style="width: 210px;">规格</td>
+                    <td style="width: 190px;">单价(元)</td>
+                    <td style="width: 190px;">数量</td>
+                    <td style="width: 190px;">日期</td>
+                    <td style="width: 80px;">金额(元)</td>
+                </tr>
+                #set($count=0)
+                #foreach($shoppingItemDto in $shoppingItemDtos)
+                <tr>
+                    <td><span style="display: inline-block;line-height: 23px;width: 256px;padding: 15px 10px;">$!shoppingItemDto.productName</span></td>
+                    <td>$!shoppingItemDto.specDescription</td>
+                    <td>$!shoppingItemDto.price (元)</td>
+                    <td>$!shoppingItemDto.count</td>
+                    <td>  <span class="c999" style="display: inline-block;width: 130px;height: 21px;line-height: 30px">
+
+                            #if($shoppingItemDto.tourScheduleDate)游园日期:$helper.formatDateToString($shoppingItemDto.tourScheduleDate,"yyyy-MM-dd")
+                            #end
+                            #if($shoppingItemDto.hotelScheduleDate)入住日期:$helper.formatDateToString($shoppingItemDto.hotelScheduleDate,"yyyy-MM-dd")
+
+                            #end
+
+                    </span></td>
+                    #set($totalPrice=$!shoppingItemDto.price * $!shoppingItemDto.count)
+                    #set($itemTotalPrice=$itemTotalPrice + $totalPrice)
+                    #set($count=$count+$totalPrice)
+                    <td>$!totalPrice (元)</td>
+                </tr>
+                #end
+            </table>
+        </div>
+        <div class="h20"></div>
+
+        <div class="order-confirm-couponShow">
+            <div class="order-confirm-coupon">
+                <div class="order-confirm-couponUse">
+                    <label> <input type="checkbox" class="Js_userCoupon"> 使用优惠券：优惠券序列号</label>
+                    <input type="text" value="" class="checkcoupontext" name="num">
+                    <input type="button" value="验证" class="checkbtn Js_checkBtn">
+                </div>
+                <div class="order-confirm-selectCoupon">
+                    您现有<span>$!couponSize</span>张优惠券<em class="iconfont down"></em>
+
+                    <div class="order-confirm-select">
+                        #foreach($c in $!couponDtos)
+                        #if($c.couponStatus=="绑定")
+                        <label><input type="radio" value="" name="coupon" disabled data-val="$!c.quota"
+                                      data-id="$!c.id"><span>$!c.quota</span>元优惠券 使用有效期至<span>$!c.gqDate</span></label>
+                        #end
+                        #end
+                    </div>
+                </div>
+                <p>注意：订单提交后优惠券不可退</p>
+
+                <div class="h20"></div>
+                <div class="underline"></div>
+            </div>
+
+            <div class="order-confirm-order">
+
+                #set($qitemTotalPrice=$itemTotalPrice - 8)
+                <input type="hidden" id="totalCount" value="$!count"/>
+                总价：<span class="moneyShow">￥ $count</span> 优惠券折扣：<span class="moneyShow Js_coupon">￥<em></em></span>
+                优惠价：<span
+                    class="moneyShow Js_count">￥ <em>$!qitemTotalPrice</em></span>
+                <a class="Js_order"><span class="orderShow">提交订单</span></a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="h60"></div>
+
+
+</div>
+<script>
+    require(['order/orderConfirm']);
+</script>

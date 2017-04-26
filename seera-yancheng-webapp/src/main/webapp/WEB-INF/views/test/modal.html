@@ -1,0 +1,18 @@
+<link href="/css/test.css" rel="stylesheet" type="text/css" />
+<div class="test">
+<input type="button" class="modalBtn" value="测试">
+
+    <input type="button" class="modalBtn2" value="测试2">
+
+    <!--需要定义class为i_modal，data-title为modal的title，data-url为异步的url，暂定这些-->
+    <input type="button" class="i_modal" data-title="添加" data-url="/test" value="不用写JS的modal，方便的一笔">
+    <input type="button" class="i_modal" data-title="添加01" data-url="/test" value="不用写JS的modal，方便的一笔">
+
+</div>
+
+
+
+
+<script>
+    require(["test/modal"]);
+</script>

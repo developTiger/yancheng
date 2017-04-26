@@ -1,0 +1,60 @@
+
+$ui.loadCss("helperCenter.css")
+<div class="h20">
+</div>
+<div class="main">
+    <div><a href="/">淹城</a> > 帮助中心 > 常见问题</div>
+    <div class="h20"></div>
+    <div class=" helper-left">
+        <div class="helper-left-top"><strong style="margin-left: 40px">帮助中心</strong></div>
+        <div class="hRed"></div>
+        <div class="helper-left-center">
+            <ul>
+                <li><img src="/images/helperCenter/bangzhu.png"/><span class="helper">帮助中心</span></li>
+                <a href="/helpCenter/JDRC114F"><li #if($article.num=="JDRC114F") style="color: #DA7A7A" #end >常见问题</li></a>
+                <a href="/helpCenter/J0CNB501"><li #if($article.num=="J0CNB501") style="color: #DA7A7A" #end>预定说明</li></a>
+                <a href="/helpCenter/QJH3QH7M"><li #if($article.num=="QJH3QH7M") style="color: #DA7A7A" #end>支付说明</li></a>
+            </ul>
+        </div>
+
+        <div class="helper-left-center">
+            <ul>
+                <li><img src="/images/helperCenter/fuwu.png" /><span class="helper">服务承诺</span></li>
+                <!--<a><li>入园保证</li></a>
+                <a><li>正规发票</li></a>
+                <a><li>意见反馈</li></a>-->
+                <a href="/helpCenter/IGMD204S"><li #if($article.num=="IGMD204S") style="color: #DA7A7A" #end>入园保证</li></a>
+                <a href="/helpCenter/80D2R72R"><li #if($article.num=="80D2R72R") style="color: #DA7A7A" #end>入住保证</li></a>
+                <a href="/helpCenter/2RB5S9MH"><li #if($article.num=="2RB5S9MH") style="color: #DA7A7A" #end>正规发票</li></a>
+                <a href="/helpCenter/DKN5CR05"><li #if($article.num=="DKN5CR05") style="color: #DA7A7A" #end>意见反馈</li></a>
+            </ul>
+        </div>
+
+        <div class="helper-left-center">
+            <ul>
+                <li><img src="/images/helperCenter/tiaokuan.png" /><span class="helper">网站条款</span></li>
+               <!-- <a><li>隐私保护</li></a>
+                <a><li>免责声明</li></a>-->
+                <a href="/helpCenter/PMHAUUVB"><li #if($article.num=="PMHAUUVB") style="color: #DA7A7A" #end>隐私保护</li></a>
+                <a href="/helpCenter/MA6TUOU7"><li #if($article.num=="MA6TUOU7") style="color: #DA7A7A" #end>免责申明</li></a>
+            </ul>
+        </div>
+
+        <div class="helper-left-center">
+            <ul>
+                <li><img src="/images/helperCenter/lianjie.png"/><span class="helper">关于我们</span></li>
+                <a  href="/helpCenter/JUQURFO7"><li #if($article.num=="JUQURFO7") style="color: #DA7A7A" #end>淹城网站服务介绍</li></a>
+                <a  href="/helpCenter/PEPGFHJD"><li #if($article.num=="PEPGFHJD") style="color: #DA7A7A" #end>网站服务协议</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <div class=" helper-right">
+        <div class="helper-right-top"><p style="text-align: center;">$article.title</p></div>
+        <div class="h_nderline"></div>
+        <div style="margin-left: 20px;margin-right: 20px;margin-top: 20px;">$article.content</div>
+
+    </div>
+</div>
+
+<div class="h60"></div>

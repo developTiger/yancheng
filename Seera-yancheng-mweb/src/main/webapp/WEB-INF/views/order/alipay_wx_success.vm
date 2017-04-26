@@ -1,0 +1,19 @@
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title">淹城订单支付结果</h1>
+
+
+    </header>
+    <div class="content" style="text-align: center">
+        <i class="iconfont iconfont-success"></i>
+        <div>
+            <div>
+                <div>支付成功</div>
+
+            </div>
+        </div>
+
+##        <div>订单编号:$orderNum <a href="/order/orderDetail?order_no=$orderNum" class="external"> 查看订单详情</a></div>
+
+    </div>
+</div>

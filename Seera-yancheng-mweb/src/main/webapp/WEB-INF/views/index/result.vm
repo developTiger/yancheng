@@ -1,0 +1,81 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">淹城春秋乐园-门票搜索</h1>
+            <a class=" icon icon-left pull-left back"  style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        #parse("/layout/siteNav.vm")
+        <div class="content pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="page-index">
+                <div style="border-bottom: 1px solid #e7e7e7">
+                    <form action="/search.html" method="get">
+                        <div class="searchbar row">
+                            <div class="search-input col-80">
+                                <label class="icon icon-search" for="search"></label>
+                                <input type="search" name='name' value="$!name" placeholder='输入关键字...'/>
+                            </div>
+                            <input type="submit" class="button button-fill button-primary col-20" value="搜索">
+                        </div>
+                    </form>
+                </div>
+
+##                <div class="row sort-box">
+##                    <div class="col-50"><a href="#" class="sort-item">综合排序</a></div>
+##                    <div class="col-50"><a href="#" class="sort-item last">价格</a></div>
+##                </div>
+
+                #foreach($item in $list)
+                    <div class="card" style="    margin: 0;">
+
+                        <div class="list-block media-list " style="margin-left: 0.3rem">
+                            <ul>
+                                <a class="external" href="/ticket/${item.id}.html">
+                                    <li class="item-content row" style="line-height: 1.2rem">
+
+                                        <div class="item-media col-30">
+                                            <img src="$imghost/s/$item.mainPicturePath"
+                                                 width="140">
+                                        </div>
+                                        <div class="item-inner col-70" style="padding-left: .3rem">
+                                            <div class="item-title-row" style="font-size: 0.7rem">
+                                                <div>$item.name</div>
+                                            </div>
+                                            <div class="item-content-main" style="font-size: 0.6rem">
+                                                <span style="color:#EA832C">   $item.specDescription</span>
+
+                                            </div>
+                                            <div>
+                                                <span class="ui-rmb-discount" style="font-size: 0.8rem">¥$item.discountPrice</span>
+                                                <span class="ui-rmb-original " style="font-size: 0.6rem">¥$item.price</span>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                </a>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                #end
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  关于我们 -->
+#parse("about.vm")
+</div>
+
+#set($block_script='
+
+')

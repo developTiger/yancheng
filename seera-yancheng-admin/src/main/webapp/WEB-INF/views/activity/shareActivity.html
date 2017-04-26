@@ -1,0 +1,38 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/分享活动</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 分享活动.
+        </div>
+
+
+        <div class="row" style="margin-left: 1px;margin-top: 15px;margin-bottom: 15px;">
+
+            <div class="form-inline ">
+
+                <form id="searchForm" data-url="ajax_share_activity_Page">
+                    <label class="form-group">活动名称:</label>
+                    <input type="text" class="form-control " name="activityName" size="8">
+                    <label class="form-group">参与者微信名称:</label>
+                    <input type="text" class="form-control " name="wxName" size="8">
+                    <div class="form-group" style="position: relative;top: 0.2em">
+                        <div class="control-label" >
+                            <input type="button" class="btn btn-default" id="searchActivity" value="搜索">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/activity/shareActivity"]);
+</script>

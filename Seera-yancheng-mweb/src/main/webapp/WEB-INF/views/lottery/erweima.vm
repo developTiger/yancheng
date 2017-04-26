@@ -1,0 +1,23 @@
+#set($layout="layout/activityLayout.vm")
+<style>
+    /*.content{background-size: 100%;background-image: url('images/lottery/bg2.png');background-repeat: no-repeat;}*/
+    /*.content1{height: 7%;}*/
+    /*.content2{background-image: url('images/lottery/nightPark.png');background-repeat: no-repeat;height: 50%;background-size: 100%;background-position: center;}*/
+    /*.content2-text{text-align: center;font-size: 28px;color: #803C03;height: 115px;}*/
+    /*.content2-bg{background-image: url('images/lottery/quan.png');background-repeat: no-repeat;height: 159px;padding: 10px 20px;}*/
+    /*.content4{text-align: center;}*/
+    .page-group.page-current, .page.page-current {
+        overflow: auto;
+    }
+</style>
+
+<div class="page page-current">
+    <div class="content native-scroll">
+       <img src="/images/lottery/erweima.png" style="width: 100%">
+    </div>
+</div>
+
+
+
+</body>
+</html>

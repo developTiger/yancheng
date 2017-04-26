@@ -1,0 +1,140 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th style="width: 50px">
+            <input type="checkbox" id="check-all"  class="checkAll ">        </th>
+        <th class="column-title">id </th>
+        <th class="column-title">申请人 </th>
+        <th class="column-title">表单编码 </th>
+        <th class="column-title">表单类型 </th>
+        <th class="column-title">表单状态 </th>
+        <th class="column-title">开始时间 </th>
+        <th class="column-title">结束时间 </th>
+        <th class="column-title">运行状态 </th>
+        <th class="column-title">是否通知签核人 </th>
+        <th class="column-title">已签发人 </th>
+        <th class="column-title">内容 </th>
+        <th class="column-title">标注 </th>
+        <th class="column-title">摘要 </th>
+        <th class="column-title">签发人 </th>
+
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="8">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pagesCount > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <td > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class="num"><%=items[i].applyer%></td>
+        <td><%=items[i].applyerName%></td>
+        <td><%=items[i].formNo%></td>
+        <td class=" "><%=items[i].formKind%></td>
+        <td>
+            <%if(items[i].formStatus=='WA'){%>
+                <%='待签核'%>
+            <%}else if(items[i].formStatus=='UA'){%>
+                <%='签核中'%>
+            <%}else if(items[i].formStatus=='WP'){%>
+                <%='待处理'%>
+            <%}else if(items[i].formStatus=='AP'){%>
+                <%='已处理'%>
+            <%}else if(items[i].formStatus=='RJ'){%>
+                <%='签核人退回、否决'%>
+            <%}else if(items[i].formStatus=='RC'){%>
+                <%='撤回'%>
+            <%}else if(items[i].formStatus=='IM'){%>
+                <%='修改中'%>
+            <%}else if(items[i].formStatus=='CL'){%>
+                <%='已结案'%>
+            <%}else if(items[i].formStatus=='SA'){%>
+                <%='储存'%>
+            <%}else if(items[i].formStatus=='DE'){%>
+                <%='删除'%>
+            <%}else if(items[i].formStatus=='NC'){%>
+                <%='未完成'%>
+            <%}else if(items[i].formStatus=='WD'){%>
+                <%='退回'%>
+            <%}%>
+        </td>
+        <td><%=dateFormat(items[i].beginDate)%></td>
+        <td><%=dateFormat(items[i].endDate)%></td>
+        <td>
+            <%if(items[i].lifeCycle=='R'){%>
+                <%='开始运行'%>
+            <%}else if(items[i].lifeCycle=='F'){%>
+                <%='结束'%>
+            <%}else if(items[i].lifeCycle=='P'){%>
+                <%='暂停'%>
+            <%}%>
+        </td>
+        <td><%=items[i].noticeFlag==0?"未通知":"已通知"%></td>
+        <td><%=items[i].proviousApprover%></td>
+
+        <td><%=items[i].content%></td>
+        <td><%=items[i].remark%></td>
+        <td><%=items[i].summery%></td>
+        <td>
+            <%if(items[i].formApprovers){%>
+                <%=items[i].formApprovers[0].appName%>
+            <%}%>
+        </td>
+        <td class=" last">
+
+            <a class="i_modal label label-default "
+               data-title="修改用户" data-url="">
+                <i class="green fa fa-plus"></i>修改 </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            <a class="i_modal label label-default " data-toggle="modal" data-target="#myModal"
+               data-title="查看详情" data-url="">
+                <i class="green fa fa-plus"></i>查看 </a>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+
+<!--模态框-->
+<div class="modal fade" style="margin: auto" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: auto;min-width:800px;display: inline-block;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    模态框（Modal）标题
+                </h4>
+            </div>
+            <div class="modal-body">
+                <iframe width="750px" height="500px" frameborder="no" border="0" marginwidth="0" marginheight="0"
+                        scrolling="no" allowtransparency="yes" src="sra_fm_formHeader"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+

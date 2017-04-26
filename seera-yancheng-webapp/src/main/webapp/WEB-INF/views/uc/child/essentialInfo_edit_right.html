@@ -1,0 +1,62 @@
+<style>
+    .error {
+        color: #C00;
+        padding: 0 6px;
+        font-size: 10px;
+    }
+</style>
+<div class="right-essentialInfo-main">
+    <p>基本信息<a href="edit_user" class="essentialInfo-edit">返回</a></p>
+
+    <form data-url="ajax_update_user" class="js_submit_form" method="post" >
+        <div class="right-essentialInfo-content">
+
+            <div class="name">
+                <label for="name">用户名：  </label>
+                <input id="name" type="text" value="$!user.userName" readonly name="userName" style="background-color: #EBEBE4"  required data-msg-required="不能为空">
+            </div>
+
+            <div class="real_name">
+                <label for="real_name">真实姓名：  </label>
+                <input id="real_name" type="text" value="$user.realName" name="realName" required data-msg-required="不能为空">
+            </div>
+
+            <div class="sex">
+                <label>性别：  </label>
+                <label for="sexMan"><input name="gender" id="sexMan" type="radio" value="male" required #if($user.gender=="Male") checked #end >  男</label>
+                <label for="sexWoMan"><input name="gender" id="sexWoMan" type="radio" value="female" #if($user.gender=="Female") checked #end>  女</label>
+                <span for="radio1" class="error"></span>
+            </div>
+
+            <div class="email">
+                <label for="email">邮箱：  </label>
+                <input id="email" type="email" value="$!user.email" name="email" placeholder="请输入email地址"
+                       required data-rule-email="true" data-msg-required="请输入email地址" data-msg-email="请输入正确的email地址">
+            </div>
+
+            <div class="mobile">
+                <label for="mobile">手机：  </label>
+                <input id="mobile" type="text" value="$!user.mobilePhone" name="mobilePhone" placeholder="手机号"
+                       required data-rule-mobile="true" data-msg-required="请输入手机号" data-msg-mobile="请输入正确格式">
+            </div>
+
+            <div class="detailed-address">
+                <label for="detailed-address">微信号：  </label>
+                <input id="detailed-address" type="text" value="$!user.wxName" name="wxName" placeholder="微信号"
+                       required data-msg-required="请输入微信号">
+            </div>
+
+            <div class="save-Info">
+                <input type="submit" class="submit-save-info" style="cursor: pointer;" value="保存信息">
+            </div>
+        </div>
+    </form>
+    <div class="h20"></div>
+    <div class="updateSuccess">
+        修改成功
+    </div>
+    <div class="updateFail">
+        修改失败
+    </div>
+</div>
+

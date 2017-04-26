@@ -1,0 +1,10 @@
+.helper-left{width: 236px;height: 618px;display:inline-table ; border:solid  #ECECEC 2px; }
+.helper-right{width:950px;height: 618px;display:inline-table ;border:solid  #ECECEC 2px; }
+.hRed{ border-bottom: solid #ff0000 3px;}
+.helper-left-top{height: 41px;line-height: 41px;margin-left: 15px;width:220px; font-size: 18px;font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 宋体}
+.helper-left-center li{height:41px;line-height: 41px;font-size: 18px;float:left;margin-left: 10px;width: 220px;}
+.helper-left-center li img{margin-left: 8px;margin-top: 10px;float:left;}
+.helper-left-center li .helper{font-size: 18px;margin-top: 4px;margin-left: 2px; float:left;}
+.helper-left-center ul li:first-child{background-color:#F8F8F8; }
+.helper-right-top{height: 41px;line-height: 41px;margin-left: 15px;font-size: 18px;font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 宋体}
+.h_nderline{border-bottom: solid #ECECEC 3px;}

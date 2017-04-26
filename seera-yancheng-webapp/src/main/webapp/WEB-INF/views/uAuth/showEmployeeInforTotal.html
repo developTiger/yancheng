@@ -1,0 +1,354 @@
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2><i class="fa fa-align-left"></i> Collapsible / Accordion <small>Sessions</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <!-- start accordion -->
+        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+            <div class=" panel">
+                <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">
+                    <h4 class="panel-title">基本信息</h4>
+                </a>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class=" col-md-2"> 登录名</th>
+                                <th class="col-md-2">真实姓名 </th>
+                                <th class="col-md-2">性别</th>
+                                <th class="col-md-2">族别</th>
+                                <th class="col-md-2">出生日期</th>
+                                <th class="col-md-2">身份证  </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td >#if($emp.loginName)$emp.loginName #else  #end</td>
+                                    <td>$emp.name</td>
+                                    <td>$emp.sex</td>
+                                    <td>$emp.nation</td>
+                                    <td>#if($emp.birthday)$emp.birthday #else  #end </td>
+                                    <td>$emp.IdCard</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class="col-md-2">工龄 </th>
+                                <th class="col-md-2"> 入院时间</th>
+                                <th class="col-md-2">职位</th>
+                                <th class="col-md-2">个人身份</th>
+                                <th class="col-md-2">籍贯</th>
+                                <th class="col-md-2">文化程度  </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>$emp.seniority</td>
+                                <td>$emp.enteryDate</td>
+                                <td>$emp.position</td>
+                                <td >$emp.personalInfo</td>
+                                <td>$emp.origo</td>
+                                <td>$emp.educationInfo</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class="col-md-2">行政级别 </th>
+                                <th class="col-md-2"> 工种</th>
+                                <th class="col-md-2">技能等级</th>
+                                <th class="col-md-2">政治面貌</th>
+                                <th class="col-md-2">外语级别</th>
+                                <th class="col-md-2">计算机级别  </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>$emp.executiveLevel</td>
+                                <td>$emp.workKind</td>
+                                <td>$emp.techLevel</td>
+                                <td >$emp.politicalFace</td>
+                                <td>$emp.foreignLanguageLevel</td>
+                                <td>$emp.computeLevel</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class="col-md-2">手机 </th>
+                                <th class="col-md-2"> 邮箱</th>
+                                <th class="col-md-2">座机</th>
+                                <th class="col-md-2">简介</th>
+                                <th class="col-md-2">创建时间</th>
+                                <th class="col-md-2">最后修改时间</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>$emp.mobile</td>
+                                <td>$emp.email</td>
+                                <td>$emp.phone</td>
+                                <td >$emp.brief</td>
+                                <td>$emp.createDateTime</td>
+                                <td>$emp.lastUpdateTime</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" panel">
+                <a class="panel-heading" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion"aria-controls="collapseTwo">
+                    <h4 class="panel-title">教育信息</h4>
+                </a>
+                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+
+
+                                <table class="table table-striped table-bordered dataTable no-footer">
+                                    <thead>
+                                    <tr class="headings">
+                                        <th class="column-title">毕业学校 </th>
+                                        <th class="column-title"> 学习形式</th>
+                                        <th class="column-title">毕业时间</th>
+                                        <th class="column-title">学习专业</th>
+                                        <th class="column-title">文化程度</th>
+
+                                        <th class="column-title">学位 </th>
+                                        <th class="column-title">获取时间 </th>
+                                        <th class="column-title"> 获取的途径</th>
+                                        <th class="column-title">简介</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    #if($educ)
+                                    #foreach($bean in $educ)
+                                    <tr>
+                                        <td>$bean.school</td>
+                                        <td>$bean.studyForm</td>
+                                        <td>$bean.graduation</td>
+                                        <td>$bean.major</td>
+                                        <td>$bean.level</td>
+                                        <td>$bean.degree</td>
+                                        <td>$bean.obtain</td>
+                                        <td>$bean.way</td>
+                                        <td>$bean.brief</td>
+                                    </tr>
+                                    #end
+                                    #else
+                                    <dd>暂无数据</dd>
+                                    #end
+                                    </tbody>
+                                </table>
+
+                           <!--     <table class="table table-striped table-bordered dataTable no-footer">
+                                    <thead>
+                                    <tr class="headings">
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>-->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class=" panel">
+                <a class="panel-heading" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseThree">
+                    <h4 class="panel-title">工作经历</h4>
+                </a>
+                <div id="collapseThree1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree"  >
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class="column-title">是否是当前工作 </th>
+                                <th class="column-title"> 就职时间</th>
+                                <th class="column-title">辞职时间</th>
+                                <th class="column-title">就职单位</th>
+                                <th class="column-title">工作名称</th>
+                                <th class="column-title">工作地点</th>
+                                <th class="column-title">工作简介</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            #if($workEx)
+                            #foreach($bean in $workEx)
+                                <tr>
+                                    <td>$bean.isCurrent</td>
+                                    <td>$bean.strartTime</td>
+                                    <td>$bean.overTime</td>
+                                    <td>$bean.company</td>
+                                    <td>$bean.workName</td>
+                                    <td>$bean.workPlace</td>
+                                    <td>$bean.breif</td>
+                                </tr>
+                            #end
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" panel">
+                <a class="panel-heading" role="tab" id="headingThree2" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseThree">
+                    <h4 class="panel-title">职务信息</h4>
+                </a>
+                <div id="collapseThree2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree" >
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class="column-title">是否是当前职务 </th>
+                                <th class="column-title"> 聘任时间</th>
+                                <th class="column-title">卸任时间</th>
+                                <th class="column-title">资格专业</th>
+                                <th class="column-title">资格名称</th>
+                                <th class="column-title">资格级别</th>
+                                <th class="column-title">获取时间</th>
+                                <th class="column-title">获取途径</th>
+                                <th class="column-title">信息介绍</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #if($TechPos)
+                            #foreach($bean in $TechPos)
+                            <tr>
+                                <td>$bean.isCurrent</td>
+                                <td>$bean.inTime</td>
+                                <td>$bean.outTime</td>
+                                <td>$bean.major</td>
+                                <td>$bean.name</td>
+                                <td>$bean.level</td>
+                                <td>$bean.inObtian</td>
+                                <td>$bean.way</td>
+                                <td>$bean.brief</td>
+                            </tr>
+                            #end
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" panel">
+                <a class="panel-heading" role="tab" id="headingThree4" data-toggle="collapse" data-parent="#accordion"  aria-controls="collapseThree">
+                    <h4 class="panel-title">资质信息</h4>
+                </a>
+                <div id="collapseThree4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class="column-title">资质名字 </th>
+                                <th class="column-title"> 身份证</th>
+                                <th class="column-title">url地址</th>
+                                <th class="column-title">简介</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #if($QualiFic)
+                            #foreach($bean in $QualiFic)
+                            <tr>
+                                <td>$bean.name</td>
+                                <td>$bean.idCard</td>
+                                <td>$bean.url</td>
+                                <td>$bean.brief</td>
+                            </tr>
+                            #end
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" panel">
+                <a class="panel-heading" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion"  aria-controls="collapseThree">
+                    <h4 class="panel-title">家庭情况</h4>
+                </a>
+                <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered dataTable no-footer">
+                            <thead>
+                            <tr class="headings">
+                                <th class="column-title">称谓 </th>
+                                <th class="column-title"> 姓名</th>
+                                <th class="column-title">性别</th>
+                                <th class="column-title">出生日期</th>
+                                <th class="column-title">住址</th>
+                                <th class="column-title">工作单位</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #if($Family)
+                            #foreach($bean in $Family)
+                            <tr>
+                                <td>$bean.label</td>
+                                <td>$bean.name</td>
+                                <td>$bean.sex</td>
+                                <td>$bean.birthday</td>
+                                <td>$bean.address</td>
+                                <td>$bean.company</td>
+                            </tr>
+                            #end
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

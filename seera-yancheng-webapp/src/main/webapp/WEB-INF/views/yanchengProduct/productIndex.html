@@ -1,0 +1,226 @@
+
+<style>
+    .col-md-55, .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+        position: relative;
+        min-height: 1px;
+        float: left;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .col-md-offset-1 {
+        margin-left:4.33333333%;
+    }
+
+    .col-md-1 {
+        width: 12.33333333%;
+    }
+    .col-md-2 {
+        width:14.66666667%;
+    }
+    .col-md-3 {
+        width:22.66666667%;
+    }
+
+
+</style>
+<div class="x_panel">
+
+    <div class="x_content">
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+                <strong style="font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 宋体">
+                    <h2>商品管理</h2>
+                </strong>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12 form-group" style="background-color: rgba(141, 88, 255,0.09);height: 80px;">
+               <div class="" style="background-color:rgba(141, 88, 255,0.19);height: 50px; margin-top: 15px;margin-left: 10px;margin-right: 10px;">
+                  <input type="button" style="border:none;margin-top: 10px;margin-left: 20px;font-size: large;background-color:#3527ff"  value="商品列表" >
+                   <input type="button" style="border:none;margin-top: 10px;margin-left:5px;font-size: large;background-color: #3527ff"  value="商品项列表">
+               </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12 form-group"style="margin-left:10px;">
+                    商品管理>商品列表
+                </div>
+            </div>
+
+            <div class="container" style="margin: 0px;">
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-1">
+                        <p  style="font-size: 1px;">
+                            <span>商品编号:</span>
+                            <input type="text" class="small" style="width: 100px;height:18px;" >
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p  for="login-name" style="font-size: 1px;">
+                            <span>商品名称:</span>
+                            <input type="text" class="small" style="width: 100px;height:18px;">
+                        </p>
+                    </div>
+                    <div class="col-md-1 ">
+                        <p  for="login-name" style="font-size: 1px;">
+                            <span>状态:</span>
+                           <select style="width: 100px;">
+                               <option>全部状态</option>
+                           </select>
+                        </p>
+                    </div>
+
+                     <div class="col-md-3 ">
+                        <p  for="login-name" style="font-size: 1px;">
+                            <span>上架日期:</span>
+                            <input type="text" class="small" style="width:90px;height:18px;"> - <input type="text" class="small" style="width:90px;height:18px;">
+                        </p>
+                    </div>
+
+                    <div class="col-md-2 ">
+                        <input type="button" class="btn-small" value="搜索"     style="height:18px;line-height:13px;">
+                        <input type="button" class="btn-small" value="新增商品" style="height:18px;line-height:13px;">
+                    </div>
+
+                </div>
+                <!--<div class="row">
+                    <div class="col-md-4">.col-md-4</div>
+                    <div class="col-md-8">
+                        我的里面嵌套了一个网格
+                        <div class="row">
+                            <div class="col-md-4">col-md-55555</div>
+                            <div class="col-md-4">col-md-4</div>
+                            <div class="col-md-4">col-md-4</div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+
+
+           <!-- <div class="row" style=" margin-left: 30px; height: 500px;">
+                <div class="col-md-12">
+
+                    <div class="col-md-3">
+                        <p class="col-sm-1 small" for="wxoauth-name" style="font-size: 1px;">商品编号：</p>
+                        <input type="text" class="small" id="wxoauth-name" >
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <p class="col-sm-1 small" for="wxoauth-name" style="font-size: 1px;">商品名称：</p>
+                        <input type="text" class="small" id="name1">
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <p class="col-sm-1 small" for="wxoauth-name" style="font-size: 1px;">状态：</p>
+                        <input type="text" class="small" id="name2" >
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <p class="col-sm-1 small" for="wxoauth-name" style="font-size: 1px;">上架日期：</p>
+                        <div class="col-xs-2">
+                            <input type="text" id="name5" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">-
+                            <input type="text" id="name6" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input class="col-xs-3" type="button" class="btn-small" value="搜索">
+                        <input class="col-xs-3" type="button" class="btn-small" value="新增商品">
+                    </div>
+
+
+                </div>
+
+
+
+            </div>-->
+
+
+
+          <!--  <div class="col-md-12 col-sm-12 col-xs-12 form-group" style=" margin-left: 60px; height: 500px;">
+                <div class="col-sm-3">
+                    <label class="col-sm-3" for="wxoauth-name" style="font-size: 2px;">商品编号：</label>
+                    <div class="col-xs-6">
+                        <input type="text" id="wxoauth-name" required="required" #if($e)value="$e.school"#end  name="school"
+                               class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4539"></ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="col-xs-3" for="wxoauth-name">商品名称：</label>
+                    <div class="col-xs-6">
+                        <input type="text" id="name1" required="required" #if($e)value="$e.school"#end  name="school" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="control-label  col-xs-3" for="wxoauth-name">状态：</label>
+                    <div class="col-xs-6">
+                        <input type="text" id="name2" required="required" #if($e)value="$e.school"#end  name="school" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="control-label  col-xs-3" for="wxoauth-name">上架日期：</label>
+                    <div class="col-xs-6">
+                        <input type="text" id="name5" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">-
+                        <input type="text" id="name6" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <input type="button" value="搜索">
+                    <input type="button" value="新增商品">
+                </div>
+
+
+            </div>-->
+
+        </div>
+        <div class="row">
+            <table class="table table-striped ">
+                <thead>
+                <tr class="headings">
+                    <th style="width: 20px">
+                        <input type="checkbox" id="check-all"  class="checkAll "></th>
+                    <th class="column-title">商品编号 </th>
+                    <th class="column-title">商品名称 </th>
+                    <th class="column-title">价格 </th>
+                    <th class="column-title">数量 </th>
+                    <th class="column-title">商品类目 </th>
+                    <th class="column-title">商家名称 </th>
+                    <th class="column-title">上架日期 </th>
+                    <th class="column-title">状态 </th>
+                    <th class="column-title">操作 </th>
+
+                    <th class="bulk-actions" colspan="8">
+                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                    </th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <input type="checkbox" class="checkAll " >全选
+            </div>
+            <div class="col-md-2">
+                已选中x条
+            </div>
+            <div class="col-md-2">
+                <a>批量下架</a>
+                <a>批量删除</a>
+            </div>
+        </div>
+
+        <div class="col-lg-10 dataTables_paginate  ">
+            1
+            <ul class="pagination "></ul>
+        </div>
+
+    </div>
+</div>

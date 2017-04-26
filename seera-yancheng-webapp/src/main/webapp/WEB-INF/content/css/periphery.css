@@ -1,0 +1,29 @@
+.periphery-title{font-size: 24px;color: #666;margin-top:60px;margin-bottom:40px}
+.periphery-big{height:210px;margin: 0 10px;}
+.periphery-big .right{width:380px;background-color: #fff;position:relative;float: right;height:210px;border:1px solid #ccc;box-sizing: border-box;padding:65px 20px 0 20px;text-indent: 2em;color:#999;line-height: 24px;}
+.periphery-big .right i{width: 0;  height: 0;  border-style: solid;  border-width: 10px 15px 10px 0;  border-color: transparent #ccc transparent transparent;position:absolute;left:-15px;top:95px;}
+.periphery-big .right span{width: 0;  height: 0;  border-style: solid;  border-width: 10px 15px 10px 0;  border-color: transparent #fff transparent transparent;position:absolute;left:-13px;top:95px;}
+.periphery4three{padding:9px;border:1px solid #ccc;float:left;margin:0 10px;}
+.periphery4three .p1{ line-height: 30px;  padding: 0 5px;}
+.periphery4three .p2 span{color: #cc3333;  font-size: 20px;  font-weight: bold;  padding: 0 5px;}
+.periphery4three .p2 a{display: inline-block;  float: right;  width: 90px;  height: 30px;  background-color: #cc3333;  text-align: center;  line-height: 30px;  color: #fff;  border-radius: 5px;  margin: 0 5px 5px 0px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

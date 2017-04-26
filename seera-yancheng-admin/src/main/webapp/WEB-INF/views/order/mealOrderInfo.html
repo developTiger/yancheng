@@ -1,0 +1,114 @@
+</br>
+<div class=" x_panel  " xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+     xmlns="http://www.w3.org/1999/html">
+    <div class="x_title">
+        <h2>系统管理/订单详情</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 订单详情.
+        </div>
+        <div>
+            <div class="content">
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>基本信息:</strong></div>
+                    <div class="col-xs-2">订单号:$!order.num</div>
+                    <div class="col-xs-2 ">状态：
+                        <d style="color: red"><strong>$helper.paySelect($order.status)</strong></d>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>下单人信息:</strong></div>
+                    <div class="col-xs-2">下单人姓名:$!order.touristSimpleDto.realName</div>
+                    <div class="col-xs-2">下单时间：$!order.touristSimpleDto.createDateTime</div>
+                    <div class="col-xs-3">联系电话：$!order.touristSimpleDto.mobilePhone</div>
+                    <div class="col-xs-3">邮箱：$!order.touristSimpleDto.email</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>取票信息:</strong></div>
+                    <div class="col-xs-2">取票人姓名:$!order.fetcherDto.realName</div>
+                    <div class="col-xs-2">联系电话：$!order.fetcherDto.mobilePhone</div>
+                    <div class="col-xs-3">身份证号：$!order.fetcherDto.idCardNo</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>优惠券信息:</strong></div>
+                    #if($order.couponDto)
+                    <div class="col-xs-2">使用优惠卷：满￥ $order.couponDto.applyProduct 元 减 ￥$order.couponDto.quota 元</div>
+                    #else
+                    <div class="col-xs-2">未使用优惠券</div>
+                    #end
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="x_panel">
+    <div><h4><strong>商品清单</strong></h4></div>
+    <div id="table">
+        <table class="table table-striped  dataTable no-footer table-bordered">
+            <thead>
+            <tr class="headings">
+                <th class="column-title">产品内容</th>
+                <th class="column-title">类型</th>
+                <th class="column-title">单价</th>
+                <th class="column-title">数量</th>
+                <th class="column-title">总价</th>
+                <th class="column-title">状态</th>
+                <th class="column-title">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            #if($order.productDtos)
+            #foreach($bean in $order.productDtos)
+            <tr>
+                <td>$!bean.productDto.name</td>
+                <td>
+                    #if($bean.productDto.type =="Ticket") 门票 #end
+                    #if($bean.productDto.type =="Catering") 餐饮 #end
+                    #if($bean.productDto.type =="Souvenirs") 纪念品 #end
+                    #if($bean.productDto.type =="Hotel") 酒店 #end
+                    #if($bean.productDto.type =="GroupProduct") 组合商品 #end
+                    #if($bean.productDto.type =="Other") 其他 #end
+                </td>
+                <td class=" ">￥$!bean.productDto.price</td>
+                <td class=" ">$!bean.count</td>
+                <td class="a-right a-right ">￥#set($tp=$bean.count*$bean.productDto.price) $tp</td>
+                <td>
+                    #if($bean.status =="normal") 未使用 #end
+                    #if($bean.status =="mealCheck") 改签审核中 #end
+                    #if($bean.status =="mealReject") 拒绝改签 #end
+                    #if($bean.status =="mealed") 已改签 #end
+                    #if($bean.status =="returned") 已退单 #end
+                    #if($bean.status =="expire") 过期未消费 #end
+                    #if($bean.status =="end") 已使用 #end
+                </td>
+                <td>
+                    #if($bean.status =="mealCheck")
+                    <a class="i_modal" style="margin-left: 5px;"  data-title="审核改签"
+                       data-url="_orderMealAuditing?opd=$bean.id"><span>
+                        <i class="red fa fa-check"></i>改签</span></a>
+                    #end
+                    #if($order.status =="payed" && $bean.canReturn)
+                    <a style="margin-left: 5px;" data-title="退单处理"
+                       data-url="ajax_orderReturn?opd=<%=$bean.id%>"><span>
+                        <i class="red fa fa-remove"></i>退单</span></a>
+                    #end
+                </td>
+            </tr>
+            #end
+            #else
+            <d>暂无数据</d>
+            #end
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        require(["app/orderManager/orderList"]);
+    </script>
+
+</div>
+

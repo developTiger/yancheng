@@ -1,0 +1,117 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">用户基本信息</h1>
+            <a class=" icon icon-left pull-left external" href="/uc.html" style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <form id="changeUserInfoForm" action="/uc/updateUserInfo" method="post">
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">登录名</div>
+                                    <div class="item-input">
+                                        <input type="text" name="userName" placeholder="登录名"  #if($touristDto.userName||$touristDto.userName!="")
+                                               readonly="true" #end value="$!touristDto.userName">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">性别</div>
+                                    <div class="item-input">
+                                        <select name="gender">
+                                            <option value="Male"
+                                                #if($!touristDto.gender=="Male")
+                                                    selected
+                                                #end>男
+                                            </option>
+                                            <option value="Female"
+                                                #if($!touristDto.gender=="Female")
+                                                    selected
+                                                #end
+                                                    >女
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">邮箱</div>
+                                    <div class="item-input">
+                                        <input type="text" name="mail" placeholder="邮箱" value="$!touristDto.email">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">手机</div>
+                                    <div class="item-input">
+                                        <input type="text" name="mobilePhone" placeholder="手机"
+                                               value="$!touristDto.mobilePhone">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        #if(!$touristDto.userName)
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">密码</div>
+                                        <div class="item-input">
+                                            <input type="password" id="password" name="password" placeholder="密码"
+                                                   value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">确认密码</div>
+                                        <div class="item-input">
+                                            <input type="password" name="repassword" id="repassword" placeholder="确认密码"
+                                                   value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        #end
+                    </ul>
+                </div>
+
+                <div class="bar bar-tab">
+                    <div>
+                        <input type="button" id="changeUserInfo" class="button button-big button-fill button-danger"
+                               value="提交">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+#set($layout="layout/default.vm")
+<style>
+    .bar-nav~.content{background-color:rgb(232,73,70)}
+    .list-block .item-inner:after{background-color:rgb(232,73,70);}
+    .list-block ul:before{    content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: auto;
+        right: auto;
+        height: 1px;
+        width: 100%;
+        display: block;
+        z-index: 15;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;background-color:rgb(232,73,70) !important;}
+    .list-block li{
+        background-color: rgb(232,73,70);}
+    .list-block ul:after{background-color: rgb(232,73,70);}
+    .list-block .item-title.label{    width: 30%;text-align: right;padding-right:2%;font-size:1.2rem;}
+    .list-block .item-input{margin-right:4rem;}
+    .list-block form{background-color:rgb(232,73,70);}
+    .list-block form .label{color:#f9f7c3}
+    .list-block input[type=text],.list-block textarea{border:2px solid #f9f7c3}
+.modal{width:20rem;font-size:1.2rem;line-height: 1.5;    margin-left: -10rem;}
+	.modal-inner{font-size:1.2rem;line-height:1.5rem}
+	.modal-buttons{
+	font-size:1.2rem;line-height: 1.5;height:3.2rem !important;
+	}
+	.modal-button{
+	
+	font-size:1.2rem;line-height: 3.2;height:3.2rem;
+	} 
+</style>
+<div class="page-group ">
+    <div class="page page-current" id="dd"> 
+        <div class="content ">
+            <div class="list-block">
+                <img src="/images/activity/index.png" style="width:100%;">
+
+                <form class="form" method="post" enctype="multipart/form-data" action="/upload" style="    margin-top: -0.5rem;">
+                    <ul>
+                        <li >
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">标题</div>
+                                    <div class="item-input">
+                                        <input type="text" name="title" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li >
+                            <div class="item-content" style="line-height:1.5">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner" >
+                                    <div class="item-title label">图片</div>
+                                    <div class="item-input" style="    font-size: 1.2rem;position:relative;height:3rem">
+									
+									 <input type="button" id="up-a" style="position:absolute;top:0.3rem;height:2.15rem;line-height:normal ;z-index:500;background-color:#f9f7c3;width:10rem;color:#752926;border: none;" value="上传图片">
+                                        <input type="file" required name="file" id="upload" style="width: 20rem;height: 1.8rem;  position:relative; height: 3rem; opacity: 0; z-index:1000">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li >
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">内容</div>
+                                    <div class="item-input">
+                                        <textarea name="content" required ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <input type="hidden" name="openId" value="$openId">
+                    </ul>
+
+                    <div class="content-block">
+                        <div class="row">
+                            <div style=" display: flex; justify-content: center;">
+                                <input type="submit" class=" button button-big button-fill button-success" value="提交"
+                                       id="submit" style="background-color:#f9f7c3;width:8rem;color:#752926;">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div style="position: relative;margin-top: -1.8rem;">
+                    <img src="/images/activity/footer-index.png" width="100%">
+                    <div style="width:150px;height:150px;position: absolute;left:50%;top:0;margin-left:-75px;" id="scrollTop"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/index.js?t=444"></script>
+<script src="/js/spinner.js?t=3"></script>
+
+<script>
+    $("#scrollTop").click(function(){
+        $(".content").scrollTop(0);
+    })
+	
+	$("#submit").click(function(){
+	if($("input[name=title]").val()==""){
+	
+	 $.alert('请填写标题!')
+			return false;
+	}
+	if($("input[name=file]").val()==""){
+		 $.alert('请选择图片!')
+			return false;
+	}
+	if($("input[name=content]").val()==""){
+		 $.alert('请填写内容!')
+			return false;
+	}
+	
+	})
+</script>
+</body>
+</html>

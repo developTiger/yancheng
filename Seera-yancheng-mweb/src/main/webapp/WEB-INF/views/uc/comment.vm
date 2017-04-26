@@ -1,0 +1,88 @@
+<div class="page-group">
+
+        <style>
+
+
+       /*.star-info strong,.star-span strong{*/
+            /*color: red;*/
+        /*}*/
+    </style>
+
+    <script type="text/javascript">
+
+    </script>
+    <div class="page page-current" id="comments" style="  background: #efeff4 !important;">
+
+        <div class="bar bar-tab" style="    height: 2.8rem;">
+            <div>
+
+                <input type="button" id="commentBtn" class="button button-big button-fill button-danger "
+                       style="padding-top: 0px"
+                       data-url="/order/createOrder" value="提交评价">
+            </div>
+        </div>
+        <header class="bar bar-nav">
+            <h1 class="title">商品评价</h1>
+            <a class=" icon icon-left pull-left  external"  href="/uc/order/list/payed.html"  style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+
+
+            <form id="commentForm">
+                #set($obj=-1)
+                <input type="hidden" name="order_no" value="$orderDto.num">
+            #foreach($item in $orderDto.productDtos)
+                <div class="card  card-zz">
+                    <div class="card-header">
+                        <span> $item.productDto.name</span>
+                        #set($obj=$obj+1)
+
+                    </div>
+                    <div class="card-content">
+                        <div class="content-padded">
+                            <div class="list-block media-list">
+                                <ul>
+
+                                        <li class="item-content" style="margin-left: 0.5rem">
+
+                                            <div class="item-inner row">
+
+##                                                    <div class="item-title-row">
+##                                                        <div class="item-title" style="color: #d4913b;;font-weight: 600"><span>$!item.name</span>
+##
+##                                                        </div>
+##                                                    </div>
+                                                    <div class="item-subtitle">
+                                                        <input type="hidden" value="$!item.productDto.num" name="feedBackDtos[$obj].num">
+
+                                                        <span> 商品评价：</span> <span class="star-div" > </span>
+                                                        <span class="star-span"  style="color: #EA832C" ></span>
+                                                        <input   type="hidden" name="feedBackDtos[$obj].score"  class="scores" value="5"  >
+
+
+                                                        <textarea style="border: 0.05rem solid #9c9e9e;height: 4rem" name="feedBackDtos[$obj].commentProduct"></textarea>
+                                                    </div>
+
+                                            </div>
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            #end
+            </form>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<form id="addTouristInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="userName">用户名： <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="userName" required="required"
+                   name="userName" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="userName">真实姓名：
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="realName" required="required"
+                   name="realName" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2051"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="email">注册邮箱:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="email" name="email"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">手机号:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="mobilePhone" name="mobilePhone"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">年卡过期时间:
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="yearCardExpireDate" name="yearCardExpireDateStr" placeholder="截止日期"
+                   class="form-control Wdate col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">年卡备注:
+        </label>
+
+        <div class="col-xs-6">
+            <textarea type="textarea" id="yearCardInfo" name="yearCardInfo"
+                      class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                </textarea>
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateTourist" data-url="ajax_add_update_tourist"
+                    class="btn btn-success">确定新增
+            </button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>
+

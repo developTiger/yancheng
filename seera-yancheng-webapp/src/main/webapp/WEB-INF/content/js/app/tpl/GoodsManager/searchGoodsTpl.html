@@ -1,0 +1,83 @@
+<div>
+    商品管理>商品列表
+</div>
+<div class="row">
+    <div class=" btn-group  col-xs-3">
+        <a class="btn btn-default buttons-copy buttons-html5 btn-sm"
+           href="addGoods"><span><i class="green fa fa-plus"></i>新增</span></a>
+
+        <a class="btn btn-default buttons-copy buttons-html5 btn-sm  " id="Js_deleteGoods" tabindex="0"
+           aria-controls="datatable-buttons"><span><i
+                class="red fa fa-remove"></i>删除</span></a>
+
+        <div class="col-xs-6 form-group" style="font-size: medium;vertical-align: middle">
+           已选中<a class="dynamicChoose red"></a>条
+        </div>
+
+    </div>
+
+    <div class="form-inline col-xs-9">
+
+        <form id="searchForm" data-url="ajax_goods_query">
+            <label class="form-group">商品编号:</label>
+            <input type="text" class="form-control" name="num" size="4">
+
+            <label class="form-group">商品名称:</label>
+            <input type="text" class="form-control " name="goodsName" size="8">
+
+            <div class="form-group">
+                <label class="form-group">状态:
+                </label>
+
+                <div class="form-group ">
+
+                    <select id="statusB" required="required" name="statusB"
+                            class="form-control col-xs-7" data-parsley-id="0004">
+                        <option value="">全部状态</option>
+                        <option value="1">待上架</option>
+                        <option value="2">正在上架</option>
+                        <option value="3">推荐上架</option>
+                        <option value="4">已下架</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="form-group">上架日期:
+                </label>
+
+                <div class="form-group ">
+
+                    <input type="text" class="form-control  Wdate" id="begin_time" placeholder="开始时间"
+                           name="begin_time" size="7">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-group">
+                </label>
+
+                <div class="form-group ">
+
+                    <input type="text" class="form-control  Wdate" id="end_time" placeholder="结束时间"
+                           name="end_time" size="7">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-group">
+                </label>
+
+                <div class="form-group">
+                    <input type="button" class="btn btn-default" id="goodsManager" value="搜索">
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/改签管理</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 改签订单管理.
+        </div>
+        <div class="row">
+            <div class=" btn-group  col-xs-2">
+                <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="订单改签审核"
+                   data-url="_orderMealAuditing"><span><i class="green fa fa-plus"></i>订单改签审核</span></a>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left: 1px;margin-bottom: 10px;margin-top: 10px;">
+
+            <div class="form-inline">
+
+                <form id="searchForm" data-url="ajax_orderMeal_query_list">
+
+                    <label class="form-group">商品名称:</label>
+                    <input type="text" class="form-control" name="productName" size="18">
+
+
+                    <label class="form-group">订单编号:</label>
+                    <input type="text" class="form-control" name="num" size="4">
+
+                    <label class="form-group">用户名:</label>
+                    <input type="text" class="form-control " name="touristUserName" size="8">
+
+                    <div class="form-group">
+                        <label class="form-group">定单状态:
+                        </label>
+
+                        <div class="form-group ">
+                            <select id="productStatus" required="required" name="productStatus"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value="">全部状态</option>
+                                <option value="mealCheck">改签审核</option>
+                                <option value="mealReject">拒绝改签</option>
+                                <option value="mealed">改签通过</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">下单时间:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate" id="begin_Date" placeholder="开始时间"
+                                   name="begin_Date" size="7">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate" id="end_Date" placeholder="结束时间"
+                                   name="end_Date" size="7">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">
+                        </label>
+
+                        <div class="control-label" style="position: relative;top: -0.6em">
+                            <input type="button" class="btn btn-default" id="orderQuery" value="搜索">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/orderManager/orderMeal"]);
+</script>

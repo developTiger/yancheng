@@ -1,0 +1,114 @@
+#set($layout="layout/activityLayout.vm")
+<style>
+    .content{background-size: 100%;background-image: url('images/lottery/bg2.png');background-repeat: no-repeat;}
+    .content1{height: 6rem;line-height: 6;}
+    .content2{background-image: url('images/lottery/quan.png');background-repeat: no-repeat;height: 15rem;background-size: 100%;height: 48%;}
+    .content22{background-image: url('/images/lottery/xiaoliping.png');background-repeat: no-repeat;height: 15rem;background-size: 100%;}
+    .content2-text{text-align: center;font-size:1em;color: #803C03;}
+    .content3{display: inline-block;border-radius: 110px;width: 364px;height: 123px;border: 8px solid white;}
+    .content4{text-align: center;}
+    .content-time{width: 86%;margin-left: 7%;background-color: #FDD803;color: #E7A12F;text-align: center;margin-top: 7px;font-size: .3rem;}
+    .hr1{border-bottom: 0.5px dashed #ffffff;width: 86%;text-align: center;    margin-left: 10px;margin-top: -6px;}
+    .quota{font-size: 1.8rem;color: yellow;width: 70%;
+        text-align: center;line-height: 2;font-weight: bolder;}
+    .hidden{display: none;}
+    .page-group.page-current, .page.page-current {
+        overflow: auto;
+    }
+
+</style>
+
+<div class="page page-current"    style="background-color: #DF243C;">
+    <img src="/images/lottery/bg2.png"style="width: 100%;">
+    <div style="width:100%;position: absolute;top: 0;">
+        <div class="content1">
+            #if($count=="5")
+               <img src="/images/lottery/slign1.png" style="width: 100%">
+            #end
+        </div>
+        <div style="margin: 0 auto;width: 90%;position: relative">
+            #if($count=="1")
+
+                <img src="/images/lottery/xiaoliping.png" style="width: 100%;">
+                <img src="/images/lottery/slign2.png"style="width:100%;margin-top: .6rem;">
+            #else
+                <div style="margin: 0 auto;width: 90%;position: relative;">
+                <img src="images/lottery/quan.png" style="width:100%;">
+                <div style="position: absolute;top: 24%;width: 100%;height: 60%;">
+                    <div class="content2-text" style="height: 20%;">
+                        <div>
+                            答对了$count道题 <br/>
+                            获得$!coupon.quota元优惠券
+                        </div>
+                    </div>
+
+                    <div class="content2-bg" style="height: 22%;">
+                        <div class="quota">$!coupon.quota</div>
+                    </div>
+                    </div>
+
+
+##                </div>
+                <div class="content4 js_showing">
+                    <input type="hidden" name="couponId" value="$!coupon.id">
+                    <a class="js_bangding"><img src="/images/lottery/lingquan.png" style="width: 50%;"></a>
+                </div>
+                <div class="content4 hidden js_showed">
+                    <img src="/images/lottery/received.png" style="width: 50%;">
+                    <div>
+                        <a class="external" href="/uc/myCoupon?couponStatus=bind" style="border-bottom: 1px solid #803C03;color: #803C03;">查看优惠劵</a>
+                    </div>
+                </div>
+            #end
+    </div>
+    </div>
+</div>
+<input type="hidden" id="num" value="$num">
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/spinner.js?t=3"></script>
+
+<script>
+    $(function(){
+        $(".js_bangding").click(function(){
+            var couponId=$("input[name=couponId]").val();
+            $.ajax({
+                url:"/ajax_bangding?t="+new Date().getMilliseconds(),
+                type:'post',
+                data:{couponId:couponId},
+                success:function(data){
+                    if(data.isSuccess) {
+                        $.alert("优惠卷领取成功。",function(){
+                            $(".js_showing").addClass("hidden");
+                            $(".js_showed").removeClass("hidden");
+                        });
+                    }else{
+                        $.alert("优惠券绑定失败");
+                    }
+                }
+            });
+        });
+
+        document.body.unload  = function (event) {
+            alert("test");
+            var c = event || window.event;
+            if (/webkit/.test(navigator.userAgent.toLowerCase())) {
+                return "离开页面将导致数据丢失！";
+            }
+            else {
+                c.returnValue = "离开页面将导致数据丢失！";
+            }
+        }
+
+
+//        $(window).unload( function UnLoad() {
+//            $.alert("优惠券已领取,你可以重新答题。", function () {
+//                window.location.href = "/light/" + $("#num").val();
+//            });
+//        });
+
+    });
+
+</script>

@@ -1,0 +1,125 @@
+<div class="tab-nav">
+    <div class="in-main">
+        <ul>
+            <li><a href="/active/welcome" class="active">活动首页</a></li>
+            <li><a href="/active/activing">正在进行</a></li>
+            <li><a href="/active/passed">往期回顾</a></li>
+        </ul>
+    </div>
+</div>
+<div class="banner">
+    <ul>
+        #if($p_2)
+        #foreach($webList in $p_2)
+            <li>
+                <a #if($webList.link) href="$webList.link" #else href="#" #end>
+                     <img src="$imghost/$webList.path" height="480px">
+                 </a>
+            </li>
+        #end
+        #else
+        <li style='background-image: url("/images/test/bg.png");height:480px'></li>
+        <li style='background-image: url("/images/test/bg.png");height:480px'></li>
+        <li style='background-image: url("/images/test/bg.png");height:480px'></li>
+        #end
+    </ul>
+</div>
+<div class="in-main">
+
+
+    <div class="welcome-title">
+        <h2>正在进行</h2>
+
+        <p><a href="/active/activing">更多></a></p>
+    </div>
+    #foreach($a in $activtings)
+    <div class="list activings">
+        <div class="left">
+            #if($a.hasPageProfile)
+                <a href="/active/ActivityDetails/$!a.id"><img src="$imghost/$!a.pticturePath"
+                                                       style="width:480px;height:290px;"/></a>
+            #else
+                <a href="/item/$!a.ProductDto.id"><img src="$imghost/$!a.pticturePath"
+                                                                     style="width:480px;height:290px;"/></a>
+            #end
+        </div>
+        <div class="middle">
+            <div class="middle-top">
+                <a href="/item/$!a.ProductDto.id"><p class="title">$!a.name</p></a>
+                <div class="des">
+                    <p>有效期：$helper.formatDateToString($!a.endTime,"yyyy-MM-dd")</p>
+                    <!--<p>开放时间段：$helper.formatDateToString($!a.startTime,"yyyy-MM-dd") - $helper.formatDateToString($!a.endTime,"yyyy-MM-dd")</p>-->
+                    <p>$!a.notice</p>
+                </div>
+            </div>
+            <div class="middle-bootom">
+                <p class="des">特色：$!a.content</p>
+                <p class="warning"><em class="iconfont">&#xe614;</em><span>正在进行，抓紧时间抢购哦！</span></p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-content">
+                <div class="money">
+                    <div class="now">￥<p>$!a.productDto.discountPrice<span>限时优惠<i></i></span></p>元</div>
+                    <div class="before">原价：￥$!a.productDto.price</div>
+                </div>
+                <a href="/item/$!a.ProductDto.id">立即抢购</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    #end
+
+
+    <div class="welcome-title">
+        <h2>往期活动</h2>
+
+        <p><a href="/active/passed">更多></a></p>
+    </div>
+
+    #foreach($p in $postActives)
+    <div class="list">
+        <div class="left">
+
+            #if($p.hasPageProfile)
+            <a href="/active/ActivityDetails/$!p.id"><img src="$imghost/$!p.pticturePath"
+                                                                     style="width:480px;height:290px;"/></a>
+            #else
+            <a href="/item/$!p.ProductDto.id"><img src="$imghost/$!p.pticturePath"
+                                                   style="width:480px;height:290px;"/></a>
+            #end
+
+        </div>
+        <div class="middle">
+            <div class="middle-top">
+                <p class="title">$!p.name</p>
+
+                <div class="des">
+                    <p>有效期:$!p.endTime</p>
+                    <!--<p>开放时间段：08:30-16:00</p>-->
+                    <p>$!p.notice</p>
+                </div>
+
+            </div>
+            <div class="middle-bootom">
+
+                <p class="des">特色：$!p.content</p>
+
+                <p class="warning"><em class="iconfont">&#xe614;</em><span>已经结束，期待下次吧！</span></p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-content">
+                <div class="money">
+                    <div class="now">￥<p>$!p.productDto.discountPrice<span>已结束<i></i></span></p>元</div>
+                    <div class="before">原价：￥$!p.productDto.price</div>
+                </div>
+                <input type="button" value="已售罄" style="background-color: #E1E1E1">
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    #end
+</div>
+
+

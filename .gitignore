@@ -1,0 +1,17 @@
+.myeclipse/
+.settings/
+.idea/*
+bin/
+out/
+target/
+sdklog/
+test-output/
+.classpath
+.project
+*.iml
+*.log
+lemon-SYMS/mpsmodel.log.2
+*.MF
+lemon-SYMS/mpsmodel.log.3
+seera-yancheng-core/mpsmodel.log.1
+seera-yancheng-core/mpsmodel.log.3

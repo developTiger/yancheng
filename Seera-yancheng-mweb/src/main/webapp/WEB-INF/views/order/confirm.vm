@@ -1,0 +1,213 @@
+#set($title="淹城旅游-订单支付")
+<link rel="stylesheet" href="/css/shoppingCart.css">
+<div class="page-group">
+
+
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">订单确认</h1>
+            <a class=" icon icon-left pull-left back"  style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        <div class="bar bar-tab" style="    height: 2.8rem;">
+            <div>
+                <input type="hidden" name="couponId" id="couponId" value="$!couponDto.id">
+                <input type="hidden" name="fetcherId" id="fetcherId" value="$!defaultFetcher.id">
+                <input type="hidden" id="fetcherIdCard" value="$!defaultFetcher.idCardNo">
+                <input type="hidden" id="isConfirmed" value="false">
+                <input type="button" class="button button-big button-fill button-danger Js_confirmOrder"
+                       style="padding-top: 0px"
+                       data-url="/order/createOrder" value="确认订单">
+            </div>
+        </div>
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="card-container">
+                <div class="card ">
+                    <div class="card-content">
+                        <div class="content-padded">
+                            <div class="list-block media-list">
+                                <ul>
+
+                                    #foreach($item in $shoppingItemDtos)
+                                        <li class="item-content">
+                                            <div class="item-inner row">
+                                                <div class="col-80">
+                                                    <div class="item-title-row">
+                                                        <div class="item-title will-comfirm-item" data-price="$!item.rejectAreas" data-value="$!item.rejectAreasNames">$item.productName</div>
+##                                                        <input type="hidden" data-value="$item.rejectAreasNames" value="14" class="will-comfirm-item"/>
+                                                    </div>
+                                                    #if($item.tourScheduleDate)
+                                                        <div class="item-subtitle">
+                                                            游园时间：$helper.formatDateToString($item.tourScheduleDate,
+                                                            "yyyy-MM-dd")</div>
+                                                    #end
+                                                    #if($item.hotelScheduleDate)
+                                                        <div class="item-subtitle">
+                                                            入住时间：$helper.formatDateToString($item.hotelScheduleDate,
+                                                            "yyyy-MM-dd")</div>
+                                                    #end
+                                                    <div>单价：￥$item.price</div>
+                                                </div>
+                                                <div class="col-20" style="padding-top: 50px">
+                                                    <span>数量:$item.count</span></div>
+                                            </div>
+                                        </li>
+                                    #end
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card  ">
+                    <div class="card-header">
+                        <a>取票人</a>
+                        <a href="#router3">更换</a>
+                    </div>
+
+
+                    <div class="card-content" style="padding: 20px 0">
+                        <div class=" row" id="fetcherItem">
+                            #if($defaultFetcher)
+                                <span class="col-50">取票人:$defaultFetcher.realName</span>
+                                <span class="col-50">手机号:$defaultFetcher.mobilePhone</span>
+                                <span class="col-100">身份证号:$defaultFetcher.idCardNo</span>
+                            #end
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-block">
+                <ul>
+                    <li class="item-content item-link">
+
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+
+                        <div class="item-inner row">
+                            <a href="#router2" class=" col-100">
+                                <div class="item-title col-30" style="float: left">
+
+                                    选择优惠券
+
+                                </div>
+                                <div class="item-after col-70" id="couponChecked"
+                                     style="padding-right: 50px;float:right">
+
+                                </div>
+                            </a>
+                        </div>
+
+
+
+                    </li>
+                    <li  class="item-content ">
+                        <div>
+                            <label style="margin-left: 1.2rem">优惠码</label> <input id="uconponNum" type="text" style="width: 50%;border:1px solid gray;height: 1.2rem"><input class="button button-warning" type="button" id="confirm_conpon" value="验证" style="width: 3rem;float: right; line-height: 1;height: 1.8em;}">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="page" id='router3'>
+
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title">取票人</h1>
+        </header>
+        <div class="bar bar-tab">
+            <div><a href="/order/addReceiverView" class="button button-big button-fill button-danger">新增取票人</a></div>
+        </div>
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    #foreach($item in $fetcherDtoList)
+
+                        <li class="item-content item-link">
+
+                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                            <div class="item-inner Js_checkFetcher row" data-id="$item.id">
+                                #if($defaultFetcher.id==$item.id)
+
+                                    <div class="col-5 Js_checked">
+                                        <strong><span class="icon icon-check" style="color:lawngreen"></span></strong>
+                                    </div>
+                                #end
+                                <div class="item-title row col-95 checkItem ">
+                                    <span class="col-50">取票人:$item.realName</span>
+                                    <span class="col-50">手机号:$item.mobilePhone</span>
+                                    <span class="col-100">身份证号:$item.idCardNo</span>
+                                </div>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+        <div class="bar bar-tab">
+            <div>
+                <input type="button" class="button button-big button-fill button-danger  Js_addReceivers"
+                       data-url="/order/addReceiverView" value="新增取件人">
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id='router2'>
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title">选择优惠券</h1>
+        </header>
+
+
+        <div class="content">
+            <div class="card">
+                <div class="card-content">
+                    <div class="list-block media-list">
+                        <ul>
+                            #if($couponDtos.size()>0)
+                                #foreach($item in $couponDtos)
+                                    <li class="item-content item-link">
+                                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                                        <div class="item-inner Js_checkCoupon row" data-id="$item.id">
+                                            <div class="item-title row col-60 checkItem ">
+                                                <div class="col-20 icon icon-gift" style="color: #f6383a"></div>
+                                                <span class="col-80">   满  <span>$item.useCondition</span>   减  <span>$item.quota</span></span>
+
+                                            </div>
+                                            <div>有效期:<span class="col-35">$item.gqDate</span></div>
+                                        </div>
+                                    </li>
+                                #end
+                            #else
+                                暂无优惠券！
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<link href="css/order/order.css" type="text/css" rel="stylesheet"/>
+<!--&lt;!&ndash;<script src="js/pingpp/pingpp-pc.js"></script>&ndash;&gt;-->
+<!--<script src="js/common/jquery.js"></script>-->
+
+<script>
+    require(["order/order"]);
+</script>
+<div class="h20">
+</div>
+<div class="main">
+    <div class="stepInfo">
+        <ul>
+            <li></li>
+            <li></li>
+            <li style="background-color: #CD3333;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background-color: #CD3333;"></li>
+            <li></li>
+        </ul>
+        <div class="stepIco stepIco1 ddd" id="create">1
+            <div class="stepText" id="createText">购物车</div>
+        </div>
+        <div class="stepIco stepIco2" id="check">2
+            <div class="stepText" id="checkText">订单确认</div>
+        </div>
+        <div class="stepIco stepIco3" id="produce" style="background-color: #CD3333;">3
+            <div class="stepText" id="produceText">结算</div>
+        </div>
+        <div class="stepIco stepIco4" id="delivery">4
+            <div class="stepText" id="deliveryText">支付成功</div>
+        </div>
+    </div>
+
+    <div class="h60"></div>
+
+    <div class="orderShopCat">
+        <div class="orderShopCat-content">
+            <p>合并丨<span>$!productCount</span>笔订单 订单编号：<label id="orderNum">$!orderDto.num</label></p>
+
+            <div class="order-total">总价 &nbsp<label id="amount" class="moneyShow">￥&nbsp;$!orderDto.orderPrice</label>&nbsp;元
+            </div>
+            <table class="order-table-info">
+                <tr>
+                    <td style="width:30% ">商品</td>
+                    <td style="width:30% ">单价(元)</td>
+                    <td style="width:20% ">数量</td>
+                    <td style="width:20% ">价格(元)</td>
+
+                </tr>
+                #foreach($op in $orderDto.productDtos)
+                <tr>
+                    <td>$!op.productDto.name</td>
+                    <td>￥ $op.productDto.discountPrice</td>
+                    <td>$!op.count</td>
+                    #set($toprice=$op.productDto.discountPrice*$op.count)
+                    <td>$toprice</td>
+                </tr>
+                #end
+
+                #if($orderDto.couponDto)
+                <tr>
+                    <td colspan="4" style="width: 100%;text-align: right">优惠券： 满$orderDto.couponDto.useCondition
+                        减$orderDto.couponDto.quota
+                    </td>
+                </tr>
+                #end
+
+            </table>
+            <div class="h20"></div>
+        </div>
+    </div>
+    <div class="order-pay">
+        <p>第三方支付</p>
+    </div>
+    <div class="order-pay-select row">
+          <div style="float:left;width: 50%;">
+            <span class="js_check_pay1" title="点击支付">
+                <label style="background-image: url('images/alipay.png')">
+                    <div class="check-pay-select">
+                        <div style="float: right;width: 0;height: 0;border-top: 30px solid #CD3333;border-left: 30px solid transparent;"></div>
+                        <em class="order-gou">&#xe637;</em>
+                    </div>
+
+                </label>
+            </span>
+
+                <span class="js_check_pay2" title="点击支付">
+                <label style="background-image: url('images/weixinpay.png')">
+                    <div class="check-pay-select dis-none">
+                        <div style="float: right;width: 0;height: 0;border-top: 30px solid #CD3333;border-left: 30px solid transparent;"></div>
+                        <em class="order-gou">&#xe637;</em>
+                    </div>
+                </label>
+            </span>
+            <!--<span class="js_check_pay2" title="点击支付">-->
+                <!--<label style="background-image: url('images/onlinepay.png')">-->
+                    <!--<div class="check-pay-select dis-none">-->
+                        <!--<div style="float: right;width: 0;height: 0;border-top: 30px solid #CD3333;border-left: 30px solid transparent;"></div>-->
+                        <!--<em class="order-gou">&#xe637;</em>-->
+                    <!--</div>-->
+                <!--</label>-->
+            <!--</span>-->
+            <br>
+            <div class="h60"></div>
+            <input type="button" title="点击支付"  class="sure_order" value="确认付款">
+
+              <div id="wxpay" class="hidden" >
+                  <div style="margin-left: 200px;">
+                      <h3>微信扫码付款:</h3>
+                  </div>
+                  <!--微信扫码付款二维码 需动态生成-->
+                  <img id="wxPayQrCode" title="扫码付款" style="height:200px; margin-left: 200px; width: 200px;"
+                       src="data:image/jpg;base64,$wxPubQrCode"/>
+              </div>
+        </div>
+
+
+
+        <div style="clear:both;"></div>
+
+        <div id="alipay" class="hidden">
+
+        </div>
+    </div>
+    <div style="height: 400px;"></div>
+</div>

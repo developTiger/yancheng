@@ -1,0 +1,59 @@
+<div class="page" id="comment">
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back">
+            <span class="icon icon-left"></span>
+            返回
+        </a>
+
+        <h1 class="title">用户评价</h1>
+    </header>
+
+    <div class="content detailContent">
+        <div style="width: 100%">
+
+            #foreach($item in $feedBack)
+                <div class="card">
+                    <div class="card-header">
+                        #set($str=$item.touristRealName.substring(0,1))
+                        <span style="color: #000000;">  <i class="icon icon-me"></i>$str ****</span>
+
+                        <p>$helper.formatDateToString($item.createDateTime,
+                            "yyyy-MM-dd hh:mm:ss")</p>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="list-block media-list" style="background-color:rgba(66, 66, 66, 0.02)">
+                            <div class="list-block media-list ">
+                                <ul>
+                                    <li class="item-content bottomline">
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title-row">
+                                                    <div>$item.score</div>
+                                                </div>
+
+                                                <div>
+                                                    <span class="ui-rmb-discount">$item.content</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            #end
+
+
+
+
+        </div>
+    </div>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_1473673497_7144876.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1473673497_7144876.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_1473673497_7144876.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/font_1473673497_7144876.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1473673497_7144876.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.icon-time{font-family: "iconfont"!important;font-size: 15px;font-style: normal;color:#D0D0D0}
+
+.icon-header{font-family: "iconfont"!important;font-size: 15px;font-style: normal;color: #FF9D00}
+.icon-five-star-red{font-family: "iconfont"!important;font-size: 15px;font-style: normal;color:#E4393C}
+.icon-five-star-black{font-family: "iconfont"!important;font-size: 15px;font-style: normal;color:#999999}
+
+.icon-annual-general{font-family: "iconfont"!important;font-size: 18px;font-style: normal;color: #FF9D00 }
+.icon-shopping-cart{font-family: "iconfont"!important;font-size: 20px;font-style: normal;color:#ffffff;}
+.icon-search{font-family: "iconfont"!important;font-size: 18px;font-style: normal;color: #FFA81D;}
+.icon-foot{font-family: "iconfont"!important;font-size: 18px;font-style: normal;color: #FFA81D;}
+
+.icon-left{font-family: "iconfont"!important;font-size: 25px;font-style: normal;color: #C9C9C9;display: inline-block;float: left;height: 53px;line-height: 53px;}
+.icon-right{font-family: "iconfont"!important;font-size: 25px;font-style: normal;color: #C9C9C9;display: inline-block;float: left;height: 53px;line-height: 53px;}
+.select-picture img{width: 85px;float: left;margin: 3px;}
+
+.top-title{font-size: 15px;color:#999999;}
+
+.order-take-downs{margin-top: 50px;font-size: 20px;color: #EB2525;display:inline-block;width: 180px;height: 30px;line-height: 30px;text-align: center;background: #DFDFDF;border-radius: 1px;}
+.order-top{padding-left: 16px;padding-top: 15px;}
+.show-order-details{padding-right: 25px;display: inline-block;width: 885px;float: left;}
+.show-img-order{display: inline-block;width: 458px;height:400px;float: left;}
+.show-main-picture{display: inline-block;width: 415px;}
+.show-order-content{display: inline-block;width: 340px;height: 400px;padding-left: 28px;padding-top: 15px;float:left;}
+.title{font-size: 20px;}
+
+.annual-general{padding-top: 10px;}
+.annual-general input {width: 58px;text-align: center;background-color: #FFFFFF;border: 1px solid #FFA71B;color: #FFA71B;}
+
+.present-original-price{padding-top: 18px;}
+.present-price {font-size: 20px; color: #ADADAD}
+.original-price{margin-left: 15px;text-decoration: line-through;}
+.arearejects{line-height: 20px;font-size: 13px;}
+
+.preferential-information{padding-top: 15px;}
+.preferential-information span{color:#ADADAD}
+.preferential-information a{background-color: #FF9D00;color: #ffffff;width: 100px;display: inline-block;text-align: center;height: 17px;line-height: 17px;}
+.period-of-validity{padding-top: 20px;}
+
+.product-quantity{padding-top: 20px;height: 28px;}
+.product-quantity span{float: left;height: 25px;line-height: 25px;}
+.reduce{border: 1px solid #E1E1E1;background-color: #F4F4F4;float: left;display: inline-block;width: 24px;height: 25px;text-align: center;cursor: pointer;}
+.sum{width: 80px;border: 1px solid #E1E1E1;border-left: none;border-right: none;float: left;text-align: center;height: 23px;padding: 0px;margin: 0px;}
+.add{border:1px solid #E1E1E1;background-color: #F4F4F4;float: left;display: inline-block;width: 24px;height: 25px;text-align: center; cursor: pointer;}
+
+.admission-date{padding-top: 20px;}
+
+
+.reservation-join-shopping-cart{padding-top: 35px;padding-left: 50px;width: 350px;}
+.reservation{font-family: 'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', 宋体; display: inline-block;width: 100px;height: 35px;border: 1px solid #CD3333;text-align: center;font-size: 16px;color: #D97373;float: left;padding: 0px;cursor: pointer;background-color: #FBEFEF;}
+
+.join-shopping-cart{background-color: #CD3333;color:#ffffff;display: inline-block;width: 150px;height:35px;line-height: 35px;margin-left: 10px;cursor: pointer}
+.join-shopping-cart em{margin-left: 13px;float: left;line-height: 28px;}
+.join-shopping-cart input{width: 100px;border: none;background-color: #CD3333;color: #ffffff;font-size: 20px;display: inline-block;height: 35px;line-height: 35px;padding: 0px;margin-left: 8px;}
+
+.info-show{display: inline-block;width: 250px;background-color: #F8F8F8;font-size:16px;color:#999999;padding-left: 5px;padding-right: 5px;}
+.info-show div{border-bottom: 1px dashed #E1E1E1;}
+.info-show div p{height: 30px;line-height: 30px;padding-left: 28px;}
+.reservation-message{height: 68px;padding-top: 20px;padding-bottom: 20px;}
+.highlight-recommend{height: 160px;padding-top: 20px;padding-bottom: 20px;}
+.business-hours{height: 56px;padding-top: 20px;padding-bottom: 20px;}
+
+.order-content-left{border: 1px solid #E1E1E1;width: 900px;float: left;}
+.order-content-left-top{border-bottom: 2px solid #CD3333;}
+.order-content-left-top label{display: inline-block;padding:0 25px;height: 31px;line-height:31px;text-align:center;border-right: 1px solid #E1E1E1; cursor: pointer}
+.order-content-left-top label span{color:#CD3333;}
+.order-content-left-top label.current{background-color: #CD3333;color: #ffffff;}
+.order-content-left-top label.current span{color: #ffffff;}
+.user-comments{width: 130px !important;}
+
+.order-content-right{border: 1px solid #E1E1E1;padding-left: 10px;padding-top: 8px;width: 260px;margin-left: 18px;display: inline-block;font-size: 15px;}
+.order-content-right p span{font-size: 18px;color: #CD3333;}
+.order-content-right p a{text-decoration: line-through;display: inline-block;margin-left: 5px;}
+
+.order-content-left-content{padding:20px 20px 0px 20px;}
+.order-content-left-content-details{font-size: 16px;}
+.show-order-content-left{padding: 20px 18px;}
+.show-order-content-left p span{padding-left: 5px;}
+
+.show-content-01{padding-left: 8px;border-left: 1px dashed #A3A3A3;margin-left: 8px;}
+
+
+
+.left-Arrow{background:url("../../images/productdetails/Arrow.png")-126px -137px #000 no-repeat}
+.right-Arrow{background:url("../../images/productdetails/Arrow.png")-126px -137px #000 no-repeat}
+
+.Wdate{background:#fff!important;}
+.shoppingCartAdd,.shoppingCartFail{width:200px;height:38px;position: fixed;top:50%;left:50%;margin-left:-100px;margin-top:-19px;border-radius: 5px;background: #FBB435;
+    color:#fff;font-size: 15px;z-index: 10000;text-align: center;line-height: 38px;display: none;}
+.hidden{display: none}
+.btn-table{display: inline-block}
+.btn-table input:disabled{background: none;cursor: default;}
+.annual-general span{display: inline-block;text-align: center;background-color: #FFFFFF;border: 1px solid #FFA71B;color: #FFA71B;margin-left: 1px;padding: 0px 3px;}
+.item-product-table{}
+.item-product-table th{text-align: left;font-size: 15px;}
+.item-product-table tr td{font-size: 13px;font-weight: bolder;color: #999999;height: 25px;}
+
+.redShow{color: red;display: inline-block;}
+
+/*
+ *详情评价
+ */
+.item-evaluate-list{height: 100px;border-top: 1px solid #DDDDDD;padding-top: 20px;}
+.item-evaluate-list .evaluate-left p{display: inline-block;margin: 4px 0px 4px 16px;}
+.item-evaluate-list .evaluate-left{width: 130px;text-align: center;float: left;padding-right: 40px;text-align: center;}
+.item-evaluate-list .evaluate-content{width: 510px;float: left;}
+.item-evaluate-list .evaluate-right{width: 120px;float: left;padding-left: 20px;text-align: center}
+.item-evaluate-list .evaluate-right p{display: inline-block;margin: 4px 0px 4px 0px;width: 125px;}

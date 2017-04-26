@@ -1,0 +1,55 @@
+<button type="submit" id="addUserInfo" data-title="PositionInformation"
+        data-url="addOrUpdateUserPositionInformation" class=" updateInfo btn btn-success">新增</button>
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th>
+            <input type="checkbox" id="check-all"  class="checkAll flat"></th>
+        <th class="column-title">id </th>
+        <th class="column-title">是否是当前职务 </th>
+        <th class="column-title">获取名称</th>
+        <th class="column-title">聘任时间</th>
+        <th class="column-title">资格专业</th>
+        <th class="column-title">获取时间</th>
+
+
+        <th class="column-title no-link last" style="width: 150px;"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num =0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+
+    <tr>
+        <td > <input type="checkbox" class="flat checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class="num"><%=num+i+1%></td>
+        <td><%=items[i].isCurrent?"是":"否"%></td>
+        <td><%=items[i].name%></td>
+        <td><%=items[i].strInTime%></td>
+        <td class=" "><%=items[i].major%></td>
+        <td class=" "><%=items[i].strInObtian%></td>
+
+        <td class=" last">
+            <a class=" updateInfo label ssv-small-label label-info" data-title="PositionInformation"
+               data-url="addOrUpdateUserPositionInformation?id=<%=items[i].id%>&empId=<%=items[i].empId%>">
+                <span><i class="green fa fa-plus"></i>修改</span></a>
+            <a class=" deleteInfo label ssv-small-label label-info" data-title="PositionInformation"
+               data-url="deleteUserInfo?id=<%=items[i].id%>&empId=<%=items[i].empId%>">
+                <span><i class="green fa fa-plus"></i>删除</span></a>
+        </td>
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

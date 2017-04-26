@@ -1,0 +1,55 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+
+        <header class="bar bar-nav">
+            <h1 class="title">选择优惠券</h1>
+            <a class=" icon icon-left pull-left back"  style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+
+        <div class="content">
+            <div class="card">
+                <div class="card-content">
+                    <div class="list-block media-list">
+                        <ul>
+                            #foreach($item in $couponDtos)
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <input type="radio" name="coupon" class="Js_orderCouponFetcher"
+                                                   data-value="$item.id"
+                                                #if($item.id==$couponId)
+                                                   checked
+                                                #end>
+
+                                            <div class="item-title">
+                                                满
+                                                <span>$item.useCondition</span>
+                                                减
+                                                <span>$item.quota</span>
+                                                <span>$item.gqDate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bar bar-tab">
+                <div>
+                    <input type="hidden" name="couponId" id="couponId" value="$!couponId">
+                    <input type="hidden" name="fetcherId" id="fetcherId" value="$!fetcherId">
+                    <input type="button" class="button button-big button-fill button-danger Js_confirmOrder"
+                           data-url="/order/confirm" value="确认订单">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

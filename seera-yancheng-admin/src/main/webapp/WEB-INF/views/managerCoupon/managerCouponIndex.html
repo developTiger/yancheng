@@ -1,0 +1,135 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/职员的优惠券管理
+            <small>- 职员的优惠券管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 职员的优惠券管理.
+        </div>
+        <div class="row">
+            <div class=" btn-group  col-xs-2">
+                <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="职员优惠券的添加"
+                   data-url="_addOrUpManagerCoupon"><span><i class="green fa fa-plus"></i>新增</span></a>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left: 1px;margin-top: 15px;margin-bottom: 15px;">
+
+            <div class="form-inline ">
+
+                <form id="searchForm" data-url="ajax_managerCoupon_query_list">
+
+                    <div class="form-group">
+                        <label class="form-group">使用条件:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control"  placeholder="满100元"
+                                   name="startUseCondition" size="5">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">至
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control" placeholder="满300元"
+                                   name="endUseCondition" size="5">
+
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group">
+                        <label class="form-group">截止日期:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate"  placeholder="开始时间"
+                                   name="StartExpireDate" size="5">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group">至
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control  Wdate" placeholder="结束时间"
+                                   name="endExpireDate" size="5">
+
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group">
+                        <label class="form-group">状态:
+                        </label>
+                        <div class="form-group ">
+                            <select id="type" required="required" name="couponStatus"
+                                    class="form-control col-xs-6" data-parsley-id="0004">
+                                <option value="">全部状态</option>
+                                <option value="Valid">未被领取</option>
+                                <option value="bind">已被领取</option>
+                                <option value="Used">已使用</option>
+                                <option value="Expired">已过期</option>
+                            </select>
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group">
+                        <label class="form-group">职员名:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control "  placeholder="张三"
+                                   name="staffRealName" size="4">
+
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group">
+                        <label class="form-group">优惠券号:
+                        </label>
+
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control"  placeholder="NO.123456"
+                                   name="num" size="15">
+
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group" style="position: relative;top: 0.2em">
+
+                        <div class="control-label" >
+                            <input type="button" class="btn btn-default" id="searchManagerCoupon" value="搜索">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+        <div class="row">
+            <div class=" btn-group  col-xs-2">
+                <a   data-url="ajax_sra_m_c_down" id="managerCoupon_excel_download"><span>Excel导出<i class="green fa fa-sign-out"></i></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/managerCoupon/managerCoupon"]);
+</script>

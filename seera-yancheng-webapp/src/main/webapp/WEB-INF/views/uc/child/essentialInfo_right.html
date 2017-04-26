@@ -1,0 +1,55 @@
+<div class="right-essentialInfo-main">
+    <p>基本信息<a href="edit_user?EditOrShow=1" class="essentialInfo-edit">编辑</a></p>
+
+    <div class="right-essentialInfo-show">
+
+        <div class="name">
+            <label for="name">昵称：  </label>
+            <span id="name">$!user.userName</span>
+        </div>
+
+        <div class="real_name">
+            <label for="real_name">真实姓名：  </label>
+            <span id="real_name">$!user.realName</span>
+        </div>
+
+        <div class="sex">
+            <label for="sex">性别：  </label>
+            #if($user.gender=="Male")
+            <span id="sex">男</span>
+            #elseif($user.gender=="Female")
+            <span id="sex1">女</span>
+            #else
+            <span id="sex2">未知</span>
+            #end
+
+        </div>
+
+        <!--<div class="birthday" style="background-color: red;">-->
+            <!--<label for="birthday">生日：  </label>-->
+            <!--<span id="birthday">1991-12-9</span>-->
+        <!--</div>-->
+
+        <div class="email">
+            <label for="email">邮箱：  </label>
+            <span id="email">$!user.email</span>
+        </div>
+
+        <div class="mobile">
+            <label for="mobile">手机：  </label>
+            <span id="mobile">$!user.mobilePhone</span>
+        </div>
+
+        <!--<div class="detailed-address" style="background-color: red;">-->
+            <!--<label for="detailed-address">详细地址：  </label>-->
+            <!--<span id="detailed-address">常州市武进区科教城</span>-->
+        <!--</div>-->
+
+        <!--<div class="head-portrait">-->
+            <!--<label >头像：  </label>-->
+            <!--<img src="images/img.jpg" title="点击更换" id="head-portrait">-->
+
+        <!--</div>-->
+
+    </div>
+</div>

@@ -1,0 +1,56 @@
+
+    <link href="css/order.css" type="text/css" rel="stylesheet" />
+
+<div class="h20">
+</div>
+<div class="main">
+    <div class="stepInfo">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background-color: #CD3333;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background-color: #CD3333;"></li>
+        </ul>
+        <div class="stepIco stepIco1 ddd" id="create">1
+            <div class="stepText" id="createText">购物车</div>
+        </div>
+        <div class="stepIco stepIco2" id="check">2
+            <div class="stepText" id="checkText">订单确认</div>
+        </div>
+        <div class="stepIco stepIco3" id="produce">3
+            <div class="stepText" id="produceText">结算</div>
+        </div>
+        <div class="stepIco stepIco4" id="delivery" style="background-color: #CD3333;">4
+            <div class="stepText" id="deliveryText">支付成功</div>
+        </div>
+    </div>
+    <div style="height: 80px;"></div>
+    <div class="orderSuccess">
+        <div class="orderSuccess-content">
+            <div class="content-left">
+                <p><em class="iconf">&#xe60e;</em></p>
+            </div>
+            <div class="content-right">
+                <p style="font-size: 16px;">支付成功!</p>
+                <div>
+                    <p>您的订单号：$!orderDto.num</p>
+                    <a class="lookDetails" href="/orderdetail/$orderNum">查看详情</a>
+                    <p>支付金额：<span style="color:#FF0000;font-weight: bolder;">￥ $!amount</span>元</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="orderSuccess-jump">
+            <!--<p><span class="moneyShow">10</span> 秒后将回到商户页面</p>-->
+            <div class="h20"></div>
+            <a class="orderSuccess-jump-btn" href="/"><span style="color: #ffffff;font-size: 16px;">立即跳转</span></a>
+        </div>
+
+    </div>
+    <div style="height: 400px;"></div>
+</div>
+

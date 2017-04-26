@@ -1,0 +1,55 @@
+<button type="submit" id="addUserInfo" data-title="FamilyInformation" data-url="addOrUpdateUserFamily"
+        class=" updateInfo btn btn-success">新增</button>
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll flat"></th>
+        <th class="column-title">id </th>
+        <th class="column-title">姓名 </th>
+        <th class="column-title">称谓</th>
+        <th class="column-title">性别</th>
+        <th class="column-title">出生日期</th>
+        <th class="column-title">住址</th>
+        <th class="column-title">工作单位</th>
+
+        <th class="column-title no-link last" style="width: 150px;"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num =0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+
+    <tr>
+        <td > <input type="checkbox" class="flat checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class="num"><%=num+i+1%></td>
+        <td><%=items[i].name%></td>
+        <td><%=items[i].label%></td>
+        <td class=" "><%=items[i].sex?"女":"男"%></td>
+        <td class=" "><%=items[i].strBirthday%></td>
+        <td class=" "><%=items[i].address%></td>
+        <td class=" "><%=items[i].company%></td>
+
+        <td class=" last">
+            <a class=" updateInfo label ssv-small-label label-info" data-title="FamilyInformation"
+               data-url="addOrUpdateUserFamily?id=<%=items[i].id%>&empId=<%=items[i].empId%>">
+                <span><i class="green fa fa-plus"></i>修改</span></a>
+            <a class=" deleteInfo label ssv-small-label label-info"  data-title="FamilyInformation"
+               data-url="deleteUserInfo?id=<%=items[i].id%>&empId=<%=items[i].empId%>">
+                <span><i class="green fa fa-plus"></i>删除</span></a>
+        </td>
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

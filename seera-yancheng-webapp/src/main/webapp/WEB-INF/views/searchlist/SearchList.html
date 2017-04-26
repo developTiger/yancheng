@@ -1,0 +1,64 @@
+<link href="css/searchlist/searchList.css" type="text/css" rel="stylesheet"/>
+<div class="h20"></div>
+<div class="main">
+    <p class="top-title"><a href="#">淹城</a> > 淹城</p>
+    <div class="content">
+        <div class="content-left">
+            <div class="content-left-top">
+
+             <!--   <div class="fl-left">
+                    <a href="#" class="active">综合</a>|
+                    <a href="#">价格 <i class="iconfont"></i></a>|
+                    <a href="#">上架时间 <i class="iconfont"></i></a>
+                    <a href="#" class="new-products">新品推荐 </a>
+                    <label><input type="checkbox">促销活动</label>
+                </div>-->
+                <div class="fl-right">
+                    <label>页码:<span class="paging">$pagedResult.pageNumber</span>/<span class="pagesCount">$pagedResult.pagesCount</span></label>
+                    <input type="button" id="prev" data-title="$!kind"  #if($pagedResult.pageNumber =="1") disabled class="icon-left-disabled-sj" #else class="icon-left-sj" #end value="&#xe62f;">
+                    <input type="button" id="next" data-title="$!kind"  #if($pagedResult.pageNumber == $pagedResult.pagesCount) disabled class="icon-right-disabled-sj" #else class="icon-right-sj" #end value="&#xe61b;">
+                </div>
+            </div>
+
+            <div class="h10"></div>
+            #if($pagedResult.items)
+                #foreach($item in $pagedResult.items)
+                <div class="content-left-show-info">
+
+                    <a href="item/$!item.id"> <img src="$imghost/$!item.mainPicturePath"></a>
+                    <div class="content-left-show-info-center">
+                        <a href="item/$!item.id"><p class="title">$!item.name</p></a>
+                        <div class="show-money">
+                            #if($!item.specDescription)<a>$!item.specDescription</a> #end
+                            <div>
+                                <p><span class="moneyShow">￥$!item.discountPrice</span>元</p>
+                                <p style="margin-left: 6px;">100%好评率</p>
+                            </div>
+                        </div>
+
+                        <p><span class="go-date">出发日期: </span>
+                            #if($!item.productCt=="Today") 当天日期
+                            #else
+                               #if(!$helper.formatDateToString($!item.ctBeginDate,"yyyy-MM-dd")) 无限制
+                               #else $helper.formatDateToString($!item.ctBeginDate,"yyyy-MM-dd")
+                               #end
+                            #end<span class="sum-people-buy">$!item.saleCount人已购买</span></p>
+                    </div>
+
+                    <div class="immediate-reservation">
+                        <a href="item/$!item.id">立即预定</a>
+                    </div>
+
+
+                 </div>
+            <div class="h10"></div>
+                 #end
+            #end
+        </div>
+            #parse("publicparts/recommended_tickets.html")
+    </div>
+</div>
+
+<script>
+    require(["app/searchlist/searchlist"]);
+</script>

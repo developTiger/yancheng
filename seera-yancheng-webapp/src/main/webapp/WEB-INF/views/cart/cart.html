@@ -1,0 +1,113 @@
+<link href="css/order/order.css" type="text/css" rel="stylesheet"/>
+<div class="h20">
+</div>
+<div class="main">
+    #set($itemTotalPrice=0)
+    <div class="stepInfo">
+        <ul>
+            <li style="background-color: #CD3333;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background-color: #CD3333;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="stepIco stepIco1 ddd" id="create" style="background-color: #CD3333;">1
+            <div class="stepText" id="createText">购物车</div>
+        </div>
+        <div class="stepIco stepIco2" id="check">2
+            <div class="stepText" id="checkText">订单确认</div>
+        </div>
+        <div class="stepIco stepIco3" id="produce">3
+            <div class="stepText" id="produceText">结算</div>
+        </div>
+        <div class="stepIco stepIco4" id="delivery">4
+            <div class="stepText" id="deliveryText">支付成功</div>
+        </div>
+    </div>
+
+    <div class="shopping">
+        <table class="shopCart">
+            <tr>
+                <td class="cart-Check"><label for="checkAll1"> <input type="checkbox" id="checkAll1" class="checkAll">全选</label>
+                </td>
+                <td class="cart-Product">商品</td>
+
+                <td class="cart-Price">单价(元)</td>
+                <td class="cart-Number">数量</td>
+                <td class="cart-Money">金额(元)</td>
+                <td class="cart-Format">日期</td>
+
+                <td class="cart-Operate">操作</td>
+            </tr>
+
+            #foreach ($shoppingItem in $shoppingItems)
+            <tr  >
+                <td class="cart-Check">
+                    <input type="checkbox" class="js_chk_shopping_item_id Js_check"
+                           data-id="$!shoppingItem.id"></td>
+                <td class="cart-Product"><span style="display: inline-block;
+    line-height: 23px;width: 256px;padding: 15px 10px;">$!shoppingItem.productName</span></td>
+
+                <td class="cart-Price">￥$!shoppingItem.price</td>
+                <td class="cart-Number">
+                    <input class="Product_Minus fl btnReduce" type="button" value="-"
+                           data-id="$!shoppingItem.productId">
+                    <input class="Product_Sum fl txtNum" name="idWithCounts[$!shoppingItem.id]"
+                           data-id="$!shoppingItem.id" type="text"
+                           value="$shoppingItem.count" data-price="$!shoppingItem.price"/>
+                    <input class="Product_Add fl btnPlus" type="button" value="+" data-id="$!shoppingItem.productId">
+                </td>
+                #set($totalPrice=$shoppingItem.price*$shoppingItem.count)
+                #set($itemTotalPrice=$itemTotalPrice+$totalPrice)
+                <td class="cart-Money">￥<span>$totalPrice</span></td>
+                <td class="cart-Format">
+                    #if($shoppingItem.tourScheduleDate)
+                    <div style="line-height: 35px;">
+                        <span>游玩时间：</span> <input type="text" class="Wdate tourScheduleDate" style="width: 90px;border: 1px solid #CCCCCC;text-align: center;padding: 2px;"
+                                                  value='$helper.formatDateToString($shoppingItem.tourScheduleDate,"yyyy-MM-dd")'>
+                    </div>
+                    #end
+                    #if($shoppingItem.hotelScheduleDate)
+                    <div style="line-height: 30px;">
+                        <span> 入住时间：</span> <input type="text" class="Wdate hotelScheduleDate" style="width: 90px;border: 1px solid #CCCCCC;text-align: center;padding: 2px;"
+                                                   value='$helper.formatDateToString($shoppingItem.hotelScheduleDate,"yyyy-MM-dd")'>
+                    </div>
+                    #end
+                </td>
+                <td class="cart-Operate"><a class="js_del" style="color: #CD3333" href="javascript:void(0);" data-id="$!shoppingItem.id">删除</a>
+                </td>
+            </tr>
+            #end
+        </table>
+    </div>
+        #if($shoppingItems.size() > 0)
+            <div class="h20"></div>
+        #else
+            <p style="display: inline-block;font-size: 18px;padding: 10px 0px;text-align: center;width: 1192px;color: red;"> 购物车暂无商品，请返回购买商品！！</p>
+        #end
+    <div class="shopping-order">
+        <table class="shopping-order-table">
+            <tbody>
+            <tr>
+                <td class="balance-all"><label for="checkAll">
+                    <input id="checkAll" class="checkAll" type="checkbox">全选</label>
+                </td>
+                <td class="balance-delete"><a class="js_del_select" style="color: #CD3333" href="javascript:void(0);">删除</a></td>
+                <td class="balance-back">返回从新购买</td>
+                <!--<td class="balance-sum">总计：<span class="moneyShow">￥$!itemTotalPrice</span>元</td>-->
+                <td class="balance-sum">总计：<span class="moneyShow">￥0.00</span>元</td>
+                <td class="balance-money"><a class="orderConfirm" style="cursor: pointer"><span
+                        class="orderShow">结算</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="height: 400px;"></div>
+</div>
+
+<script>
+    require(['cart/cart']);
+</script>

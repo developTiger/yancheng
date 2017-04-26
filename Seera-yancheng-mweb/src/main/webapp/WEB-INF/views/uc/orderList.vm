@@ -1,0 +1,178 @@
+<link rel="stylesheet" href="/css/shoppingCart.css">
+<div class="page-group">
+    <div class="page page-orderlist" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">我的订单</h1>
+            <a class=" icon icon-left pull-left external" href="/uc.html" style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="buttons-tab">
+                <a href="/uc/order/list/all.html" class="#if($type=="all" )active#end  button">全部</a>
+                <a href="/uc/order/list/waitPay.html" class="#if($type=="waitPay" )active#end  button">待付款</a>
+                <a href="/uc/order/list/payed.html" class="#if($type=="payed" )active#end  button">待评价</a>
+                <a href="/uc/order/list/end.html" class="#if($type=="end" )active#end  button">已完成</a>
+                <a href="/uc/order/list/canceled.html" class="#if($type=="canceled" )active#end  button">已取消</a>
+            </div>
+
+            #foreach($item in $orderDtos)
+                <div class="card">
+                    <div class="card-header">
+                        <span>订单编号:$item.num</span>
+
+                        #if($item.status=="waitPay")
+                            等待付款
+                        #end
+                        #if($item.status=="payed")
+                            待评价
+                        #end
+                        #if($item.status=="end")
+                            已完成
+                        #end
+                        #if($item.status=="canceled")
+                            已取消
+                        #end
+
+
+                    </div>
+                    <div class="card-content">
+                        <div class="list-block media-list" style="background-color:rgba(66, 66, 66, 0.02)">
+                            <div class="list-block media-list ">
+                                <ul>
+                                    #foreach($item1 in $item.productDtos)
+                                        <li class="item-content bottomline">
+                                            <div class="item-media">
+                                                <img src="$imghost/s/$item1.productDto.mainPicturePath" width="140">
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <div>$item1.productDto.name</div>
+                                                </div>
+
+                                                #if($item1.productDto.type=="Ticket" ||$item1.productDto.type==
+                                                    "GroupProduct" )
+                                                    #set($rebuyId = $item1.productDto.originalId)
+                                                #end
+                                                #if($item1.tourScheduleDate)
+                                                    #if($item1.status=="mealCheck")
+                                                        <div class="dateline">
+                                                            改签日期:$helper.formatDateToString($item1.tourScheduleDate,
+                                                        "yyyy-MM-dd")
+                                                        </div>
+                                                    #else
+
+                                                        #if($item1.status=="mealed")
+                                                            <div class="dateline">游园日期:
+                                                                $helper.formatDateToString($item1.tourScheduleMealDate,
+                                                                    "yyyy-MM-dd")
+                                                            </div>
+                                                        #else
+                                                            <div class="dateline">游园日期:
+                                                                #if($item1.tourScheduleDate)$helper.formatDateToString($item1.tourScheduleDate,
+                                                                    "yyyy-MM-dd") #end
+                                                            </div>
+                                                        #end
+
+                                                    #end
+
+                                                #end
+
+                                                #if($item1.hotelScheduleDate)
+                                                    #if($item1.status=="mealCheck")
+                                                        <div class="dateline"> 改签日期:
+                                                            $helper.formatDateToString($item1.hotelScheduleDate,
+                                                                "yyyy-MM-dd")
+                                                        </div>
+                                                    #else
+                                                        #if($item1.status=="mealed")
+                                                            <div class="dateline"> 入住日期:
+                                                                $helper.formatDateToString($item1.hotelScheduleMealDate,
+                                                                    "yyyy-MM-dd")
+                                                            </div>
+                                                        #else
+
+                                                            #if($item1.hotelScheduleDate)
+                                                            <div class="dateline"> 入住日期:$helper.formatDateToString($item1.hotelScheduleDate,
+                                                                "yyyy-MM-dd")
+                                                        </div>
+                                                            #end
+                                                        #end
+
+                                                    #end
+                                                #end
+
+                                                <div>
+                                                    <span> 数量:$item1.count</span>
+                                                ##                                                    $item.canMeal
+                                                    #if( $item1.canMeal=="true"&&($item1.productDto.type=="Ticket" ||$item1.productDto.type=="Hotal"||$item1.productDto.type=="GroupProduct")&& $item1.status=="normal" &&$item.status=="payed" )
+                                                        <a style="float: right" class="external" href="/uc/changeDate?orderNum=$item.num&productid=$!item1.id">可改签</a>
+                                                    #end
+                                                    #if( $item1.status=="mealCheck")
+                                                        <span style="float: right;color: #EA832C">改签审核中</span>
+                                                    #end
+                                                    #if( $item1.status=="mealReject")
+                                                        <span style="float: right;color: #aa0000">改签失败</span>
+                                                    #end
+                                                    #if( $item1.status=="mealed")
+                                                        <span style="float: right;color: #269672">改签完成</span>
+                                                    #end
+                                                </div>
+                                            </div>
+                                        </li>
+                                    #end
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="order-extrainfo">
+                            <span>共$item.productDtos.size()件商品</span>
+                        <span>
+                            总价<span class="ui-rmb-discount">¥$item.orderPrice</span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span style="float: left"><a href="/order/orderDetail?order_no=$item.num" class="external">查看详情</a></span>
+
+                        <div class="button-box ">
+
+                            #if($item.status=="waitPay" )
+                                <a href="/order/payInfo?sn=$item.num" class="button button-do external">去付款</a>
+                            #else
+                                #if($item.status=="payed" )
+                                    <a href="/uc/comment?order_no=$item.num" class="button button-do external">去评价</a>
+                                #end
+                                #if($item.status=="payCheck" )
+                                    已支付
+                                #end
+                                #if($item.status=="end" )
+                                    已完成
+                                #end
+
+                                #if($item.status=="canceled" )
+                                    已取消
+
+                                #end
+                                #if($rebuyId)
+
+                                    <a href="/ticket/${rebuyId}.html" class="button button-danger external">再次购买</a>
+                                #end
+                            #end
+
+
+                        </div>
+                    </div>
+                </div>
+            #end
+        </div>
+    </div>
+</div>

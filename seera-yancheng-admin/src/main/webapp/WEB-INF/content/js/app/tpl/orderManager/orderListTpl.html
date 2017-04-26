@@ -1,0 +1,81 @@
+
+
+<form>
+    <table class="table table-striped  dataTable no-footer table-bordered" >
+    <thead>
+    <tr class="headings" >
+
+
+        <th class="column-title">产品内容 </th>
+        <th class="column-title">类型 </th>
+        <th class="column-title">单价</th>
+        <th class="column-title">数量 </th>
+        <th class="column-title">优惠 </th>
+        <th class="column-title">总价</th>
+        <th class="column-title">状态</th>
+
+        <th class="column-title">状态备注</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pageNumber > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+
+
+        <td><%=items[i].productContent%></td>
+        <td><%=items[i].type%></td>
+        <td class=" "><%=items[i].price%></td>
+        <td class=" "><%=items[i].num%> </td>
+        <!--<td>
+            <%if(items[i].parameterType){%>
+            <%=items[i].parameterType[0].paramTypeName%>
+            <%}%>
+        </td>-->
+        <td class="a-right a-right "><%=items[i].discount%></td>
+        <td class="a-right a-right "><%=items[i].totalPrice%></td>
+        <td class=" "><td><%if(items[i].orderOperatorStatus== "Wait"){%>
+        等待处理
+        <%}%>
+        <%if(items[i].orderOperatorStatus== "Success"){%>
+        出票成功
+        <%}%>
+        <%if(items[i].orderOperatorStatus== "ZybError"){%>
+        智游宝异常
+        <%}%>
+        <%if(items[i].orderOperatorStatus== "zybCancelError"){%>
+        取消异常
+        <%}%>
+        <%if(items[i].orderOperatorStatus== "ZybImgError"){%>
+        二维码生成异常
+        <%}%>
+        <%if(items[i].orderOperatorStatus== "PayError"){%>
+        支付异常
+        <%}%>
+
+    </td></td>
+        <td class=" "><%=items[i].operatorRemark%> </td>
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="12" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+    </table>
+
+
+        <div class="form-group">
+            <div class=" col-xs-6 col-xs-offset-4">
+                <button type="button" class="btn btn-success" >同意改签</button>
+                <!--<button type="button" class="btn btn-primary" href="javascript:history.go(-1);" >返回订单列表</button>-->
+                <a class="btn btn-primary" href="javascript:history.go(-1);">返回订单列表</a>
+            </div>
+        </div>
+
+
+</form>

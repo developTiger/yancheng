@@ -1,0 +1,170 @@
+<div class="page-group ">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">淹城春秋乐园</h1>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        #parse("/layout/siteNav.vm")
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="page-index index-page">
+                <!--内容头部-->
+                <div>
+                    <form action="/search.html" method="get">
+                        <div class="searchbar row" style="margin: 0">
+                            <div class="col-50"><img src="/images/logo.png" style="height: 1.2rem"></div>
+                            <div class="search-input col-40">
+
+                                <label class="icon icon-search" for="search"></label>
+                                <input type="search" name='name' value="$!name" placeholder='输入关键字...'
+                                       style="border-radius:0"/>
+                            </div>
+                            <div class="col-8">
+                                <button type="submit" class="button button-fill button-primary "
+                                        style="border-radius:0"><i
+                                        class="icon icon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="swiper-container" data-space-between='10'>
+                    <div class="swiper-wrapper">
+                        #foreach($pic in $p_2)
+                            <div class="swiper-slide"><a  #if($pic.link) href="$pic.link" class="external" #else href="#" #end><img src="$imghost/$pic.path" ></a></div>
+                        #end
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="index-classify row" style="background:#F4F4F4;    height: 3rem;">
+                    <a href="/list/activity/1.html" class="col-25" style="padding-top: 0.4rem;"><img
+                            style="width: 100%;max-width: 10rem" src="/images/ts.png"></a>
+
+##                    <a href="/list/groupgoods.html" class="col-25" style="padding-top: 0.4rem;"><img
+##                            src="/images/zh.png" style="width: 100%;max-width: 10rem"></a>
+##                    <a href="/list/periphery.html" class="col-25" style="padding-top: 0.4rem;"><img src="/images/zb.png"
+##                                                                                                    style="width: 100%;max-width: 10rem"></a>
+                    <a href="/list/nomalticket.html" class="col-25" style="padding-top: 0.4rem;"><img src="/images/pt.png"
+                                                                                                    style="width: 100%;max-width: 10rem"></a>
+                </div>
+                <div class="classify-header card-name card-title"><span><img src="/images/icon.gif"
+                                                                             style="height: 0.7rem"><i
+                        class="title-fonts">推荐门票</i><a href="/searchtype?kind=Recommended" style="font-size:0.8rem; float: right;margin-right: 1rem;color:#7c6862">更多></a></span></div>
+                <div class="row ticketContent">
+                    #foreach($item in $recommendedProducts)
+
+                        <a class="card ticketCard external" style="margin: 0.3rem 0 !important;"
+                           href="/ticket/${item.id}.html">
+                            <div class="card-content ticket-card-content">
+                            ## $item.mainPicturePath
+                                <img src="$imghost/m/$item.mainPicturePath"
+                                     onerror="javascript:this.src='/images/default.png'">
+                                <span class="card-popup-rmb">¥$item.discountPrice</span>
+
+                                <div class=" row" style="margin: 0 ;">
+                                    <div class="col-100 item-name">
+                                        $item.name
+                                    </div>
+
+                                </div>
+                                <div class="card-footer card-footer-noline card-footer-ticket" style="color: #EA832C;    padding-left: 0.4rem;
+">
+
+                                    <span class="cart-footer-yx  single-line ">
+                                        <i class="icon icon-star" style="">
+                                        </i>
+                                        $item.specDescription
+
+                                    </span>
+                                ##                                 <span style="font-size: 0.5rem">
+                                ##                                        <i class="iconfont iconfont-index-hp">
+                                ##                                        </i>
+                                ##                                        100%好评
+                                ##                                    </span>
+
+                                </div>
+                            </div>
+
+                        </a>
+                    #end
+                </div>
+
+                <div class="classify-header card-name card-title"><span class=""><img src="/images/icon.gif"
+                                                                                      style="height: 0.7rem"><i
+                        class="title-fonts">热销商品</i><a href="/searchtype?kind=HotSell" style="font-size:0.8rem; float: right;margin-right: 1rem;color:#7c6862 ">更多></a></span></div>
+
+                <div class="row ticketContent">
+                    #foreach($item in $saleProducts)
+                        <a class="card ticketCard external" style="margin:  0.3rem 0  !important;"
+                           href="/ticket/${item.id}.html">
+                            <div class="card-content ticket-card-content">
+                            ## $item.mainPicturePath
+                                <img src="$imghost/m/$item.mainPicturePath"
+                                     onerror="javascript:this.src='/images/default.png'">
+                                <span class="card-popup-rmb">¥$item.discountPrice</span>
+
+                                <div class=" row" style="margin-left: 0 ;">
+                                    <div class="col-100 item-name">
+                                        $item.name
+                                    </div>
+
+                                </div>
+                                <div class="card-footer card-footer-noline card-footer-ticket  " style="color: #EA832C;    padding-left: 0.4rem;
+">
+
+                                    <span class="cart-footer-yx  single-line ">
+                                        <i class="icon icon-star" style="">
+                                        </i>
+                                        $item.specDescription
+
+                                    </span>
+                                ##                                 <span style="font-size: 0.5rem">
+                                ##                                        <i class="iconfont iconfont-index-hp">
+                                ##                                        </i>
+                                ##                                        100%好评
+                                ##                                    </span>
+
+                                </div>
+                            </div>
+
+                        </a>
+                    #end
+                </div>
+                <div class="classify-header card-name card-title"
+                "><span><img src="/images/icon.gif" style="height: 0.7rem"><i class="title-fonts">组合门票</i><a href="/searchtype?type=GroupProduct" style="font-size:0.8rem; float: right;margin-right: 1rem;color:#7c6862 ">更多></a></span></div>
+            <div class="row  " style="margin:0 0.3rem">
+                #foreach($item in $groupProducts)
+                    <a class="card external" href="/ticket/${item.id}.html" style="margin:  0.3rem 0  !important;">
+                        <div class="card-content">
+                            <img src="$imghost/$item.mainPicturePath"
+                                 onerror="javascript:this.src='/images/default.png'">
+                                <span class="card-popup-rmb row" style="line-height: 1.5rem;width: 100%;border-radius:0;  bottom: 0.3rem;">
+                                       <div class="card-name col-75  zh-name">
+                                           $item.name
+                                       </div>
+                                    <span class="ui-rmb-discount col-25 zh-name">¥$item.discountPrice</span>
+                                </span>
+
+                        </div>
+                    </a>
+
+                #end
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+#set($block_script='
+    <script>
+
+    </script>
+')

@@ -1,0 +1,51 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left external" href="/" >
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class="title">登录</h1>
+        </header>
+        #parse("/layout/siteNav.vm")
+        <div class="content">
+            <div class="list-block">
+                <form action="logon" method="post">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <input type="hidden" name="rurl" value="$!redirectUrl">
+                                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">用户名</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="用户名" name="username">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">密码</div>
+                                    <div class="item-input">
+                                        <input type="password" placeholder="密码" name="password">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div style=" padding: 1rem 0.5rem 0 0.5rem">
+                        <input type="submit" class="button button-big button-fill button-danger" style="height: 1.5rem;line-height: 1.5rem;margin: auto; border-radius: 0;" value="登录">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--  关于我们 -->
+    #parse("about.vm")
+</div>
+
+

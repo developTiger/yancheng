@@ -1,0 +1,148 @@
+$ui.loadCss("index.css")
+<div class="banner" style="width: auto">
+    <ul>
+        #if($p_2)
+            #foreach($webList in $p_2)
+               <li><a #if($webList.link) href="$webList.link" #else href="#" #end><img src="$imghost/$webList.path" height="480px"></a></li>
+            #end
+        #else
+            <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+            <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+            <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+        #end
+    </ul>
+</div>
+<div class="h60"></div>
+<div class="main">
+    <div>
+        <p class="index-title" style="display: inline-block;"><em class="icon-Pagoda-green">&#xe632;</em>推荐门票</p>
+
+        <p style="display: inline-block;font-size: 17px;margin-left: 992px;"><a href="/searchlist?kind=Recommended">更多<span class="icon-more-jj">&#xe641;</span></a></p>
+
+        <div class="h20"></div>
+        <div>
+            <div class="fl">
+                <a href="#if($p_3.link) $p_3.link #else # #end"> <img src="$imghost/$p_3.path" /></a>
+            </div>
+            <div class="fl index-img-main">
+                #foreach($product in $recommendedProducts)
+                     #if($!{velocityCount}%3==0)
+                          <div class="index-img-div" style="margin: 0px 0px 30px 0px;">
+                               #set($discount=$product.discountPrice*10/$product.price)
+                                <!--<p class="discount">6.8折</p>-->
+                              <!-- <p class="discount">$!discount &nbsp;折</p>-->
+                               <p><a href="/item/$product.id"><img src='$imghost/$product.mainPicturePath' width="250" height="150" border="none" /></a></p>
+                               <p class="index-img-title"><a href="/item/$product.id"><span>$product.name</span> <span><em>￥$product.discountPrice</em> 元</span></a></p>
+                          </div>
+                     #else
+                          <div class="index-img-div">
+                              #set($discount=$product.discountPrice*10/$product.price)
+                                <!--<p class="discount">6.8折</p>-->
+                              <!--<p class="discount">$!discount &nbsp;折</p>-->
+                              <p><a href="/item/$product.id"><img src='$imghost/$product.mainPicturePath' width="250" height="150" border="none" /></a></p>
+                              <p class="index-img-title"><a href="/item/$product.id"><span>$product.name</span> <span><em>￥$product.discountPrice</em> 元</span></a></p>
+                          </div>
+                     #end
+                #end
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="h20"></div>
+    <div>
+        <p class="index-title" style="display: inline-block;"><em class="icon-Pagoda-Orange">&#xe632;</em>热销商品</p>
+
+        <p style="display: inline-block;font-size: 17px;margin-left: 992px;"><a href="/searchlist?kind=HotSell">更多<span class="icon-more-jj">&#xe641;</span></a></p>
+
+        <div class="h20"></div>
+        <div>
+            <div class="fl">
+                <a href="#if($p_4.link) $p_4.link #else # #end"><img src="$imghost/$p_4.path" width="330" height="422" /></a>
+            </div>
+            <div class="fl index-img-main">
+                #foreach($product in $saleProducts)
+                    #if($!{velocityCount}%3==0)
+                         <div class="index-img-div" style="margin: 0px 0px 30px 0px;">
+                             #set($discount=$product.discountPrice*10/$product.price)
+                                <!--<p class="discount">6.8折</p>-->
+                            <!-- <p class="discount">$!discount &nbsp;折</p>-->
+                             <p><a href="/item/$product.id"><img src='$imghost/$product.mainPicturePath' width="250" height="150" border="none"  /></a></p>
+                             <p class="index-img-title"><a href="/item/$product.id"><span>$product.name</span> <span><em>￥$product.discountPrice</em> 元</span></a></p>
+                         </div>
+                    #else
+                         <div class="index-img-div">
+                             #set($discount=$product.discountPrice*10/$product.price)
+                                <!--<p class="discount">6.8折</p>-->
+                            <!-- <p class="discount">$!discount &nbsp;折</p>-->
+                             <p><a href="/item/$product.id"><img src='$imghost/$product.mainPicturePath' width="250" height="150" border="none"  /></a></p>
+                             <p class="index-img-title"><a href="/item/$product.id"><span>$product.name</span> <span><em>￥$product.discountPrice</em> 元</span></a></p>
+                         </div>
+                    #end
+                #end
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="h20"></div>
+
+    <div>
+      <a href="#if($p_5.link) $p_5.link #else  #end"> <img src="#if($p_5) $imghost/$p_5.path #else images/test/banner2.png #end"/></a>
+    </div>
+    <div class="h60"></div>
+    <div>
+        <p class="index-title"><em class="icon-Hotel-Blue">&#xe633;</em>组合门票</p>
+        <div class="comb-ticket-main">
+            #foreach($product in $groupProducts)
+            <div class="comb-ticket-div">
+                <p><a href="/item/$product.id"><img src='$imghost/$product.mainPicturePath' width="380px" height="228px" border="none"/></a></p>
+                <p class="index-img-title"><a href="/item/$product.id"><span style="width: 260px;">$!product.name</span> <span><em>$!product.discountPrice</em> 元</span></a></p>
+            </div>
+            #end
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="h60"></div>
+
+    <!--  <div class="index-support-main">
+        <div class="index-support-div">
+            <em class="iconfont">&#xe60b;</em>
+            <p class="p-title">价格保证</p>
+            <p class="p-content">质量保证，价格优惠</p>
+        </div>
+        <div class="index-support-div">
+            <em class="iconfont">&#xe60a;</em>
+            <p class="p-title">退订保障</p>
+            <p class="p-content">若遇特殊情况，保证退订</p>
+        </div>
+        <div class="index-support-div">
+            <em class="iconfont">&#xe609;</em>
+            <p class="p-title">救援保障</p>
+            <p class="p-content">旅途中发生意外，保证援助</p>
+        </div>
+        <div class="index-support-div no-border">
+            <em class="iconfont">&#xe60c;</em>
+            <p class="p-title">24小时服务</p>
+            <p class="p-content">热忱服务，全年无休</p>
+        </div>
+        <div class="clear"></div>
+    </div>-->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

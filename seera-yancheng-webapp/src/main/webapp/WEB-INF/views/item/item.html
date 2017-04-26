@@ -1,0 +1,393 @@
+$ui.loadCss("productdetails/productdetails.css")
+<script type="application/javascript" src="/js/common/jquery.js"></script>
+
+<div class="h20"></div>
+<div class="main">
+    <p class="top-title"><a href="/">淹城春秋乐园</a> > $!productDto.name </p>
+
+    <div class="order-top">
+        <div class="show-order-details">
+            <div class="show-img-order">
+
+                <style>
+                    /* 双重slide-相册效果 */
+                    .gallery {
+                        padding: 5px;
+                        text-align: left;
+                    }
+
+                    .gallery .bd li .pic {
+                        line-height: 0px;
+                    }
+
+                    .gallery .bd li .bg, .gallery .bd li .title {
+                        display: none;
+                    }
+
+                    .gallery .bd li img {
+                        width: 450px;
+                        height: 270px;
+                    }
+
+                    .gallery .hd {
+                        position: relative;
+                        padding: 0 15px;
+                        margin-top: 10px;
+                        zoom: 1;
+                    }
+
+                    .gallery .hd .tempWrap {
+                        margin-left: 8px;
+                    }
+
+                    .gallery .hd ul {
+                        overflow: hidden;
+                        zoom: 1;
+                    }
+
+                    .gallery .hd li {
+                        width: 100px;
+                        padding-top: 4px;
+                        text-align: center;
+                        cursor: pointer;
+                    }
+
+                    .gallery .hd li img {
+                        width: 86px;
+                        height: 60px;
+                        border: 1px solid #ddd;
+                        padding: 2px;
+                    }
+
+                    .gallery .hd .sNext, .gallery .hd .sPrev {
+                        width: 15px;
+                        line-height: 66px;
+                        cursor: pointer;
+                        position: absolute;
+                        left: 0px;
+                        top: 9px;
+                    }
+
+                    .gallery .hd .sNext {
+                        left: auto;
+                        right: 10px;
+                    }
+
+                    .gallery .hd li.on img {
+                        border: 1px solid #f60;
+                        background: #fff;
+                    }
+
+                    .gallery .hd li.on {
+                        background: url("../images/icoUp.gif") no-repeat center 0;
+                    }
+
+                </style>
+
+                <div id="demoContent" class="dis-none">
+                    <div class="effect">
+                        <div class="gallery">
+                            <div class="bd">
+                                <ul style="overflow: hidden;">
+                                    <li>
+                                        <div class="bg"></div>
+                                        <div class="pic"><a href=""><img
+                                                src="$imghost/$productDto.mainPicturePath" class="dis-none"/></a></div>
+                                        <div class="title"><a href="">效果图0 </a></div>
+                                    </li>
+                                    #if($productDto.detailPicturesPaths)
+                                    #foreach($path in $productDto.detailPicturesPaths)
+                                    <li>
+                                        <div class="bg"></div>
+                                        <div class="pic"><a href=""><img src="$imghost/$path" class="dis-none"/></a>
+                                        </div>
+                                        <div class="title"><a href="">效果图$velocityCount </a></div>
+                                    </li>
+                                    #end
+                                    #end
+
+                                </ul>
+                            </div>
+                            <div class="hd">
+                                <a class="sPrev "><em class="icon-left dis-none">&#xe62c;</em></a>
+                                <a class="sNext "><em class="icon-right dis-none">&#xe62d;</em></a>
+                                <ul style="overflow: hidden">
+                                    <li><img src="$imghost/$productDto.mainPicturePath" class="dis-none"/></li>
+                                    #if($productDto.detailPicturesPaths)
+                                    #foreach($!path in $productDto.detailPicturesPaths)
+                                    <li><img src="$imghost/$path" class="dis-none"/></li>
+                                    #end
+                                    #end
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="show-order-content">
+                <p class="title">$!productDto.name</p>
+                #if($productDto.specDescription)
+                <p class="annual-general">
+                    <em class="icon-annual-general">&#xe61c;</em>
+                    <span>$!productDto.specDescription</span>
+                </p>
+                #end
+
+                <p class="present-original-price">
+                    <span class="present-price">现售价：</span>
+                    <span class="moneyShow">$!productDto.discountPrice</span>元
+                    <a class="original-price">$!productDto.price</a>
+                </p>
+                <!--<p class="preferential-information"><span>优惠信息：</span><a>赠送动物园门票</a></p>-->
+
+                #if($productDto.Status=="OnSale")
+                #if($productDto.productCt)
+                <p class="present-original-price">
+                    <span class="present-price" style="float: left;">有效期：</span>
+
+                    #if($productDto.productCt=="Today")
+                    <span style="line-height: 30px;font-size: 13px;"> <span class="js_ctBeginDate">$helper.formatDateToString($!productDto.ctBeginDate,"yyyy-MM-dd")</span></span>
+                    #end
+                <!--#if($productDto.rejectAreas)-->
+                    <!--<p class="present-original-price">-->
+                         <!--<span class="present-price">限购asdfa地点：</span>-->
+
+                         <!--<span id="arearejects" class="arearejects"> $productDto.rejectAreas</span>-->
+                     <!--</p>-->
+                <!--#end-->
+
+
+                    #if($productDto.productCt=="TimeSpan")
+                    <span style="line-height: 30px;font-size: 13px;"> <span class="js_ctBeginDate">$helper.formatDateToString($!productDto.ctBeginDate,"yyyy-MM-dd")</span>到<span
+                            class="js_ctEndDate">$helper.formatDateToString($!productDto.ctEndDate,"yyyy-MM-dd")</span></span>
+                    #end
+
+                    #if($productDto.productCt=="Nomal")
+                    <span style="line-height: 30px;font-size: 15px;">无时间限制。</span>
+                    #end
+                </p>
+                #end
+
+                <p class="product-quantity" style="display: inline-block;float:left;">
+                    <span>产品数量：</span>
+                </p>
+                <input type="hidden" class="Js_price" value="$!productDto.discountPrice">
+                <table class="btn-table" style="float: left;padding-top:20px; ">
+                    <tr>
+                        <td><input type="button" class="reduce" value="-">
+                            <input type="text" class="sum" value="1">
+                            <input type="button" class="add" value="+"></td>
+                    </tr>
+                </table>
+                <p style="display: inline-block; height: 28px;line-height: 28px;padding-top: 20px;padding-left: 10px;">
+                    库存量：<span>$productDto.stock</span></p>
+                #if($!productDto.hasHotel=="true")
+                <div class="admission-date">
+                    <span>入住日期：</span>
+                    <input type="text" class="Wdate2 js_check_empty1" id="hsd" value=""
+                           style="width: 178px;height: 21px;padding-left: 4px;">
+
+                    <div class="js_in_time_error1 redShow"></div>
+                </div>
+                #end
+                #if(($!productDto.hasHotel=="true"&&$!productDto.type=="GroupProduct")||($!productDto.hasHotel=="false"))
+                <div class="admission-date">
+                    <span>入园日期：</span>
+                    <input type="text" class="Wdate js_check_empty2" id="tsd"
+                           style="width: 178px;height: 21px;padding-left: 4px;">
+
+                    <div class="js_in_time_error2 redShow"></div>
+                </div>
+                #end
+                #if($!productDto.rejectAreas)
+                <div style="padding-top: 12px">
+                <strong>
+                限购区域：
+                </strong>
+                    <span>$!productDto.rejectAreasNames</span>
+
+
+                </div>
+                #end
+                <div class="reservation-join-shopping-cart">
+                    <input class="reservation" type="button" #if($productDto.stock==0 || $disabledButton)
+                           disabled="disabled"
+                           style="background-color:#E1E1E1;color: #ffffff;border: 1px solid #E1E1E1;" #end value="立即预定">
+                    <label class="join-shopping-cart" for="join-shop-cart" #if($productDto.stock==0 || $disabledButton)
+                           style="background-color: #E1E1E1;color: #ffffff;" #end>
+                        <em class="icon-shopping-cart">&#xe620;</em>
+                        <input id="hdId" type="hidden" value="$productDto.id"/>
+                        <input class="join-shopping-cart" id="join-shop-cart" #if($productDto.stock==0 ||
+                               $disabledButton) style="background-color:#E1E1E1;color: #ffffff;" disabled="disabled"
+                               #end type="button" value="加入购物车"/>
+                    </label>
+                </div>
+
+
+                #else
+
+                <p style="padding-top: 20px;">
+                    <span class="icon-time">&#xe63d;</span>
+                    <span style="font-size: 15px;">该商品已下架,非常抱歉！</span>
+                </p>
+
+                <p class="order-take-downs">商品已经下架!</p>
+                #end
+
+            </div>
+
+
+            <div class="h20"></div>
+        </div>
+        <div class="info-show">
+            <div class="reservation-message">
+                <p>无预约</p>
+
+                <p>请提前24小时预定</p>
+            </div>
+            <div class="highlight-recommend">
+                <p>亮点推荐：</p>
+
+                <p>1.精品一日游，更优质的体验</p>
+
+                <p>2.超自由无限制</p>
+
+                <p>3.不在烦恼交通</p>
+
+                <p>4.8小时游玩超低价格</p>
+            </div>
+            <div class="business-hours">
+                <p>工作日：08:30 - 18:30</p>
+
+                <p>公休日：09:30 - 22:30</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="h20"></div>
+    <div class="order-content">
+        <div class="order-content-left">
+            <div class="order-content-left-top">
+                <label class="order-content-details current" data-div="in-div-1" style="">商品详情</label>
+                <label class="" data-div="in-div-4">交通地图</label>
+                <label class=" " data-div="in-div-5">预定须知</label>
+                <label class=""
+                       data-div="in-div-6">用户点评<span>(#if($feedBack) $feedBack.size() #else 0 #end)</span></label>
+            </div>
+            <div class="order-content-left-content " id="in-div-1">
+                <!--  <p class="order-content-left-content-details"><em class="icon-search">&#xe623;</em> 商品详情</p>-->
+                <table class="item-product-table" cellpadding="5px" cellspacing="5px;">
+                    <tr>
+                        <th width="300">商品编号</th>
+                        <th width="400">商品名称</th>
+                        <th width="100">数量</th>
+                    </tr>
+                    #foreach($product in $productDto.productItemDtoList)
+                    <tr>
+                        <td>
+                            $product.num
+                        </td>
+                        <td>
+                            $product.name
+                        </td>
+                        #foreach($param in $productDto.idAndCount.keySet())
+                        #if($param==$product.id)
+                        <td>
+                            $productDto.idAndCount.get($param)
+                        </td>
+                        #end
+                        #end
+                    </tr>
+                    #end
+                </table>
+
+                <div class="show-order-content-left">
+                    $!productDto.profile
+                </div>
+            </div>
+            <div class="order-content-left-content hidden" id="in-div-4">
+                <p class="order-content-left-content-details"><em class="icon-search">&#xe623;</em> 交通地图</p>
+
+                <div class="show-order-content-left">
+                    $!productDto.trafficGuide
+                </div>
+            </div>
+            <div class="order-content-left-content hidden" id="in-div-5">
+                <p class="order-content-left-content-details"><em class="icon-search">&#xe623;</em> 预定须知</p>
+
+                <div class="show-order-content-left">
+                    $!productDto.notice
+                </div>
+            </div>
+            <div class="order-content-left-content hidden" id="in-div-6">
+                <p class="order-content-left-content-details"><em class="icon-search">&#xe623;</em> 用户点评</p>
+
+                <div class="show-order-content-left">
+
+                    #foreach($item in $feedBack)
+                    <div class="item-evaluate-list">
+                        <div class="evaluate-left">
+                            <p>
+                                #foreach($temp in [1..$item.score])
+                                <em class="icon-five-star-red">&#xe63a;</em>
+                                #end
+
+                                #set($obj=5 - $item.score)
+                                #if($obj!=0)
+                                #foreach($temp in [1..$obj])
+                                <em class="icon-five-star-black">&#xe63a;</em>
+                                #end
+                                #end
+                                <!--<em class="icon-five-star">&#xe63a;</em>
+                                <em class="icon-five-star">&#xe63a;</em>
+                                <em class="icon-five-star">&#xe63a;</em>
+                                <em class="icon-five-star">&#xe63a;</em>-->
+                            </p>
+
+                            <p>$helper.formatDateToString($item.createDateTime,"yyyy-MM-dd hh:mm:ss")</p>
+                        </div>
+                        <div class="evaluate-content" style="padding-top: 10px">$item.content</div>
+                        <div class="evaluate-right">
+                            #set($str=$item.touristRealName.substring(0,1))
+                            <p>
+                                <em class="icon-header">&#xe63b;</em>
+                                <span style="color: #000000;">$str ****</span>
+                            </p>
+
+                        </div>
+                    </div>
+                    #end
+                </div>
+                <div class="h20"></div>
+            </div>
+        </div>
+        <div class="order-content-right">
+            <p>推荐门票</p>
+
+            <div class="h20"></div>
+            #foreach($item in $recommend)
+            <div>
+                <a href="/item/$!item.id" style="text-decoration: none;">
+                    <img src="$imghost/$!item.mainPicturePath" style="width: 250px;height: 160px;">
+
+                    <p>$!item.name</p>
+
+                    <p style="line-height: 35px;"><span>$!item.discountPrice</span> 元<a>$!item.price</a></p>
+                </a>
+            </div>
+            #end
+            <div class="h20"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="shoppingCartAdd">
+    添加成功 +1
+</div>
+<div class="shoppingCartFail">
+    添加失败
+</div>
+<script>
+    require(["item/item"]);
+</script>

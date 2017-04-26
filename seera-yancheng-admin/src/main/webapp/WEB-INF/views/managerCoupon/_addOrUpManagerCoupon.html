@@ -1,0 +1,69 @@
+<form id="addManagerCouponInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5">优惠券金额:<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-3">
+            <input type="text" id="quota" required="required"
+                   name="quota" #if($beans)value="$beans.quota" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639" placeholder="22">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5">最低消费:<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-3">
+            <input type="text" id="useCondition" required="required"
+                   name="useCondition" #if($beans)value="$beans.useCondition" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639" placeholder="100">
+            <ul class="parsley-errors-list" id="parsley-id-2032"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >关联员工:
+        </label>
+
+        <div class="col-xs-3">
+            <select id="staff"  name="staffId" required="required"
+                    class="form-control col-xs-3" data-parsley-id="0004">
+                #foreach($staff in $staffs)
+                #if($staff.realName)
+                <option value="$staff.id">$!staff.realName</option>
+                #else
+                <option value="$staff.id">$!staff.userName</option>
+                #end
+                #end
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5">截止日期:
+        </label>
+
+        <div class="col-xs-3">
+            <input type="text" required="required" name="gqDate"
+                   #if($beans)value='$beans.gqDate' #end
+                   class="form-control   Wdate"  data-parsley-id="4639" placeholder="2016-09-07">
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-7 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateManagerCoupon" data-url="ajax_add_update_managerCoupon" class="btn btn-success">
+                保存
+            </button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>
+

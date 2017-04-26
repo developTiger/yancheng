@@ -1,0 +1,87 @@
+<div class="left_col scroll-view">
+
+    <div class="navbar nav_title" style="border: 0;">
+        <a href="/sra_index" class="site_title"><i class="fa fa-paw"></i> <span>春秋淹城</span></a>
+    </div>
+    <div class="clearfix"></div>
+
+    <!-- menu prile quick info -->
+    <div class="profile">
+        <div class="profile_pic">
+            <img src="images/user.png" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Welcome,</span>
+
+            <h2> $userInfo.loginName</h2>
+        </div>
+    </div>
+    <!-- /menu prile quick info -->
+    <br/>
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" style="padding-top: 60px;   ">
+
+        <div class="menu_section">
+            <!--  <h3>开发展示菜单</h3>
+
+          <p>$currentUrl.substring(0,5)</p>-->
+            <ul class="nav side-menu"  style=" border-bottom: 0.3px solid #374a5d;">
+                #if($menu)
+                #foreach($me in $menu)
+                #if($me.resType<=1)
+                <li class="ma #if($me.id==$parentMenu)  active  #end" ><a>
+                    #if($me.iconName)
+                    <i class="fa $me.iconName"></i>
+                    #else
+                    <i class="fa  fa-home"></i>
+                    #end
+                    $me.name  <span class="fa fa-chevron-down"></span></a>
+                    <ul class='nav child_menu  #if($me.id==$parentMenu) active  #end'
+                        #if($me.id!=$parentMenu) style="display: none"    #end>
+                        #foreach($m in $me.child)
+                        #if($m.url==$currentUrl)
+                        <li class="pa active current-page "><a href="$m.url"  >$m.name</a>
+                        </li>
+                        #else
+                        <li class="pa"><a href="$m.url" >$m.name</a>
+                        </li>
+                        #end
+                        #end
+                    </ul>
+                </li>
+                #end
+                #end
+                #end
+            </ul>
+        </div>
+        <!--<div class="menu_section">-->
+            <!--<h3>系统配置</h3>-->
+            <!--<ul class="nav side-menu">-->
+                <!--<li class="ma"><a><i class="fa fa-bug"></i> 菜单管理 <span class="fa fa-chevron-down"></span></a>-->
+                    <!--<ul class="nav child_menu" style="display: none">-->
+                        <!--&lt;!&ndash;<li><a href="sra_u_user">用户管理</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a href="sra_role">角色管理</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a href="sra_group">权限组管理</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                        <!--<li><a href="sra_menu">菜单管理</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--&lt;!&ndash;<li class="ma"><a><i class="fa fa-windows"></i> 参数管理 <span class="fa fa-chevron-down"></span></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ul class="nav child_menu" style="display: none">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a href="sra_ptype">参数类型管理</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a href="sra_ptypemanage">参数管理</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+            <!--</ul>-->
+        <!--</div>-->
+
+    </div>
+
+</div>
+

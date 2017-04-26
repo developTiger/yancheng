@@ -1,0 +1,19 @@
+<%if(isSuccess){%>
+<tr class="itemRow">
+    <td><%=t.name%>
+        <input type="hidden" value="<%=t.takeNum%>" class="hiddenTakeNum">
+    </td>
+    <td><%=t.num%></td>
+    <td><%=t.takeNum%></td>
+    <td><%=t.count%></td>
+    <td id="info"><%if(t.haveTaked){%>
+        <span class='red'>此商品已领取！</span>
+        <%} else {%>
+        <span class='green'>未领取</span>
+        <%}%>
+    </td>
+</tr>
+
+<%} else {%>
+<tr class="itemRow"><td colspan="12" align="center">暂无数据</td></tr>
+<%}%>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="max-age:5000">
+    <title>$!title</title>
+    <script data-main="/js/rjs-config.js" src="/js/require.js"></script>
+    $ui.loadCss("common.css")
+    $ui.loadCss("active.css")
+    $ui.loadJs("common/jquery.js")
+    <script>
+        require(['common/common']);
+    </script>
+</head>
+
+<body>
+<div class="box-shadow">
+</div>
+#parse("/publicparts/head.html")
+#parse($view)
+#parse("/publicparts/bottom.html")
+#parse("/publicparts/fixedRight.html")
+
+
+</body>
+</html>

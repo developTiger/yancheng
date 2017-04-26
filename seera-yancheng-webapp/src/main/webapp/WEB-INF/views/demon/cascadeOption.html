@@ -1,0 +1,36 @@
+
+<FORM name="form1">
+
+    <SELECT NAME="province" onChange="getCity()">
+
+        <OPTION VALUE="0">请选择所在省份 </OPTION>
+
+        <OPTION VALUE="直辖市">直辖市 </OPTION>
+
+        <OPTION VALUE="江苏省">江苏省 </OPTION>
+
+        <OPTION VALUE="福建省">福建省 </OPTION>
+
+        <OPTION VALUE="广东省">广东省 </OPTION>
+
+        <OPTION VALUE="甘肃省">甘肃省 </OPTION>
+
+    </SELECT>
+
+    <SELECT NAME="city">
+
+        <OPTION VALUE="0">请选择所在城市 </OPTION>
+
+    </SELECT>
+
+</FORM>
+
+
+<script>
+    require(['app/demon/cascadeOption']);
+</script>
+
+
+
+
+

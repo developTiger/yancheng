@@ -1,0 +1,112 @@
+<form id="addCouponTypeInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">优惠券名称:<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text"  required="required"
+                   name="couponTypeName" #if($beans)value="$beans.couponTypeName" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639" >
+            <ul class="parsley-errors-list" ></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">优惠券金额:<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="quota" required="required"
+                   name="quota" #if($beans)value="$beans.quota" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">满足条件:<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="useCondition" required="required"
+                   name="useCondition" #if($beans)value="$beans.useCondition" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2032"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">总数量:
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="count"
+                   name="count" #if($beans)value="$beans.count" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2033"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">活动状态:
+        </label>
+
+        <div class="col-xs-7">
+            <select id="status" required="required" name="status"
+                    class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="Ahead" #if($beans.status=="Ahead") selected #end>即将进行</option>
+                <option value="Run" #if($beans.status=="Run") selected #end>进行中</option>
+                <option value="Pause" #if($beans.status=="Pause") selected #end>暂停</option>
+                <option value="End" #if($beans.status=="End") selected #end>结束</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">领取时间:
+        </label>
+
+        <div class="col-xs-3">
+            <input type="text" required="required" name="start_Time"
+                   #if($beans)value='$!helper.formatDateToString($beans.startTime,"yyyy-MM-dd")' #end
+                   class="form-control   Wdate" placeholder="开始时间" data-parsley-id="4639">
+        </div>
+        <label class="control-label  col-xs-1">-----
+        </label>
+        <div class="col-xs-3">
+            <input type="text" required="required" name="over_Time"
+                   #if($beans)value='$!helper.formatDateToString($beans.OverTime,"yyyy-MM-dd")' #end
+                   class="form-control col-md-7 col-xs-12 Wdate" placeholder="结束时间" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">使用时间:
+        </label>
+
+        <div class="col-xs-3">
+            <input type="text" required="required" name="coupon_start"
+                   #if($beans)value='$!helper.formatDateToString($beans.couponStart,"yyyy-MM-dd")' #end
+                   class="form-control   Wdate" placeholder="开始时间" data-parsley-id="4639">
+        </div>
+        <label class="control-label  col-xs-1">-----
+        </label>
+        <div class="col-xs-3">
+            <input type="text" required="required" name="coupon_over"
+                   #if($beans)value='$!helper.formatDateToString($beans.couponOver,"yyyy-MM-dd")' #end
+                   class="form-control col-md-7 col-xs-12 Wdate" placeholder="结束时间" data-parsley-id="4639">
+    </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-7 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateCouponType" data-url="ajax_add_update_CouponType" class="btn btn-success">
+                保存
+            </button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>
+

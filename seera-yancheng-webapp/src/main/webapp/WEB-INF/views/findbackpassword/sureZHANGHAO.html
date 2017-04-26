@@ -1,0 +1,40 @@
+
+
+
+<div class="h20"></div>
+
+<div class="fkp">
+    <div class="find-password-lc">
+        <p><span style="background-color: #CD3333;">1</span> 确认账号</p>
+        <p><span>2</span> 安全认证</p>
+        <p><span>3</span> 重置密码</p>
+        <p><span>4</span> 完成</p>
+    </div>
+
+    <div class="zhangHao-find">
+
+        <label class="write-account-number">
+            请填写您需要找回的账号：<input type="text" class="js_token">
+        </label>
+
+        <label style="position: relative">
+            <div>请输入验证码：</div>
+            <input type="text" class="checkedCode" value="">
+            <em id="checkCode" class="checkCode">2q8G</em>
+            <a class="change-one" style="cursor: pointer">看不清？换一张</a>
+
+            <!-- 添加canvas标签，并加上红色边框以便于在页面上查看 -->
+            <canvas id="myCanvas" class="myCanvas" style="background: #fff4f1;width: 60px;height: 30px;position: absolute;left: 71%;top: 25%;z-index: -1;">
+                您的浏览器不支持canvas标签。
+            </canvas>
+
+        </label>
+
+        <div style="color: red;padding-left: 170px;" class="show-code-result"></div>
+
+        <div class="next-btn">
+            <a class="js_next_step" style="cursor: pointer;">下一步</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>活动管理/基本内容管理
+
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <ul class="nav nav-tabs">
+            <li  class="active"><a href="sra_t_AddOrUpActicity?id=$!beans.id">基本信息</a></li>
+            <li><a #if($!beans.id) href="sra_t_editPage?id=$!beans.id" #else #end>PC端活动页</a></li>
+            <li><a #if($!beans.id) href="sra_t_MobilePage?id=$!beans.id" #else #end>移动端活动页</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            </br>
+            </br>
+            <div  id="detail">
+                <form id="addActivityInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+                    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">活动名称:<span class="required">*</span>
+                        </label>
+                        <div class="col-xs-7">
+                            <input type="text" id="userName" required="required"
+                                   name="name" #if($beans)value="$beans.name" #end
+                                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">活动类型:
+                        </label>
+                        <div class="col-xs-7">
+                            <select id="type" required="required" name="type"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value="">全部类型</option>
+                                <option value="HolidayEvent" #if($beans.type=="HolidayEvent") selected #end>节假日活动</option>
+                                <option value="SpecialSal" #if($beans.type=="SpecialSal") selected #end>特惠活动</option>
+                                <option value="StarEvent" #if($beans.type=="StarEvent") selected #end>明星活动</option>
+                                <option value="ChildEvent" #if($beans.type=="ChildEvent") selected #end>亲子活动</option>
+                                <option value="GroupEvent" #if($beans.type=="GroupEvent") selected #end>团购活动(满**成团)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="groupActivity" class='form-group  #if($beans.type!="GroupEvent") hidden #end'>
+                        <label class="control-label  col-xs-3">成团数量:
+                        </label>
+
+                        <div class="col-xs-7">
+                            <input type="text" id="groupMinCount" required="required" name="groupMinCount" #if($beans)value="$!beans.groupMinCount" #end
+                                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                            <ul class="parsley-errors-list" ></ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">活动状态:
+                        </label>
+
+                        <div class="col-xs-7">
+                            <select id="activityStatus" required="required" name="activityStatus"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value="Wait" #if($beans.activityStatus=="Wait") selected #end>等待开始</option>
+                                <option value="Run" #if($beans.activityStatus=="Run") selected #end>运行</option>
+                                <option value="Stop" #if($beans.activityStatus=="Stop") selected #end>中止</option>
+                                <option value="Complete" #if($beans.activityStatus=="Complete") selected #end>结束</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">商品:
+                        </label>
+
+                        <div class="col-xs-7">
+                            <select required="required" name="productDto.id"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                #if($products)
+                                #foreach($prod in $products)
+                                <option value="$prod.id" #if($beans&&$prod.id==$beans.productDto.id) selected #end>$prod.name</option>
+                                #end
+                                #end
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">活动须知:
+                        </label>
+
+                        <div class="col-xs-7">
+                            <input type="text" id="notice" required="required" name="notice" #if($beans)value="$!beans.notice" #end
+                                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">活动内容:
+                        </label>
+
+                        <div class="col-xs-7">
+                            <input type="text" id="content" required="required" name="content" #if($beans)value="$!beans.content"
+                                   #end
+                                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">活动图片:
+                        </label>
+                        <div class="col-xs-7">
+                            <input type="file" id="image"  name="image"
+                                   class="form-control " data-parsley-id="4639">
+                        </div>
+                        #if($beans.pticturePath)
+                        <div class="col-xs-7 col-xs-offset-3">
+                            <input type="hidden" name="pticturePath" value="$beans.pticturePath">
+                            <img style="width: 400px;margin-top: 10px;" src="$imghost/$beans.pticturePath">
+                        </div>
+                        #end
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">活动时间:
+                        </label>
+                        <div class="col-xs-3">
+                            <input type="text" required="required" name="start_Time"
+                                   #if($beans)value='$helper.formatDateToString($beans.startTime,"yyyy-MM-dd")' #end
+                                   class="form-control   Wdate" placeholder="开始时间" data-parsley-id="4639">
+                        </div>
+                        <label class="control-label  col-xs-1">-----
+                        </label>
+                        <div class="col-xs-3">
+                            <input type="text" required="required" name="end_Time"
+                                   #if($beans)value='$helper.formatDateToString($beans.endTime,"yyyy-MM-dd")' #end
+                                   class="form-control col-md-7 col-xs-12 Wdate" placeholder="结束时间" data-parsley-id="4639">
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class=" col-xs-7 col-xs-offset-3">
+
+                            <button type="submit" id="addOrUpdateActivity" data-url="ajax_add_update_activity" class="btn btn-success">
+                                保存
+                            </button>
+                            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/activity/activity"]);
+</script>
+

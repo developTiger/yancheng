@@ -1,0 +1,230 @@
+<form id="addGoodsForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="name">商品名称<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <input type="text" id="name" required="required"
+                   name="name" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-12031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="hidden" name="hiddenGoodsItems" id="hidTxt">
+        <input type="hidden" name="hiddenGoodsItemsNums" id="hidNumber">
+        <input type="hidden" name="hiddenGoodsItemType" id="hidType">
+        <label class="control-label  col-xs-2" >商品项<span class="required">*</span></label>
+
+        <div class="col-xs-6 ">
+            <select id="typeList" required="required" name="typeList" class="form-control col-md-6 col-xs-12 chooseGoodsItem"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                #if($beans)
+                #foreach($bean in $beans)
+                <option value="$bean.id" data-price="$bean.price" data-value="$bean.ProductItemType" >$bean.name</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+        </div>
+
+        <label class="control-label  col-xs-1" >数量<span class="required">*</span></label>
+
+        <div class="col-xs-2" >
+                <input type="text" id="goodsItemNum" required="required"
+                       name="goodsItemNum" class="form-control goodsItemNums" >
+        </div>
+        <div class="col-xs-1 text-right" >
+            <input type="button"  required="required" value="新增"
+                   name="addGoodsItem" class="btn btn-default addGoodsItem" >
+
+        </div>
+        <div id="addgoodsItemNameAndNum">
+
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >标价<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <input type="text" id="discountPrices" required="required" name="discountPrices"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >原价<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <input type="text" id="prices" required="required"
+                   name="prices" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="time">上架日期<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <input type="text" class="form-control  Wdate" id="time" placeholder="开始时间"
+                   name="time" >
+        </div>
+    </div>
+
+    <!--<div class="form-group">
+        <label class="control-label  col-xs-3" >商品主图片<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6"  >
+            <input type="file" id="file1"  name="fileName" class="col-md-7 col-xs-12"
+                   style="position: relative;height: 30px;padding-top: 5px;">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >商品轮播图片<span class="required">*</span>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-4 col-xs-offset-3">
+            <input type="file" id="file2"  name="fileName" class="col-md-7 col-xs-12"
+                   style="position: relative;height: 30px;padding-top: 5px;">
+
+        </div>
+
+        <div class="col-xs-1">
+            <input type="button"  required="required" value="新增"
+                   name="addGoodsImg" class="btn btn-default addGoodsImg" data-parsley-id="4639">
+
+        </div>
+    </div>
+
+    <div id="addGoodsImgs">
+
+    </div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >商品库存<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <input type="text" id="stocks" required="required" name="stocks" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-208"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >商品状态<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <select id="goodsStatus" required="required" name="goodsStatus" class="form-control col-md-7 col-xs-12 "
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="OnSale">在售</option>
+                <option value="Stoped" >下架</option>
+                <option value="Recommended" >推荐上架</option>
+                <option value="waitSale">待上架</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="hidden" id="hidPro" name="hiddenProfile">
+        <input type="hidden" id="hidNot" name="hiddenNotice">
+        <input type="hidden" id="hidTra" name="hiddenTrafficGuide">
+        <label class="control-label  col-xs-2" >商品介绍<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea type="text" id="profile" required="required" name="profile" class="form-control col-md-7 col-xs-12"
+                      data-parsley-id="4639"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >购买须知<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea  id="notice" required="required" name="notice" class="form-control col-md-7 col-xs-12"
+                      data-parsley-id="4639"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >交通指南<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea id="trafficGuide" required="required" name="trafficGuide" class="form-control col-md-7 col-xs-12"
+                      data-parsley-id="4639"></textarea>
+        </div>
+    </div>
+
+    <!--<input type="text" name="hidProfile" id="hiddenPro">
+    <input type="text" name="hidNotice" id="hiddenNot">
+    <input type="text" name="hidTrafficGuide" id="hiddenTra">-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >改签<span class="required">*</span>
+        </label>
+
+        <label class="control-label  col-xs-1 col-xs-offset-1" >
+            <input type="radio" name="canMeal" value="1">可改签
+        </label>
+
+        <label class="control-label  col-xs-2" >
+            <input type="radio" name="canMeal" value="0">不可改签
+        </label>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >退货<span class="required">*</span>
+        </label>
+
+        <label class="control-label  col-xs-1 " >
+            <input type="radio" name="canReturn" value="1">可退
+        </label>
+
+        <label class="control-label  col-xs-2" >
+            <input type="radio" name="canReturn" value="0">不可退
+        </label>
+
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateGoods" data-url="ajax_add_update_goodsManager" class="btn btn-success">确定</button>
+            <!--<button type="button" id="cancelModal" class="btn btn-primary">取消</button>-->
+            <a href="javascript:history.go(-1);" class="btn btn-default">返回</a>
+
+        </div>
+    </div>
+</form>
+
+<script>
+    require(["app/goodsManager/addGoods"]);
+</script>
+

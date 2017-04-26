@@ -1,0 +1,105 @@
+<div style="background: url('/images/AroundBg.png') no-repeat;background-size: 100%;">
+    <div class="main">
+        <div class="top-nav">
+            <a href="/" style="color:#000">您好，欢迎来到淹城春秋乐园官网</a>
+            <a href="/" style="color:#000"><p>淹城网站首页</p></a>
+
+            <span class="Js_right_div1" style="cursor: pointer;position: relative">微信关注
+                <p class="dis-none" style=" position: absolute;top: 10%; left: 100%;z-index: 1;">
+                    <img src="/images/yanchengWXCard.png" style="height: 100px;border:none;"/>
+                </p>
+            </span>
+
+            <div class="top-right">
+                #if ($userInfo)
+                <p>$userInfo.name</p>
+                <p><a href="/logout">[退出]</a></p>
+                <p><a href="/cart" >购物车(<span class="red" id="Js_shoppingCart">$!cartCount</span>)</a></p>
+                #else
+                <p><a href="/login">[登录]</a></p>
+                <p><a href="/reg">[注册]</a></p>
+                #end
+                <!--<div class="Js_top_select inline-block top-select down">
+                        <a href="/edit_user">个人中心<em class="iconfont down">&#xe600</em><em class="iconfont up">&#xe601;</em>  </a>
+                        <div class="dis-none">
+                            <a href="/orderlist"><p>订单列表</p></a>
+                            <a href="/edit_user"><p>基本信息</p></a>
+                            <a href="/address"><p>取票人信息</p></a>
+                        </div>
+                </div>-->
+                <div class="inline-block top-select">
+                    <a href="/orderlist/all">个人中心</a>
+                </div>
+
+                <p><a href="/helpCenter/JDRC114F">帮助</a></p>
+            </div>
+        </div>
+        <div class="index-search">
+            <div class="logo">
+              <a href="/"><img src="/images/common/logo.png " style="border: none;" /></a>
+            </div>
+            <div class="search-div">
+                <form action="/searchlist" accept-charset="UTF-8">
+                    <div class="search-select">
+                        <div class="Js_search_select search-select-p down"><input type="hidden" name="searchType" value="Ticket"><span>#if($searchType) $searchType #else 门票 #end</span><em class="iconfont down">&#xe603;</em><em class="iconfont up">&#xe602;</em>
+                            <ul class="Js_search_down dis-none">
+                                <li>酒店</li>
+                                <li>餐饮</li>
+                                <li>门票</li>
+                                <li>纪念品</li>
+                                <li>其他</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <input type="text" name="searchContent" class="search-input"/>
+                    <input type="submit" value="搜索" class="search-Btn"/>
+                </form>
+            </div>
+            <div class="contact">
+                <div class="info">
+                    <em class="iconfont">&#xe635;</em>
+                    <p class="des">24H服务热线：</p>
+                    <p class="tel">400-188-0005</p>
+                </div>
+
+            </div>
+          <!--  <div class="more-search">
+                <a href="/searchlist?searchType=Ticket">淹城门票</a>
+                <a href="/searchlist?searchType=Catering">火烈鸟主题餐厅</a>
+            </div>-->
+        </div>
+    </div>
+    <div class="nav ">
+
+        <div class="main">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/recommend">推荐门票</a></li>
+                <li><a href="/nearProduct">周边商品</a></li>
+                <li class="js_show_active"><a href="/actives">特色活动</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["common/common"]);
+</script>
+<!--百度统计-->
+<script>
+    var _hmt = _hmt || [];
+
+    (function() {
+
+        var hm = document.createElement("script");
+
+        hm.src = "//hm.baidu.com/hm.js?afcbb1d1680cbd7c674006b69e2f095a";
+
+        var s = document.getElementsByTagName("script")[0];
+
+        s.parentNode.insertBefore(hm, s);
+
+    })();
+
+</script>

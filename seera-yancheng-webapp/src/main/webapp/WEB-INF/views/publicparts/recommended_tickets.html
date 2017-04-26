@@ -1,0 +1,17 @@
+
+<div class="order-content-right">
+    <p>推荐门票</p>
+    #if($recommendedProducts)
+        #foreach($item in $recommendedProducts)
+            <a href="item/$!item.id" style="text-decoration: none"><img src="$imghost/$item.mainPicturePath" style="width: 250px;height: 150px;">
+                <p style="width: 250px;">$item.name</p>
+               <!-- <p><span>￥$helper.fourArithmetic($item.price,$item.discountPrice,"-")</span> 元<a>￥$item.price元</a></p>-->
+                <p><span>￥$item.discountPrice</span> 元<a>￥$item.price</a></p>
+                <div class="h20"></div>
+                <div style="border-bottom: 2px dashed #E1E1E1;width: 250px;"></div>
+                <div class="h20"></div>
+            </a>
+        #end
+    #end
+</div>
+<div class="h30"></div>

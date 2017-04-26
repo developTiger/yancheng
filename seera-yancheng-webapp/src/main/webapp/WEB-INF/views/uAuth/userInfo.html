@@ -1,0 +1,103 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/员工管理
+            <small>- 员工管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 员工管理.
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <input type="hidden" id="baseEmpId" name="empId" value="$empId">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Input Mask</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content " >
+                    <div class=" col-xs-2 " style="position: relative;zoom: 1;">
+                        <a class="selectUserInfo"  href="BasicInformation" data-toggle="tab"  aria-expanded="false">
+                            <div class="alert alert-info alert-dismissible fade in" role="alert">
+                                <button type="button" class="close"  aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <strong>基本信息</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" href="EducationInformation"  data-toggle="tab" aria-expanded="false">
+                            <div class="alert alert-info alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>教育信息</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" href="WorkExInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>工作经历</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" href="PositionInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                               <strong>职务信息</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo"  href="QualificationInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>资质信息</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo"  href="FamilyInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert alert-info alert-dismissible fade in "  role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>家庭情况</strong>
+                            </div>
+                        </a>
+                    </div>
+                <div class="col-xs-10">
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="home">
+                        </div>
+                        <div id="table"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/user/userBasicInfo"]);
+</script>

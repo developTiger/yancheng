@@ -1,0 +1,413 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>商品管理/商品基本信息
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="sra_p_add_or_update_product?id=$!beans.id">基本信息</a></li>
+
+            <li><a href="sra_p_add_or_update_ProPicture?id=$!beans.id">商品图片</a></li>
+
+            <li><a href="sra_add_or_update_ProDetail?id=$!beans.id">商品详情</a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="baseInfo">
+                </br>
+                </br>
+                <form id="editForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+                    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+                    <input type="hidden" name="isEdit" #if($isEdit)value="$isEdit" #end>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" for="name">商品名称<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <input type="text" id="name" required="required" #if($beans)value="$beans.name" #end
+                                   name="name" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+                            <ul class="parsley-errors-list" id="parsley-id-12031"></ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" for="specDescription">商品特殊说明<span
+                                class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <input type="text" id="specDescription" required="required" #if($beans &&
+                                   $beans.specDescription)value="$beans.specDescription" #end
+                                   name="specDescription" class="form-control col-md-7 col-xs-12">
+                            <ul class="parsley-errors-list"></ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" name="hiddenGoodsItems" id="hidTxt">
+                        <input type="hidden" name="hiddenGoodsItemsNums" id="hidNumber">
+                        <input type="hidden" name="hiddenGoodsItemType" id="hidType">
+                        <label class="control-label  col-xs-2">商品项<span class="required">*</span></label>
+                        #if(!$isEdit)
+                        <div class="Js_outer">
+                            <div class="col-xs-6  #if($itemcount>1)col-xs-offset-2#end">
+                                <input type="hidden" id="itemIdWithCount"/>
+                                <select required="required" name="typeList"
+                                        class="form-control col-md-7 col-xs-12 chooseGoodsItem"
+                                        data-parsley-id="0004">
+                                    <option value="">请选择</option>
+                                    #if($itemList)
+                                    #foreach($bean in $itemList)
+                                    <option value="$bean.id" data-price="$bean.price"
+                                            data-value="$bean.productItemType">$bean.name
+                                    </option>
+                                    #end
+                                    #else
+                                    <d>暂无数据</d>
+                                    #end
+                                </select>
+                            </div>
+
+                            <label class="control-label  col-xs-1">数量<span class="required">*</span></label>
+
+
+                            <div class="col-xs-2">
+
+                                <input type="text" id="goodsItemNum" required="required"
+                                       value="#foreach($member in $beans.idAndCount.entrySet())#if($member.key==$productItem.id)$member.value#end#end"
+                                       name="goodsItemNum" class="form-control goodsItemNums">
+                            </div>
+
+                            <div class="col-xs-1 text-right">
+                                <input type="button" required="required" value="新增"
+                                       name="addGoodsItem" class="btn btn-default addGoodsItem">
+
+                            </div>
+                        </div>
+                        #end
+
+                        #if($beans)
+                        #set($itemcount=1)
+                        #foreach($productItem in $beans.productItemDtoList)
+                        <div class="Js_outer">
+                            <div class="col-xs-6  #if($itemcount>1)col-xs-offset-2#end">
+                                <input type="hidden" value="$itemIdWithCount"/>
+                                <select id="typeList" required="required" name="typeList"
+                                        class="form-control col-md-7 col-xs-12 chooseGoodsItem"
+                                        data-parsley-id="0004">
+                                    <option value="">请选择</option>
+                                    #if($itemList)
+                                    #foreach($bean in $itemList)
+                                    <option value="$bean.id" data-price="$bean.price" data-value="$bean.productItemType"
+                                            #if($productItem.id==$bean.id) selected #end>$bean.name
+                                    </option>
+                                    #end
+                                    #else
+                                    <d>暂无数据</d>
+                                    #end
+                                </select>
+                            </div>
+
+                            <label class="control-label  col-xs-1">数量<span class="required">*</span></label>
+
+
+                            <div class="col-xs-2">
+
+                                <input type="text" required="required"
+                                       value="#foreach($member in $beans.idAndCount.entrySet())#if($member.key==$productItem.id)$member.value#end#end"
+                                       name="goodsItemNum" class="form-control goodsItemNums">
+                            </div>
+                            #if($itemcount==1)
+
+                            <div class="col-xs-1 text-right">
+                                <input type="button" required="required" value="新增"
+                                       name="addGoodsItem" class="btn btn-default addGoodsItem">
+
+                            </div>
+
+                            #else
+                            <div class="col-xs-1 text-right">
+                                <input type="button" value="删除"
+                                       name="addGoodsItem" class="btn btn-default deleteGoodsItem"
+                                       data-parsley-id="4639">
+                            </div>
+                            #end
+                        </div>
+                        #set($itemcount=$itemcount+1)
+                        #end
+                        #end
+
+                        <div id="addgoodsItemNameAndNum">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">标价<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <input type="text" id="discountPrices" required="required" name="discountPrice"
+                                   #if($beans)value="$beans.discountPrice" #end
+                                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">原价<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <input type="text" id="prices" required="required" #if($beans)value="$beans.price" #end
+                                   name="price" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" for="time">上架时间<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control  Wdate" id="time" placeholder="开始时间"
+                                   #if($beans)value="$beans.onSaleTime" #end
+                                   name="time">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">商品库存<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <input type="text" id="stocks" required="required" name="stock"
+                                   class="form-control col-md-7 col-xs-12"
+                                   data-parsley-id="4639" #if($beans)value="$beans.stock" #end>
+                            <ul class="parsley-errors-list" id="parsley-id-208"></ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">种类<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <select id="goodKind" required="required" name="kind"
+                                    class="form-control col-md-7 col-xs-12 "
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+
+                                <option value="Nomal" #if($beans.kind=="Nomal")selected #end>普通商品</option>
+                                <option value="Recommended" #if($beans.kind=="Recommended")selected #end>推荐商品</option>
+                                <option value="HotSell" #if($beans.kind=="HotSell")selected #end>热销商品</option>
+                                <option value="Special" #if($beans.kind=="Special")selected #end>特价商品</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">类型<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <select id="productType" required="required" name="type"
+                                    class="form-control col-xs-7" data-parsley-id="0004">
+                                <option value="">全部类型</option>
+                                <option value="Ticket" #if($beans.type=="Ticket")selected #end>门票</option>
+                                <option value="Catering" #if($beans.type=="Catering")selected #end>餐饮</option>
+                                <option value="Souvenirs" #if($beans.type=="Souvenirs")selected #end>纪念品</option>
+                                <option value="Hotel" #if($beans.type=="Hotel")selected #end>酒店</option>
+                                <option value="GroupProduct" #if($beans.type=="GroupProduct")selected #end>组合商品</option>
+                                <option value="Other" #if($beans.type=="Other")selected #end>其他</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">商品状态<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <select id="goodsStatus" required="required" name="Status"
+                                    class="form-control col-md-7 col-xs-12 "
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                <option value="OnSale" #if($beans.Status=="OnSale")selected #end>在售</option>
+                                <option value="Stoped" #if($beans.Status=="Stoped")selected #end>下架</option>
+                                <option value="waitSale" #if($beans.Status=="waitSale")selected #end>待上架</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">时间类别<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-10">
+                            <select id="productCt" required="required" name="productCt"
+                                    class="form-control col-md-7 col-xs-12 "
+                                    data-parsley-id="0004">
+                                <option value="Nomal" #if($beans.productCt=="Nomal") selected #end>普通票（无使用限制）</option>
+                                <option value="Today" #if($beans.productCt=="Today") selected #end>当天票（当天买当天用）</option>
+                                <option value="TimeSpan" #if($beans.productCt=="TimeSpan") selected #end>区间票（特定时间可用）
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class='form-group Js_timespan #if($beans.productCt!="TimeSpan") hidden #end'>
+                        <label class="control-label  col-xs-2" for="time">使用时间<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control  Wdate" placeholder="开始日期"
+                                   #if($beans.ctBeginDate)value='$helper.formatDateToString($!beans.ctBeginDate,"yyyy-MM-dd")'
+                                   #end
+                                   name="sctBeginDates[0]" id="sctBeginDate">
+                        </div>
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control  Wdate" placeholder="结束日期"
+                                   #if($beans.ctEndDate)value='$helper.formatDateToString($!beans.ctEndDate,"yyyy-MM-dd")'
+                                   #end
+                                   name="sctEndDate" id="sctEndDate">
+                        </div>
+                    </div>
+
+                    <div class='form-group Js_Today #if($beans.productCt!="Today") hidden #end'>
+                        <label class="control-label  col-xs-2" for="time">使用时间<span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-5">
+                            <input type="text" class="form-control  Wdate" placeholder="开始日期"
+                                   #if($beans.ctBeginDate)value='$helper.formatDateToString($!beans.ctBeginDate,"yyyy-MM-dd")'
+                                   #end
+                                   name="sctBeginDates[1]">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">改签<span class="required">*</span>
+                        </label>
+
+                        <label class="control-label  col-xs-2 ">
+                            <input type="radio" name="canMeal" value="1" #if($beans.canMeal=="true") checked #end>可改签
+                        </label>
+
+                        <label class="control-label  col-xs-2">
+                            <input type="radio" name="canMeal" value="0" #if($beans.canMeal=="false") checked #end>不可改签
+                        </label>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2">退货<span class="required">*</span>
+                        </label>
+
+                        <label class="control-label  col-xs-2 ">
+                            <input type="radio" name="canReturn" value="1" #if($beans.canReturn=="true") checked #end>可退
+                        </label>
+
+                        <label class="control-label  col-xs-2">
+                            <input type="radio" name="canReturn" value="0" #if($beans.canReturn=="false") checked #end>不可退
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="isLimt" class="control-label col-xs-2">是否区域限购<span>*</span></label>
+                        <label class="control-label ">
+                            <input  id="isLimt"  class="control-label" type="checkbox" style="height: 16px;width: 16px;position: relative;top: -2px" #if($!keys.size()>0) checked #end/>
+                        </label>
+
+                    </div>
+                    <div class="form-group hidden" id="provinces" >
+                        <label class="control-label col-xs-2">请选择限购区域:</label>
+                        <div class="control-label col-xs-10">
+                            #foreach($param in ${map.keySet()})
+                            <label for="check$param" class="col-xs-2" style="text-align: left">
+                                <input id="check$param" #if($!keys.contains($param)) checked #end style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="$param" class="check_reject_province"/>
+                                <span>&nbsp;</span>${map.get($param)}</label>
+                            #end
+
+                           <example> <!--<hr/>-->
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                 <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>-->
+
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>-->
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>-->
+
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>-->
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>-->
+
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>-->
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>-->
+
+                            <!--<label for="check" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>北京</label>-->
+                            <!--<label for="check1" class="col-xs-1" style="text-align: center">-->
+                                <!--<input id="check1" style="width: 16px;height: 16px;position: relative;top: 3px"  type="checkbox" value="" class="check_province"/>-->
+                                <!--<span>&nbsp;</span>上海</label>--></example>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class=" col-xs-6 col-xs-offset-2">
+
+                            <button type="submit" id="addproduct" data-url="ajax_add_productBase"
+                                    class="btn btn-success">确定
+                            </button>
+                            <a class="btn btn-default" href="javascript:history.go(-1);">返回</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/product/addProductBase"]);
+</script>
+

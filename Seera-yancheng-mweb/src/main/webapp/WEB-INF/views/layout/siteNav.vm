@@ -1,0 +1,41 @@
+<nav class="bar bar-tab">
+    <a class="tab-item" href="/" external>
+        <span class="icon icon-home"></span>
+        <span class="tab-label">首页</span>
+    </a>
+
+    #if($userInfo)
+    <a class="tab-item" href="/uc.html" external>
+        <span class="icon icon-me"></span>
+        <span class="tab-label">个人中心</span>
+    </a>
+    #else
+    <a class="tab-item" href="/login" external>
+        <span class="icon icon-me"></span>
+        <span class="tab-label">个人中心</span>
+    </a>
+    #end
+    <a class="tab-item" external href="/order/shoppingCart.html">
+        <span class="icon icon-cart"></span>
+        <span class="tab-label">购物车</span>
+    </a>
+
+
+    <a class="tab-item" href="/about.html">
+        <span class="icon icon-star"></span>
+        <span class="tab-label">联系我们</span>
+    </a>
+
+##    #if(!$userInfo)
+##        <a class="tab-item" external href="/login">
+##            <span class="icon icon-settings"></span>
+##            <span class="tab-label">登录</span>
+##        </a>
+##    #else
+##        <a class="tab-item" external href="/logout">
+##            <span class="icon icon-settings"></span>
+##            <span class="tab-label">退出</span>
+##        </a>
+##
+##    #end
+</nav>

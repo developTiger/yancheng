@@ -1,0 +1,154 @@
+
+$ui.loadCss("productdetails/productdetails.css")
+
+<div class="h20"></div>
+<div class="main">
+    <p class="top-title"><a href="#">淹城</a> > 春秋乐园 > 夜公园成人票  </p>
+    <div class="order-top">
+        <div class="show-order-details">
+        <div class="show-img-order">
+
+           <!-- <div class="show-main-picture">
+                <img src="../../images/test/small-img.png" style="width: 415px;">
+            </div>
+            <div class="select-picture">
+               <div class="icon-left">&#xe625;</div>
+                <img src="../../images/test/small-img.png" >
+                <img src="../../images/test/small-img.png" >
+                <img src="../../images/test/small-img.png" >
+                <img src="../../images/test/small-img.png" >
+                <div class="icon-right">&#xe626;</div>
+            </div>-->
+            <style>
+                /* 双重slide-相册效果 */
+                .gallery{ border:1px solid #ccc; padding:5px; text-align:left;    }
+                .gallery .bd li .pic{ line-height:0px;  }
+                .gallery .bd li .bg,.gallery .bd li .title{ display:none;  }
+                .gallery .bd li img{ width:450px; height:230px;   }
+                .gallery .hd{ position:relative; padding:0 15px; margin-top:10px; zoom:1; }
+                .gallery .hd .tempWrap{ margin-left:8px;  }
+                .gallery .hd ul{ overflow:hidden; zoom:1; }
+                .gallery .hd li{ width:100px; padding-top:4px; text-align:center; cursor:pointer;   }
+                .gallery .hd li img{ width:86px; height:60px; border:1px solid #ddd; padding:2px;   }
+            /*    .gallery .hd li.on{ background:url("../../images/productdetails/icoUp.gif") no-repeat center 0;  }*/
+                .gallery .hd li.on img{ border:1px solid #f60; background:#fff;   }
+                .gallery .hd .sNext,.gallery .hd .sPrev{ text-align:center;  width:15px; height:66px; line-height:66px;  border:1px solid #ddd; cursor:pointer; position:absolute;  left:0px; top:4px; }
+                .gallery .hd .sNext{ left:auto; right:0px; }
+                .gallery .hd .sNext:hover,.gallery .hd .sPrev:hover{ text-decoration:none; border:1px solid #f60;  }
+            </style>
+
+
+            <div id="demoContent">
+                <div class="effect">
+                    <div class="gallery">
+                        <div class="bd">
+                            <ul>
+                                <li>
+                                    <div class="bg"></div>
+                                    <div class="pic"><a href=""><img src="../../images/productdetails/ad1.jpg" /></a></div>
+                                    <div class="title"><a href="">效果图1</a></div>
+                                </li>
+                                <li>
+                                    <div class="bg"></div>
+                                    <div class="pic"><a href=""><img src="../../images/productdetails/ad2.jpg" /></a></div>
+                                    <div class="title"><a href="">效果图2</a></div>
+                                </li>
+                                <li>
+                                    <div class="bg"></div>
+                                    <div class="pic"><a href=""><img src="../../images/productdetails/ad3.jpg" /></a></div>
+                                    <div class="title"><a href="">效果图3</a></div>
+                                </li>
+                                <li>
+                                    <div class="bg"></div>
+                                    <div class="pic"><a href=""><img src="../../images/productdetails/ad4.jpg" /></a></div>
+                                    <div class="title"><a href="">效果图4</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="hd">
+                            <a class="sPrev" >&lt;</a>
+                            <a class="sNext" >&gt;</a>
+                            <ul>
+                                <li><img src="../../images/productdetails/ad1.jpg" /></li>
+                                <li><img src="../../images/productdetails/ad2.jpg" /></li>
+                                <li><img src="../../images/productdetails/ad3.jpg" /></li>
+                                <li><img src="../../images/productdetails/ad4.jpg" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="show-order-content">
+            <p class="title">常州淹城春秋乐园成人票</p>
+            <p class="annual-general"><em class="icon-annual-general">&#xe61c;</em>   <input type="text" value="全年通用" disabled></p>
+            <p class="present-original-price"><span class="present-price">现售价：</span><span class="moneyShow">$productDto.discountPrice</span>元 <a class="original-price">$productDto.price</a></p>
+            <p class="preferential-information"><span>优惠信息：</span><a>赠送动物园门票</a></p>
+            <p class="period-of-validity"><span>有效期：</span>2018年6月6号</p>
+            <p class="product-quantity">
+                <span>产品数量：</span>
+                <input type="button" class="reduce" value="-">
+                <input type="text" class="sum" value="1">
+                <input type="button" class="add" value="+">
+            </p>
+            <p class="admission-date">
+                <span>入园日期：</span>
+                <input type="text" class="Wdate"  value="">
+            </p>
+            <div class="reservation-join-shopping-cart">
+                <input class="reservation" type="button" value="立即预定">
+                <label class="join-shopping-cart" for="join-shop-cart">
+                    <em class="icon-shopping-cart">&#xe620;</em>
+                    <input id="join-shop-cart" type="text" value="加入购物车">
+                </label>
+            </div>
+        </div>
+    </div>
+        <div class="info-show">
+        <div class="reservation-message">
+            <p>无预约</p>
+            <p>请提前24小时预定</p>
+        </div>
+        <div class="highlight-recommend">
+            <p>亮点推荐：</p>
+            <p>1.精品一日游，更优质的体验</p>
+            <p>2.超自由无限制</p>
+            <p>3.不在烦恼交通</p>
+            <p>4.8小时游玩超低价格</p>
+        </div>
+        <div class="business-hours">
+            <p>工作日：08:30 - 18:30</p>
+            <p>公休日：09:30 - 22:30</p>
+        </div>
+    </div>
+    </div>
+    <div class="h20"></div>
+    <div class="order-content">
+        <div class="order-content-left">
+            <div class="order-content-left-top">
+                <label class="order-content-details" style="background-color: #CD3333;color: #ffffff;">商品详情</label>
+                <label class="featured-recommend">特色推荐</label>
+                <label class="cost-description">费用说明</label>
+                <label class="traffic-map">交通地图</label>
+                <label class="booking notice">预定须知</label>
+                <label class="user-comments">用户点评<span style="color: #CD3333;">(553)</span></label>
+            </div>
+            <div class="order-content-left-content">
+                <p class="order-content-left-content-details"><em class="icon-search">&#xe623;</em> 商品详情</p>
+
+                <div class="show-order-content-left">
+                    <p><em class="icon-foot">&#xe624;</em><span>春秋淹城民俗文化区</span ></p>
+                    <div class="show-content-01">
+                        <span>&nbsp;&nbsp;关于淹城的来历和淹城的主人究竟是谁，史学界和考古界众说纷纭，至今仍无定论。一说淹城是夏桀的离宫[1]  。一说淹城曾是商末周初奄国的国都，奄君就是当时在山东曲阜之东的奄国君主。相传奄君就是周成王时与商代后人武庚勾结发动叛乱的奄国君王，被周成王所灭后,带领残部从山东辗转逃到江南，在这里凿河为堑，堆土为城，仍称"奄"。因为古代三点的"淹"字与没有三点水的"奄"字通用，一直流传至今，遂有"淹城"之名。另一说是春秋晚期吴国公子季札不满阖闾刺杀王僚夺取王位，决心与阖闾的强暴政治决裂,"终身不入吴国",便在封地延陵筑城挖河,以示淹留之决心，邦名"淹城"。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        #parse("publicparts/recommended_tickets.html")
+    </div>
+</div>
+
+<script>
+    require(["productdetails/productdetails"]);
+</script>

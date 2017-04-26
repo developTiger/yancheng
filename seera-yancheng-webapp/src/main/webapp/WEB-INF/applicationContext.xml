@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.sunesoft.seera"/>
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">utf-8</prop>
+                <prop key="output.encoding">utf-8</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="suffix">
+            <value>.html</value>
+        </property>
+        <property name="contentType">
+            <value>text/html;charset=UTF-8</value>
+        </property>
+    </bean>
+
+
+
+
+    <!--
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/views/" />
+    <property name="suffix" value=".jsp" />
+</bean>-->
+    <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+        <!--<property name="exceptionMappings">-->
+            <!--<props>-->
+                <!--<prop key="java.lang.Exception">/error/error</prop>-->
+                <!--<prop key="java.lang.Throwable">/error/error</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--<property name="statusCodes">-->
+            <!--<props>-->
+                <!--<prop key="/error/error">500</prop>-->
+                <!--<prop key="/error/err404">404</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; 设置日志输出级别，不定义则默认不输出警告等错误日志信息 &ndash;&gt;-->
+        <!--<property name="warnLogCategory" value="WARN"></property>-->
+        <!--&lt;!&ndash; 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 &ndash;&gt;-->
+        <!--<property name="defaultErrorView" value="/error/error"></property>-->
+        <!--&lt;!&ndash; 默认HTTP状态码 &ndash;&gt;-->
+        <!--<property name="defaultStatusCode" value="500"></property>-->
+    <!--</bean>-->
+
+    <bean id="exceptionResolver" class="com.sunesoft.seera.yc.webapp.interceptor.OverallExceptionResolver"/>
+
+    <!--</bean>-->
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760"/>
+    </bean>
+    <!-- 数据源定义,使用c3p0 连接池 -->
+    <bean id="originDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass">
+            <value>${jdbc.driverClassName}</value>
+        </property>
+        <property name="jdbcUrl">
+            <value>${jdbc.url}</value>
+        </property>
+        <property name="user">
+            <value>${jdbc.username}</value>
+        </property>
+        <property name="password">
+            <value>${jdbc.password}</value>
+        </property>
+        <property name="acquireIncrement">
+            <value>${c3p0.acquireIncrement}</value>
+        </property>
+        <property name="initialPoolSize">
+            <value>${c3p0.initialPoolSize}</value>
+        </property>
+        <property name="minPoolSize">
+            <value>${c3p0.minPoolSize}</value>
+        </property>
+        <property name="maxPoolSize">
+            <value>${c3p0.maxPoolSize}</value>
+        </property>
+        <property name="maxIdleTime">
+            <value>${c3p0.maxIdleTime}</value>
+        </property>
+        <property name="idleConnectionTestPeriod">
+            <value>${c3p0.idleConnectionTestPeriod}</value>
+        </property>
+        <property name="maxStatements">
+            <value>${c3p0.maxStatements}</value>
+        </property>
+        <property name="numHelperThreads">
+            <value>${c3p0.numHelperThreads}</value>
+        </property>
+
+    </bean>
+
+    <context:property-placeholder location="/WEB-INF/jdbc.properties"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy"
+          p:targetDataSource-ref="originDataSource"/>
+
+    <!-- 如果使用的是Annotation的方式-->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 设置Spring取那个包中查找相应的实体类 -->
+        <property name="packagesToScan">
+            <value>com.sunesoft.seera.*.*</value>
+        </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect= ${hibernate.dialect}
+                <!--hibernate.dialect=org.hibernate.dialect.MySQL5Dialect-->
+                hibernate.show_sql=false
+                hibernate.hbm2ddl.auto=update
+                hibernate.format_sql=false
+                hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+                hibernate.release_mode=none
+                hibernate.connection.isolation=1
+                hibernate.cache.use_query_cache=false
+                hibernate.cache.use_second_level_cache=false
+                hibernate.jdbc.batch_size=25
+                hibernate.jdbc.fetch_size=50
+            </value>
+        </property>
+    </bean>
+
+
+    <!-- 配置AOP，Spring是通过AOP来进行事务管理的 -->
+    <!-- 创建事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <aop:config>
+        <aop:pointcut id="serviceMethods"
+                      expression="execution(* com.sunesoft.seera..*ServiceImpl.*(..)) or execution(* com.sunesoft.seera..FormBase.*(..)) "/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+    </aop:config>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+
+            <tx:method name="*" propagation="REQUIRED"/>
+            <!-- 以下方法都是可能设计修改的方法，就无法设置为只读 -->
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="create*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="change*" propagation="REQUIRED"/>
+            <tx:method name="cancel*" propagation="REQUIRED"/>
+            <tx:method name="import*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 对静态资源文件的访问 方案一 （二选一） -->
+    <!-- <mvc:default-servlet-handler /> -->
+
+    <!-- 对静态资源文件的访问 方案二 （二选一） -->
+    <mvc:resources mapping="/images/**" location="/WEB-INF/content/images/"
+                   cache-period="31556926"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/content/js/"
+                   cache-period="31556926"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/content/css/"
+                   cache-period="31556926"/>
+
+    <mvc:interceptors>
+        <!-- 多个拦截器,顺序执行   -->
+        <mvc:interceptor>
+            <mvc:mapping path="/yc_*"/><!-- 如果不配置或/*,将拦截所有的Controller   -->
+            <mvc:mapping path="/ajax_*"/><!-- 如果不配置或/*,将拦截所有的Controller   -->
+            <!--<mvc:mapping path="/ajax_*" />-->
+            <mvc:mapping path="/orderConfirm"/>
+            <mvc:mapping path="/cart*"/>
+            <mvc:mapping path="/orderlist"/>
+            <mvc:mapping path="/edit_user"/>
+            <mvc:mapping path="/address"/>
+            <bean class="com.sunesoft.seera.yc.webapp.interceptor.CommonInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

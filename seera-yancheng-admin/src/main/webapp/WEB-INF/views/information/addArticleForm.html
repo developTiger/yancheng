@@ -1,0 +1,121 @@
+<div>
+    <h3><strong>信息管理</strong></h3>
+</div>
+
+<div>
+    信息类管理>帮助中心>添加文章
+</div></br>
+<form id="editWordEditInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+
+
+
+
+    <div style="margin-left: -25%;">
+
+        <div class="form-group" >
+            <label class="control-label  col-xs-3" for="title">文章标题 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-6">
+                <input id="title" required="required"
+                       name="title"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"></textarea>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="articleType">文章类型 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-6">
+
+
+                <select id="articleType" required="required" name="articleType" class="form-control col-xs-7"
+                        data-parsley-id="0004">
+                    <option value=""  >请选择</option>
+                    <option value="1">帮助中心</option>
+                    <option value="2">服务承诺</option>
+                    <option value="3">网络条款</option>
+                    <option value="4">友情链接</option>
+
+                </select>
+
+
+            </div>
+        </div>
+
+    <!--    <div class="form-group">
+            <label class="control-label  col-xs-3" >文章类别 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-6">
+                <select id="treatise_Level" required="required" name="treatise_Level" class="form-control col-xs-7"
+                        data-parsley-id="0004">
+                    <option value="">关于价格</option>
+                    <option value="1" >关于活动</option>
+                    <option value="2" >其他</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" >权限 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-6">
+                <select id="treatise_Level" required="required" name="treatise_Level" class="form-control col-xs-7"
+                        data-parsley-id="0004">
+                    <option value="">开放权限</option>
+                    <option value="1" >内部开放</option>
+                    <option value="2" >其他</option>
+                </select>
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" >作者<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-6">
+                <input type="text" id="author" required="required" name="author"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" >内容<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-6">
+                <textarea   required="required" name="content" rows="20"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639" ></textarea>
+                <!--<input type="text" name="content" class="form-control col-md-7 col-xs-12">-->
+            </div>
+        </div>
+
+        <input type="hidden" name="hidContent" id="hiddenCon">
+
+    </div>
+
+
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="editWordEdit" data-url="ajax_edit_wordEdit" class="btn btn-success">保存</button>
+            <!--<button type="button" id="cancelModal" class="btn btn-primary">取消</button>-->
+            <a href="javascript:history.go(-1);" class="btn btn-primary">返回</a>
+        </div>
+    </div>
+</form>
+
+<script>
+    require(["app/wordEdit/addArticleForm"]);
+</script>
+

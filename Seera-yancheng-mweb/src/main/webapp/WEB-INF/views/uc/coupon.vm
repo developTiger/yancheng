@@ -1,0 +1,54 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <h1 class="title">我的优惠券</h1>
+            <a class=" icon icon-left pull-left external" href="/uc.html"  style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+
+        <div class="content  pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="buttons-tab">
+                <a href="/uc/myCoupon?couponStatus=bind" class="#if($type=="bind" )active#end  button">未使用</a>
+                <a href="/uc/myCoupon?couponStatus=Used" class="#if($type=="Used" )active#end  button">已使用</a>
+                <a href="/uc/myCoupon?couponStatus=Expired" class="#if($type=="Expired" )active#end  button">已过期</a>
+
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="list-block media-list">
+                        <ul>
+                            #if($couponDtos.size()>0)
+                                #foreach($item in $couponDtos)
+                                    <li class="item-content item-link">
+                                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                                        <div class="item-inner row" data-id="$item.id">
+                                            <div class="item-title row col-60 checkItem ">
+                                                <div class="col-20 icon icon-gift" #if($type=="Expired")
+                                                     style="color: #888888"
+                                                     #else style="color: #f6383a" #end></div>
+                                                <span class="col-80">   满  <span>$item.useCondition</span>   减  <span>$item.quota</span></span>
+
+                                            </div>
+                                            <div>有效期:<span class="col-35">$item.gqDate</span></div>
+                                        </div>
+                                    </li>
+                                #end
+                            #else
+                                暂无优惠券！
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>

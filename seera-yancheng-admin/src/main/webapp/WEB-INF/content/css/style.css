@@ -1,0 +1,28 @@
+ a{cursor:pointer}
+ .error{
+     color:red;
+     margin-top: -5px;
+
+ }
+.mainPic{
+    padding-right: 20px;
+    width: 450px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+
+.detailPic{
+    padding-right: 20px;
+    width: 300px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.imagClose{
+    position: absolute;
+    top: 10px;
+
+    font-size: large;
+    right: 10px;
+}

@@ -1,0 +1,92 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>商品管理/图片管理
+
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+
+        <ul class="nav nav-tabs">
+            <li><a href="sra_p_add_or_update_product?id=$!id">基本信息</a></li>
+
+            <li class="active"><a href="sra_p_add_or_update_ProPicture?id=$!id">商品图片</a></li>
+
+            <li><a href="sra_add_or_update_ProDetail?id=$!id">商品详情</a></li>
+        </ul>
+
+        <div>
+            </br>
+            </br>
+            <input type="hidden" id="pid" name="pid" value="$!id">
+            <h2 class="">商品主图片(宽高比5:3，使用500*300px图片)<span class="required">*</span></h2>
+            <div class="x_content">
+                <div class="row">
+                    <div class="mainPic">
+                        <div >
+                            <div class="image view view-first">
+                                <img style="width: 100%; display: block;" src="$imghost/$mainPath" alt="image"/>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--<div class="mainPic">-->
+                        <!--手机端主图-->
+                        <!--<div style="padding-top: 90px;">-->
+                            <!--<div class="image view view-first">-->
+                                <!--<img style="width: 100%; display: block;" src="$imghost/m$mainPath" alt="image"/>-->
+
+                            <!--</div>-->
+
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+            <div>
+                <input type="file" name="image" class="btn btn-default  col-xs-2" id="mainFile"> <input type="button" class="btn btn-default Js_uploadFile"  data-type="mainFile" value="上传">
+            </div>
+        </div>
+        <hr/>
+        <div>
+            <h2  >轮播图(宽高比5:3，建议使用500*300px图片)<span class="required">*</span></h2>
+
+            <div class="x_content">
+
+                <div class="row">
+                    #if($detailPath)
+                    #foreach($bean in $detailPath)
+                    <div class="detailPic">
+                        <div class="" style="position: relative">
+                            <div class="image view view-first">
+                                <img style="width: 100%; display: block;" src="$imghost/$bean" alt="image"/>
+                            </div>
+
+                            <div class="imagClose">
+                                <a class="del_image" data-url="ajax_remove_productPicture?id=$id&fileName=$bean"><i class="fa fa-times red"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    #end
+                    #else
+                    <d>暂无数据</d>
+                    #end
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <input type="file" class="btn btn-default  col-xs-2" name="image" id="subFile"> <input type="button" class="Js_uploadFile btn btn-default  "  data-type="subFile" value="上传">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    require(["app/product/addProductPicture"]);
+</script>
+

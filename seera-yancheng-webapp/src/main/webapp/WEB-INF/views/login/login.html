@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>用户登录</title>
+    <link href="css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="css/index.css" type="text/css" rel="stylesheet"/>
+    <link href="css/logon/logon.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/common/jquery.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/common/unslider.min.js"></script>
+    <script data-main="js/rjs-config.js" src="js/require.js"></script>
+    <script src="js/jslib/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="main logon-top">
+    <div class="top-nav">
+
+        <a href="/">您好，欢迎来到淹城春秋乐园官网</a>
+        <a href="/"><p>淹城网站首页</p></a>
+        <span class="Js_right_div1" style="cursor: pointer">微信关注
+            <p class="dis-none" style="position: absolute;top: 14px;left: 668px;z-index: 1;">
+                 <img src="/images/test/ewm.png" style="height: 100px;"/>
+            </p>
+        </span>
+
+        <div class="top-right">
+
+            <p><a href="login">[登录]</a></p>
+
+            <p><a href="reg">[注册]</a></p>
+
+            <div class="inline-block top-select">
+                <a href="/edit_user">个人中心</a>
+            </div>
+
+            <p><a href="/helpCenter/JDRC114F">帮助</a></p>
+
+        </div>
+    </div>
+
+    <div class="index-search">
+        <div class="logo">
+            <a href="/"><img src="images/common/logo.png" style="border: none;"/></a>
+        </div>
+        <div class="top-title">
+            <div class="left-line"></div>
+            <div class="title">
+                <span style="font-size: 20px;">登录</span>
+            </div>
+
+        </div>
+        <div class="contact">
+            <div class="info">
+                <em class="iconfont"></em>
+                <p class="des">24H服务热线：</p>
+                <p class="tel">400-188-0005</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+<div class="h20"></div>
+<div class="logonMain">
+
+    <div class="main">
+        <div class="login-content">
+
+            <!--<div style="display: inline-block;width: 672px;height: 275px;margin-top: 88px;">
+                <div class="show-user-info" style="display: inline-block;padding-left: 380px;padding-top: 66px;">
+                    <div class="tooltip-valuate">
+                        <span>用户名登录错误</span>
+                        <div class="arrow-valuate arrow-border-valuate"></div>
+                        <div class="arrow-valuate arrow-bg-valuate"></div>
+                    </div>
+                </div>
+
+                <div class="show-password-info" style="display: inline-block;padding-left: 409px;padding-top: 30px;">
+                    <div class="tooltip-valuate2">
+                        <span>密码错误</span>
+                        <div class="arrow-valuate2 arrow-border-valuate2"></div>
+                        <div class="arrow-valuate2 arrow-bg-valuate2"></div>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="content">
+                <form action="/login" method="post">
+                    <div class="content-logon">
+                        <p>登录</p>
+                        <div class="h20"></div>
+                        <div class="logonName">
+                            <input name="username" type="text" value="" placeholder="用户名/手机号/邮箱号">
+                        </div>
+                        <div class="h20"></div>
+                        <div class="logonPassWord">
+                            <input name="password" type="password" value="" placeholder="请输入密码">
+                        </div>
+                        <div class="h20"></div>
+
+
+
+                        <div class="verification-code">
+
+                            <!-- 添加canvas标签，并加上红色边框以便于在页面上查看 -->
+                            <canvas id="myCanvas" class="myCanvas" style="background: #fff4f1;width: 70px;height: 30px;position: absolute;left: 58.888889%;top: 6%;text-align: center;">
+                                您的浏览器不支持canvas标签。
+                            </canvas>
+
+                            <input type="text" class="checkedCode" value="" placeholder="验证码">
+                            <div id="checkCode" class="checkCode">HV8S</div>
+                            <a class="change-one" style="cursor: pointer;">换一张</a>
+                        </div>
+                        <div class="h20">
+                            #if($error)
+                            <div style='color: red; padding-top: 10px;' class='show-code-result'>$error</div>
+                            #else
+                            <div style="color: red;padding-left: 170px;" class="show-code-result"></div>
+                            #end
+                        </div>
+                        <div class="selectItems">
+                            <label class="logonAuto" for="logonAuto"><input id="logonAuto" type="checkbox" value="">自动登录</label>
+                            <a href="/sureZHANGHAO">忘记密码？</a>
+                        </div>
+                        <div class="logon-btn">
+                            <input type="submit" id="loginBtn" class="loginBtn" value="登录"/>
+                        </div>
+                        <div class="h20"></div>
+                        <div class="free-reg">
+                            <a href="/reg">免费注册</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!--<div class="qr-code-select">-->
+                    <!--<div class="tooltips">-->
+                        <!--<span>微信扫描直接登录</span>-->
+                        <!--<div class="arrow arrow-border"></div>-->
+                        <!--<div class="arrow arrow-bg"></div>-->
+                    <!--</div>-->
+                    <!--<div class="qr-code">-->
+                        <!--<label for="logon-QR-code" class="logon-QR-code-label">-->
+                            <!--<div id="logon-QR-code" class="logon-QR-code"></div>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+            </div>
+
+            <!--<div class="content-cont" style="display: none">-->
+                <!--<p class="content-cont-title">微信扫码登录</p>-->
+                <!--<a><img id="imgQr" style="margin-left: 60px; margin-top: 10px;" src="data:image/jpg;base64,$qrCode"></a>-->
+                <!--<div class="qr-code-bg" id="qr-code-bg"></div>-->
+                <!--<div class="qr-code-scann">-->
+                    <!--<em class="icon">&#xe610;</em>-->
+                    <!--<p>请使用微信扫码登录</p>-->
+                <!--</div>-->
+                <!--<a href="#" class="account-logon">账号登录</a>-->
+            <!--</div>-->
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<div class="main site-bottom">
+    CopyRight 2010-2016 常州淹城旅行社有限公司版权所有 苏ICP备0123456789号<br/>
+    地址：江苏省常州市武进区武宜南路588号 客服电话：400-188-0005
+</div>
+<div class=" bottom-sprite">
+    <p class="d-icon0"></p>
+    <p class="d-icon1"></p>
+    <p class="d-icon2"></p>
+    <p class="d-icon3"></p>
+    <p class="d-icon4"></p>
+</div>
+
+<script>
+    require(["app/login/login"]);
+</script>
+
+<script>
+    require(["common/common"]);
+</script>
+
+</body>
+</html>
+
+

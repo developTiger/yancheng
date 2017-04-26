@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_1472625188_9616778.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1472625188_9616778.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_1472625188_9616778.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/font_1472625188_9616778.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1472625188_9616778.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+
+.icon-left-sj{font-family: "iconfont"!important;font-size: 1px;font-style: normal;color: #3A3A3A}
+.icon-left-disabled-sj{font-family: "iconfont"!important;font-size: 1px;font-style: normal; color: #E1E1E1}
+.icon-right-sj{font-family: "iconfont"!important;font-size: 1px;font-style: normal;color:#3A3A3A}
+.icon-right-disabled-sj{font-family: "iconfont"!important;font-size: 1px;font-style: normal;color: #E1E1E1}
+
+
+.content{width:1200px;padding-top: 10px;display: inline-block;}
+.content-left{width: 900px;float: left;}
+.content-left-top{border: 1px solid #E1E1E1;height: 33px;line-height: 33px;}
+.content-left-top .fl-left{float:left;color: #e1e1e1;}
+.content-left-top .fl-left a{width: 70px;text-align: center;display: inline-block;color: #666666;}
+.content-left-top .fl-left label{color:#666666;}
+.content-left-top .fl-left .active{color:red}
+.content-left-top .fl-left .new-products{margin-left: 8px;}
+
+.fl-right{float:right;}
+.fl-right input{width: 22px;height: 22px;margin: 4px 2px 0px 0px;text-align: center;background-color: #FFFFFF;display: inline-block;font-size: 1px;border: 1px solid #E1E1E1;padding: 0px;cursor: pointer;}
+.fl-right input:last-child{margin-right: 8px;}
+
+
+.order-content-right{border: 1px solid #E1E1E1;padding-left: 10px;padding-top: 8px;width: 260px;margin-left: 18px;display: inline-block;font-size: 15px;}
+.order-content-right p{height:36px;}
+
+.order-content-right p span{font-size: 18px;color: #CD3333;}
+.order-content-right p a{text-decoration: line-through;display: inline-block;margin-left: 5px;}
+
+.content-left-show-info{border:1px solid #E1E1E1;padding: 10px 50px 10px 10px;}
+.content-left-show-info img{float: left;width: 148px;height: 100px;}
+
+.content-left-show-info-center{padding-left: 35px;display: inline-block;width: 450px;}
+.content-left-show-info-center .title{font-size: 18px;font-weight: 600;}
+.content-left-show-info-center .show-money{padding-top: 10px;height: 47px;}
+.content-left-show-info-center .show-money a{text-align: center;background-color: #FFFFFF;border: 1px solid #FFA71B;color: #FFA71B;float: left;padding: 2px;}
+.content-left-show-info-center .show-money div{float: right;display: inline-block}
+.content-left-show-info-center .show-money div p:last-child{margin-top: 5px;}
+.content-left-show-info-center .go-date{color:#999999;padding-right: 3px;}
+.content-left-show-info-center .sum-people-buy{margin-left: 30px;}
+.content-left-show-info .immediate-reservation{float: right;display: inline-block;height: 90px;line-height: 90px;}
+.content-left-show-info .immediate-reservation a{width: 90px;height: 33px;line-height: 33px;border-radius: 3px;border: none;background-color: #CD3333;color: white;font-size: 15px;padding: 0px;cursor: pointer;display: inline-block;text-align: center;}

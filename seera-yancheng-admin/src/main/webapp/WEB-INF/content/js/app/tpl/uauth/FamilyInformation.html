@@ -1,0 +1,87 @@
+<div class="">
+    <div class="">
+        <form id="BasicInfoForm" class="form-horizontal fa-align-left">
+
+            <input type="hidden" id="empId" name="empId"  >
+            <input type="hidden" name="id" value="<%=id%>">
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">称谓 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="first-name" name="label" required="required" value="<%=label%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="1279">
+                    <ul class="parsley-errors-list" id="parsley-id-1279"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="name">姓名 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="name" name="name" required="required" value="<%=name%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="9513"><ul class="parsley-errors-list" id="parsley-id-9513"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">性别</label>
+                <div class="col-md-2 col-sm-6 col-xs-12">
+                    <div id="sex" class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default" data-toggle-class="btn-primary"
+                               data-toggle-passive-class="btn-default">
+                            <input type="radio" name="sex" value="0" <%if(sex==0){%> checked="checked"<%}%>
+                                 data-parsley-multiple="gender" data-parsley-id="4045"> &nbsp; 男 &nbsp;
+                        </label>
+
+                        <label class="btn btn-primary active" <%if(sex==1){%> checked="checked"<%}%>
+                               data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <input type="radio" name="sex" value="1" checked="" data-parsley-multiple="gender"
+                                   data-parsley-id="4045"> 女
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="  control-label col-md-2 col-sm-3 col-xs-12  ">出生日期 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate"
+                           name="strBirthday" value="<%=strBirthday%>" placeholder="出生日期" >
+                    <ul class="parsley-errors-list" id="parsley-id-8513"></ul>
+                    <!-- <input type="text" id="last-name" name="birthday" required="required" value="<%=birthday%>"
+                            class="form-control col-md-7 col-xs-12" data-parsley-id="9513">-->
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="address">住址 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="address" name="address" required="required" value="<%=address%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="9513"><ul class="parsley-errors-list" id="dparsley-id-9513"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="company">工作单位 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="company" name="company" required="required" value="<%=company%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="9513"><ul class="parsley-errors-list" id="parsley-id-9553"></ul>
+                </div>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Cancel</button>
+                    <button type="submit" id="submitUserInfo" data-title="FamilyInformation" data-url="FamilyInformation"
+                            class="btn btn-success">提交</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

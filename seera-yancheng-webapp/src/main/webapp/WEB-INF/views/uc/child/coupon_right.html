@@ -1,0 +1,138 @@
+<div class="right-essentialInfo-main">
+    <p>优惠券列表</p>
+
+    <div class="h30"></div>
+    <div class="right-coupon-info-show">
+        <span class="right-top-space"></span>
+        <label class="no-use current" data-div="in-div-1">未使用</label>
+        <label class="already-used " data-div="in-div-2">已使用</label>
+        <label class="had-expired " data-div="in-div-3">已过期</label>
+        <span class="right-top-space2"></span>
+    </div>
+    <div style="height: 15px;"></div>
+    <div class="right-coupon-content" id="in-div-1">
+
+        #foreach($f in $couponDtos)
+            #if($f.couponStatus=="绑定")
+                <div class="coupon-show">
+                    <div class="coupon-show-top">
+                        <span class="coupon-price">￥<em>$!f.quota</em></span>
+                        <span class="coupon-title">优惠券</span>
+                        <input type="button" class="delete-btn js_delete_btn"  data-title="$f.id" value="×">
+                    </div>
+                    <div class="coupon-left-content">
+                        <p>卷号：<span>$!f.num</span></p>
+                        <p>使用条件：满<span>$!f.useCondition</span>元</p>
+                        <p>截止日期：<span>$!f.gqDate</span></p>
+                    </div>
+                </div>
+            #end
+        #end
+
+        <div class="check-coupon">
+            <label>使用优惠券：优惠券序列号 : </label>
+            <input type="text" value="" class="check-coupon-number js_coupon_number" name="num">
+            <input type="button" value="验证" class="check-coupon-check Js_checkBtn">
+        </div>
+     <!--
+     <div class="coupon-show">
+            <div class="coupon-show-top">
+                <span class="coupon-price">￥<em>50</em></span>
+                <span class="coupon-title">优惠券</span>
+                <input type="button" class="delete-btn" value="×">
+            </div>
+            <div class="coupon-left-content">
+                <p>卷号：<span>2016-1212-2356</span></p>
+                <p>使用条件：满<span>300</span>元</p>
+                <p>截止日期：<span>2016.10.23</span></p>
+            </div>
+        </div>
+          <div class="coupon-show">
+            <div class="coupon-show-top">
+                <span class="coupon-price">￥<em>50</em></span>
+                <span class="coupon-title">优惠券</span>
+                <input type="button" class="delete-btn" value="×">
+            </div>
+            <div class="coupon-left-content">
+                <p>卷号：<span>2016-1212-2356</span></p>
+                <p>使用条件：满<span>300</span>元</p>
+                <p>截止日期：<span>2016.10.23</span></p>
+            </div>
+        </div>
+       -->
+    </div>
+
+    <!--已使用-->
+    <div class="right-coupon-content hidden" id="in-div-2">
+
+        #foreach($f in $couponDtos)
+             #if($f.couponStatus=="已使用")
+                 <div class="coupon-show2">
+                     <div class="coupon-show-top">
+                          <span class="coupon-price">￥<em>$!f.quota</em></span>
+                          <span class="coupon-title">优惠券</span>
+                          <input type="button" class="delete-btn js_delete_btn" data-title="$f.id" value="×">
+                    </div>
+                    <div class="coupon-left-content">
+                        <p>卷号：<span>$!f.num</span></p>
+                        <p>使用条件：满<span>$!f.applyProduct</span>元</p>
+                        <p>截止日期：<span>$!f.gqDate</span></p>
+                    </div>
+                    <div class="coupon-content-status1">
+                    </div>
+                 </div>
+             #end
+        #end
+       <!-- <div class="coupon-show2">
+            <div class="coupon-show-top">
+                <span class="coupon-price">￥<em>50</em></span>
+                <span class="coupon-title">优惠券</span>
+                <input type="button" class="delete-btn" value="×">
+            </div>
+            <div class="coupon-left-content">
+                <p>卷号：<span>2016-1212-2356</span></p>
+                <p>使用条件：满<span>300</span>元</p>
+                <p>截止日期：<span>2016.10.23</span></p>
+            </div>
+
+            <div class="coupon-content-status1">
+            </div>
+        </div>-->
+    </div>
+    <!--已过期-->
+    <div class="right-coupon-content hidden" id="in-div-3">
+
+        #foreach($f in $couponDtos)
+            #if($f.couponStatus=="已过期")
+                <div class="coupon-show2">
+                    <div class="coupon-show-top">
+                        <span class="coupon-price">￥<em>$!f.quota</em></span>
+                        <span class="coupon-title">优惠券</span>
+                        <input type="button" class="delete-btn js_delete_btn" data-title="$f.id" value="×">
+                    </div>
+                    <div class="coupon-left-content">
+                        <p>卷号：<span>$!f.num</span></p>
+                        <p>使用条件：满<span>$!f.applyProduct</span>元</p>
+                        <p>截止日期：<span>$!f.gqDate</span></p>
+                    </div>
+                    <div class="coupon-content-status2">
+                    </div>
+                </div>
+            #end
+        #end
+       <!-- <div class="coupon-show2">
+            <div class="coupon-show-top">
+                <span class="coupon-price">￥<em>50</em></span>
+                <span class="coupon-title">优惠券</span>
+                <input type="button" class="delete-btn" value="×">
+            </div>
+            <div class="coupon-left-content">
+                <p>卷号：<span>2016-1212-2356</span></p>
+                <p>使用条件：满<span>300</span>元</p>
+                <p>截止日期：<span>2016.10.23</span></p>
+            </div>
+            <div class="coupon-content-status2">
+            </div>
+        </div>-->
+    </div>
+</div>

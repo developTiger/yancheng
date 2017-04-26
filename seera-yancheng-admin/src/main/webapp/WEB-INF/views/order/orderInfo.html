@@ -1,0 +1,233 @@
+</br>
+<div class=" x_panel  " xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+     xmlns="http://www.w3.org/1999/html">
+    <div class="x_title">
+        <h2>系统管理/订单详情</h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 订单详情.
+        </div>
+        <div>
+            <div class="content">
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>基本信息:</strong></div>
+                    <div class="col-xs-2">订单号:$!order.num</div>
+                    <div class="col-xs-2 ">状态：
+                        <d style="color: red"><strong>$helper.paySelect($order.status)</strong></d>
+                    </div>
+                    <div class="col-xs-2 ">支付方式：
+                        <d style="color: red"><strong>$!order.payTypes</strong></d>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>下单人信息:</strong></div>
+                    <div class="col-xs-2">下单人姓名:$!order.touristSimpleDto.realName</div>
+                    <div class="col-xs-2">下单时间： $order.createDateTime</div>
+                    <div class="col-xs-3">联系电话：$!order.touristSimpleDto.mobilePhone</div>
+                    <div class="col-xs-3">邮箱：$!order.touristSimpleDto.email</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>取票信息:</strong></div>
+                    <div class="col-xs-2">取票人姓名:$!order.fetcherDto.realName</div>
+                    <div class="col-xs-2">联系电话：$!order.fetcherDto.mobilePhone</div>
+                    <div class="col-xs-3">身份证号：$!order.fetcherDto.idCardNo</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-1"><strong>优惠券信息:</strong></div>
+                    #if($order.couponDto)
+                    <div class="col-xs-2">使用优惠卷：满￥ $order.couponDto.useCondition 元 减 ￥$order.couponDto.quota 元</div>
+                    #else
+                    <div class="col-xs-2">未使用优惠券</div>
+                    #end
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="x_panel">
+    <div><h4><strong>商品清单</strong></h4></div>
+    <div id="table">
+        <table class="table table-striped  dataTable no-footer table-bordered">
+            <thead>
+            <tr class="headings">
+                <th class="column-title">产品内容</th>
+                <th class="column-title">类型</th>
+                <th class="column-title">单价</th>
+                <th class="column-title">数量</th>
+                <th class="column-title">总价</th>
+                <th class="column-title">状态</th>
+
+                <th class="column-title">限购区域</th>
+
+                <th class="column-title">票务信息</th>
+                <th class="column-title">最后操作时间</th>
+                <th class="column-title">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            #if($order.productDtos)
+            #foreach($bean in $order.productDtos)
+            <tr>
+                <td class="showDetail"> $!bean.productDto.name</td>
+                <td class="showDetail">
+                    #if($bean.productDto.type =="Ticket") 门票 #end
+                    #if($bean.productDto.type =="Catering") 餐饮 #end
+                    #if($bean.productDto.type =="Souvenirs") 纪念品 #end
+                    #if($bean.productDto.type =="Hotel") 酒店 #end
+                    #if($bean.productDto.type =="GroupProduct") 组合商品 #end
+                    #if($bean.productDto.type =="Other") 其他 #end
+                </td>
+                <td class="showDetail">￥$!bean.productDto.price</td>
+                <td class="showDetail">$!bean.count</td>
+                <td class="showDetail a-right a-right ">￥#set($tp=$bean.count*$bean.productDto.price) $tp</td>
+                <td class="showDetail" >
+                    #if($bean.status =="normal")  未使用 #end
+                    #if($bean.status =="mealCheck")<span style="color:#a47e3c"> 改签审核中 </span>#end
+                    #if($bean.status =="mealReject")<span style="color: red"> 拒绝改签</span> #end
+                    #if($bean.status =="mealed") <span style="color:#269672">已改签</span> #end
+                    #if($bean.status =="returned")<span style="color: red"> 已退单</span> #end
+                    #if($bean.status =="expire") <span style="color: red">过期未消费</span> #end
+                    #if($bean.status =="end")<span style="color:#269672"> 已使用</span> #end
+                </td>
+
+                <td class="showDetail">$!bean.productDto.rejectAreasNames</td>
+
+                <td class="showDetail">
+                    #if($bean.orderOperatorStatus =="Wait")等待处理 #end
+                    #if($bean.orderOperatorStatus =="Success")<span style="color:#269672">无异常 </span>#end
+                    #if($bean.orderOperatorStatus =="ZybError") <span style="color: red">智游宝出票异常</span> #end
+                    #if($bean.orderOperatorStatus =="zybCancelError")<span style="color: red"> 取消异常 </span>#end
+                    #if($bean.orderOperatorStatus =="ZybImgError") <span style="color: red">二维码生成异常</span> #end
+                    #if($bean.orderOperatorStatus =="PayError") <span style="color: red">支付异常</span> #end
+
+                </td>
+                <td class="showDetail"> $helper.formatDateToString($bean.lastUpdateTime,"yyyy-MM-dd hh:mm:ss") </td>
+                <td>
+                    #if($order.status =="payed"&& $bean.canReturn &&$bean.status !="returned"&&$bean.status!="end"&&$bean.orderOperatorStatus!="zybCancelError")
+                    <a style="margin-left: 5px;" data-title="退单处理" class="orderOperator"
+                       data-url="ajax_orderReturn?orderNum=$!order.num&productIds=$bean.id"><span>
+                        <i class="red fa fa-toggle-left">退单</i></span></a>
+                    #end
+                    #if($bean.status =="mealCheck")
+                    <a class="i_modal" style="margin-left: 5px;" data-title="审核改签"
+                       data-url="_orderMealAuditing?opd=$bean.id&orderNum=$!order.num"><span>
+                        <i class="red fa fa-refresh">改签</i></span></a>
+                    #else
+
+
+
+                    #if($bean.orderOperatorStatus=="ZybError")
+                    <a style="margin-left: 5px;" data-title="重试创建门票" class="orderOperator"
+                       data-url="ajax_Retry_zyb_ticket?orderNum=$!order.num&productId=$bean.id"><span>
+                        <i class="red fa fa-refresh">重试出票</i></span></a>
+                    #end
+                    #if($bean.orderOperatorStatus=="zybCancelError")
+                    <a style="margin-left: 5px;" data-title="退单处理" class="orderOperator"
+                       data-url="ajax_orderReturn?orderNum=$!order.num&productIds=$bean.id"><span>
+                        <i class="red fa fa-refresh">重试退单</i></span></a>
+                    #end
+                    #if($bean.orderOperatorStatus=="ZybImgError")
+                    <a style="margin-left: 5px;" data-title="退单处理" class="orderOperator"
+                       data-url="ajax_getImg?orderNum=$!order.num&productId=$bean.id"><span>
+                        <i class="red fa fa-refresh">重试获取二维码</i></span></a>
+                    #end
+                    #end
+
+                </td>
+            <tbody class="  hidden js_table">
+            <tr>
+                <td colspan="12" style="padding: 0 0 0px 10px;background: #fff">
+                    <table class="table table-striped  dataTable no-footer table-bordered"
+                           style="width: 100%;background: #fff">
+                        <th class="column-title">商品编号</th>
+                        <th class="column-title">商品项名称</th>
+
+                        <th class="column-title">价格</th>
+                        <th class="column-title">商品项类目</th>
+                        <th class="column-title">预约日期</th>
+
+                        <th class="column-title">最后操作时间</th>
+                        <th class="column-title">状态</th>
+
+
+
+
+                        <th class="column-title">状态描述</th>
+                        <th>使用码</th>
+
+                        <tbody>
+                        #foreach($item in $bean.productItemDtos)
+                        <tr>
+                            <td>$item.num</td>
+                            <td>$item.name</td>
+                            <td class=" ">$item.price</td>
+                            <!--<td>
+                                <%if(items[i].parameterType){%>
+                                <%=items[i].parameterType[0].paramTypeName%>
+                                <%}%>
+                            </td>-->
+                            <td>
+                                #if($item.Type == "Ticket")
+                                门票
+                                #end
+                                #if($item.Type == "Catering")
+                                餐饮
+                                #end
+                                #if($item.Type == "Souvenirs")
+                                纪念品
+                                #end
+                                #if($item.Type == "Hotel")
+                                酒店
+                                #end
+                                #if($item.Type == "Other")
+                                其他
+                                #end
+
+                            </td>
+                            <td>#if($item.scheduleDate) $helper.formatDateToString($item.scheduleDate,"yyyy-MM-dd") #else #end </td>
+
+                            <td> $helper.formatDateToString($item.lastUpdateTime,"yyyy-MM-dd") </td>
+                            <td>
+                                #if($item.ItemStatus =="notCreate")尚为创建门票 #end
+                                #if($item.ItemStatus =="cancelFailed")<span style="color: red">取消失败</span> #end
+                                #if($item.ItemStatus =="canceled") 已取消 #end
+                                #if($item.ItemStatus =="createError") <span style="color: red">门票创建失败</span> #end
+                                #if($item.ItemStatus =="created") 门票已创建 #end
+                                #if($item.ItemStatus =="reCreateError") <span style="color: red">门票重新创建失败</span> #end
+                                #if($item.ItemStatus =="reCreated")门票已重新创建 #end
+                                #if($item.ItemStatus =="checked") <span style="color:#269672">已使用</span> #end
+                                #if($item.ItemStatus =="imgError") <span style="color: red">二维码错误</span> #end
+                                #if($item.ItemStatus =="allSuccess")待使用 #end
+
+
+                            </td>
+
+                            <td><span style="color: red">$!item.ItemStatusRemark</span></td>
+                            <td>#if($item.qrCode)<img src="$item.qrCode" style="width: auto;height: 20px"><br/>$!item.takeNum #else 未生成 #end</td>
+                        </tr>
+                        #end
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+            </tr>
+            #end
+            #else
+            <d>暂无数据</d>
+            #end
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        require(["app/orderManager/orderList"]);
+    </script>
+
+</div>
+

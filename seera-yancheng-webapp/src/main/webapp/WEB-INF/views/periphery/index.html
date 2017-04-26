@@ -1,0 +1,166 @@
+$ui.loadCss("periphery.css")
+<div class="banner">
+    <ul>
+        #if($p_2)
+        #foreach($webList in $p_2)
+        <li>
+            <a href="/"><img src="$imghost/$webList.path" height="480px"></a>
+        </li>
+        #end
+        #else
+        <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+        <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+        <li style='background-image: url("images/test/bg.png");height:480px'> </li>
+        #end
+    </ul>
+</div>
+<div class="main">
+    <div>
+        <p class="periphery-title">周边酒店</p>
+        <div style="width: 1240px;">
+            <div class="periphery-big">
+                <a href="#if($p_3.link) $p_3.link #else # #end"><img src="$imghost/$p_3.path" /></a>
+                <div class="right" >
+                    <i></i>
+                    <span></span>
+                    <!--埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多-->
+                    $!p_3.description
+                </div>
+            </div>
+        </div>
+        <div class="h20"></div>
+        <div>
+            #foreach($h in $hotels)
+            <div class="periphery4three">
+                <p> <a href="item/$!h.id"><img src="$imghost/$!h.mainPicturePath" style="width:360px;height:215px;"/></a></p>
+                <p class="p1">$!h.name</p>
+                <p class="p2"><span>￥$!h.discountPrice</span>元  <a href="item/$!h.id">立即抢购</a></p>
+            </div>
+            #end
+            <!--<div class="periphery4three">-->
+                <!--<p><img src="/images/test/ticket-recommend.png" style="width:360px;height:215px;"/></p>-->
+                <!--<p class="p1">九州喜来登大酒店+淹城春秋乐园双人票套餐</p>-->
+                <!--<p class="p2"><span>￥1700.00</span>元 <a href="#">立即抢购</a></p>-->
+            <!--</div>-->
+            <!--<div class="periphery4three">-->
+                <!--<p><img src="/images/test/ticket-recommend.png" style="width:360px;height:215px;"/></p>-->
+                <!--<p class="p1">九州喜来登大酒店+淹城春秋乐园双人票套餐</p>-->
+                <!--<p class="p2"><span>￥1700.00</span>元 <a href="#">立即抢购</a></p>-->
+            <!--</div>-->
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div>
+        <p class="periphery-title">旅游纪念品</p>
+        <div style="width: 1240px;">
+            <div class="periphery-big">
+                <a href="#if($p_4.link) $p_4.link #else # #end"> <img src="$imghost/$p_4.path" /></a>
+                <div class="right" >
+                    <i></i>
+                    <span></span>
+                   <!-- 埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多-->
+                    $!p_3.description
+                </div>
+            </div>
+        </div>
+        <div class="h20"></div>
+        <div>
+            #foreach($s in $souvenirs)
+            <div class="periphery4three">
+                <p> <a href="item/$!s.id"><img src="$imghost/$!s.mainPicturePath" style="width:360px;height:215px;"/></a></p>
+                <p class="p1">$!s.name</p>
+                <p class="p2"><span>￥$!s.discountPrice</span>元  <a href="item/$!s.id">立即抢购</a></p>
+            </div>
+            #end
+            <!--<div class="periphery4three">-->
+                <!--<p><img src="/images/test/ticket-recommend.png" style="width:360px;height:215px;"/></p>-->
+                <!--<p class="p1">九州喜来登大酒店+淹城春秋乐园双人票套餐</p>-->
+                <!--<p class="p2"><span>￥1700.00</span>元 <a href="#">立即抢购</a></p>-->
+            <!--</div>-->
+            <!--<div class="periphery4three">-->
+                <!--<p><img src="/images/test/ticket-recommend.png" style="width:360px;height:215px;"/></p>-->
+                <!--<p class="p1">九州喜来登大酒店+淹城春秋乐园双人票套餐</p>-->
+                <!--<p class="p2"><span>￥1700.00</span>元 <a href="#">立即抢购</a></p>-->
+            <!--</div>-->
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div>
+        <p class="periphery-title">淹城美食</p>
+        <div style="width: 1240px;">
+            <div class="periphery-big">
+                <a href="#if($p_5.link) $p_5.link #else # #end"> <img src="$imghost/$p_5.path" /></a>
+                <div class="right" >
+                    <i></i>
+                    <span></span>
+                    <!--埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多埃里克森的骄傲是空间大花洒就看到好多-->
+                    $!p_3.description
+                </div>
+            </div>
+        </div>
+        <div class="h20"></div>
+        <div>
+            #foreach($c in $caterings)
+            <div class="periphery4three">
+                <p><a href="item/$!c.id"><img src="$imghost/$!c.mainPicturePath" style="width:360px;height:215px;"/></a></p>
+                <p class="p1">$!c.name</p>
+                <p class="p2"><span>￥$!c.discountPrice</span>元 <a href="item/$!c.id">立即抢购</a></p>
+            </div>
+            #end
+            <!--<div class="periphery4three" >-->
+                <!--<p><img src="/images/test/0ticket-recommend.png" style="width:360px;height:215px;"/></p>-->
+                <!--<p class="p1">九州喜来登大酒店+淹城春秋乐园双人票套餐</p>-->
+                <!--<p class="p2"><span>￥1700.00</span>元 <a href="#">立即抢购</a></p>-->
+            <!--</div>-->
+            <!--<div class="periphery4three">-->
+                <!--<p><img src="/images/test/ticket-recommend.png" style="width:360px;height:215px;"/></p>-->
+                <!--<p class="p1">九州喜来登大酒店+淹城春秋乐园双人票套餐</p>-->
+                <!--<p class="p2"><span>￥1700.00</span>元 <a href="#">立即抢购</a></p>-->
+            <!--</div>-->
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="h60"></div>
+
+  <!--  <div class="index-support-main">
+        <div class="index-support-div">
+            <em class="iconfont">&#xe60b;</em>
+            <p class="p-title">价格保证</p>
+            <p class="p-content">质量保证，价格优惠</p>
+        </div>
+        <div class="index-support-div">
+            <em class="iconfont">&#xe60a;</em>
+            <p class="p-title">退订保障</p>
+            <p class="p-content">若遇特殊情况，保证退订</p>
+        </div>
+        <div class="index-support-div">
+            <em class="iconfont">&#xe609;</em>
+            <p class="p-title">救援保障</p>
+            <p class="p-content">旅途中发生意外，保证援助</p>
+        </div>
+        <div class="index-support-div no-border">
+            <em class="iconfont">&#xe60c;</em>
+            <p class="p-title">24小时服务</p>
+            <p class="p-content">热忱服务，全年无休</p>
+        </div>
+        <div class="clear"></div>
+    </div>-->
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+
+<!--<link href="css/personalcenter/personalcenter.css" type="text/css" rel="stylesheet" />-->
+$ui.loadCss("personalCenter/personalCenter.css")
+
+<div class="main personal-main">
+    <div class="h20"></div>
+    #parse("uc/common/left_common.html")
+    <div class="right">
+        #parse("uc/child/orderList_right.html")
+    </div>
+</div>
+
+
+
+<script>
+    require(["app/ucOrderList/ucOrderList"]);
+</script>
+

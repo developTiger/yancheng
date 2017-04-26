@@ -1,0 +1,107 @@
+<div class="">
+    <div class="">
+        <form id="BasicInfoForm" class="form-horizontal fa-align-left">
+            <input type="hidden" id="empId" name="empId"  >
+            <input type="hidden" name="id" value="<%=id%>">
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" >是否是当前职务 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="radio" name="isCurrent" value="1" <%if(isCurrent){%> checked="checked"<%}%> >是
+                    <input type="radio" name="isCurrent" value="0" <%if(!isCurrent){%> checked="checked"<%}%> > 否
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">聘任时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate" value="<%=strInTime%>"
+                           name="strInTime"  placeholder="聘任时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-2891"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">卸任时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate" value="<%=strOutTime%>"
+                           name="strOutTime"  placeholder="卸任时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-9891"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="major" class="control-label col-md-2 col-sm-3 col-xs-12">资格专业 <span class="required">*</span></label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="major" class="form-control col-md-7 col-xs-12" type="text" value="<%=major%>"
+                           name="major" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-3103"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="control-label col-md-2 col-sm-3 col-xs-12">资格名称 <span class="required">*</span></label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="name" class="form-control col-md-7 col-xs-12" type="text" value="<%=name%>"
+                           name="name" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-1103"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">资格级别 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    <!-- <select id="level" name="level" class="form-control col-xs-7">
+                         <option value="<%=level%>">高</option>
+                         <option value="<%=level%>">中</option>
+                         <option value="<%=level%>">低</option>
+                     </select>-->
+                    <input id="level" class="form-control col-md-7 col-xs-12" type="text" value="<%=level%>"
+                           name="level" data-parsley-id="1103">
+                    <ul class="parsley-errors-list" id="parsley-id-7103"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">获证时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate" value="<%=strInObtian%>"
+                           name="strInObtian"  placeholder="获证时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-7891"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">取得途径 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="way" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                          value="<%=way%>" name="way"  type="text" data-parsley-id="3559">
+                    <ul class="parsley-errors-list" id="parsley-id-3591"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">专业技术职务信息介绍 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="brief" class="date-picker form-control col-md-7 col-xs-12" required="required"
+                        value="<%=brief%>"   name="brief" type="text" data-parsley-id="3559"><ul class="parsley-errors-list" id="parsley-id-35591"></ul>
+                </div>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Cancel</button>
+                    <button type="submit" id="submitUserInfo" data-title="QualificationInformation" data-url="PositionInformation" class="btn btn-success">提交</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

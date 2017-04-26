@@ -1,0 +1,56 @@
+
+<form id="addPermissionForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($sysPermission)value="$sysPermission.id"#end>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="permission-name">权限组名称 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="permission-name" required="required"  #if($sysPermission)value="$sysPermission.name"#end name="permissionName"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="permission-sort">排序 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="permission-sort" required="required" #if($sysPermission)value="$sysPermission.sort"#end name="permissionSort"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+<input type="hidden" id="menuIds"  #if($sysPermission)value="$sysPermission.menuIds"#end >
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="permission-name">菜单权限 <span class="required">*</span>
+        </label>
+        <div id="tree1"  class="col-xs-6 ztree"></div>
+        <input type="hidden" id="menuId"  name="permissionMenuIds">
+
+        <!--<div class="col-xs-6">-->
+        <!--#if($beans)-->
+        <!--<select id="permission-menuIds"  required="required" name="permissionMenuIds" class="form-control col-xs-7" data-parsley-id="0004">-->
+
+
+        <!--#foreach($bean in $beans)-->
+        <!--<option value="$bean.id" #if($bean.id == $sysPermission.id )selected="selected"#end  >$bean.name</option>-->
+        <!--#end-->
+        <!--</select>-->
+        <!--#else-->
+        <!--<dd>暂无数据</dd>-->
+        <!--#end-->
+        <!--</div>-->
+    </div>
+
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="addOrUpdatePermission" data-url="ajax_add_update_permission" class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+
+        </div>
+    </div>
+</form>

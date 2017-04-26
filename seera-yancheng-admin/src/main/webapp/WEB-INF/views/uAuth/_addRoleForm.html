@@ -1,0 +1,60 @@
+
+    <form id="addRoleForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+        <input type="hidden" name="id" #if($bean)value="$bean.id"#end>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">角色名 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="role-name" required="required" #if($bean)value="$bean.name"#end name="roleName"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">标识码 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="" required="required" #if($bean)value="$bean.idCode"#end name="idCode"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4640"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">描述 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="description" required="required" #if($bean)value="$bean.description"#end name="description"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4641"></ul>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="menu-name">权限组 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+
+                #if($permGroup)
+                       <select id="menu-name"  required="required"   class="form-control col-xs-7"  multiple="multiple" data-parsley-id="0004">
+                          #foreach($beanPG in $permGroup)
+                             <option value="$beanPG.id" #if($bean.sysPermissionGroupName == $beanPG.name )selected="selected"#end class="Js_option">$beanPG.name</option>
+                          #end
+                       </select>
+                 #else
+                       <dd>暂无数据</dd>
+                 #end
+                <input type="hidden" id="pid" name="pid" value="">
+             </div>
+        </div>
+
+        <input type="hidden" id="Js_hidPermissionGroup" value="$permissionGroupName">
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class=" col-xs-6 col-xs-offset-3">
+                <button type="submit" id="addOrUpdateRole" data-url="ajax_add_update_role" class="btn btn-success">提交</button>
+                <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+            </div>
+        </div>
+    </form>

@@ -1,0 +1,55 @@
+<table class="table table-striped table-bordered dataTable no-footer ">
+    <thead>
+    <tr class="headings text-center">
+        <th>
+            <input type="checkbox" id="check-all"  class="checkAll ">        </th>
+        <th class="column-title">序号</th>
+        <th class="column-title">名称 </th>
+        <th  class="column-title text-center" style="vertical-align: middle">排序 </th>
+        <!--<th class="column-title">Order </th>-->
+        <!--<th class="column-title">Bill to Name </th>-->
+        <!--<th class="column-title">创建时间 </th>-->
+        <th class="column-title">上次更新时间 </th>
+        <!--<th class="column-title">Amount </th>-->
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pagesCount > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <td class="firstTd"> <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class="num"><%=num+i+1%></td>
+        <td><%=items[i].name%></td>
+        <td><%=items[i].sort%></td>
+        <!--<td class=" ">2</td>-->
+        <!--<td class=" ">3 </td>-->
+        <!--<td class=" "><%=items[i].createDatetime%></td>-->
+        <td class=" "><%=dateFormat(items[i].lastUpdateTimes)%></td>
+        <!--<td class="a-right a-right ">$7.45</td>-->
+
+        <td class=" last">
+
+            <a class="i_modal  "
+               data-title="修改用户" data-url="_addPermissionForm?id=<%=items[i].id%>">
+                <i class="green fa fa-edit"></i>修改 </a>
+
+            <a class="Js_deletePermission"
+                data-url="ajax_deletePermission?ids=<%=items[i].id%>">
+                <span><i class="red fa fa-remove"></i>删除</span></a>
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

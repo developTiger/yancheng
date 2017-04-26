@@ -1,0 +1,151 @@
+<div class="page-group">
+    <div class="page page-activity page-current" id="index" style="background-color:#F4F4F4 ">
+        <header class="bar bar-nav">
+            <h1 class="title">淹城春秋乐园-点灯活动</h1>
+            <a class=" icon icon-left pull-left back" style="color: #ffffff"></a>
+            #if($userInfo)
+                <a class="icon icon-me pull-right  open-panel" style="color: #ffffff"></a>
+            #else
+                <a href="/login" class="icon icon-me pull-right external " style="color: #ffffff"></a>
+            #end
+        </header>
+        #parse("/layout/siteNav.vm")
+        <div class="content pull-to-refresh-content">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="buttons-tab">
+                <a href="/list/activity/1.html" class=" #if($type==1)active#end button" external>正在进行</a>
+                <a href="/list/activity/2.html" class=" #if($type==2)active#end button" external>往期活动</a>
+            </div>
+            <div>
+                #foreach($item in $list)
+                    <div class="card card-zz bottomline" style="    margin: 0.5rem 0.3rem !important;">
+                        <div class="card-content">
+                            <div class="list-block media-list ">
+                                <ul>
+                                    <li>
+                                        <div class="item-content  ">
+
+                                            <div class="item-media item-media-activity">
+                                                #if($item.hasPageProfileMobile)
+                                                    <a class="external" href="/active/ActivityDetails/${item.id}"><img
+                                                            src="$imghost/s/$item.pticturePath"
+                                                            width="100%"></a>
+
+                                                #else
+                                                    <a class="external" href="/ticket/${item.productDto.id}.html"><img
+                                                            src="$imghost/s/$item.pticturePath"
+                                                            width="100%"></a>
+                                                #end
+
+                                            </div>
+
+                                            <div class="item-inner item-inner-activity">
+                                                #if($item.hasPageProfileMobile)
+                                                    <a class="external" href="/active/ActivityDetails/${item.id}">
+                                                        <div class="item-title-row">
+                                                            <div class="title-fonts"
+                                                                 style="color: #000000;">$item.name</div>
+                                                        </div>
+                                                    </a>
+
+                                                #else
+                                                    <a class="external" href="/ticket/${item.productDto.id}.html">
+                                                        <div class="item-title-row">
+                                                            <div class="title-fonts"
+                                                                 style="color: #000000;">$item.name</div>
+                                                        </div>
+                                                    </a>
+                                                #end
+
+                                                <div class="row">
+                                                    <div class="dateline col-70" style="font-size: 0.6rem">
+                                                        截止日期:$helper.formatDateToString($item.endTime,"yyyy-MM-dd")
+                                                        <div>
+                                                            <span class="ui-rmb-discount"
+                                                                  style="font-size: 0.8rem">¥$item.productDto.discountPrice</span>
+                                                            <span class="ui-rmb-original">原价¥$item.productDto.price</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-30 activity-btn-pos">
+
+                                                        #if($type==1)
+                                                            <a class="button button-enabled activityBtn external"
+                                                               href="/ticket/${item.productDto.id}.html">抢购</a>
+                                                        #else
+                                                            <span class="button button-disabled activityBtn external"
+                                                                  style="font-size: 0.6rem">已结束</span>
+                                                        #end
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </li>
+                                    #if($item.type=="GroupEvent")
+
+                                        <li>
+                                            #set($radios= $item.productDto.saleCount*100/$item.groupMinCount)
+                                            #if($radios>100)
+                                                #set($radiosShow=100)
+                                                #else
+                                                    #set($radiosShow=$radios)
+                                            #end
+                                            <div class="users-benefits-content-rate">
+                                                <div style="width: $radiosShow%;background: red;height: 14px;border-radius: 3px;"></div>
+                                            </div>
+                                            <div style="color:#666;font-size: 14px;margin-bottom: 3px"> <span style="margin-left: 10px;">当前进度<span style="color: red">$radios%</span></span> <span style="float: right; margin-right: 10px;">满 $item.groupMinCount 成团 已售<span style="color: red">#if($item.productDto.saleCount)$item.productDto.saleCount #else 0 #end</span>张 </span></div>
+                                        </li>
+
+
+                                    #end
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                #end
+
+            ##                <div class="card">
+            ##                    <div>
+            ##                        <div class="list-block media-list ">
+            ##                            <ul>
+            ##                                <li class="item-content">
+            ##                                    <div class="item-media">
+            ##                                        <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg"
+            ##                                             width="100">
+            ##                                    </div>
+            ##                                    <div class="item-inner">
+            ##                                        <div class="item-title-row">
+            ##                                            <div>常州淹城门票</div>
+            ##                                        </div>
+            ##                                        <div class="dateline">
+            ##                                            截止日期:2012-20-20
+            ##                                        </div>
+            ##                                        <div>
+            ##                                            <span class="ui-rmb-discount">¥170</span>
+            ##                                            <span class="ui-rmb-original">¥170</span>
+            ##                                            <a>抢购</a>
+            ##                                        </div>
+            ##                                    </div>
+            ##                                </li>
+            ##                            </ul>
+            ##                        </div>
+            ##                    </div>
+            ##
+            ##                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  关于我们 -->
+#parse("about.vm")
+</div>
+
+#set($block_script='
+
+')

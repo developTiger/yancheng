@@ -1,0 +1,45 @@
+#set($layout="layout/default.vm")
+<style>
+    .content1{height: 180px;}
+    .content2{background-image: url('/images/lottery/cry.png');    background-repeat: no-repeat;height: 22.55555555%;background-position: center;background-size: 33%;}
+    .content2-text{text-align: center;font-size: 28px;color: #803C03;height: 115px;}
+    .content2-bg{background-image: url('/images/lottery/quan.png');background-repeat: no-repeat;height: 159px;padding: 10px 20px;}
+    .content3{display: inline-block;border-radius: 110px;width: 364px;height: 123px;border: 8px solid white;}
+    .content4{text-align: center;}
+    .page-group.page-current, .page.page-current {
+        overflow: auto;
+    }
+</style>
+
+<div class="page page-current">
+    <div class="content native-scroll">
+        <img src="/images/lottery/bg2.png" style="width: 100%;">
+        <div style="position: absolute;top: 0;width: 100%;height: 100%;">
+            <div style="width: 90%;height: 100%;margin: 0 auto;text-align: center;">
+                <div style="height: 20%;"></div>
+                <img src="/images/lottery/cry.png" style="width: 50%;">
+                <div style="font-size: 1.888888rem;text-align: center;color: #AC5406;height: 6%;">很抱歉，您没有猜中!</div>
+                <div class="content4">
+                    <div class="content3">
+                        <a href="/light/$num"><img src="/images/lottery/zaiwan.png"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/js/pingpp/pingpp.js"></script>
+<script src="/js/index.js?t=444"></script>
+<script src="/js/spinner.js?t=3"></script>
+
+<script>
+</script>
+</body>
+</html>

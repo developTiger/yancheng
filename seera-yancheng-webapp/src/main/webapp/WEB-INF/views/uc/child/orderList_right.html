@@ -1,0 +1,266 @@
+$ui.loadCss("personalCenter/order.css")
+$ui.loadCss("paging.css")
+<div class="right-choice-main">
+    <p class="right-top-show-items">订单列表</p>
+    <div class="h20"></div>
+    <div>
+        <div class="select-order-list">
+            <label><span #if($!type=="all") class="current" #end><a href="/orderlist/all">所有订单</a></span></label>
+            <label><span #if($!type=="prepay") class="current" #end><a href="/orderlist/prepay">待付款</a></span></label>
+            <label><span #if($!type=="complete") class="current" #end><a href="/orderlist/complete">已完成</a></span></label>
+            <label><span #if($!type=="cancel") class="current" #end><a href="/orderlist/cancel">已取消</a></span></label>
+        </div>
+
+        <div class="personal-order-search">
+            <form action="/orderlist/$!type">
+                <input type="text" value="$!num" class="" name="num" placeholder="输入订单号进行搜索">
+                <input type="submit" class="order_search " style="color: white;" value="订单搜索">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="h20"></div>
+
+    <table class="uc-order-top-table" >
+        <tr>
+            <td width="800">订单详情</td>
+            <td width="100">取票人</td>
+            <td width="100">实付款（元）</td>
+            <td width="100">状态</td>
+            <td width="100">操作</td>
+        </tr>
+    </table>
+
+    <!--#foreach($order in $orders)
+    <table class="uc-order-list-table" cellspacing="0px">
+        <tr>
+            <td colspan="5">
+                $!order.orderTime&nbsp;&nbsp;
+                订单编号：$!order.num
+            </td>
+        </tr>
+        #foreach($product in $order.productDtos)
+        <tr>
+            <td width="800">
+                <a href="/item/$!product.productDto.originalId"><img src="$imghost/s/$product.productDto.mainPicturePath" width="99px;" height="60px;"></a>
+                <div class="div1">
+                    $!product.productDto.name<br/>
+                    <span class="c999">￥$!product.productDto.discountPrice</span>
+                </div>
+                <div class="" style="margin-left: 2px;width: 25px;">
+                    &nbsp;×$!product.count
+                </div>
+
+                <div style="width: 130px;margin-left: 7px;">
+                    <span class="c999" style="margin-left:10px;display: inline-block;width: 130px;height: 21px;">
+                        &lt;!&ndash;#if($product.status=="mealCheck") 改签审核中
+                        #else
+                                #if($product.status=="mealed")游园日期:<input type="text" data-id="$product.id" data-title="tour" class="show-time-back #if($!product.canMeal) js_mark #end"   style="width: 65px;padding: 1px 3px;border: 1px solid #E1E1E1;" value="$helper.formatDateToString($!product.tourScheduleMealDate,'yyyy-MM-dd')" disabled>
+                            #else
+                                #if($product.tourScheduleDate)游园日期:<input type="text" data-id="$product.id" data-title="tour" class="show-time-back #if($!product.canMeal) js_mark #end" style="width: 65px;padding: 1px 3px;border: 1px solid #E1E1E1;" value="$helper.formatDateToString($!product.tourScheduleDate,'yyyy-MM-dd')" disabled> #end
+                            #end
+                                #if($product.status=="mealed")入住日期:<input type="text" data-id="$product.id" data-title="hotel"class="show-time-back #if($!product.canMeal) js_mark #end"  style="width: 65px;padding: 1px 3px;border: 1px solid #E1E1E1;" value="$helper.formatDateToString($!product.hotelScheduleMealDate,'yyyy-MM-dd')" disabled>
+                            #else
+                                #if($product.hotelScheduleDate)入住日期:<input type="text"data-id="$product.id" data-title="hotel"class="show-time-back #if($!product.canMeal) js_mark #end" style="width: 65px;padding: 1px 3px;border: 1px solid #E1E1E1;" value="$helper.formatDateToString($!product.hotelScheduleDate,'yyyy-MM-dd')" disabled> #end
+                            #end
+                        #end&ndash;&gt;
+                       #if($product.status=="mealed")
+                           #if($product.tourScheduleMealDate)游园日期:$helper.formatDateToString($!product.tourScheduleMealDate,'yyyy-MM-dd') #end
+                           #if($product.hotelScheduleMealDate)入住日期:$helper.formatDateToString($!product.hotelScheduleMealDate,'yyyy-MM-dd') #end
+                       #else
+                           #if($product.tourScheduleDate)游园日期:$helper.formatDateToString($!product.tourScheduleDate,'yyyy-MM-dd') #end
+                           #if($product.hotelScheduleDate)入住日期:$helper.formatDateToString($!product.hotelScheduleDate,'yyyy-MM-dd') #end
+                       #end
+                    </span>
+                </div>
+
+                <div style="cursor: pointer;" class="js_show_alert" #if($!product.tourScheduleDate) data-url="$helper.formatDateToString($!product.tourScheduleDate,'yyyy-MM-dd')" #end
+                     #if($!product.hotelScheduleDate) data-title="$helper.formatDateToString($!product.hotelScheduleDate,'yyyy-MM-dd')" #end data-id="$product.id">#if($helper.checkMeal($product.canMeal,$order.status)) $helper.mealStatus($product.status) #end</div>
+            </td>
+            #if($helper.operateShow($!order.status,$!product.tourScheduleMealDate,$!product.hotelScheduleMealDate)=='去付款')
+                #if($velocityCount==1)
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                        $!order.fetcherDto.realName
+                    </td>
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                        <p class="p1">总额：￥$!order.orderPrice</p>
+                        #if($item.couponDto.quota)
+                        <p class="c999">优惠：$!order.couponDto.quota</p>
+                        #end
+                        <p><a href="/orderdetail/$!order.num" style="color: #5194dd;">查看详情</a></p>
+                    </td>
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                        $helper.paySelect($!order.status)
+                    </td>
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+
+                        <a $helper.operateHref($!order.status,$order.fetcherDto.id,$order.id,$order.num,$product.productDto.num,null)
+                           class="#if($order.status=='payed') js_show_alert #end
+                            operate-item js_operate_item  #if($helper.operateShow($!order.status,$product.tourScheduleMealDate,$product.hotelScheduleMealDate)=='去付款') to-pay-style #else #end">
+                            &lt;!&ndash;#if($!product.tourScheduleDate) data-url="$helper.formatDateToString($!product.tourScheduleDate,'yyyy-MM-dd')" #end
+                       #if($!product.hotelScheduleDate) data-title="$helper.formatDateToString($!product.hotelScheduleDate,'yyyy-MM-dd')" #end data-id="$product.id"&ndash;&gt;
+                            $helper.operateShow($!order.status,$product.tourScheduleMealDate,$product.hotelScheduleMealDate)
+                        </a>
+                    </td>
+                #end
+            #else
+                #if($!order.status=='payed')
+                    #if($velocityCount==1)
+                        <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                            $!order.fetcherDto.realName
+                        </td>
+                        <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                            <p class="p1">总额：￥$!order.orderPrice</p>
+                            #if($item.couponDto.quota)
+                            <p class="c999">优惠：$!order.couponDto.quota</p>
+                            #end
+                            <p><a href="/orderdetail/$!order.num" style="color: #5194dd;">查看详情</a></p>
+                        </td>
+
+                        <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                            $helper.paySelect($!order.status)
+                        </td>
+                        <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+
+                            <a $helper.operateHref($!order.status,$order.fetcherDto.id,$order.id,$order.num,$product.productDto.num,true)
+                               class="#if($order.status=='payed') operate-item #else dis-none #end to-evaluation"
+                                    >去评价</a>
+                        </td>
+                    #end
+                #else
+                    #if($velocityCount==1)
+                        <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                            $!order.fetcherDto.realName
+                        </td>
+                        <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                            <p class="p1">总额：￥$!order.orderPrice</p>
+                            #if($item.couponDto.quota)
+                            <p class="c999">优惠：$!order.couponDto.quota</p>
+                            #end
+                            <p><a href="/orderdetail/$!order.num" style="color: #5194dd;">查看详情</a></p>
+                        </td>
+
+                        <td width="100" class="tcenter">
+                            $helper.paySelect($!order.status)
+                        </td>
+                        <td width="100" class="tcenter">
+
+                            <a $helper.operateHref($!order.status,$order.fetcherDto.id,$order.id,$order.num,$product.productDto.num,true)
+                               class="#if($order.status=='payed') operate-item #else dis-none #end to-evaluation"
+                              >去评价</a>
+
+                            <a $helper.operateHref($!order.status,$order.fetcherDto.id,$order.id,$order.num,$product.productDto.num,false)
+                               class="#if($helper.operateShow($!order.status,$product.tourScheduleMealDate,$product.hotelScheduleMealDate)=='可改签') js_show_alert to-meal-style operate-item #else #end js_operate_item
+                            #if($helper.operateShow($!order.status,$product.tourScheduleMealDate,$product.hotelScheduleMealDate)=='去付款') to-pay-style #else #end"
+                            >
+                                $helper.operateShow($!order.status,$product.tourScheduleMealDate,$product.hotelScheduleMealDate)
+                            </a>
+                        </td>
+                    #end
+                #end
+            #end
+        </tr>
+        #end
+    </table>
+    #end-->
+
+    #foreach($order in $orders)
+    <table class="uc-order-list-table" cellspacing="0px">
+        <tr>
+            <td colspan="5">
+                $!order.orderTime&nbsp;&nbsp;
+                订单编号：$!order.num
+            </td>
+        </tr>
+        #foreach($product in $order.productDtos)
+        <tr>
+            <td width="800">
+                <a href="/item/$!product.productDto.originalId"><img src="$imghost/s/$product.productDto.mainPicturePath" width="99px;" height="60px;"></a>
+                <div class="div1">
+                    $!product.productDto.name<br/>
+                    <span class="c999">￥$!product.productDto.discountPrice</span>
+                </div>
+                <div class="" style="margin-left: 2px;width: 25px;">
+                    &nbsp;×$!product.count
+                </div>
+                <div style="width: 130px;margin-left: 7px;">
+                    <span class="c999" style="margin-left:10px;display: inline-block;width: 130px;height: 21px;">
+                       #if($product.status=="mealed")
+                           #if($product.tourScheduleMealDate)游园日期:$helper.formatDateToString($!product.tourScheduleMealDate,'yyyy-MM-dd') #end
+                           #if($product.hotelScheduleMealDate)入住日期:$helper.formatDateToString($!product.hotelScheduleMealDate,'yyyy-MM-dd') #end
+                       #else
+                           #if($product.tourScheduleDate)游园日期:$helper.formatDateToString($!product.tourScheduleDate,'yyyy-MM-dd') #end
+                           #if($product.hotelScheduleDate)入住日期:$helper.formatDateToString($!product.hotelScheduleDate,'yyyy-MM-dd') #end
+                       #end
+                    </span>
+                </div>
+                <div style="cursor: pointer;" class="js_show_alert" #if($!product.tourScheduleDate) data-url="$helper.formatDateToString($!product.tourScheduleDate,'yyyy-MM-dd')" #end
+                     #if($!product.hotelScheduleDate) data-title="$helper.formatDateToString($!product.hotelScheduleDate,'yyyy-MM-dd')" #end data-id="$product.id">#if($helper.checkMeal($product.canMeal,$order.status)) $helper.mealStatus($product.status) #end</div>
+            </td>
+
+            #if( $helper.operateShow($!order.status)=="重新下单")
+                #if($velocityCount==1)
+                <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                    $!order.fetcherDto.realName
+                </td>
+                <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                    <p class="p1">总额：￥$!order.orderPrice</p>
+                    #if($item.couponDto.quota)
+                    <p class="c999">优惠：$!order.couponDto.quota</p>
+                    #end
+                    <p><a href="/orderdetail/$!order.num" style="color: #5194dd;">查看详情</a></p>
+                </td>
+                #end
+                <td width="100" class="tcenter">
+                    $helper.paySelect($!order.status)
+                </td>
+                <td width="100" class="tcenter">
+                    <a $helper.operateHref($!order.status,$order.fetcherDto.id,$order.id,$order.num,$product.productDto.num,null)
+                       class="#if($order.status=='payed') to-evaluation #end operate-item js_operate_item  #if($helper.operateShow($!order.status)=='去付款') to-pay-style #end">
+                        $helper.operateShow($!order.status)
+                    </a>
+                </td>
+            #else
+                #if($velocityCount==1)
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                        $!order.fetcherDto.realName
+                    </td>
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                        <p class="p1">总额：￥$!order.orderPrice</p>
+                        #if($item.couponDto.quota)
+                        <p class="c999">优惠：$!order.couponDto.quota</p>
+                        #end
+                        <p><a href="/orderdetail/$!order.num" style="color: #5194dd;">查看详情</a></p>
+                    </td>
+
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                        $helper.paySelect($!order.status)
+                    </td>
+                    <td width="100" class="tcenter" rowspan="$order.productDtos.size()">
+                        <a $helper.operateHref($!order.status,$order.fetcherDto.id,$order.id,$order.num,$product.productDto.num,null)
+                           class="#if($order.status=='payed') to-evaluation #end operate-item js_operate_item  #if($helper.operateShow($!order.status)=='去付款') to-pay-style #end">
+                            $helper.operateShow($!order.status)
+                        </a>
+                    </td>
+                #end
+            #end
+        </tr>
+        #end
+    </table>
+    #end
+    #parse("uc/common/User_Edit_Alert.html")
+    <div id="paging" class="page"></div>
+
+</div>
+
+</div>
+<div class="clear"></div>
+
+<script>
+    require(['common/page'],function(page){
+        var paging=new page({trigger:"#paging",param:{
+            items:'$!pg.totalItemsCount'
+        }})
+    })
+</script>

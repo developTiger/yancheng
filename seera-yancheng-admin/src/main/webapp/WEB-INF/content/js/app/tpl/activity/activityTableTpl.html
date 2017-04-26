@@ -1,0 +1,99 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th style="width: 50px">
+            <input type="checkbox" id="check-all" class="checkAll "></th>
+        <th class="column-title">序号</th>
+        <th class="column-title">活动名称</th>
+        <th class="column-title">类型</th>
+        <th class="column-title">商品名称</th>
+        <th class="column-title">活动时间</th>
+        <th class="column-title">活动状态</th>
+        <th class="column-title no-link last">
+            <span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="8">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i
+                    class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pageNumber > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+        <td><input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class="num"><%=num+i+1%></td>
+        <td><%=items[i].name%></td>
+        <td>
+            <%if(items[i].type == "HolidayEvent"){%>
+            节假日活动
+            <%}%>
+            <%if(items[i].type == "SpecialSal"){%>
+            特惠活动
+            <%}%>
+            <%if(items[i].type == "StarEvent"){%>
+            明星活动
+            <%}%>
+            <%if(items[i].type == "ChildEvent"){%>
+            亲子活动
+            <%}%>
+            <%if(items[i].type == "GroupEvent"){%>
+            团购活动
+            <%}%>
+        <td class=" "><%=items[i].productDto.name%></td>
+        <td class=" "><%=dateFormat(items[i].startTime,"yyyy-MM-dd")%> ---
+            <%=dateFormat(items[i].endTime,"yyyy-MM-dd")%>
+        </td>
+        <!--<td>
+            <%if(items[i].parameterType){%>
+            <%=items[i].parameterType[0].paramTypeName%>
+            <%}%>
+        </td>-->
+        <td class="a-right a-right ">
+            <%if(items[i].activityStatus == "Run"){%>
+            进行中
+            <%}%>
+            <%if(items[i].activityStatus == "Wait"){%>
+            等待开始
+            <%}%>
+            <%if(items[i].activityStatus == "Stop"){%>
+            已中止
+            <%}%>
+            <%if(items[i].activityStatus == "Complete"){%>
+            已结束
+            <%}%>
+        <td class=" last">
+            <%if(items[i].activityStatus == "Run") {%>
+            <a class=" changeStatus"
+               data-url="ajax_activity_change_status?id=<%=items[i].id%>&status=Stop">
+                <i class="red fa fa-stop"></i>停止 </a>
+            <%}%>
+            <%if(items[i].activityStatus == "Wait" ||items[i].activityStatus == "Stop" ) {%>
+            <a class="  changeStatus"
+               data-url="ajax_activity_change_status?id=<%=items[i].id%>&status=Run">
+                <i class="green fa fa-play"></i>运行 </a>
+            <%}%>
+            <a class="" href="sra_t_AddOrUpActicity?id=<%=items[i].id%>">
+                <i class="green fa fa-edit"></i>编辑 </a>
+            <a class=" changeStatus"
+               data-url="ajax_delete_activity?ids=<%=items[i].id%>">
+                <i class="red fa fa-remove"></i>删除 </a>
+
+        <%if(items[i].hasPageProfile){%>
+           <a class=" changeStatus" href="http://store.cn-yc.com.cn/active/ActivityDetails/<%=items[i].id%>" target="_blank"  style="margin-left: 20px;" >PC端活动页查看</a>
+           <a class=" changeStatus" href="http://store.cn-yc.com.cn/active/ActivityDetails/<%=items[i].id%>" target="_blank"  style="margin-left: 20px;" >移动端活动页查看</a>
+        <%}else{%>
+        <%}%>
+
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

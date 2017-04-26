@@ -1,0 +1,27 @@
+<div class="page-group">
+    <div class="page page-current" id="index">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" >
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class="title">预定须知</h1>
+        </header>
+
+        <div class="content">
+            <p>
+                <ul>
+                    <li>
+                        1、预订时，请务必如实填写姓名、手机号、身份证号；入园时凭本人身份证或彩信二维码入园，游玩时请务必携带好预留的身份证，否则将无法入园。
+                    </li>
+                    <li>
+                        2、如遇雨天淹城室外项目将会停运，出行请留意天气情况。
+                    </li>
+                    <li>
+                        3、该联票限两天内使用完毕，赠送的动物园门票为日间场次，出园无效。
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</div>

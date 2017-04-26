@@ -1,0 +1,66 @@
+
+    <form id="addUserform" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+        <input type="hidden" name="id" #if($sysUser)value="$sysUser.id"#end>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="login-name">用户名 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="login-name" required="required" #if($sysUser)value="$sysUser.loginName"#end name="loginName" class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="real-name">姓名 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="real-name"  required="required" #if($sysUser)value="$sysUser.name"#end name="realName"  class="form-control  col-xs-7" data-parsley-id="2038"><ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="real-name">生日 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" class="form-control mini-width Wdate" id="birthday" name="birthday" style="float: left;width: 150px" placeholder="起始时间" >
+             </div>
+        </div>
+
+        <div class="form-group">
+            <label for="middle-name" class="control-label  col-xs-3">电话号码<span class="required">*</span></label>
+            <div class="col-xs-6">
+                <input id="middle-name" class="form-control  col-xs-7" type="text"  #if($sysUser)value="$sysUser.mobile"#end  name="phone" data-parsley-id="1458"><ul class="parsley-errors-list" id="parsley-id-1458"></ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">邮箱 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input id="email" class=" form-control col-xs-7" required="required" type="text" #if($sysUser)value="$sysUser.email"#end name="email" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0004"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-3">角色 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                #if($beansRole)
+                       <select id="roleName"  required="required" name="roleName" class="form-control col-xs-7" data-parsley-id="0004">
+                       #foreach($bean in $beansRole)
+                            <option value="$bean.id" #if($bean.name == $sysUser.roleName )selected="selected"#end >$bean.name</option>
+                        #end
+                       </select>
+                #else
+                       <dd>暂无数据</dd>
+                #end
+
+            </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class=" col-xs-6 col-xs-offset-3">
+                <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+                <button type="submit" id="addOrUpdateUser" data-url="ajax_add_update_user" class="btn btn-success">提交</button>
+            </div>
+        </div>
+
+    </form>
